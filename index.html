@@ -2,215 +2,414 @@
 <html lang="pt-br">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Atalaia Inteligência · Ninguém fica sem resposta</title>
-<meta name="description" content="Atendimento com inteligência artificial no WhatsApp de quem vende produtos: a IA aprende o seu catálogo, responde em segundos, 24 horas por dia, com o seu time no comando e tudo registrado.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Atalaia Inteligência · A IA que aprende o seu catálogo e atende o seu WhatsApp</title>
+<meta name="description" content="Atendimento com inteligência artificial no WhatsApp de quem vende produtos: a IA aprende o seu catálogo, responde em segundos, 24 horas por dia, e entrega ao seu time a cotação já qualificada.">
+<meta name="theme-color" content="#101820">
 <link rel="icon" type="image/svg+xml" href="logo/atalaia-icone.svg">
+<link rel="canonical" href="https://atalaiainteligencia.com.br/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Atalaia Inteligência">
+<meta property="og:title" content="A IA que aprende o seu catálogo e atende o seu WhatsApp">
+<meta property="og:description" content="Atendimento com inteligência artificial no WhatsApp de quem vende produtos: a IA aprende o seu catálogo, responde em segundos, 24 horas por dia, e entrega ao seu time a cotação já qualificada.">
+<meta property="og:url" content="https://atalaiainteligencia.com.br/">
+<meta property="og:image" content="https://atalaiainteligencia.com.br/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="A IA que aprende o seu catálogo e atende o seu WhatsApp">
+<meta name="twitter:description" content="Atendimento com inteligência artificial no WhatsApp de quem vende produtos: a IA aprende o seu catálogo, responde em segundos, 24 horas por dia, e entrega ao seu time a cotação já qualificada.">
+<meta name="twitter:image" content="https://atalaiainteligencia.com.br/og.png">
+<style>[hidden]{display:none!important}</style>
 <style>
-  :root {
-    --noite: #101820; --noite2: #182230;
-    --pedra: #F5F3EE; --painel: #FFFFFF;
-    --tinta: #1C242E; --tinta2: #5D6672; --linha: #E3DFD5;
-    --tocha: #B97F24; --tocha-viva: #D69A3A; --tocha-suave: #F6EBD8;
-    --petroleo: #2E4A56; --claro: #E8E4DA; --claro2: #97A0AC;
-    --verde-zap: #1E7A46;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--pedra); color: var(--tinta);
-    font: 17px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif; }
-  .marca { font-family: Georgia, "Times New Roman", serif; font-weight: 700; letter-spacing: 4px; }
-  h1, h2 { font-family: Georgia, "Times New Roman", serif; line-height: 1.15; text-wrap: balance; }
-  a { color: inherit; }
-  section { padding: 72px 20px; }
-  .miolo { max-width: 1020px; margin: 0 auto; }
+/* Atalaia Inteligência — base comum das três opções. Identidade mantida: Georgia + system-ui, noite / tocha / petróleo / claro. */
+:root {
+  --noite: #101820; --noite2: #182230; --noite3: #0B141A;
+  --pedra: #F5F3EE; --painel: #FFFFFF;
+  --tinta: #1C242E; --tinta2: #5D6672; --linha: #E3DFD5;
+  --tocha: #B97F24; --tocha-viva: #D69A3A; --tocha-clara: #E8B04B; --tocha-suave: #F6EBD8;
+  --petroleo: #2E4A56; --claro: #E8E4DA; --claro2: #97A0AC; --claro3: #6d7c88;
+  --zap: #005C4B; --zap-claro: #1E7A46; --deles: #202C33;
+  --serif: Georgia, "Times New Roman", serif;
+  --sans: "Segoe UI", system-ui, -apple-system, sans-serif;
+  /* escala de tipo: 8 degraus, nunca outro tamanho */
+  --t-1: 13px; --t0: 15px; --t1: 17px; --t2: 20px; --t3: 24px;
+  --t4: clamp(28px, 4vw, 36px); --t5: clamp(34px, 6vw, 56px); --t6: clamp(40px, 8vw, 84px);
+  --gutter: clamp(20px, 5vw, 48px); --miolo: 1080px;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body { background: var(--noite); color: var(--claro); font: var(--t1)/1.6 var(--sans); overflow-x: clip; }
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--tocha-viva); outline-offset: 3px; }
+.miolo { max-width: var(--miolo); margin-inline: auto; padding-inline: var(--gutter); }
+h1, h2, h3, .serif { font-family: var(--serif); font-weight: 700; line-height: 1.08; text-wrap: balance; }
+h1 { font-size: var(--t5); letter-spacing: -0.02em; }
+h2 { font-size: var(--t4); letter-spacing: -0.015em; }
+h3 { font-size: var(--t2); letter-spacing: 0; line-height: 1.25; }
+.olho { font-family: var(--sans); font-size: var(--t-1); letter-spacing: 0.14em; text-transform: uppercase; color: var(--tocha-viva); font-weight: 600; }
+.mudo { color: var(--claro2); }
+.tocha { color: var(--tocha-viva); }
+p.grande { font-size: var(--t2); line-height: 1.5; }
+.max { max-width: 34em; }
 
-  /* ------ hero: a noite do vigia ------ */
-  .hero { background:
-      radial-gradient(ellipse 900px 480px at 78% 18%, rgba(214,154,58,.16), transparent 60%),
-      radial-gradient(ellipse 700px 500px at 12% 92%, rgba(46,74,86,.35), transparent 65%),
-      var(--noite);
-    color: var(--claro); padding: 26px 20px 84px; }
-  .topo { max-width: 1020px; margin: 0 auto 64px; display: flex; align-items: baseline;
-    justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-  .topo .marca { font-size: 20px; }
-  .topo .marca span { color: var(--tocha-viva); }
-  .topo a.mini { color: var(--claro2); font-size: 14px; text-decoration: none;
-    border: 1px solid #33506A; border-radius: 999px; padding: 8px 18px; }
-  .topo a.mini:hover, .topo a.mini:focus-visible { color: var(--claro); border-color: var(--tocha); }
-  .hero-grade { max-width: 1020px; margin: 0 auto; display: grid;
-    grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: center; }
-  @media (max-width: 860px) { .hero-grade { grid-template-columns: 1fr; } }
-  .hero h1 { font-size: clamp(34px, 5vw, 52px); margin-bottom: 20px; }
-  .hero h1 em { font-style: normal; color: var(--tocha-viva); }
-  .hero p.grande { font-size: 19px; color: var(--claro2); max-width: 32em; margin-bottom: 34px; }
-  .cta { display: inline-block; background: var(--tocha); color: #14100a; font-weight: 700;
-    font-size: 17px; padding: 16px 30px; border-radius: 10px; text-decoration: none; }
-  .cta:hover, .cta:focus-visible { background: var(--tocha-viva); }
-  .hero .nota { font-size: 13.5px; color: var(--claro2); margin-top: 14px; }
+/* marca: sem corte no celular */
+.marca { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; font-family: var(--serif); font-weight: 700;
+  letter-spacing: 0.18em; font-size: var(--t0); text-decoration: none; white-space: nowrap; }
+.marca img { width: 34px; height: 34px; border-radius: 8px; }
+.marca span { color: var(--tocha-viva); }
+@media (max-width: 420px) { .marca { letter-spacing: 0.1em; font-size: var(--t-1); } }
 
-  /* conversa demonstração */
-  .zap { background: #0B141A; border: 1px solid #22303C; border-radius: 18px;
-    padding: 18px 14px 14px; box-shadow: 0 24px 60px rgba(0,0,0,.45); }
-  .zap .cabec { display: flex; align-items: center; gap: 10px; padding: 0 6px 12px;
-    border-bottom: 1px solid #22303C; margin-bottom: 12px; }
-  .zap .bola { width: 34px; height: 34px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--tocha), var(--petroleo));
-    display: flex; align-items: center; justify-content: center; font-size: 17px; }
-  .zap .cabec b { color: var(--claro); font-size: 14.5px; display: block; }
-  .zap .cabec small { color: #6d7c88; font-size: 11.5px; }
-  .balao { max-width: 85%; padding: 9px 12px; border-radius: 10px; font-size: 13.8px;
-    line-height: 1.45; margin-bottom: 9px; color: #E7E3DB; position: relative; }
-  .deles { background: #202C33; margin-right: auto; border-bottom-left-radius: 3px; }
-  .nosso { background: #005C4B; margin-left: auto; border-bottom-right-radius: 3px; }
-  .balao small { display: block; text-align: right; font-size: 10px; color: rgba(231,227,219,.55); margin-top: 3px; }
-  .zap .selo { text-align: center; font-size: 11px; color: #6d7c88; margin: 4px 0 10px; }
+/* botões: 48px de altura, feedback no toque */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px;
+  padding: 12px 24px; border-radius: 12px; font-weight: 700; font-size: var(--t1); text-decoration: none;
+  border: 0; cursor: pointer; background: var(--tocha); color: #14100a;
+  transition: transform 120ms ease-out, background 160ms; -webkit-tap-highlight-color: transparent; }
+.btn:hover { background: var(--tocha-viva); }
+.btn:active { transform: scale(0.97); }
+.btn.linha { background: transparent; color: var(--claro); border: 1px solid rgba(232,228,218,.28); font-weight: 600; }
+.btn.linha:hover { border-color: var(--tocha-viva); color: var(--tocha-viva); background: transparent; }
+.btn svg { width: 20px; height: 20px; flex: none; }
 
-  /* demonstração guiada */
-  .zap .cabec .tag { margin-left: auto; font-size: 10.5px; color: #6d7c88;
-    border: 1px solid #22303C; border-radius: 999px; padding: 3px 9px; white-space: nowrap; }
-  .zap .conversa { max-height: 380px; overflow-y: auto; scroll-behavior: smooth; padding: 2px; }
-  .chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px 4px 2px;
-    border-top: 1px solid #22303C; margin-top: 10px; }
-  .chip { background: none; border: 1px solid var(--tocha); color: var(--tocha-viva);
-    border-radius: 999px; padding: 8px 14px; font-size: 13px; cursor: pointer;
-    font-family: inherit; line-height: 1.35; text-align: left; }
-  .chip:hover, .chip:focus-visible { background: rgba(214,154,58,.12); }
-  .chip.link { text-decoration: none; display: inline-block; background: var(--tocha);
-    color: #14100a; font-weight: 700; }
-  .chip.link:hover, .chip.link:focus-visible { background: var(--tocha-viva); }
-  .digitando { display: inline-flex; gap: 4px; align-items: center; }
-  .digitando i { width: 6px; height: 6px; border-radius: 50%; background: #8899a6;
-    animation: pulsa 1s infinite; }
-  .digitando i:nth-child(2) { animation-delay: .18s; }
-  .digitando i:nth-child(3) { animation-delay: .36s; }
-  @keyframes pulsa { 0%, 60%, 100% { opacity: .25 } 30% { opacity: 1 } }
-  .zap .caixa-falsa { margin-top: 10px; background: #202C33; border-radius: 999px;
-    padding: 10px 16px; font-size: 12px; color: #6d7c88; }
+/* ícone SVG padrão (traço 1.75) */
+.ico { width: 28px; height: 28px; stroke: currentColor; fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
 
-  /* ------ dor ------ */
-  .dor { background: var(--pedra); }
-  .dor .miolo { max-width: 760px; text-align: center; }
-  .dor h2 { font-size: clamp(26px, 3.6vw, 36px); margin-bottom: 18px; }
-  .dor p { font-size: 18px; color: var(--tinta2); margin-bottom: 14px; }
-  .dor p b { color: var(--tinta); }
+/* topo translúcido */
+.topo { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+  background: rgba(16,24,32,.94); border-bottom: 1px solid rgba(232,228,218,.08); }
+@media (min-width: 900px) { .topo { background: rgba(16,24,32,.72); backdrop-filter: blur(16px) saturate(160%); -webkit-backdrop-filter: blur(16px) saturate(160%); } }
+.topo .miolo { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 60px; }
+.topo .btn { min-height: 44px; padding: 10px 18px; font-size: var(--t0); white-space: nowrap; flex: none; }
+.topo .btn .sm { display: none; }
+@media (max-width: 599px) { .topo .btn .lg { display: none; } .topo .btn .sm { display: inline; } }
+@media (prefers-reduced-transparency: reduce) { .topo { background: var(--noite); backdrop-filter: none; } }
 
-  /* ------ como funciona ------ */
-  .como { background: var(--painel); border-top: 1px solid var(--linha); border-bottom: 1px solid var(--linha); }
-  .como h2, .confianca h2 { font-size: clamp(26px, 3.6vw, 36px); text-align: center; margin-bottom: 12px; }
-  .como .sub, .confianca .sub { text-align: center; color: var(--tinta2); margin-bottom: 44px; }
-  .passos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-  @media (max-width: 760px) { .passos { grid-template-columns: 1fr; } }
-  .passo { background: var(--pedra); border: 1px solid var(--linha); border-radius: 14px; padding: 26px 24px; }
-  .passo .icone { font-size: 26px; margin-bottom: 12px; }
-  .passo h3 { font-family: Georgia, serif; font-size: 19px; margin-bottom: 8px; }
-  .passo p { font-size: 15px; color: var(--tinta2); }
+/* conversa (demo) */
+.zap { background: var(--noite3); border: 1px solid #22303C; border-radius: 20px; padding: 14px; box-shadow: 0 30px 70px rgba(0,0,0,.5); }
+.zap .cabec { display: flex; align-items: center; gap: 10px; padding: 2px 4px 12px; border-bottom: 1px solid #22303C; margin-bottom: 12px; }
+.zap .bola { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--tocha), var(--petroleo)); display: grid; place-items: center; color: var(--claro); }
+.zap .bola svg { width: 18px; height: 18px; }
+.zap .cabec b { display: block; font-size: var(--t0); color: var(--claro); }
+.zap .cabec small { color: var(--claro3); font-size: var(--t-1); }
+.zap .tag { margin-left: auto; font-size: var(--t-1); color: var(--claro3); border: 1px solid #22303C; border-radius: 999px; padding: 4px 10px; white-space: nowrap; }
+.zap .conversa { max-height: 360px; overflow-y: auto; scroll-behavior: smooth; padding: 2px; overscroll-behavior: contain; }
+.balao { max-width: 88%; padding: 10px 13px; border-radius: 14px; font-size: var(--t0); line-height: 1.45; margin-bottom: 8px; color: #E7E3DB; }
+.balao.deles { background: var(--deles); margin-right: auto; border-bottom-left-radius: 4px; }
+.balao.nosso { background: var(--zap); margin-left: auto; border-bottom-right-radius: 4px; }
+.balao small { display: block; text-align: right; font-size: 11px; color: rgba(231,227,219,.55); margin-top: 3px; }
+.balao mark { background: rgba(214,154,58,.22); color: var(--tocha-clara); padding: 0 4px; border-radius: 4px; }
+.selo { display: flex; align-items: center; gap: 8px; justify-content: center; font-size: var(--t-1); color: var(--claro3); margin: 6px 0 10px; }
+.selo svg { width: 14px; height: 14px; stroke: var(--tocha-viva); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 12px; border-top: 1px solid #22303C; margin-top: 10px; }
+.chip { min-height: 44px; background: none; border: 1px solid var(--tocha); color: var(--tocha-viva); border-radius: 999px; padding: 10px 16px;
+  font-size: var(--t0); cursor: pointer; line-height: 1.3; text-align: left; transition: transform 120ms; -webkit-tap-highlight-color: transparent; }
+.chip:hover { background: rgba(214,154,58,.12); }
+.chip:active { transform: scale(0.97); }
+.chip.link { text-decoration: none; display: inline-flex; align-items: center; background: var(--tocha); color: #14100a; font-weight: 700; }
+.digitando { display: inline-flex; gap: 4px; align-items: center; height: 16px; }
+.digitando i { width: 6px; height: 6px; border-radius: 50%; background: #8899a6; animation: pulsa 1s infinite; }
+.digitando i:nth-child(2) { animation-delay: .18s; } .digitando i:nth-child(3) { animation-delay: .36s; }
+@keyframes pulsa { 0%, 60%, 100% { opacity: .25 } 30% { opacity: 1 } }
+.caixa-falsa { margin-top: 10px; background: var(--deles); border-radius: 999px; padding: 11px 16px; font-size: var(--t-1); color: var(--claro3); }
 
-  /* ------ o produto por dentro ------ */
-  .produto { background: var(--noite2); color: var(--claro); }
-  .produto h2 { font-size: clamp(26px, 3.6vw, 36px); text-align: center; margin-bottom: 12px; }
-  .produto .sub { text-align: center; color: var(--claro2); margin-bottom: 44px; }
-  .produto .trilha { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-bottom: 54px; }
-  @media (max-width: 760px) { .produto .trilha { grid-template-columns: 1fr; } }
-  .produto .ponto { background: rgba(255,255,255,.04); border: 1px solid #2C3A4C;
-    border-radius: 14px; padding: 24px; }
-  .produto .ponto h3 { font-family: Georgia, serif; font-size: 19px; margin-bottom: 8px; }
-  .produto .ponto p { font-size: 15px; color: var(--claro2); }
-  .produto figure { margin: 0 0 42px; }
-  .produto img { width: 100%; height: auto; display: block; border-radius: 12px;
-    border: 1px solid #2C3A4C; box-shadow: 0 24px 60px rgba(0,0,0,.45); }
-  .produto figcaption { font-size: 14px; color: var(--claro2); margin-top: 12px; text-align: center; }
-  .produto .prova { text-align: center; color: var(--claro2); font-size: 15.5px; }
-  .produto .prova b { color: var(--tocha-viva); }
+/* diagnóstico guiado */
+#diag { background: var(--painel); color: var(--tinta); border-radius: 22px; padding: 26px 22px 22px; max-width: 560px; margin-inline: auto; box-shadow: 0 30px 70px rgba(0,0,0,.45); }
+.diag-barra { height: 4px; background: var(--linha); border-radius: 999px; overflow: hidden; margin-bottom: 18px; }
+.diag-barra i { display: block; height: 100%; background: var(--tocha); transform-origin: left; transform: scaleX(0); transition: transform 320ms cubic-bezier(.2,.7,.2,1); }
+.diag-passo { font-size: var(--t-1); letter-spacing: 0.12em; text-transform: uppercase; color: var(--tinta2); font-weight: 600; }
+.diag-titulo { font-family: var(--serif); font-size: var(--t3); line-height: 1.2; margin: 6px 0 18px; }
+.diag-opcoes { display: grid; gap: 10px; }
+.diag-op { min-height: 52px; text-align: left; padding: 12px 16px; border-radius: 12px; border: 1px solid var(--linha); background: var(--pedra);
+  cursor: pointer; font-size: var(--t1); transition: transform 120ms, border-color 160ms; -webkit-tap-highlight-color: transparent; }
+.diag-op:hover { border-color: var(--tocha); }
+.diag-op:active { transform: scale(0.98); }
+.diag-previa { white-space: pre-line; background: var(--tocha-suave); border-radius: 12px; padding: 14px 16px; font-size: var(--t0); line-height: 1.5; color: var(--tinta); }
+.diag-enviar { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; border-radius: 12px; background: var(--zap-claro); color: #fff;
+  font-weight: 700; text-decoration: none; font-size: var(--t1); }
+.diag-enviar:active { transform: scale(0.98); }
+.diag-voltar { margin-top: 14px; min-height: 44px; background: none; border: 0; color: var(--tinta2); cursor: pointer; text-decoration: underline; font-size: var(--t0); padding: 0 6px; }
 
-  /* ------ confiança ------ */
-  .confianca { background: var(--pedra); }
-  .nuncas { max-width: 680px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
-  .nunca { background: var(--painel); border: 1px solid var(--linha); border-left: 4px solid var(--tocha);
-    border-radius: 10px; padding: 16px 20px; font-size: 16px; }
-  .nunca b { color: var(--petroleo); }
+/* rodapé */
+footer { background: var(--noite3); color: var(--claro2); font-size: var(--t-1); padding-block: 40px; }
+footer .miolo { display: grid; gap: 14px; }
+footer nav { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+footer a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; }
+footer a:hover { color: var(--tocha-viva); }
+footer .legal { line-height: 1.7; }
 
-  /* ------ o nome ------ */
-  .nome { background: var(--noite2); color: var(--claro); }
-  .nome .miolo { max-width: 720px; text-align: center; }
-  .nome .marca { font-size: 15px; color: var(--tocha-viva); margin-bottom: 18px; display: block; }
-  .nome h2 { font-size: clamp(24px, 3.2vw, 32px); margin-bottom: 18px; }
-  .nome p { color: var(--claro2); font-size: 17px; margin-bottom: 12px; }
-  .nome p b { color: var(--claro); }
+/* movimento reduzido: cruza por opacidade, sem deslocamento */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
 
-  /* ------ CTA final ------ */
-  .fim { background: var(--pedra); text-align: center; }
-  .fim h2 { font-family: Georgia, serif; font-size: clamp(26px, 3.6vw, 36px); margin-bottom: 14px; }
-  .fim p { color: var(--tinta2); margin-bottom: 30px; }
+/* ===== painel vivo (tour de produto) ===== */
+.pv-tour { display: grid; gap: 28px; }
+.pv-passos { display: grid; gap: 0; }
+.pv-passo { padding: 22px 0; border-top: 1px solid rgba(232,228,218,.12); opacity: .45; transition: opacity 400ms; }
+.pv-passo.on { opacity: 1; }
+.pv-passo .pv-hora { font-family: var(--serif); color: var(--tocha-viva); font-size: var(--t2); margin-bottom: 6px; }
+.pv-passo h3 { margin-bottom: 8px; }
+.pv-passo p:not(.pv-hora) { color: var(--claro2); font-size: var(--t0); max-width: 34em; }
+.pv-fixo { position: sticky; top: 68px; align-self: start; }
+.pv-nota { font-size: var(--t-1); color: var(--claro3); margin-top: 10px; text-align: center; }
+.pv-nota.so-mob { display: none; }
+@media (max-width: 899px) { .pv-nota.so-desk { display: none; } .pv-nota.so-mob { display: block; } }
+.pv-relogio { font-variant-numeric: tabular-nums; color: var(--tocha-clara); font-weight: 600; white-space: nowrap; }
+.pv-toast { position: absolute; right: 12px; bottom: 12px; z-index: 5; display: flex; align-items: center; gap: 10px; background: #1B2730; border: 1px solid rgba(214,154,58,.4); border-radius: 12px; padding: 9px 12px; font-size: 11.5px; box-shadow: 0 16px 40px rgba(0,0,0,.5); opacity: 0; max-width: 78%; }
+.pv-toast .ico { width: 18px; height: 18px; color: var(--tocha-viva); flex: none; }
+.pv-toast b { display: block; font-size: 12px; }
+.pv-ripple { position: absolute; left: 50%; top: 50%; width: 24px; height: 24px; margin: -12px 0 0 -12px; border-radius: 50%; background: rgba(255,255,255,.7); opacity: 0; transform: scale(0); pointer-events: none; }
+.pv-btn { position: relative; overflow: hidden; }
+@media (max-width: 899px) {
+  .pv-tour { grid-template-columns: 1fr; }
+  .pv-fixo { order: -1; z-index: 3; }
+  .pv-passo { min-height: 34svh; padding: 20px 0; }
+}
+@media (min-width: 900px) { .pv-tour { grid-template-columns: .8fr 1.2fr; gap: 56px; align-items: start; } .pv-passo { min-height: 70vh; display: grid; align-content: center; } .pv-fixo { top: 90px; } }
 
-  footer { background: var(--noite); color: var(--claro2); font-size: 13px;
-    padding: 34px 20px; text-align: center; line-height: 2; }
-  footer .marca { color: var(--claro); font-size: 14px; }
-  footer .marca span { color: var(--tocha-viva); }
-  footer a { color: var(--claro2); }
+.pv { container-type: inline-size; background: #0F1A22; border: 1px solid #22303C; border-radius: 16px; overflow: hidden; box-shadow: 0 30px 70px rgba(0,0,0,.5); color: var(--claro); font-size: 13px; line-height: 1.4; position: relative; }
+.pv-barra { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-bottom: 1px solid #22303C; background: #0B141A; font-size: 12px; }
+.pv-marca { display: inline-flex; align-items: center; gap: 7px; font-family: var(--serif); font-weight: 700; letter-spacing: .04em; white-space: nowrap; }
+.pv-marca i { width: 10px; height: 10px; border-radius: 3px; background: linear-gradient(135deg, var(--tocha), var(--tocha-clara)); }
+.pv-abas { margin-left: auto; display: inline-flex; gap: 4px; }
+.pv-abas b { font-weight: 600; color: var(--claro3); padding: 5px 10px; border-radius: 999px; transition: background 250ms, color 250ms; }
+.pv-abas b.on { background: rgba(214,154,58,.16); color: var(--tocha-clara); }
+.pv-quem { display: inline-flex; align-items: center; gap: 6px; color: var(--claro2); white-space: nowrap; }
+.pv-dot { width: 7px; height: 7px; border-radius: 50%; background: #3FCF7A; box-shadow: 0 0 0 3px rgba(63,207,122,.18); }
+.pv-cena { display: none; grid-template-columns: minmax(0,1fr) minmax(0,1fr); min-height: 300px; }
+.pv-cena > * { min-width: 0; }
+.pv-dados > div > * { min-width: 0; } .pv-dados dt { flex: none; }
+.pv-cena.on { display: grid; animation: pv-in 320ms ease-out; }
+@keyframes pv-in { from { opacity: 0 } to { opacity: 1 } }
+.pv-tit { font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--claro3); font-weight: 600; margin: 0 0 8px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.pv-tit em { font-style: normal; color: var(--tocha-viva); letter-spacing: 0; text-transform: none; font-weight: 500; }
+.pv-chip { display: inline-flex; align-items: center; min-height: 20px; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 600; white-space: nowrap; }
+.pv-chip.ia { background: rgba(63,207,122,.14); color: #7FE0A8; }
+.pv-chip.esp { background: rgba(214,154,58,.16); color: var(--tocha-clara); }
+.pv-chip.ok { background: rgba(151,160,172,.14); color: var(--claro2); }
+.pv-chip.alta { background: rgba(224,139,122,.16); color: #F0A896; }
+/* fila */
+.pv-fila { border-right: 1px solid #22303C; padding: 12px; display: grid; gap: 8px; align-content: start; }
+.pv-fila-cab { font-size: 12px; color: var(--claro2); display: flex; justify-content: space-between; padding: 2px 4px 6px; }
+.pv-n { background: var(--tocha); color: #14100a; border-radius: 999px; padding: 0 7px; font-weight: 700; }
+.pv-card { display: grid; grid-template-columns: 30px 1fr; gap: 10px; padding: 10px; border-radius: 10px; background: #16222C; border: 1px solid #22303C; }
+.pv-card.fraca { opacity: .55; }
+.pv-av { width: 30px; height: 30px; border-radius: 50%; background: linear-gradient(135deg, var(--petroleo), #1B2730); display: grid; place-items: center; font-weight: 700; font-size: 12px; color: var(--claro); }
+.pv-av.h { background: linear-gradient(135deg, var(--tocha), var(--petroleo)); }
+.pv-card-t { display: grid; gap: 3px; min-width: 0; }
+.pv-card-t b { font-size: 12.5px; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pv-card-t small { color: var(--claro3); font-size: 11px; }
+.pv-prev { color: var(--claro2); font-size: 11.5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; }
+/* resumo */
+.pv-resumo, .pv-lado { padding: 12px 14px; display: grid; gap: 6px; align-content: start; }
+.pv-texto { background: #16222C; border: 1px solid #22303C; border-radius: 10px; padding: 10px 12px; font-size: 12.5px; min-height: 66px; margin-bottom: 8px; }
+.pv-texto.pequeno { min-height: 0; font-size: 12px; color: var(--claro2); }
+.pv-cursor { display: inline-block; width: 2px; height: 13px; background: var(--tocha-viva); vertical-align: -2px; margin-left: 1px; animation: pv-pisca .9s steps(1) infinite; }
+@keyframes pv-pisca { 50% { opacity: 0 } }
+.pv-dados { display: grid; gap: 5px; margin-bottom: 8px; }
+.pv-dados > div { display: flex; justify-content: space-between; gap: 10px; font-size: 12px; border-bottom: 1px dashed #22303C; padding-bottom: 4px; }
+.pv-dados dt { color: var(--claro3); }
+.pv-dados dd { font-weight: 600; text-align: right; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pv-aviso { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; color: var(--tocha-clara); }
+.pv-aviso .ico { width: 14px; height: 14px; }
+/* conversa */
+.pv-conv { border-right: 1px solid #22303C; display: grid; grid-template-rows: auto 1fr auto; min-height: 300px; }
+.pv-conv-cab { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 10px 12px; border-bottom: 1px solid #22303C; font-size: 12.5px; }
+.pv-msgs { padding: 10px 12px; display: grid; gap: 7px; align-content: start; }
+.pv-m { max-width: 88%; padding: 7px 10px; border-radius: 10px; font-size: 12px; line-height: 1.4; }
+.pv-m small { display: block; font-size: 10px; color: rgba(231,227,219,.5); margin-top: 2px; }
+.pv-m.c { background: #202C33; justify-self: start; border-bottom-left-radius: 3px; }
+.pv-m.i { background: var(--zap); justify-self: end; border-bottom-right-radius: 3px; }
+.pv-m.h { background: rgba(214,154,58,.18); border: 1px solid rgba(214,154,58,.35); justify-self: end; border-bottom-right-radius: 3px; min-height: 36px; }
+.pv-compor { display: flex; gap: 8px; padding: 10px 12px; border-top: 1px solid #22303C; align-items: center; }
+.pv-campo { flex: 1; background: #16222C; border: 1px solid #22303C; border-radius: 999px; padding: 7px 12px; color: var(--claro3); font-size: 11.5px; min-height: 30px; }
+.pv-btn { background: var(--tocha); color: #14100a; border: 0; border-radius: 8px; padding: 7px 12px; font-weight: 700; font-size: 12px; white-space: nowrap; cursor: default; }
+.pv-btn.feita { background: rgba(63,207,122,.16); color: #7FE0A8; }
+.pv-pessoa { display: flex; align-items: center; gap: 10px; }
+.pv-pessoa b { display: block; font-size: 12.5px; }
+.pv-pessoa small { color: var(--claro3); font-size: 11px; }
+.pv-ghost { position: absolute; left: 0; top: 0; width: 22px; height: 22px; fill: var(--tocha-clara); stroke: #14100a; stroke-width: 1; filter: drop-shadow(0 4px 8px rgba(0,0,0,.5)); pointer-events: none; opacity: 0; z-index: 4; }
+/* números */
+.pv-cena[data-cena="numeros"] { grid-template-columns: 1fr; padding: 14px; gap: 14px; align-content: start; }
+.pv-tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.pv-tile { background: #16222C; border: 1px solid #22303C; border-radius: 10px; padding: 10px 12px; display: grid; gap: 2px; }
+.pv-tile small { font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--claro3); }
+.pv-tile b { font-family: var(--serif); font-size: 24px; font-variant-numeric: tabular-nums; }
+.pv-tile.destaque { border-color: rgba(214,154,58,.5); } .pv-tile.destaque b { color: var(--tocha-clara); }
+.pv-barras { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; height: 110px; align-items: end; padding-top: 6px; }
+.pv-barras > div { --p: 0; display: grid; grid-template-rows: 1fr auto; height: 100%; gap: 4px; align-items: end; }
+.pv-barras > div i, .pv-barras > div em { display: block; border-radius: 4px 4px 0 0; grid-row: 1; align-self: end; }
+.pv-barras > div i { height: calc(var(--h) * 100% * var(--p)); background: #2E4A56; }
+.pv-barras > div em { height: calc(var(--h) * var(--n) * 100% * var(--p)); background: var(--tocha-viva); border-radius: 0; }
+.pv-barras > div small { grid-row: 2; text-align: center; color: var(--claro3); font-size: 10.5px; }
+.pv-legenda { font-size: 12px; color: var(--claro2); } .pv-legenda b { color: var(--tocha-clara); }
+@container (max-width: 520px) {
+  .pv-cena { grid-template-columns: 1fr; min-height: 0; }
+  .pv-fila-cab { display: none; } .pv-fila { padding: 10px; } .pv-resumo { padding: 10px 12px; gap: 4px; }
+  .pv-texto { min-height: 0; font-size: 12px; margin-bottom: 6px; } .pv-dados > div:nth-child(n+3) { display: none; }
+  .pv-conv { min-height: 0; } .pv-msgs { padding: 8px 10px; }
+  .pv-fila, .pv-conv { border-right: 0; border-bottom: 1px solid #22303C; }
+  .pv-card.fraca { display: none; }
+  .pv-tiles { grid-template-columns: repeat(2, 1fr); }
+  .pv-abas b { padding: 5px 8px; }
+  .pv-quem { display: none; }
+  .pv-lado { display: none; }
+  .pv-msgs .pv-m.i { display: none; }
+  .pv-ghost { display: none; }
+  .pv-relogio { font-size: 11px; }
+}
+
+/* ===== Opção 1: Muralha em movimento ===== */
+.hero { position: relative; overflow: hidden; padding-block: clamp(40px, 8vw, 96px) clamp(56px, 8vw, 96px); background: var(--noite); }
+.hero .luz { position: absolute; inset: -20% -10%; pointer-events: none;
+  background: radial-gradient(ellipse 60% 45% at 80% 10%, rgba(214,154,58,.20), transparent 62%),
+              radial-gradient(ellipse 50% 55% at 8% 95%, rgba(46,74,86,.45), transparent 65%); will-change: transform; }
+.hero .miolo { position: relative; display: grid; gap: 40px; }
+@media (min-width: 900px) { .hero .miolo { grid-template-columns: 1.05fr .95fr; gap: 64px; align-items: center; } }
+.hero .olho { margin-bottom: 18px; }
+.hero h1 { font-size: var(--t5); margin-bottom: 22px; }
+.hero h1 em { font-style: normal; color: var(--tocha-viva); }
+.hero p.grande { color: var(--claro2); margin-bottom: 30px; }
+.hero .acoes { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; }
+.hero .acoes a.texto { min-height: 44px; display: inline-flex; align-items: center; color: var(--claro2); text-decoration: underline; text-underline-offset: 4px; font-size: var(--t0); }
+.hero .acoes a.texto:hover { color: var(--tocha-viva); }
+.linha-mask { overflow: hidden; }
+
+/* sábado */
+.sabado { background: var(--noite3); padding-block: clamp(72px, 12vw, 140px); }
+.sabado h2 { font-size: var(--t6); line-height: 1; letter-spacing: -0.03em; margin-bottom: 8px; }
+.sabado h2 small { display: block; font-family: var(--sans); font-weight: 400; font-size: var(--t2); letter-spacing: 0; color: var(--claro2); margin-top: 14px; }
+.trilho { margin-top: 48px; display: grid; gap: 0; border-left: 1px solid rgba(232,228,218,.14); }
+.trilho .marco { position: relative; padding: 18px 0 18px 28px; }
+.trilho .marco::before { content: ""; position: absolute; left: -5px; top: 30px; width: 9px; height: 9px; border-radius: 50%; background: var(--claro3); transition: background 300ms, box-shadow 300ms; }
+.trilho .marco.aceso::before { background: var(--tocha-viva); box-shadow: 0 0 0 6px rgba(214,154,58,.18); }
+.trilho time { font-family: var(--serif); font-size: var(--t3); color: var(--claro); font-variant-numeric: tabular-nums; display: block; }
+.trilho p { color: var(--claro2); max-width: 34em; }
+.trilho p b { color: var(--claro); font-weight: 600; }
+@media (min-width: 900px) { .sabado .miolo { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; } .trilho { margin-top: 8px; } }
+
+/* como aprende */
+.aprende { background: var(--noite); padding-block: clamp(72px, 10vw, 120px); border-top: 1px solid rgba(232,228,218,.08); }
+.aprende .miolo { display: grid; gap: 40px; }
+@media (min-width: 900px) { .aprende .miolo { grid-template-columns: .9fr 1.1fr; gap: 72px; } .aprende .fixo { position: sticky; top: 92px; align-self: start; } }
+.aprende h2 { margin-bottom: 14px; }
+.aprende .fixo p { color: var(--claro2); }
+.passos { display: grid; }
+.passo { display: grid; grid-template-columns: 44px 1fr; gap: 18px; padding: 28px 0; border-top: 1px solid rgba(232,228,218,.12); }
+.passo:last-child { border-bottom: 1px solid rgba(232,228,218,.12); }
+.passo .ico { color: var(--tocha-viva); width: 32px; height: 32px; margin-top: 4px; }
+.passo h3 { margin-bottom: 8px; }
+.passo p { color: var(--claro2); font-size: var(--t0); }
+.passo p code { font-family: ui-monospace, Consolas, monospace; font-size: 0.92em; color: var(--tocha-clara); background: rgba(214,154,58,.12); padding: 1px 6px; border-radius: 5px; }
+
+/* produto */
+.produto { background: var(--noite2); padding-block: clamp(72px, 10vw, 120px); }
+.produto h2 { margin-bottom: 12px; max-width: 18em; }
+.produto .sub { color: var(--claro2); margin-bottom: 44px; max-width: 36em; }
+.produto .prova { margin-top: 44px; color: var(--claro2); font-size: var(--t0); border-top: 1px solid rgba(232,228,218,.12); padding-top: 22px; }
+.produto .prova b { color: var(--tocha-viva); }
+
+/* nuncas */
+.nuncas { background: var(--noite); padding-block: clamp(72px, 10vw, 120px); }
+.nuncas h2 { margin-bottom: 10px; }
+.nuncas .sub { color: var(--claro2); margin-bottom: 36px; }
+.nuncas ul { list-style: none; display: grid; gap: 0; max-width: 720px; }
+.nuncas li { padding: 20px 0; border-top: 1px solid rgba(232,228,218,.12); display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: baseline; }
+.nuncas li:last-child { border-bottom: 1px solid rgba(232,228,218,.12); }
+.nuncas li .n { font-family: var(--serif); font-weight: 700; color: var(--tocha-viva); font-size: var(--t2); }
+.nuncas li p { color: var(--claro2); }
+.nuncas li p b { color: var(--claro); font-weight: 600; }
+
+/* nome */
+.nome { background: var(--noite3); padding-block: clamp(72px, 10vw, 120px); text-align: center; }
+.nome .miolo { max-width: 760px; }
+.nome .tocha-ico { width: 56px; height: 56px; margin: 0 auto 22px; color: var(--tocha-viva); }
+.nome h2 { margin-bottom: 18px; }
+.nome p { color: var(--claro2); font-size: var(--t2); line-height: 1.5; }
+.nome p b { color: var(--claro); font-weight: 600; }
+
+/* diagnóstico (seção clara) */
+.fecho { background: var(--pedra); color: var(--tinta); padding-block: clamp(72px, 10vw, 120px); }
+.fecho .miolo { display: grid; gap: 36px; }
+@media (min-width: 900px) { .fecho .miolo { grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; } }
+.fecho h2 { color: var(--tinta); margin-bottom: 14px; }
+.fecho p { color: var(--tinta2); font-size: var(--t2); line-height: 1.5; }
+.fecho .olho { color: var(--tocha); }
 </style>
 </head>
 <body>
-
-<div class="hero">
-  <div class="topo">
-    <span class="marca" style="display:flex;align-items:center;gap:12px"><img src="logo/atalaia-icone.svg" alt="" width="38" height="38" style="border-radius:9px">ATALAIA <span>INTELIGÊNCIA</span></span>
-    <a class="mini" href="https://wa.me/5531992949134?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20atendimento%20com%20IA%20da%20Atalaia.">Falar com a gente</a>
-  </div>
-  <div class="hero-grade">
-    <div>
-      <h1>O WhatsApp da sua empresa, <em>respondido em segundos.</em> Sempre.</h1>
-      <p class="grande">Um atendente com inteligência artificial que conversa como o seu time,
-      atende de madrugada e no domingo, e entrega o cliente pronto para quem fecha negócio,
-      com tudo registrado.</p>
-      <a class="cta" href="https://wa.me/5531992949134?text=Ol%C3%A1!%20Vi%20a%20demonstra%C3%A7%C3%A3o%20no%20site%20e%20quero%20o%20atendente%20da%20Atalaia%20na%20minha%20empresa.">Quero esse atendente na minha empresa →</a>
-      <p class="nota">Faça um teste agora: é só clicar nas perguntas da conversa aqui na página.</p>
-    </div>
-    <div class="zap" aria-label="Demonstração guiada do atendente da Atalaia">
-      <div class="cabec">
-        <div class="bola">🛡️</div>
-        <div><b>Atendimento · sua empresa</b><small>online agora</small></div>
-        <span class="tag">▶ demonstração</span>
-      </div>
-      <div class="conversa" id="demo-conversa"></div>
-      <div class="chips" id="demo-chips" aria-label="Perguntas da demonstração"></div>
-      <div class="caixa-falsa">Na versão real o cliente escreve livre. Aqui, escolha uma pergunta acima.</div>
-    </div>
-  </div>
-</div>
-
-<section class="dor">
+<div id="inicio"></div>
+<header class="topo">
   <div class="miolo">
-    <h2>Toda conversa sem resposta é uma venda indo para o concorrente</h2>
-    <p>O cliente chama no WhatsApp às 19h. O time já foi. Ele espera dez minutos e manda a mesma mensagem para outra empresa.</p>
-    <p><b>Ninguém fica sabendo:</b> contato que não vira negócio não deixa rastro.
-    Nem número, nem nome, nem motivo. Só a venda que não aconteceu.</p>
+    <a class="marca" href="#inicio" aria-label="Atalaia Inteligência, início"><img src="logo/atalaia-icone.svg" alt="" width="34" height="34">ATALAIA <span>INTELIGÊNCIA</span></a>
+    <a class="btn linha" href="#diag"><span class="lg">Quero na minha empresa</span><span class="sm">Começar</span></a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="luz" aria-hidden="true"></div>
+  <div class="miolo">
+    <div>
+      <p class="olho">Atendimento com IA no WhatsApp</p>
+      <h1 class="rv-linhas">A IA que aprende o <em>seu catálogo</em> e atende o seu WhatsApp como alguém do time.</h1>
+      <p class="grande max rv">Você entrega o catálogo. Ela aprende marcas, linhas e códigos, responde em segundos com o produto certo e passa para o seu vendedor a cotação já qualificada. Sábado à noite, inclusive.</p>
+      <div class="acoes rv">
+        <a class="btn" href="#diag">Ver se serve para a minha empresa</a>
+        <a class="texto" href="#demo">ou teste a conversa</a>
+      </div>
+    </div>
+    <div id="demo" class="rv">
+      <div class="zap" aria-label="Demonstração guiada do atendente da Atalaia">
+  <div class="cabec">
+    <div class="bola" aria-hidden="true"><svg viewBox="0 0 24 24" class="ico"><path d="M12 3c2 3 3.5 4.6 3.5 7a3.5 3.5 0 0 1-7 0c0-2.4 1.5-4 3.5-7z"/><path d="M8 14l-2 7h12l-2-7"/></svg></div>
+    <div><b>Atendimento · sua empresa</b><small>online agora</small></div>
+    <span class="tag">demonstração</span>
+  </div>
+  <div class="conversa" id="demo-conversa" aria-live="polite"></div>
+  <div class="chips" id="demo-chips" aria-label="Perguntas da demonstração"></div>
+  <div class="caixa-falsa">Na versão real o cliente escreve livre. Aqui, escolha uma pergunta acima.</div>
+</div>
+    </div>
   </div>
 </section>
 
-<section class="como">
+<section class="sabado">
   <div class="miolo">
-    <h2>Como funciona</h2>
-    <p class="sub">Seu número de sempre. Seu jeito de falar. Seu time no comando.</p>
+    <div>
+      <h2 class="rv-linhas">Sábado, <span class="tocha">22h14.</span><small>Um cliente pergunta o preço de um sensor. O seu time está em casa.</small></h2>
+    </div>
+    <div class="trilho">
+      <div class="marco rv"><time>22h14</time><p><b>Cliente:</b> "Vocês têm o PN 5096-104? Preciso de dois."</p></div>
+      <div class="marco rv"><time>22h14</time><p><b>Atendente da Atalaia:</b> reconhece o código no seu catálogo, confirma o produto, pergunta cidade de entrega, e-mail e CNPJ.</p></div>
+      <div class="marco rv"><time>22h16</time><p><b>Seu vendedor:</b> recebe a cotação pronta na fila do painel. Segunda de manhã, é só mandar o preço.</p></div>
+      <div class="marco rv"><time>Sem a Atalaia</time><p>O cliente espera dez minutos e manda a mesma pergunta para o concorrente. Ninguém fica sabendo.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="aprende">
+  <div class="miolo">
+    <div class="fixo">
+      <h2 class="rv-linhas">Como ela aprende o seu negócio</h2>
+      <p class="rv">Não é um robô de menu nem um chat genérico. É um atendente calibrado com o que a sua empresa vende e com o jeito que o seu time fala.</p>
+    </div>
     <div class="passos">
-      <div class="passo">
-        <div class="icone">⚡</div>
-        <h3>Resposta na hora, 24/7</h3>
-        <p>O atendente responde em segundos, no tom da sua empresa, calibrado com o
-        seu catálogo e as conversas reais do seu time, não com script genérico. Cliente novo, cliente de
-        sempre ou contato interno: cada um tratado do jeito certo.</p>
+      <div class="passo rv">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h11l5 5v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/><path d="M15 4v5h5"/><path d="M8 13h8M8 17h8"/></svg>
+        <div><h3>Você entrega o catálogo</h3><p>PDF, planilha ou site. Marcas, linhas, códigos e descrições. Ela lê tudo e passa a reconhecer <code>PN 5096-104</code> ou "mangueira de 3/4" como o seu vendedor reconhece.</p></div>
       </div>
-      <div class="passo">
-        <div class="icone">🎯</div>
-        <h3>Seu time no comando</h3>
-        <p>O que precisa de gente cai numa fila organizada, com o resumo da conversa
-        pronto. Qualquer pessoa do time assume com um clique e continua pelo painel. Preço, prazo e negociação continuam sendo de humanos.</p>
+      <div class="passo rv">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c2 3 3.5 4.6 3.5 7a3.5 3.5 0 0 1-7 0c0-2.4 1.5-4 3.5-7z"/><path d="M8 14l-2 7h12l-2-7"/></svg>
+        <div><h3>Ela responde no tom da sua empresa</h3><p>Calibrada com conversas reais do seu time. Cliente novo, cliente de sempre ou contato interno: cada um tratado do jeito certo, uma pergunta de cada vez.</p></div>
       </div>
-      <div class="passo">
-        <div class="icone">📊</div>
-        <h3>Pela primeira vez, os números</h3>
-        <p>Todo contato registrado. Tempo de resposta, contatos fora do horário,
-        quem atendeu o quê, num relatório semanal para a gestão. O que não se mede,
-        não se melhora.</p>
+      <div class="passo rv">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 11a4 4 0 1 0-8 0 4 4 0 0 0 8 0z"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+        <div><h3>Seu time recebe a cotação pronta</h3><p>Peça, quantidade, cidade, e-mail e CNPJ já coletados. A conversa cai numa fila com resumo, e qualquer pessoa assume com um clique. Preço, prazo e negociação continuam sendo de gente.</p></div>
       </div>
     </div>
   </div>
@@ -218,221 +417,390 @@
 
 <section class="produto">
   <div class="miolo">
-    <h2>Feito para quem vende produtos</h2>
-    <p class="sub">Distribuidoras, indústrias e revendas: o atendente aprende o seu catálogo.</p>
-    <div class="trilha">
-      <div class="ponto">
-        <h3>Lê o seu catálogo</h3>
-        <p>Você entrega os catálogos, e o atendente aprende marcas, linhas e códigos.
-        O cliente manda "PN 5096-104" e ele sabe do que está falando.</p>
+    <h2 class="rv-linhas">O seu time inteiro no mesmo número, com a IA junto</h2>
+    <p class="sub rv">Isto é o painel do seu time, funcionando. Role e veja a noite de sábado virar a manhã de segunda.</p>
+    <div class="pv-tour" id="pv-tour">
+  <div class="pv-passos">
+    <div class="pv-passo" data-cena="fila">
+      <p class="pv-hora">Sábado, 22h14</p>
+      <h3>A IA atende e já escreve o resumo para o seu time</h3>
+      <p>Enquanto conversa com o cliente, ela anota peça, quantidade, cidade, e-mail e CNPJ. Quando termina, avisa a fila. Ninguém precisou acordar.</p>
+    </div>
+    <div class="pv-passo" data-cena="assumir">
+      <p class="pv-hora">Segunda, 8h02</p>
+      <h3>Seu vendedor assume com um clique</h3>
+      <p>A conversa abre com o resumo pronto. Preço, prazo e negociação continuam sendo de gente. Tudo no mesmo número, sem o cliente perceber a troca.</p>
+    </div>
+    <div class="pv-passo" data-cena="numeros">
+      <p class="pv-hora">Sexta, relatório da semana</p>
+      <h3>Pela primeira vez, os números</h3>
+      <p>Quantos chamaram com o time em casa, quanto tempo levou a primeira resposta, quem atendeu o quê. Direto do registro. Nada estimado.</p>
+    </div>
+  </div>
+
+  <div class="pv-fixo">
+    <div class="pv" id="pv" aria-hidden="true">
+      <div class="pv-barra">
+        <span class="pv-marca"><i></i>Sua Empresa · Atendimento</span>
+        <span class="pv-abas"><b data-aba="fila" class="on">Fila</b><b data-aba="assumir">Conversa</b><b data-aba="numeros">Números</b></span>
+        <span class="pv-relogio" id="pv-relogio">sáb · 22h14</span><span class="pv-quem"><i class="pv-dot"></i>Helena</span>
       </div>
-      <div class="ponto">
-        <h3>Qualifica a cotação</h3>
-        <p>Peça, quantidade, cidade de entrega, e-mail e CNPJ. Quando chega no seu
-        vendedor, a cotação já está pronta para fazer.</p>
+
+      <!-- cena 1: fila + resumo da IA -->
+      <div class="pv-cena on" data-cena="fila">
+        <div class="pv-fila">
+          <div class="pv-fila-cab">Fila <span class="pv-n" id="pv-fila-n">0</span></div>
+          <div class="pv-card" id="pv-card1">
+            <div class="pv-av">M</div>
+            <div class="pv-card-t"><b>Marcos · Serra Preta Peças</b><small id="pv-card1-h">22h14</small>
+              <span class="pv-prev" id="pv-prev">Boa noite, vocês têm o PN 5096-104?</span>
+              <span class="pv-chip ia" id="pv-chip1">IA atendendo</span></div>
+          </div>
+          <div class="pv-card fraca">
+            <div class="pv-av">A</div>
+            <div class="pv-card-t"><b>Ana · Auto Center BH</b><small>21h50</small><span class="pv-prev">Prazo para Contagem?</span><span class="pv-chip ok">Resolvido pela IA</span></div>
+          </div>
+        </div>
+        <div class="pv-resumo">
+          <div class="pv-tit">Resumo do contato <em>feito pela IA</em> <span class="pv-chip alta" id="pv-prio">alta</span></div>
+          <p class="pv-texto"><span id="pv-digita"></span><i class="pv-cursor" id="pv-cursor-txt"></i></p>
+          <div class="pv-tit">Dados</div>
+          <dl class="pv-dados" id="pv-dados">
+            <div><dt>Peça</dt><dd>PN 5096-104 · 2 un.</dd></div>
+            <div><dt>Entrega</dt><dd>Betim</dd></div>
+            <div><dt>E-mail</dt><dd>compras@minhaempresa.com.br</dd></div>
+            <div><dt>CNPJ</dt><dd>00.000.000/0001-00</dd></div>
+          </dl>
+          <div class="pv-aviso" id="pv-aviso"><svg viewBox="0 0 24 24" class="ico" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Fila avisada · 22h16</div>
+        </div>
       </div>
-      <div class="ponto">
-        <h3>Todo o time no mesmo número</h3>
-        <p>IA e atendentes juntos no número oficial da empresa, com fila organizada,
-        resumo por conversa e números para a gestão.</p>
+
+      <div class="pv-toast" id="pv-toast"><svg viewBox="0 0 24 24" class="ico" aria-hidden="true"><path d="M12 3c2 3 3.5 4.6 3.5 7a3.5 3.5 0 0 1-7 0c0-2.4 1.5-4 3.5-7z"/><path d="M8 14l-2 7h12l-2-7"/></svg><span><b>Cotação qualificada</b>Marcos · Serra Preta Peças · a fila foi avisada</span></div>
+
+      <!-- cena 2: assumir -->
+      <div class="pv-cena" data-cena="assumir">
+        <div class="pv-conv">
+          <div class="pv-conv-cab"><b>Marcos · Serra Preta Peças</b><span class="pv-chip esp" id="pv-chip2">Aguardando atendente</span></div>
+          <div class="pv-msgs">
+            <div class="pv-m c">Boa noite, vocês têm o PN 5096-104? Preciso de dois.<small>Cliente · 22h14</small></div>
+            <div class="pv-m i">Temos sim. PN 5096-104 é o sensor de nível para tanque de diesel. Me passa a cidade de entrega, e-mail e CNPJ.<small>IA · 22h14</small></div>
+            <div class="pv-m c">Betim. compras@minhaempresa.com.br, CNPJ 00.000.000/0001-00<small>Cliente · 22h15</small></div>
+            <div class="pv-m h" id="pv-m-h"><span id="pv-digita2"></span><small>Helena · 8h03</small></div>
+          </div>
+          <div class="pv-compor">
+            <span class="pv-campo" id="pv-campo">Assuma a conversa para responder</span>
+            <button type="button" class="pv-btn" id="pv-assumir" tabindex="-1"><i class="pv-ripple" id="pv-ripple"></i><span id="pv-assumir-t">Assumir conversa</span></button>
+          </div>
+        </div>
+        <div class="pv-lado">
+          <div class="pv-tit">Resumo <em>feito pela IA</em></div>
+          <p class="pv-texto pequeno">Quer 2 un. do PN 5096-104, entrega em Betim. E-mail e CNPJ coletados. Aguarda cotação formal.</p>
+          <div class="pv-tit">Quem está com a conversa</div>
+          <div class="pv-pessoa" id="pv-pessoa"><span class="pv-av h">H</span><span><b>Helena Prado</b><small id="pv-pessoa-s">assumiu às 8h02</small></span></div>
+        </div>
+        <svg class="pv-ghost" id="pv-ghost" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l14 8-6 1.5L16 20l-3 1.5L9.5 14 5 18z"/></svg>
+      </div>
+
+      <!-- cena 3: números -->
+      <div class="pv-cena" data-cena="numeros">
+        <div class="pv-tiles">
+          <div class="pv-tile"><small>Conversas</small><b data-conta="128">0</b></div>
+          <div class="pv-tile destaque"><small>Fora do horário</small><b data-conta="41">0</b></div>
+          <div class="pv-tile"><small>1ª resposta</small><b><span data-conta="9">0</span> s</b></div>
+          <div class="pv-tile"><small>Em até 60 s</small><b><span data-conta="100">0</span>%</b></div>
+        </div>
+        <div class="pv-graf">
+          <div class="pv-tit">Conversas por dia <em>com o time em casa, em tocha</em></div>
+          <div class="pv-barras" id="pv-barras">
+            <div style="--h:.55;--n:.3"><i></i><em></em><small>seg</small></div>
+            <div style="--h:.7;--n:.25"><i></i><em></em><small>ter</small></div>
+            <div style="--h:.62;--n:.35"><i></i><em></em><small>qua</small></div>
+            <div style="--h:.8;--n:.3"><i></i><em></em><small>qui</small></div>
+            <div style="--h:.9;--n:.28"><i></i><em></em><small>sex</small></div>
+            <div style="--h:.45;--n:.7"><i></i><em></em><small>sáb</small></div>
+            <div style="--h:.3;--n:.85"><i></i><em></em><small>dom</small></div>
+          </div>
+          <p class="pv-legenda" id="pv-legenda"><b>41 contatos</b> chegaram com o time em casa. <b>Zero</b> ficaram sem resposta.</p>
+        </div>
       </div>
     </div>
-    <figure>
-      <img src="prints/painel-conversa.png" width="1440" height="900"
-        alt="Painel da Atalaia: conversa em que a IA reconhece o código da peça, coleta e-mail e CNPJ e avisa a fila, com resumo feito pela IA ao lado" loading="lazy">
-      <figcaption>A IA reconhece a peça, coleta os dados e avisa a fila. O vendedor abre a conversa com o resumo pronto.</figcaption>
-    </figure>
-    <figure>
-      <img src="prints/painel-numeros.png" width="1440" height="900"
-        alt="Tela de números do painel: conversas, mensagens, contatos fora do horário, tempo médio de primeira resposta e produtividade por atendente" loading="lazy">
-      <figcaption>Tempo de resposta, contatos fora do horário e quem atendeu o quê, direto do registro. Nada estimado.</figcaption>
-    </figure>
-    <p class="prova"><b>Em operação hoje</b> no comercial de uma indústria de Minas Gerais:
-    IA e cinco atendentes no mesmo número, e nenhum contato sem resposta.
-    <br>Telas reais do produto, aqui com dados de demonstração.</p>
+    <p class="pv-nota so-desk">Painel recriado com dados de demonstração. Nenhum dado de cliente real.</p>
+  </div>
+  <p class="pv-nota so-mob">Painel recriado com dados de demonstração. Nenhum dado de cliente real.</p>
+</div>
+    <p class="prova rv"><b>Em produção hoje,</b> atendendo clientes reais: IA e atendentes no mesmo número, nenhum contato sem resposta.</p>
   </div>
 </section>
 
-<section class="confianca">
+<section class="nuncas">
   <div class="miolo">
-    <h2>O que ele nunca vai fazer</h2>
-    <p class="sub">Confiança se constrói dizendo também o que fica de fora.</p>
-    <div class="nuncas">
-      <div class="nunca"><b>Nunca inventa preço, prazo ou estoque.</b> O que é do seu time, continua do seu time: o atendente prepara, o humano fecha.</div>
-      <div class="nunca"><b>Nunca finge ser gente.</b> Se perguntarem, ele diz com naturalidade que é o assistente, e chama alguém do time na hora.</div>
-      <div class="nunca"><b>Nunca aplica menu de "digite 1, 2 ou 3".</b> Conversa de verdade, uma pergunta de cada vez.</div>
-      <div class="nunca"><b>Nunca deixa conversa sumir.</b> Se ninguém assumir no prazo, ele reavisa o time e depois avisa a gestão.</div>
-    </div>
+    <h2 class="rv-linhas">O que ela nunca vai fazer</h2>
+    <p class="sub rv">Confiança se constrói dizendo também o que fica de fora.</p>
+    <ul>
+      <li class="rv"><span class="n">Nunca</span><p><b>inventa preço, prazo ou estoque.</b> O que é do seu time continua do seu time: ela prepara, o humano fecha.</p></li>
+      <li class="rv"><span class="n">Nunca</span><p><b>finge ser gente.</b> Se perguntarem, diz com naturalidade que é o assistente e chama alguém do time na hora.</p></li>
+      <li class="rv"><span class="n">Nunca</span><p><b>aplica menu de "digite 1, 2 ou 3".</b> Conversa de verdade, uma pergunta de cada vez.</p></li>
+      <li class="rv"><span class="n">Nunca</span><p><b>deixa conversa sumir.</b> Se ninguém assumir no prazo, reavisa o time e depois avisa a gestão.</p></li>
+    </ul>
   </div>
 </section>
 
 <section class="nome">
   <div class="miolo">
-    <span class="marca">POR QUE "ATALAIA"?</span>
-    <h2>O vigia que nunca dorme</h2>
-    <p>Nas cidades antigas, o atalaia era quem ficava na muralha enquanto todos dormiam: o primeiro a ver quem chegava, o responsável por ninguém ser pego de surpresa.</p>
-    <p><b>É exatamente isso que fazemos pelo seu atendimento:</b> alguém no posto, a
-    noite inteira, o fim de semana inteiro, para nenhum cliente seu passar em branco.</p>
+    <svg class="ico tocha-ico rv" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c2 3 3.5 4.6 3.5 7a3.5 3.5 0 0 1-7 0c0-2.4 1.5-4 3.5-7z"/><path d="M8 14l-2 7h12l-2-7"/></svg>
+    <h2 class="rv-linhas">Por que "Atalaia"</h2>
+    <p class="rv">Nas cidades antigas, o atalaia era quem ficava na muralha enquanto todos dormiam: o primeiro a ver quem chegava. <b>É isso que fazemos pelo seu atendimento:</b> alguém no posto a noite inteira e o fim de semana inteiro, para nenhum cliente seu passar em branco.</p>
   </div>
 </section>
 
-<section class="fim">
+<section class="fecho">
   <div class="miolo">
-    <h2>Gostou do que viu?</h2>
-    <p>Chama no WhatsApp e a gente conversa sobre o atendente com o seu catálogo, no seu número de sempre. Sem compromisso.</p>
-    <a class="cta" href="https://wa.me/5531992949134?text=Ol%C3%A1!%20Vi%20a%20demonstra%C3%A7%C3%A3o%20no%20site%20e%20quero%20saber%20mais%20sobre%20o%20atendente%20da%20Atalaia.">Chamar no WhatsApp →</a>
+    <div>
+      <p class="olho">Quatro perguntas, um minuto</p>
+      <h2 class="rv-linhas">Vamos ver se faz sentido para a sua empresa</h2>
+      <p class="rv">Responda e eu monto a mensagem para você mandar no WhatsApp. Chega do meu lado com o contexto pronto, e a conversa já começa com proposta em vez de "me conta mais".</p>
+    </div>
+    <div class="rv">
+      <div id="diag" aria-label="Diagnóstico guiado">
+  <div class="diag-barra" aria-hidden="true"><i></i></div>
+  <div class="diag-passo">Pergunta 1 de 4</div>
+  <div class="diag-titulo">O que a sua empresa vende?</div>
+  <div class="diag-opcoes"></div>
+  <button type="button" class="diag-voltar" hidden>Voltar</button>
+</div>
+    </div>
   </div>
 </section>
 
 <footer>
-  <span class="marca">ATALAIA <span>INTELIGÊNCIA</span></span><br>
-  Ninguém fica sem resposta.<br>
-  <a href="https://www.instagram.com/atalaiainteligencia" rel="noopener">@atalaiainteligencia</a> ·
-  <a href="mailto:tulio@atalaiainteligencia.com.br">tulio@atalaiainteligencia.com.br</a><br>
-  Tulio Parreira Camargos Guimaraes Consultoria em Tecnologia da Informação Ltda · CNPJ 68.396.487/0001-07
+  <div class="miolo">
+    <span class="marca"><img src="logo/atalaia-icone.svg" alt="" width="34" height="34">ATALAIA <span>INTELIGÊNCIA</span></span>
+    <p>Ninguém fica sem resposta.</p>
+    <nav aria-label="Contato">
+      <a href="https://www.instagram.com/atalaiainteligencia" rel="noopener">@atalaiainteligencia</a>
+      <a href="mailto:tulio@atalaiainteligencia.com.br">tulio@atalaiainteligencia.com.br</a>
+    </nav>
+    <p class="legal">Tulio Parreira Camargos Guimaraes Consultoria em Tecnologia da Informação Ltda · CNPJ 68.396.487/0001-07<br>Telas do produto mostradas com dados de demonstração.</p>
+  </div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/SplitText.min.js"></script>
 <script>
 (function () {
-  var conversa = document.getElementById("demo-conversa");
-  var chipsEl = document.getElementById("demo-chips");
+  var conversa = document.getElementById("demo-conversa"), chipsEl = document.getElementById("demo-chips");
   if (!conversa || !chipsEl) return;
-
-  var ZAP = "https://wa.me/5531992949134?text=" + encodeURIComponent(
-    "Olá! Vi a demonstração no site e quero o atendente da Atalaia na minha empresa.");
-
-  var INICIO = ["sensor", "prazo", "robo"];
-
+  var INICIO = ["codigo", "semcodigo", "robo"];
   var NOS = {
-    sensor: {
-      pergunta: "Vocês têm sensor de nível para tanque de diesel?",
-      resposta: ["Temos sim! Você tem o código da peça ou uma foto dela? Assim já adianto sua cotação com o time."],
-      proximas: ["codigo", "semcodigo"]
-    },
-    codigo: {
-      pergunta: "Tenho o código: PN 5096-104. Preciso de 2 unidades.",
-      resposta: ["Anotado: PN 5096-104, 2 unidades ✅ Me passa seu e-mail e CNPJ? A cotação formal sai por e-mail."],
-      proximas: ["email"]
-    },
-    semcodigo: {
-      pergunta: "Não tenho o código aqui",
-      resposta: ["Sem problema! Me diz para qual equipamento é, ou manda uma foto da plaqueta, que o time identifica. E me passa seu e-mail e CNPJ para eu já deixar a cotação encaminhada?"],
-      proximas: ["email"]
-    },
-    email: {
-      pergunta: "compras@minhaempresa.com.br · CNPJ 00.000.000/0001-00",
-      resposta: ["Perfeito! Já passei tudo para o time comercial com o resumo pronto. A cotação chega no seu e-mail, e qualquer coisa é só chamar por aqui."],
-      selo: "✓ cotação qualificada · time avisado · tudo registrado no painel",
-      fim: true
-    },
-    prazo: {
-      pergunta: "Qual o prazo de entrega para Betim?",
-      resposta: ["Olá! Prazo e frete quem fecha é o nosso time, e eu já deixo tudo pronto para eles: qual peça você precisa?"],
-      proximas: ["mangueira"]
-    },
-    mangueira: {
-      pergunta: "Mangueira hidráulica de 3/4",
-      resposta: ["Anotado: mangueira hidráulica de 3/4\" para Betim ✅ Me passa seu e-mail e CNPJ que o time retorna com prazo e preço ainda hoje."],
-      proximas: ["email"]
-    },
-    robo: {
-      pergunta: "Você é um robô?",
-      resposta: ["Sou o assistente da empresa! Atendo na hora, a qualquer hora, e o que precisa de gente eu passo para o time com a conversa resumida. Quer que eu chame alguém agora?"],
-      proximas: ["chama", "curioso"]
-    },
-    chama: {
-      pergunta: "Pode chamar alguém",
-      resposta: ["Feito! Avisei o time com o resumo da nossa conversa, e alguém assume por aqui em instantes."],
-      selo: "✓ o time é avisado na hora, com o resumo pronto",
-      fim: true
-    },
-    curioso: {
-      pergunta: "Não precisa, era curiosidade",
-      resposta: ["Fico por aqui então! Qualquer pergunta sobre produtos, prazos ou pedidos, é só mandar. 😉"],
-      fim: true
-    }
+    codigo: { pergunta: "Vocês têm o PN 5096-104?",
+      resposta: ["Temos sim. <mark>PN 5096-104</mark> é o sensor de nível para tanque de diesel, linha Série 5. Quantas unidades você precisa?"], proximas: ["qtd"] },
+    qtd: { pergunta: "Duas unidades, entrega em Betim",
+      resposta: ["Anotado: 2 × PN 5096-104, entrega em Betim. Me passa seu e-mail e CNPJ? A cotação formal sai por e-mail, e preço e prazo quem confirma é o nosso time."], proximas: ["email"] },
+    semcodigo: { pergunta: "Preciso de uma mangueira hidráulica de 3/4, mas não sei o código",
+      resposta: ["Sem problema. No nosso catálogo a mangueira hidráulica de 3/4\" aparece nas linhas <mark>MH-34-R1</mark> (1 trama) e <mark>MH-34-R2</mark> (2 tramas). É para pressão alta ou média?"], proximas: ["alta"] },
+    alta: { pergunta: "Pressão alta",
+      resposta: ["Então é a MH-34-R2. Me passa a metragem, seu e-mail e o CNPJ que eu deixo a cotação encaminhada para o time."], proximas: ["email"] },
+    email: { pergunta: "compras@minhaempresa.com.br · CNPJ 00.000.000/0001-00",
+      resposta: ["Perfeito. Passei tudo para o comercial com o resumo pronto. A cotação chega no seu e-mail, e qualquer coisa é só chamar por aqui."],
+      selo: "cotação qualificada · time avisado · tudo registrado no painel", fim: true },
+    robo: { pergunta: "Você é um robô?",
+      resposta: ["Sou o assistente da empresa. Atendo na hora, a qualquer hora, e o que precisa de gente eu passo para o time com a conversa resumida. Quer que eu chame alguém agora?"], proximas: ["chama", "curioso"] },
+    chama: { pergunta: "Pode chamar alguém", resposta: ["Feito. Avisei o time com o resumo da nossa conversa, e alguém assume por aqui em instantes."], selo: "o time é avisado na hora, com o resumo pronto", fim: true },
+    curioso: { pergunta: "Não precisa, era curiosidade", resposta: ["Fico por aqui então. Qualquer pergunta sobre produtos, prazos ou pedidos, é só mandar."], fim: true }
   };
-
-  function hora() {
-    var d = new Date();
-    return ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2);
-  }
-
+  function hora() { var d = new Date(); return ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2); }
   function desce() { conversa.scrollTop = conversa.scrollHeight; }
-
-  function balao(classe, texto) {
-    var b = document.createElement("div");
-    b.className = "balao " + classe;
-    b.textContent = texto;
-    var s = document.createElement("small");
-    s.textContent = hora();
-    b.appendChild(s);
-    conversa.appendChild(b);
-    desce();
-    return b;
-  }
-
-  function selo(texto) {
-    var s = document.createElement("div");
-    s.className = "selo";
-    s.textContent = texto;
-    conversa.appendChild(s);
-    desce();
-  }
-
-  function digitando() {
-    var b = document.createElement("div");
-    b.className = "balao nosso";
-    b.innerHTML = '<span class="digitando"><i></i><i></i><i></i></span>';
-    conversa.appendChild(b);
-    desce();
-    return b;
-  }
-
-  function chip(rotulo, acao) {
-    var c = document.createElement("button");
-    c.type = "button";
-    c.className = "chip";
-    c.textContent = rotulo;
-    c.addEventListener("click", acao);
-    chipsEl.appendChild(c);
-  }
-
-  function mostrarChips(ids, comExtras) {
+  function balao(classe, html) { var b = document.createElement("div"); b.className = "balao " + classe; b.innerHTML = html; var s = document.createElement("small"); s.textContent = hora(); b.appendChild(s); conversa.appendChild(b); desce(); return b; }
+  function selo(texto) { var s = document.createElement("div"); s.className = "selo"; s.innerHTML = '<svg viewBox="0 0 24 24" class="ico" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>' + texto; conversa.appendChild(s); desce(); }
+  function digitando() { var b = document.createElement("div"); b.className = "balao nosso"; b.innerHTML = '<span class="digitando"><i></i><i></i><i></i></span>'; conversa.appendChild(b); desce(); return b; }
+  function chip(rotulo, acao) { var c = document.createElement("button"); c.type = "button"; c.className = "chip"; c.textContent = rotulo; c.addEventListener("click", acao); chipsEl.appendChild(c); }
+  function mostrarChips(ids, fim) {
     chipsEl.innerHTML = "";
-    ids.forEach(function (id) {
-      chip(NOS[id].pergunta, function () { escolher(id); });
-    });
-    if (comExtras) {
-      var link = document.createElement("a");
-      link.className = "chip link";
-      link.href = ZAP;
-      link.textContent = "Quero na minha empresa →";
-      chipsEl.appendChild(link);
-    }
+    ids.forEach(function (id) { chip(NOS[id].pergunta, function () { escolher(id); }); });
+    if (fim) { var a = document.createElement("a"); a.className = "chip link"; a.href = "#diag"; a.textContent = "Quero na minha empresa"; chipsEl.appendChild(a); chip("Recomeçar", comecar); }
   }
-
   function escolher(id) {
-    var no = NOS[id];
-    chipsEl.innerHTML = "";
+    var no = NOS[id]; chipsEl.innerHTML = "";
     balao("deles", no.pergunta);
     var t = digitando();
     setTimeout(function () {
-      t.remove();
-      no.resposta.forEach(function (r) { balao("nosso", r); });
+      t.remove(); balao("nosso", no.resposta[0]);
       if (no.selo) selo(no.selo);
-      if (no.fim) {
-        mostrarChips(INICIO, true);
-      } else {
-        mostrarChips(no.proximas);
-      }
-    }, 850 + Math.min(no.resposta[0].length * 6, 900));
+      mostrarChips(no.proximas || [], !!no.fim);
+    }, 900);
   }
-
-  balao("nosso", "Olá! 👋 Eu sou o atendente da Atalaia. Faz de conta que você é cliente de uma distribuidora de peças e me pergunta:");
-  mostrarChips(INICIO);
+  function comecar() { conversa.innerHTML = ""; balao("nosso", "Olá! Faz de conta que você é cliente de uma distribuidora de peças. O catálogo dela eu já li. Me pergunta:"); mostrarChips(INICIO, false); }
+  comecar();
 })();
 </script>
+<script>
+window.montarPainel = function (opts) {
+  var raiz = document.getElementById("pv-tour"); if (!raiz || !window.gsap) return;
+  var pv = document.getElementById("pv"), fmt = new Intl.NumberFormat("pt-BR");
+  var TXT1 = "Cliente quer 2 un. do sensor de nível PN 5096-104 (tanque de diesel), entrega em Betim. E-mail e CNPJ coletados. Aguarda cotação formal.";
+  var TXT2 = "Bom dia, Marcos! Segue a cotação dos 2 sensores PN 5096-104 com entrega em Betim. Qualquer dúvida estou por aqui.";
+  var tls = {}, tocadas = {};
 
+  function digitar(alvo, texto, dur) {
+    var o = { n: 0 }; return gsap.to(o, { n: texto.length, duration: dur, ease: "none", snap: { n: 1 }, onUpdate: function () { alvo.textContent = texto.slice(0, o.n); } });
+  }
+  function mostrarCena(nome) {
+    pv.querySelectorAll(".pv-cena").forEach(function (c) { c.classList.toggle("on", c.dataset.cena === nome); });
+    pv.querySelectorAll(".pv-abas b").forEach(function (b) { b.classList.toggle("on", b.dataset.aba === nome); });
+    raiz.querySelectorAll(".pv-passo").forEach(function (p) { p.classList.toggle("on", p.dataset.cena === nome); });
+  }
+
+  /* cena 1 */
+  tls.fila = gsap.timeline({ paused: true });
+  tls.fila.set("#pv-digita", { textContent: "" }).set(["#pv-dados > div", "#pv-aviso", "#pv-prio"], { opacity: 0, y: 6 })
+    .fromTo("#pv-card1", { x: -24, opacity: 0 }, { x: 0, opacity: 1, duration: 0.5, ease: "power3.out" })
+    .set("#pv-fila-n", { textContent: "1" }, "<")
+    .to("#pv-prio", { opacity: 1, y: 0, duration: 0.3 }, 0.6)
+    .add(digitar(document.getElementById("pv-digita"), TXT1, 2.6), 0.7)
+    .to("#pv-dados > div", { opacity: 1, y: 0, duration: 0.35, stagger: 0.28, ease: "power2.out" }, 1.4)
+    .set("#pv-cursor-txt", { display: "none" }, 3.4)
+    .set("#pv-prev", { textContent: "IA: Perfeito. Passei tudo para o comercial com o resumo pronto." }, 3.2)
+    .set("#pv-chip1", { className: "pv-chip esp", textContent: "Aguardando atendente · há 0 min" }, 3.5)
+    .set("#pv-card1-h", { textContent: "22h16" }, 3.5)
+    .to("#pv-aviso", { opacity: 1, y: 0, duration: 0.4 }, 3.6)
+    .set("#pv-relogio", { textContent: "sáb · 22h16" }, 3.5)
+    .fromTo("#pv-toast", { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "back.out(1.6)" }, 3.7)
+    .to("#pv-toast", { opacity: 0, y: 10, duration: 0.4 }, 6.2);
+
+  /* cena 2: cursor fantasma assume */
+  var ghost = document.getElementById("pv-ghost"), btn = document.getElementById("pv-assumir");
+  function alvoBtn() { var b = btn.getBoundingClientRect(), c = pv.getBoundingClientRect(); return { x: b.left - c.left + b.width * 0.5, y: b.top - c.top + b.height * 0.55 }; }
+  tls.assumir = gsap.timeline({ paused: true });
+  tls.assumir.set(["#pv-m-h", "#pv-pessoa"], { opacity: 0 }).set("#pv-digita2", { textContent: "" }).set("#pv-relogio", { textContent: "seg · 8h02" }).set("#pv-ripple", { scale: 0, opacity: 0 })
+    .set(ghost, { x: 40, y: 40, opacity: 0 })
+    .to(ghost, { opacity: 1, duration: 0.3 })
+    .to(ghost, { x: function () { return alvoBtn().x; }, y: function () { return alvoBtn().y; }, duration: 0.9, ease: "power2.inOut" })
+    .to(btn, { scale: 0.9, duration: 0.1 }).fromTo("#pv-ripple", { scale: 0, opacity: 0.6 }, { scale: 3, opacity: 0, duration: 0.5, ease: "power2.out" }, "<").to(btn, { scale: 1, duration: 0.25, ease: "back.out(2.2)" })
+    .set("#pv-assumir-t", { textContent: "Assumida por Helena" }).set(btn, { className: "pv-btn feita" })
+    .set("#pv-chip2", { className: "pv-chip ia", textContent: "Em atendimento · Helena" })
+    .to(ghost, { opacity: 0, x: "+=60", y: "+=30", duration: 0.5 }, "+=1.1")
+    .to("#pv-pessoa", { opacity: 1, duration: 0.4 }, "<")
+    .set("#pv-campo", { textContent: "" })
+    .to("#pv-m-h", { opacity: 1, duration: 0.3 })
+    .add(digitar(document.getElementById("pv-digita2"), TXT2, 3.6));
+
+  /* cena 3: números */
+  tls.numeros = gsap.timeline({ paused: true });
+  tls.numeros.set("#pv-barras > div", { "--p": 0 }).set("#pv-legenda", { opacity: 0, y: 6 }).set("#pv-relogio", { textContent: "sex · relatório" });
+  pv.querySelectorAll("[data-conta]").forEach(function (el, i) {
+    var o = { v: 0 }; tls.numeros.to(o, { v: Number(el.dataset.conta), duration: 1.4, ease: "power2.out", snap: { v: 1 }, onUpdate: function () { el.textContent = fmt.format(o.v); } }, 0.1 * i);
+  });
+  tls.numeros.to("#pv-barras > div", { "--p": 1, duration: 0.9, stagger: 0.08, ease: "power3.out" }, 0.3)
+    .to("#pv-legenda", { opacity: 1, y: 0, duration: 0.4 }, 1.3);
+
+  if (opts.reduceMotion) {
+    Object.keys(tls).forEach(function (k) { tls[k].progress(1); });
+    mostrarCena("fila");
+    raiz.querySelectorAll(".pv-passo").forEach(function (p) {
+      ScrollTrigger.create({ trigger: p, start: opts.isMobile ? "top 85%" : "top 60%", end: opts.isMobile ? "bottom 55%" : "bottom 40%", onEnter: function () { mostrarCena(p.dataset.cena); }, onEnterBack: function () { mostrarCena(p.dataset.cena); } });
+    });
+    return;
+  }
+  raiz.querySelectorAll(".pv-passo").forEach(function (p) {
+    var nome = p.dataset.cena;
+    ScrollTrigger.create({ trigger: p, start: opts.isMobile ? "top 85%" : "top 62%", end: opts.isMobile ? "bottom 55%" : "bottom 38%",
+      onEnter: function () { mostrarCena(nome); if (!tocadas[nome]) { tocadas[nome] = true; tls[nome].play(0); } },
+      onEnterBack: function () { mostrarCena(nome); } });
+  });
+};
+</script>
+<script>
+/* Diagnóstico guiado: 4 perguntas por clique, termina num wa.me com a mensagem montada. Sem serviço externo. */
+(function () {
+  var raiz = document.getElementById("diag");
+  if (!raiz) return;
+  var ZAP = "https://wa.me/5531992949134?text=";
+  var PERGUNTAS = [
+    { id: "vende", titulo: "O que a sua empresa vende?",
+      opcoes: ["Peças e equipamentos", "Roupas, calçados ou acessórios", "Alimentos ou bebidas", "Outros produtos"] },
+    { id: "volume", titulo: "Quantas mensagens chegam no WhatsApp por dia?",
+      opcoes: ["Até 20", "De 20 a 100", "Mais de 100", "Não sei medir"] },
+    { id: "quem", titulo: "Quem responde hoje?",
+      opcoes: ["Eu mesmo", "Um vendedor", "Um time de atendimento", "Ninguém fixo"] },
+    { id: "fora", titulo: "E fora do horário comercial?",
+      opcoes: ["Fica sem resposta", "Respondo do meu celular", "Robô de menu", "Não sei quantos chamam"] }
+  ];
+  var respostas = [], passo = 0;
+  var cab = raiz.querySelector(".diag-passo"), tit = raiz.querySelector(".diag-titulo"),
+      ops = raiz.querySelector(".diag-opcoes"), barra = raiz.querySelector(".diag-barra i"),
+      volta = raiz.querySelector(".diag-voltar");
+
+  function render() {
+    var q = PERGUNTAS[passo];
+    cab.textContent = "Pergunta " + (passo + 1) + " de " + PERGUNTAS.length;
+    tit.textContent = q.titulo;
+    barra.style.transform = "scaleX(" + (passo / PERGUNTAS.length) + ")";
+    ops.innerHTML = "";
+    q.opcoes.forEach(function (o) {
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "diag-op"; b.textContent = o;
+      b.addEventListener("click", function () { escolher(o); });
+      ops.appendChild(b);
+    });
+    volta.hidden = passo === 0;
+    raiz.classList.toggle("diag-fim", false);
+  }
+  function escolher(o) {
+    respostas[passo] = o;
+    if (passo < PERGUNTAS.length - 1) { passo++; render(); return; }
+    fim();
+  }
+  function fim() {
+    barra.style.transform = "scaleX(1)";
+    cab.textContent = "Pronto";
+    tit.textContent = "Já montei a sua mensagem. É só enviar.";
+    var texto = "Olá, Túlio! Vi o site da Atalaia e quero o atendente com IA na minha empresa.\n" +
+      "• Vendo: " + respostas[0] + "\n• Mensagens por dia: " + respostas[1] + "\n" +
+      "• Quem responde hoje: " + respostas[2] + "\n• Fora do horário: " + respostas[3];
+    ops.innerHTML = "";
+    var previa = document.createElement("div"); previa.className = "diag-previa"; previa.textContent = texto;
+    var a = document.createElement("a"); a.className = "diag-enviar"; a.target = "_blank"; a.rel = "noopener";
+    a.href = ZAP + encodeURIComponent(texto); a.textContent = "Enviar no WhatsApp";
+    ops.appendChild(previa); ops.appendChild(a);
+    raiz.classList.add("diag-fim");
+    volta.hidden = false;
+  }
+  volta.addEventListener("click", function () { if (raiz.classList.contains("diag-fim")) { passo = PERGUNTAS.length - 1; } else if (passo > 0) passo--; render(); });
+  render();
+})();
+
+</script>
+<script>
+(function () {
+  if (!window.gsap || !window.ScrollTrigger) return;
+  gsap.registerPlugin(ScrollTrigger, SplitText);
+  ScrollTrigger.config({ ignoreMobileResize: true, limitCallbacks: true });
+  var mm = gsap.matchMedia();
+  mm.add({ isDesktop: "(min-width: 900px)", isMobile: "(max-width: 899px)", reduceMotion: "(prefers-reduced-motion: reduce)" }, function (ctx) {
+    var c = ctx.conditions;
+    window.montarPainel({ isMobile: !!c.isMobile, reduceMotion: !!c.reduceMotion });
+    if (c.reduceMotion) { document.querySelectorAll(".marco").forEach(function (m) { m.classList.add("aceso"); }); return; }
+
+    /* títulos: linha a linha por máscara, uma vez */
+    SplitText.create(".rv-linhas", { type: "lines", mask: "lines", autoSplit: true, onSplit: function (self) {
+      return gsap.from(self.lines, { yPercent: 110, duration: 0.9, ease: "power3.out", stagger: 0.07,
+        scrollTrigger: { trigger: self.elements[0], start: "top 88%", once: true } });
+    } });
+
+    /* blocos: cruza suave, uma vez, poucos elementos por tela */
+    gsap.utils.toArray(".rv").forEach(function (el) {
+      gsap.from(el, { opacity: 0, y: 14, duration: 0.7, ease: "power2.out",
+        scrollTrigger: { trigger: el, start: "top 90%", once: true,
+          onEnter: function () { if (el.classList.contains("marco")) el.classList.add("aceso"); } } });
+    });
+
+    /* luz da tocha no herói acompanha o scroll */
+    gsap.to(".hero .luz", { yPercent: 18, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: 0.8 } });
+
+  });
+  window.addEventListener("load", function () { ScrollTrigger.refresh(); });
+})();
+</script>
 </body>
 </html>

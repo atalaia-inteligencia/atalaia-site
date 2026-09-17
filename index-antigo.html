@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atalaia Inteligência · Ninguém fica sem resposta</title>
+<meta name="description" content="Atendimento com inteligência artificial no WhatsApp de quem vende produtos: a IA aprende o seu catálogo, responde em segundos, 24 horas por dia, com o seu time no comando e tudo registrado.">
+<link rel="icon" type="image/svg+xml" href="logo/atalaia-icone.svg">
+<style>
+  :root {
+    --noite: #101820; --noite2: #182230;
+    --pedra: #F5F3EE; --painel: #FFFFFF;
+    --tinta: #1C242E; --tinta2: #5D6672; --linha: #E3DFD5;
+    --tocha: #B97F24; --tocha-viva: #D69A3A; --tocha-suave: #F6EBD8;
+    --petroleo: #2E4A56; --claro: #E8E4DA; --claro2: #97A0AC;
+    --verde-zap: #1E7A46;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--pedra); color: var(--tinta);
+    font: 17px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  .marca { font-family: Georgia, "Times New Roman", serif; font-weight: 700; letter-spacing: 4px; }
+  h1, h2 { font-family: Georgia, "Times New Roman", serif; line-height: 1.15; text-wrap: balance; }
+  a { color: inherit; }
+  section { padding: 72px 20px; }
+  .miolo { max-width: 1020px; margin: 0 auto; }
+
+  /* ------ hero: a noite do vigia ------ */
+  .hero { background:
+      radial-gradient(ellipse 900px 480px at 78% 18%, rgba(214,154,58,.16), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 12% 92%, rgba(46,74,86,.35), transparent 65%),
+      var(--noite);
+    color: var(--claro); padding: 26px 20px 84px; }
+  .topo { max-width: 1020px; margin: 0 auto 64px; display: flex; align-items: baseline;
+    justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .topo .marca { font-size: 20px; }
+  .topo .marca span { color: var(--tocha-viva); }
+  .topo a.mini { color: var(--claro2); font-size: 14px; text-decoration: none;
+    border: 1px solid #33506A; border-radius: 999px; padding: 8px 18px; }
+  .topo a.mini:hover, .topo a.mini:focus-visible { color: var(--claro); border-color: var(--tocha); }
+  .hero-grade { max-width: 1020px; margin: 0 auto; display: grid;
+    grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: center; }
+  @media (max-width: 860px) { .hero-grade { grid-template-columns: 1fr; } }
+  .hero h1 { font-size: clamp(34px, 5vw, 52px); margin-bottom: 20px; }
+  .hero h1 em { font-style: normal; color: var(--tocha-viva); }
+  .hero p.grande { font-size: 19px; color: var(--claro2); max-width: 32em; margin-bottom: 34px; }
+  .cta { display: inline-block; background: var(--tocha); color: #14100a; font-weight: 700;
+    font-size: 17px; padding: 16px 30px; border-radius: 10px; text-decoration: none; }
+  .cta:hover, .cta:focus-visible { background: var(--tocha-viva); }
+  .hero .nota { font-size: 13.5px; color: var(--claro2); margin-top: 14px; }
+
+  /* conversa demonstração */
+  .zap { background: #0B141A; border: 1px solid #22303C; border-radius: 18px;
+    padding: 18px 14px 14px; box-shadow: 0 24px 60px rgba(0,0,0,.45); }
+  .zap .cabec { display: flex; align-items: center; gap: 10px; padding: 0 6px 12px;
+    border-bottom: 1px solid #22303C; margin-bottom: 12px; }
+  .zap .bola { width: 34px; height: 34px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--tocha), var(--petroleo));
+    display: flex; align-items: center; justify-content: center; font-size: 17px; }
+  .zap .cabec b { color: var(--claro); font-size: 14.5px; display: block; }
+  .zap .cabec small { color: #6d7c88; font-size: 11.5px; }
+  .balao { max-width: 85%; padding: 9px 12px; border-radius: 10px; font-size: 13.8px;
+    line-height: 1.45; margin-bottom: 9px; color: #E7E3DB; position: relative; }
+  .deles { background: #202C33; margin-right: auto; border-bottom-left-radius: 3px; }
+  .nosso { background: #005C4B; margin-left: auto; border-bottom-right-radius: 3px; }
+  .balao small { display: block; text-align: right; font-size: 10px; color: rgba(231,227,219,.55); margin-top: 3px; }
+  .zap .selo { text-align: center; font-size: 11px; color: #6d7c88; margin: 4px 0 10px; }
+
+  /* demonstração guiada */
+  .zap .cabec .tag { margin-left: auto; font-size: 10.5px; color: #6d7c88;
+    border: 1px solid #22303C; border-radius: 999px; padding: 3px 9px; white-space: nowrap; }
+  .zap .conversa { max-height: 380px; overflow-y: auto; scroll-behavior: smooth; padding: 2px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px 4px 2px;
+    border-top: 1px solid #22303C; margin-top: 10px; }
+  .chip { background: none; border: 1px solid var(--tocha); color: var(--tocha-viva);
+    border-radius: 999px; padding: 8px 14px; font-size: 13px; cursor: pointer;
+    font-family: inherit; line-height: 1.35; text-align: left; }
+  .chip:hover, .chip:focus-visible { background: rgba(214,154,58,.12); }
+  .chip.link { text-decoration: none; display: inline-block; background: var(--tocha);
+    color: #14100a; font-weight: 700; }
+  .chip.link:hover, .chip.link:focus-visible { background: var(--tocha-viva); }
+  .digitando { display: inline-flex; gap: 4px; align-items: center; }
+  .digitando i { width: 6px; height: 6px; border-radius: 50%; background: #8899a6;
+    animation: pulsa 1s infinite; }
+  .digitando i:nth-child(2) { animation-delay: .18s; }
+  .digitando i:nth-child(3) { animation-delay: .36s; }
+  @keyframes pulsa { 0%, 60%, 100% { opacity: .25 } 30% { opacity: 1 } }
+  .zap .caixa-falsa { margin-top: 10px; background: #202C33; border-radius: 999px;
+    padding: 10px 16px; font-size: 12px; color: #6d7c88; }
+
+  /* ------ dor ------ */
+  .dor { background: var(--pedra); }
+  .dor .miolo { max-width: 760px; text-align: center; }
+  .dor h2 { font-size: clamp(26px, 3.6vw, 36px); margin-bottom: 18px; }
+  .dor p { font-size: 18px; color: var(--tinta2); margin-bottom: 14px; }
+  .dor p b { color: var(--tinta); }
+
+  /* ------ como funciona ------ */
+  .como { background: var(--painel); border-top: 1px solid var(--linha); border-bottom: 1px solid var(--linha); }
+  .como h2, .confianca h2 { font-size: clamp(26px, 3.6vw, 36px); text-align: center; margin-bottom: 12px; }
+  .como .sub, .confianca .sub { text-align: center; color: var(--tinta2); margin-bottom: 44px; }
+  .passos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  @media (max-width: 760px) { .passos { grid-template-columns: 1fr; } }
+  .passo { background: var(--pedra); border: 1px solid var(--linha); border-radius: 14px; padding: 26px 24px; }
+  .passo .icone { font-size: 26px; margin-bottom: 12px; }
+  .passo h3 { font-family: Georgia, serif; font-size: 19px; margin-bottom: 8px; }
+  .passo p { font-size: 15px; color: var(--tinta2); }
+
+  /* ------ o produto por dentro ------ */
+  .produto { background: var(--noite2); color: var(--claro); }
+  .produto h2 { font-size: clamp(26px, 3.6vw, 36px); text-align: center; margin-bottom: 12px; }
+  .produto .sub { text-align: center; color: var(--claro2); margin-bottom: 44px; }
+  .produto .trilha { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-bottom: 54px; }
+  @media (max-width: 760px) { .produto .trilha { grid-template-columns: 1fr; } }
+  .produto .ponto { background: rgba(255,255,255,.04); border: 1px solid #2C3A4C;
+    border-radius: 14px; padding: 24px; }
+  .produto .ponto h3 { font-family: Georgia, serif; font-size: 19px; margin-bottom: 8px; }
+  .produto .ponto p { font-size: 15px; color: var(--claro2); }
+  .produto figure { margin: 0 0 42px; }
+  .produto img { width: 100%; height: auto; display: block; border-radius: 12px;
+    border: 1px solid #2C3A4C; box-shadow: 0 24px 60px rgba(0,0,0,.45); }
+  .produto figcaption { font-size: 14px; color: var(--claro2); margin-top: 12px; text-align: center; }
+  .produto .prova { text-align: center; color: var(--claro2); font-size: 15.5px; }
+  .produto .prova b { color: var(--tocha-viva); }
+
+  /* ------ confiança ------ */
+  .confianca { background: var(--pedra); }
+  .nuncas { max-width: 680px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+  .nunca { background: var(--painel); border: 1px solid var(--linha); border-left: 4px solid var(--tocha);
+    border-radius: 10px; padding: 16px 20px; font-size: 16px; }
+  .nunca b { color: var(--petroleo); }
+
+  /* ------ o nome ------ */
+  .nome { background: var(--noite2); color: var(--claro); }
+  .nome .miolo { max-width: 720px; text-align: center; }
+  .nome .marca { font-size: 15px; color: var(--tocha-viva); margin-bottom: 18px; display: block; }
+  .nome h2 { font-size: clamp(24px, 3.2vw, 32px); margin-bottom: 18px; }
+  .nome p { color: var(--claro2); font-size: 17px; margin-bottom: 12px; }
+  .nome p b { color: var(--claro); }
+
+  /* ------ CTA final ------ */
+  .fim { background: var(--pedra); text-align: center; }
+  .fim h2 { font-family: Georgia, serif; font-size: clamp(26px, 3.6vw, 36px); margin-bottom: 14px; }
+  .fim p { color: var(--tinta2); margin-bottom: 30px; }
+
+  footer { background: var(--noite); color: var(--claro2); font-size: 13px;
+    padding: 34px 20px; text-align: center; line-height: 2; }
+  footer .marca { color: var(--claro); font-size: 14px; }
+  footer .marca span { color: var(--tocha-viva); }
+  footer a { color: var(--claro2); }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="topo">
+    <span class="marca" style="display:flex;align-items:center;gap:12px"><img src="logo/atalaia-icone.svg" alt="" width="38" height="38" style="border-radius:9px">ATALAIA <span>INTELIGÊNCIA</span></span>
+    <a class="mini" href="https://wa.me/5531992949134?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20atendimento%20com%20IA%20da%20Atalaia.">Falar com a gente</a>
+  </div>
+  <div class="hero-grade">
+    <div>
+      <h1>O WhatsApp da sua empresa, <em>respondido em segundos.</em> Sempre.</h1>
+      <p class="grande">Um atendente com inteligência artificial que conversa como o seu time,
+      atende de madrugada e no domingo, e entrega o cliente pronto para quem fecha negócio,
+      com tudo registrado.</p>
+      <a class="cta" href="https://wa.me/5531992949134?text=Ol%C3%A1!%20Vi%20a%20demonstra%C3%A7%C3%A3o%20no%20site%20e%20quero%20o%20atendente%20da%20Atalaia%20na%20minha%20empresa.">Quero esse atendente na minha empresa →</a>
+      <p class="nota">Faça um teste agora: é só clicar nas perguntas da conversa aqui na página.</p>
+    </div>
+    <div class="zap" aria-label="Demonstração guiada do atendente da Atalaia">
+      <div class="cabec">
+        <div class="bola">🛡️</div>
+        <div><b>Atendimento · sua empresa</b><small>online agora</small></div>
+        <span class="tag">▶ demonstração</span>
+      </div>
+      <div class="conversa" id="demo-conversa"></div>
+      <div class="chips" id="demo-chips" aria-label="Perguntas da demonstração"></div>
+      <div class="caixa-falsa">Na versão real o cliente escreve livre. Aqui, escolha uma pergunta acima.</div>
+    </div>
+  </div>
+</div>
+
+<section class="dor">
+  <div class="miolo">
+    <h2>Toda conversa sem resposta é uma venda indo para o concorrente</h2>
+    <p>O cliente chama no WhatsApp às 19h. O time já foi. Ele espera dez minutos e manda a mesma mensagem para outra empresa.</p>
+    <p><b>Ninguém fica sabendo:</b> contato que não vira negócio não deixa rastro.
+    Nem número, nem nome, nem motivo. Só a venda que não aconteceu.</p>
+  </div>
+</section>
+
+<section class="como">
+  <div class="miolo">
+    <h2>Como funciona</h2>
+    <p class="sub">Seu número de sempre. Seu jeito de falar. Seu time no comando.</p>
+    <div class="passos">
+      <div class="passo">
+        <div class="icone">⚡</div>
+        <h3>Resposta na hora, 24/7</h3>
+        <p>O atendente responde em segundos, no tom da sua empresa, calibrado com o
+        seu catálogo e as conversas reais do seu time, não com script genérico. Cliente novo, cliente de
+        sempre ou contato interno: cada um tratado do jeito certo.</p>
+      </div>
+      <div class="passo">
+        <div class="icone">🎯</div>
+        <h3>Seu time no comando</h3>
+        <p>O que precisa de gente cai numa fila organizada, com o resumo da conversa
+        pronto. Qualquer pessoa do time assume com um clique e continua pelo painel. Preço, prazo e negociação continuam sendo de humanos.</p>
+      </div>
+      <div class="passo">
+        <div class="icone">📊</div>
+        <h3>Pela primeira vez, os números</h3>
+        <p>Todo contato registrado. Tempo de resposta, contatos fora do horário,
+        quem atendeu o quê, num relatório semanal para a gestão. O que não se mede,
+        não se melhora.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="produto">
+  <div class="miolo">
+    <h2>Feito para quem vende produtos</h2>
+    <p class="sub">Distribuidoras, indústrias e revendas: o atendente aprende o seu catálogo.</p>
+    <div class="trilha">
+      <div class="ponto">
+        <h3>Lê o seu catálogo</h3>
+        <p>Você entrega os catálogos, e o atendente aprende marcas, linhas e códigos.
+        O cliente manda "PN 5096-104" e ele sabe do que está falando.</p>
+      </div>
+      <div class="ponto">
+        <h3>Qualifica a cotação</h3>
+        <p>Peça, quantidade, cidade de entrega, e-mail e CNPJ. Quando chega no seu
+        vendedor, a cotação já está pronta para fazer.</p>
+      </div>
+      <div class="ponto">
+        <h3>Todo o time no mesmo número</h3>
+        <p>IA e atendentes juntos no número oficial da empresa, com fila organizada,
+        resumo por conversa e números para a gestão.</p>
+      </div>
+    </div>
+    <figure>
+      <img src="prints/painel-conversa.png" width="1440" height="900"
+        alt="Painel da Atalaia: conversa em que a IA reconhece o código da peça, coleta e-mail e CNPJ e avisa a fila, com resumo feito pela IA ao lado" loading="lazy">
+      <figcaption>A IA reconhece a peça, coleta os dados e avisa a fila. O vendedor abre a conversa com o resumo pronto.</figcaption>
+    </figure>
+    <figure>
+      <img src="prints/painel-numeros.png" width="1440" height="900"
+        alt="Tela de números do painel: conversas, mensagens, contatos fora do horário, tempo médio de primeira resposta e produtividade por atendente" loading="lazy">
+      <figcaption>Tempo de resposta, contatos fora do horário e quem atendeu o quê, direto do registro. Nada estimado.</figcaption>
+    </figure>
+    <p class="prova"><b>Em operação hoje</b> no comercial de uma indústria de Minas Gerais:
+    IA e cinco atendentes no mesmo número, e nenhum contato sem resposta.
+    <br>Telas reais do produto, aqui com dados de demonstração.</p>
+  </div>
+</section>
+
+<section class="confianca">
+  <div class="miolo">
+    <h2>O que ele nunca vai fazer</h2>
+    <p class="sub">Confiança se constrói dizendo também o que fica de fora.</p>
+    <div class="nuncas">
+      <div class="nunca"><b>Nunca inventa preço, prazo ou estoque.</b> O que é do seu time, continua do seu time: o atendente prepara, o humano fecha.</div>
+      <div class="nunca"><b>Nunca finge ser gente.</b> Se perguntarem, ele diz com naturalidade que é o assistente, e chama alguém do time na hora.</div>
+      <div class="nunca"><b>Nunca aplica menu de "digite 1, 2 ou 3".</b> Conversa de verdade, uma pergunta de cada vez.</div>
+      <div class="nunca"><b>Nunca deixa conversa sumir.</b> Se ninguém assumir no prazo, ele reavisa o time e depois avisa a gestão.</div>
+    </div>
+  </div>
+</section>
+
+<section class="nome">
+  <div class="miolo">
+    <span class="marca">POR QUE "ATALAIA"?</span>
+    <h2>O vigia que nunca dorme</h2>
+    <p>Nas cidades antigas, o atalaia era quem ficava na muralha enquanto todos dormiam: o primeiro a ver quem chegava, o responsável por ninguém ser pego de surpresa.</p>
+    <p><b>É exatamente isso que fazemos pelo seu atendimento:</b> alguém no posto, a
+    noite inteira, o fim de semana inteiro, para nenhum cliente seu passar em branco.</p>
+  </div>
+</section>
+
+<section class="fim">
+  <div class="miolo">
+    <h2>Gostou do que viu?</h2>
+    <p>Chama no WhatsApp e a gente conversa sobre o atendente com o seu catálogo, no seu número de sempre. Sem compromisso.</p>
+    <a class="cta" href="https://wa.me/5531992949134?text=Ol%C3%A1!%20Vi%20a%20demonstra%C3%A7%C3%A3o%20no%20site%20e%20quero%20saber%20mais%20sobre%20o%20atendente%20da%20Atalaia.">Chamar no WhatsApp →</a>
+  </div>
+</section>
+
+<footer>
+  <span class="marca">ATALAIA <span>INTELIGÊNCIA</span></span><br>
+  Ninguém fica sem resposta.<br>
+  <a href="https://www.instagram.com/atalaiainteligencia" rel="noopener">@atalaiainteligencia</a> ·
+  <a href="mailto:tulio@atalaiainteligencia.com.br">tulio@atalaiainteligencia.com.br</a><br>
+  Tulio Parreira Camargos Guimaraes Consultoria em Tecnologia da Informação Ltda · CNPJ 68.396.487/0001-07
+</footer>
+
+<script>
+(function () {
+  var conversa = document.getElementById("demo-conversa");
+  var chipsEl = document.getElementById("demo-chips");
+  if (!conversa || !chipsEl) return;
+
+  var ZAP = "https://wa.me/5531992949134?text=" + encodeURIComponent(
+    "Olá! Vi a demonstração no site e quero o atendente da Atalaia na minha empresa.");
+
+  var INICIO = ["sensor", "prazo", "robo"];
+
+  var NOS = {
+    sensor: {
+      pergunta: "Vocês têm sensor de nível para tanque de diesel?",
+      resposta: ["Temos sim! Você tem o código da peça ou uma foto dela? Assim já adianto sua cotação com o time."],
+      proximas: ["codigo", "semcodigo"]
+    },
+    codigo: {
+      pergunta: "Tenho o código: PN 5096-104. Preciso de 2 unidades.",
+      resposta: ["Anotado: PN 5096-104, 2 unidades ✅ Me passa seu e-mail e CNPJ? A cotação formal sai por e-mail."],
+      proximas: ["email"]
+    },
+    semcodigo: {
+      pergunta: "Não tenho o código aqui",
+      resposta: ["Sem problema! Me diz para qual equipamento é, ou manda uma foto da plaqueta, que o time identifica. E me passa seu e-mail e CNPJ para eu já deixar a cotação encaminhada?"],
+      proximas: ["email"]
+    },
+    email: {
+      pergunta: "compras@minhaempresa.com.br · CNPJ 00.000.000/0001-00",
+      resposta: ["Perfeito! Já passei tudo para o time comercial com o resumo pronto. A cotação chega no seu e-mail, e qualquer coisa é só chamar por aqui."],
+      selo: "✓ cotação qualificada · time avisado · tudo registrado no painel",
+      fim: true
+    },
+    prazo: {
+      pergunta: "Qual o prazo de entrega para Betim?",
+      resposta: ["Olá! Prazo e frete quem fecha é o nosso time, e eu já deixo tudo pronto para eles: qual peça você precisa?"],
+      proximas: ["mangueira"]
+    },
+    mangueira: {
+      pergunta: "Mangueira hidráulica de 3/4",
+      resposta: ["Anotado: mangueira hidráulica de 3/4\" para Betim ✅ Me passa seu e-mail e CNPJ que o time retorna com prazo e preço ainda hoje."],
+      proximas: ["email"]
+    },
+    robo: {
+      pergunta: "Você é um robô?",
+      resposta: ["Sou o assistente da empresa! Atendo na hora, a qualquer hora, e o que precisa de gente eu passo para o time com a conversa resumida. Quer que eu chame alguém agora?"],
+      proximas: ["chama", "curioso"]
+    },
+    chama: {
+      pergunta: "Pode chamar alguém",
+      resposta: ["Feito! Avisei o time com o resumo da nossa conversa, e alguém assume por aqui em instantes."],
+      selo: "✓ o time é avisado na hora, com o resumo pronto",
+      fim: true
+    },
+    curioso: {
+      pergunta: "Não precisa, era curiosidade",
+      resposta: ["Fico por aqui então! Qualquer pergunta sobre produtos, prazos ou pedidos, é só mandar. 😉"],
+      fim: true
+    }
+  };
+
+  function hora() {
+    var d = new Date();
+    return ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2);
+  }
+
+  function desce() { conversa.scrollTop = conversa.scrollHeight; }
+
+  function balao(classe, texto) {
+    var b = document.createElement("div");
+    b.className = "balao " + classe;
+    b.textContent = texto;
+    var s = document.createElement("small");
+    s.textContent = hora();
+    b.appendChild(s);
+    conversa.appendChild(b);
+    desce();
+    return b;
+  }
+
+  function selo(texto) {
+    var s = document.createElement("div");
+    s.className = "selo";
+    s.textContent = texto;
+    conversa.appendChild(s);
+    desce();
+  }
+
+  function digitando() {
+    var b = document.createElement("div");
+    b.className = "balao nosso";
+    b.innerHTML = '<span class="digitando"><i></i><i></i><i></i></span>';
+    conversa.appendChild(b);
+    desce();
+    return b;
+  }
+
+  function chip(rotulo, acao) {
+    var c = document.createElement("button");
+    c.type = "button";
+    c.className = "chip";
+    c.textContent = rotulo;
+    c.addEventListener("click", acao);
+    chipsEl.appendChild(c);
+  }
+
+  function mostrarChips(ids, comExtras) {
+    chipsEl.innerHTML = "";
+    ids.forEach(function (id) {
+      chip(NOS[id].pergunta, function () { escolher(id); });
+    });
+    if (comExtras) {
+      var link = document.createElement("a");
+      link.className = "chip link";
+      link.href = ZAP;
+      link.textContent = "Quero na minha empresa →";
+      chipsEl.appendChild(link);
+    }
+  }
+
+  function escolher(id) {
+    var no = NOS[id];
+    chipsEl.innerHTML = "";
+    balao("deles", no.pergunta);
+    var t = digitando();
+    setTimeout(function () {
+      t.remove();
+      no.resposta.forEach(function (r) { balao("nosso", r); });
+      if (no.selo) selo(no.selo);
+      if (no.fim) {
+        mostrarChips(INICIO, true);
+      } else {
+        mostrarChips(no.proximas);
+      }
+    }, 850 + Math.min(no.resposta[0].length * 6, 900));
+  }
+
+  balao("nosso", "Olá! 👋 Eu sou o atendente da Atalaia. Faz de conta que você é cliente de uma distribuidora de peças e me pergunta:");
+  mostrarChips(INICIO);
+})();
+</script>
+
+</body>
+</html>
