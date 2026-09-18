@@ -147,7 +147,7 @@ footer .legal { line-height: 1.7; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
 
-/* ===== painel vivo (tour de produto) ===== */
+/* ===== painel vivo (tour de produto) — tokens copiados do painel real (paginas.py, 17/09/2026) ===== */
 .pv-tour { display: grid; gap: 28px; }
 .pv-passos { display: grid; gap: 0; }
 .pv-passo { padding: 22px 0; border-top: 1px solid rgba(232,228,218,.12); opacity: .45; transition: opacity 400ms; }
@@ -155,113 +155,178 @@ footer .legal { line-height: 1.7; }
 .pv-passo .pv-hora { font-family: var(--serif); color: var(--tocha-viva); font-size: var(--t2); margin-bottom: 6px; }
 .pv-passo h3 { margin-bottom: 8px; }
 .pv-passo p:not(.pv-hora) { color: var(--claro2); font-size: var(--t0); max-width: 34em; }
-.pv-fixo { position: sticky; top: 68px; align-self: start; }
+.pv-fixo { position: sticky; top: 68px; align-self: start; container-type: inline-size; }
 .pv-nota { font-size: var(--t-1); color: var(--claro3); margin-top: 10px; text-align: center; }
 .pv-nota.so-mob { display: none; }
-@media (max-width: 899px) { .pv-nota.so-desk { display: none; } .pv-nota.so-mob { display: block; } }
-.pv-relogio { font-variant-numeric: tabular-nums; color: var(--tocha-clara); font-weight: 600; white-space: nowrap; }
-.pv-toast { position: absolute; right: 12px; bottom: 12px; z-index: 5; display: flex; align-items: center; gap: 10px; background: #1B2730; border: 1px solid rgba(214,154,58,.4); border-radius: 12px; padding: 9px 12px; font-size: 11.5px; box-shadow: 0 16px 40px rgba(0,0,0,.5); opacity: 0; max-width: 78%; }
-.pv-toast .ico { width: 18px; height: 18px; color: var(--tocha-viva); flex: none; }
-.pv-toast b { display: block; font-size: 12px; }
-.pv-ripple { position: absolute; left: 50%; top: 50%; width: 24px; height: 24px; margin: -12px 0 0 -12px; border-radius: 50%; background: rgba(255,255,255,.7); opacity: 0; transform: scale(0); pointer-events: none; }
-.pv-btn { position: relative; overflow: hidden; }
 @media (max-width: 899px) {
   .pv-tour { grid-template-columns: 1fr; }
   .pv-fixo { order: -1; z-index: 3; }
   .pv-passo { min-height: 34svh; padding: 20px 0; }
+  .pv-nota.so-desk { display: none; } .pv-nota.so-mob { display: block; }
 }
 @media (min-width: 900px) { .pv-tour { grid-template-columns: .8fr 1.2fr; gap: 56px; align-items: start; } .pv-passo { min-height: 70vh; display: grid; align-content: center; } .pv-fixo { top: 90px; } }
 
-.pv { container-type: inline-size; background: #0F1A22; border: 1px solid #22303C; border-radius: 16px; overflow: hidden; box-shadow: 0 30px 70px rgba(0,0,0,.5); color: var(--claro); font-size: 13px; line-height: 1.4; position: relative; }
-.pv-barra { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-bottom: 1px solid #22303C; background: #0B141A; font-size: 12px; }
-.pv-marca { display: inline-flex; align-items: center; gap: 7px; font-family: var(--serif); font-weight: 700; letter-spacing: .04em; white-space: nowrap; }
-.pv-marca i { width: 10px; height: 10px; border-radius: 3px; background: linear-gradient(135deg, var(--tocha), var(--tocha-clara)); }
-.pv-abas { margin-left: auto; display: inline-flex; gap: 4px; }
-.pv-abas b { font-weight: 600; color: var(--claro3); padding: 5px 10px; border-radius: 999px; transition: background 250ms, color 250ms; }
-.pv-abas b.on { background: rgba(214,154,58,.16); color: var(--tocha-clara); }
-.pv-quem { display: inline-flex; align-items: center; gap: 6px; color: var(--claro2); white-space: nowrap; }
-.pv-dot { width: 7px; height: 7px; border-radius: 50%; background: #3FCF7A; box-shadow: 0 0 0 3px rgba(63,207,122,.18); }
-.pv-cena { display: none; grid-template-columns: minmax(0,1fr) minmax(0,1fr); min-height: 300px; }
+/* --- o painel: tema claro do produto, sobre o site escuro --- */
+.pv { --bg: #E9EDEF; --surface: #fff; --surface-2: #F6F8F9; --conversa-bg: #EFEAE2;
+  --topbar-bg: #12283A; --topbar-text: #F2F5F7; --topbar-sub: #9FB2C0;
+  --text: #1B2530; --text-forte: #12283A; --muted: #5C6873; --muted-2: #66727D;
+  --border: #D7DDE1; --border-soft: #EDF1F3; --border-input: #C9D1D7; --border-ficha: #E2E7EA;
+  --verde: #35C26E; --verde-txt: #1E7A46; --verde-btn-txt: #0F1720; --azul-txt: #2C5F7C;
+  --bolha-ia: #D9FDD3; --bolha-humano: #D3E9FD; --sistema-bg: #ECEFF1; --sistema-txt: #455A64;
+  --chip-espera-bg: #FCEFD4; --chip-espera-txt: #7A5000; --chip-ia-bg: #E3EDF3; --chip-ia-txt: #2C5F7C;
+  --chip-humano-bg: #E4F2EA; --chip-humano-txt: #1E7A46; --chip-fim-bg: #ECEFF1; --chip-fim-txt: #4B5F6B;
+  --aviso-bg: #FCEFD4; --aviso-txt: #7A5000; --aviso-borda2: #ecd9ad; --danger-bg: #FDEBE7; --danger: #B03A2E;
+  --destaque-bg: #FFF8EC; --laranja-borda: #E0A62E; --cinza-btn-bg: #ECEFF1; --cinza-btn-txt: #455A64;
+  display: grid; grid-template-columns: 64px minmax(0, 1fr);
+  background: var(--bg); color: var(--text); border-radius: 14px; overflow: hidden; position: relative;
+  box-shadow: 0 30px 70px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.06);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; font-size: 12.5px; line-height: 1.4; }
+.pv .ic { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+
+/* trilho */
+.pv-trilho { background: var(--topbar-bg); color: var(--topbar-text); display: flex; flex-direction: column; align-items: center; padding: 10px 0; gap: 2px; }
+.pv-marca-cli { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; background: #fff; color: var(--topbar-bg); font-family: Georgia, serif; font-weight: 700; font-size: 15px; margin-bottom: 8px; }
+.pv-it { position: relative; display: grid; justify-items: center; align-content: center; gap: 2px; width: 54px; min-height: 46px; border-radius: 10px; color: var(--topbar-sub); font-size: 9px; font-weight: 600; transition: background 250ms, color 250ms; }
+.pv-it .ic { width: 18px; height: 18px; }
+.pv-it.on { background: rgba(255,255,255,.16); color: #fff; }
+.pv-badge { position: absolute; top: 4px; right: 6px; min-width: 15px; height: 15px; padding: 0 4px; border-radius: 999px; background: var(--danger); color: #fff; font-size: 9px; font-weight: 700; font-style: normal; display: grid; place-items: center; }
+.pv-pe { margin-top: auto; display: grid; justify-items: center; color: var(--topbar-sub); font-size: 8px; letter-spacing: .06em; text-transform: uppercase; line-height: 1.2; }
+.pv-pe b { color: var(--topbar-text); }
+
+/* conteúdo */
+.pv-conteudo { min-width: 0; display: flex; flex-direction: column; position: relative; overflow: hidden; }
+.pv-cab { height: 42px; background: var(--surface); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; padding: 0 12px; flex: none; }
+.pv-cab b { font-size: 13px; color: var(--text-forte); }
+.pv-relogio { margin-left: auto; font-variant-numeric: tabular-nums; color: var(--muted); font-weight: 600; white-space: nowrap; font-size: 11.5px; }
+.pv-quem { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); white-space: nowrap; font-size: 11.5px; }
+.pv-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--verde); }
+.pv-cena { display: none; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); min-height: 300px; }
 .pv-cena > * { min-width: 0; }
-.pv-dados > div > * { min-width: 0; } .pv-dados dt { flex: none; }
 .pv-cena.on { display: grid; animation: pv-in 320ms ease-out; }
 @keyframes pv-in { from { opacity: 0 } to { opacity: 1 } }
-.pv-tit { font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--claro3); font-weight: 600; margin: 0 0 8px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.pv-tit em { font-style: normal; color: var(--tocha-viva); letter-spacing: 0; text-transform: none; font-weight: 500; }
-.pv-chip { display: inline-flex; align-items: center; min-height: 20px; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 600; white-space: nowrap; }
-.pv-chip.ia { background: rgba(63,207,122,.14); color: #7FE0A8; }
-.pv-chip.esp { background: rgba(214,154,58,.16); color: var(--tocha-clara); }
-.pv-chip.ok { background: rgba(151,160,172,.14); color: var(--claro2); }
-.pv-chip.alta { background: rgba(224,139,122,.16); color: #F0A896; }
+
+/* chips e avatar */
+.pv-chip { display: inline-flex; align-items: center; gap: 4px; border-radius: 999px; padding: 3px 8px; font-size: 10.5px; font-weight: 700; white-space: nowrap; line-height: 1.2; }
+.pv-chip .ic { width: 11px; height: 11px; stroke-width: 2.2; }
+.pv-chip.espera { background: var(--chip-espera-bg); color: var(--chip-espera-txt); }
+.pv-chip.ia { background: var(--chip-ia-bg); color: var(--chip-ia-txt); }
+.pv-chip.humano { background: var(--chip-humano-bg); color: var(--chip-humano-txt); }
+.pv-chip.fim { background: var(--chip-fim-bg); color: var(--chip-fim-txt); }
+.pv-av { width: 34px; height: 34px; border-radius: 50%; color: #fff; font-weight: 700; font-size: 11.5px; display: grid; place-items: center; flex: none; letter-spacing: .02em; }
+
 /* fila */
-.pv-fila { border-right: 1px solid #22303C; padding: 12px; display: grid; gap: 8px; align-content: start; }
-.pv-fila-cab { font-size: 12px; color: var(--claro2); display: flex; justify-content: space-between; padding: 2px 4px 6px; }
-.pv-n { background: var(--tocha); color: #14100a; border-radius: 999px; padding: 0 7px; font-weight: 700; }
-.pv-card { display: grid; grid-template-columns: 30px 1fr; gap: 10px; padding: 10px; border-radius: 10px; background: #16222C; border: 1px solid #22303C; }
-.pv-card.fraca { opacity: .55; }
-.pv-av { width: 30px; height: 30px; border-radius: 50%; background: linear-gradient(135deg, var(--petroleo), #1B2730); display: grid; place-items: center; font-weight: 700; font-size: 12px; color: var(--claro); }
-.pv-av.h { background: linear-gradient(135deg, var(--tocha), var(--petroleo)); }
-.pv-card-t { display: grid; gap: 3px; min-width: 0; }
-.pv-card-t b { font-size: 12.5px; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.pv-card-t small { color: var(--claro3); font-size: 11px; }
-.pv-prev { color: var(--claro2); font-size: 11.5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; }
-/* resumo */
-.pv-resumo, .pv-lado { padding: 12px 14px; display: grid; gap: 6px; align-content: start; }
-.pv-texto { background: #16222C; border: 1px solid #22303C; border-radius: 10px; padding: 10px 12px; font-size: 12.5px; min-height: 66px; margin-bottom: 8px; }
-.pv-texto.pequeno { min-height: 0; font-size: 12px; color: var(--claro2); }
-.pv-cursor { display: inline-block; width: 2px; height: 13px; background: var(--tocha-viva); vertical-align: -2px; margin-left: 1px; animation: pv-pisca .9s steps(1) infinite; }
+.pv-fila { background: var(--surface); border-right: 1px solid var(--border); display: flex; flex-direction: column; }
+.pv-tabs { display: flex; border-bottom: 1px solid var(--border); padding: 0 4px; }
+.pv-tabs span { flex: 1; text-align: center; min-height: 36px; display: flex; align-items: center; justify-content: center; gap: 5px; font-size: 11.5px; font-weight: 600; color: var(--muted); border-bottom: 3px solid transparent; }
+.pv-tabs span.on { color: var(--text-forte); border-bottom-color: var(--verde); }
+.pv-tabs .n { background: var(--cinza-btn-bg); color: var(--text); border-radius: 999px; padding: 0 6px; font-size: 10px; min-width: 18px; height: 16px; display: inline-grid; place-items: center; font-style: normal; font-variant-numeric: tabular-nums; }
+.pv-tabs span.on .n { background: var(--verde); color: var(--verde-btn-txt); }
+.pv-alerta { background: var(--aviso-bg); color: var(--aviso-txt); padding: 8px 12px; font-size: 11px; font-weight: 700; border-bottom: 1px solid var(--aviso-borda2); display: flex; gap: 7px; align-items: flex-start; }
+.pv-alerta .ic { width: 14px; height: 14px; margin-top: 1px; }
+.pv-card { padding: 9px 12px 9px 10px; border-bottom: 1px solid var(--border-soft); display: flex; gap: 10px; align-items: flex-start; border-left: 3px solid transparent; }
+.pv-card.fraca { opacity: .6; }
+.pv-card.urg { border-left-color: var(--laranja-borda); background: var(--destaque-bg); }
+.pv-card.urg .pv-chip.espera { background: var(--danger-bg); color: var(--danger); }
+.pv-card-corpo { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.pv-nome { font-weight: 700; font-size: 12.5px; display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+.pv-nome .nm { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pv-nome .hora { font-weight: 400; font-size: 10.5px; color: var(--muted-2); flex: none; font-variant-numeric: tabular-nums; }
+.pv-prev { font-size: 11.5px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pv-chips { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 1px; }
+
+/* painel do contato (lado) */
+.pv-lado { background: var(--surface); padding: 12px; display: flex; flex-direction: column; gap: 9px; align-content: start; }
+.pv-lado h4 { font-size: 10px; text-transform: uppercase; letter-spacing: .8px; color: var(--muted); font-weight: 700; margin: 0; }
+.pv-ficha { border: 1px solid var(--border-ficha); border-radius: 10px; padding: 9px 11px; display: flex; flex-direction: column; gap: 6px; }
+.pv-texto { font-size: 12px; min-height: 52px; margin: 0; }
+.pv-texto.pequeno { min-height: 0; font-size: 11.5px; color: var(--text); }
+.pv-cursor { display: inline-block; width: 2px; height: 12px; background: var(--verde-txt); vertical-align: -2px; margin-left: 1px; animation: pv-pisca .9s steps(1) infinite; }
 @keyframes pv-pisca { 50% { opacity: 0 } }
-.pv-dados { display: grid; gap: 5px; margin-bottom: 8px; }
-.pv-dados > div { display: flex; justify-content: space-between; gap: 10px; font-size: 12px; border-bottom: 1px dashed #22303C; padding-bottom: 4px; }
-.pv-dados dt { color: var(--claro3); }
-.pv-dados dd { font-weight: 600; text-align: right; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.pv-aviso { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; color: var(--tocha-clara); }
-.pv-aviso .ico { width: 14px; height: 14px; }
+.pv-urg { background: var(--danger-bg); color: var(--danger); border-radius: 9px; padding: 8px 10px; font-size: 11.5px; font-weight: 700; display: flex; gap: 7px; align-items: flex-start; }
+.pv-urg .ic { width: 14px; height: 14px; margin-top: 1px; }
+.pv-dados > div { display: flex; justify-content: space-between; gap: 10px; font-size: 11.5px; }
+.pv-dados > div > * { min-width: 0; }
+.pv-dados .k { color: var(--muted); flex: none; }
+.pv-dados .v { font-weight: 600; text-align: right; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pv-aviso { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 700; color: var(--verde-txt); }
+.pv-aviso .ic { width: 14px; height: 14px; }
+.pv-pessoa { display: flex; align-items: center; gap: 9px; }
+.pv-pessoa b { display: block; font-size: 12px; }
+.pv-pessoa small { color: var(--muted); font-size: 11px; }
+
 /* conversa */
-.pv-conv { border-right: 1px solid #22303C; display: grid; grid-template-rows: auto 1fr auto; min-height: 300px; }
-.pv-conv-cab { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 10px 12px; border-bottom: 1px solid #22303C; font-size: 12.5px; }
-.pv-msgs { padding: 10px 12px; display: grid; gap: 7px; align-content: start; }
-.pv-m { max-width: 88%; padding: 7px 10px; border-radius: 10px; font-size: 12px; line-height: 1.4; }
-.pv-m small { display: block; font-size: 10px; color: rgba(231,227,219,.5); margin-top: 2px; }
-.pv-m.c { background: #202C33; justify-self: start; border-bottom-left-radius: 3px; }
-.pv-m.i { background: var(--zap); justify-self: end; border-bottom-right-radius: 3px; }
-.pv-m.h { background: rgba(214,154,58,.18); border: 1px solid rgba(214,154,58,.35); justify-self: end; border-bottom-right-radius: 3px; min-height: 36px; }
-.pv-compor { display: flex; gap: 8px; padding: 10px 12px; border-top: 1px solid #22303C; align-items: center; }
-.pv-campo { flex: 1; background: #16222C; border: 1px solid #22303C; border-radius: 999px; padding: 7px 12px; color: var(--claro3); font-size: 11.5px; min-height: 30px; }
-.pv-btn { background: var(--tocha); color: #14100a; border: 0; border-radius: 8px; padding: 7px 12px; font-weight: 700; font-size: 12px; white-space: nowrap; cursor: default; }
-.pv-btn.feita { background: rgba(63,207,122,.16); color: #7FE0A8; }
-.pv-pessoa { display: flex; align-items: center; gap: 10px; }
-.pv-pessoa b { display: block; font-size: 12.5px; }
-.pv-pessoa small { color: var(--claro3); font-size: 11px; }
-.pv-ghost { position: absolute; left: 0; top: 0; width: 22px; height: 22px; fill: var(--tocha-clara); stroke: #14100a; stroke-width: 1; filter: drop-shadow(0 4px 8px rgba(0,0,0,.5)); pointer-events: none; opacity: 0; z-index: 4; }
+.pv-conv { background: var(--conversa-bg); border-right: 1px solid var(--border); display: grid; grid-template-rows: auto 1fr auto; min-height: 300px; min-width: 0; overflow: hidden; }
+.pv-conv > * { min-width: 0; }
+.pv-conv-head { background: var(--surface); border-bottom: 1px solid var(--border); padding: 7px 10px; display: flex; align-items: center; gap: 8px; min-height: 46px; }
+.pv-conv-head .quem { min-width: 0; flex: 1; display: flex; flex-direction: column; }
+.pv-conv-head .quem b { font-size: 12.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pv-conv-head .quem small { color: var(--muted); font-size: 10.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pv-msgs { padding: 10px 12px; display: flex; flex-direction: column; gap: 6px; }
+.pv-m { max-width: 80%; box-sizing: border-box; overflow-wrap: anywhere; padding: 6px 9px; border-radius: 10px; font-size: 11.5px; line-height: 1.4; box-shadow: 0 1px 1px rgba(0,0,0,.06); }
+.pv-m .who { display: block; font-size: 10px; font-weight: 700; margin-bottom: 1px; }
+.pv-m.c { background: #fff; align-self: flex-start; border-top-left-radius: 3px; } .pv-m.c .who { color: var(--muted); }
+.pv-m.i { background: var(--bolha-ia); align-self: flex-end; border-top-right-radius: 3px; } .pv-m.i .who { color: var(--verde-txt); }
+.pv-m.h { background: var(--bolha-humano); align-self: flex-end; border-top-right-radius: 3px; min-height: 34px; } .pv-m.h .who { color: var(--azul-txt); }
+.pv-m.sis { background: var(--sistema-bg); color: var(--sistema-txt); align-self: center; font-size: 10.5px; font-weight: 600; display: inline-flex; align-items: center; gap: 5px; box-shadow: none; border-radius: 999px; padding: 4px 10px; }
+.pv-m.sis .ic { width: 12px; height: 12px; }
+.pv-compor { display: flex; gap: 6px; padding: 8px 10px; border-top: 1px solid var(--border); background: var(--surface); align-items: center; }
+.pv-campo { flex: 1; background: var(--surface-2); border: 1px solid var(--border-input); border-radius: 10px; padding: 0 10px; color: var(--muted); font-size: 11px; min-height: 32px; display: flex; align-items: center; }
+.pv-clipe { width: 32px; height: 32px; border-radius: 10px; border: 1px solid var(--border-input); background: var(--surface); color: var(--muted); display: grid; place-items: center; flex: none; }
+.pv-btn { position: relative; overflow: hidden; background: var(--verde); color: var(--verde-btn-txt); border: 0; border-radius: 10px; min-height: 32px; padding: 0 11px; font-weight: 700; font-size: 11.5px; white-space: nowrap; cursor: default; display: inline-flex; align-items: center; gap: 6px; font-family: inherit; }
+.pv-btn .ic { width: 14px; height: 14px; }
+.pv-btn.feita { background: var(--chip-humano-bg); color: var(--verde-txt); }
+.pv-ripple { position: absolute; left: 50%; top: 50%; width: 24px; height: 24px; margin: -12px 0 0 -12px; border-radius: 50%; background: rgba(255,255,255,.75); opacity: 0; transform: scale(0); pointer-events: none; }
+.pv-ghost { position: absolute; left: 0; top: 0; width: 22px; height: 22px; fill: #12283A; stroke: #fff; stroke-width: 1.2; filter: drop-shadow(0 4px 8px rgba(0,0,0,.35)); pointer-events: none; opacity: 0; z-index: 4; }
+.pv-toast { position: absolute; right: 12px; bottom: 12px; z-index: 5; min-width: 220px; display: flex; align-items: center; gap: 9px; background: var(--topbar-bg); color: var(--topbar-text); border-radius: 10px; padding: 8px 11px; font-size: 11px; box-shadow: 0 16px 40px rgba(0,0,0,.35); opacity: 0; max-width: 78%; }
+.pv-toast .ic { width: 16px; height: 16px; color: var(--verde); }
+.pv-toast b { display: block; font-size: 11.5px; }
+
 /* números */
-.pv-cena[data-cena="numeros"] { grid-template-columns: 1fr; padding: 14px; gap: 14px; align-content: start; }
+.pv-cena[data-cena="numeros"] { grid-template-columns: 1fr; padding: 12px; gap: 10px; align-content: start; background: var(--bg); }
+.pv-num-cab { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.pv-num-cab b { font-family: Georgia, serif; font-size: 15px; color: var(--text-forte); }
+.pv-periodos { display: inline-flex; gap: 2px; background: var(--cinza-btn-bg); border-radius: 8px; padding: 2px; }
+.pv-periodos i { font-style: normal; font-size: 10.5px; font-weight: 600; color: var(--muted); padding: 4px 8px; border-radius: 6px; }
+.pv-periodos i.on { background: var(--surface); color: var(--text-forte); box-shadow: 0 1px 2px rgba(0,0,0,.08); }
 .pv-tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
-.pv-tile { background: #16222C; border: 1px solid #22303C; border-radius: 10px; padding: 10px 12px; display: grid; gap: 2px; }
-.pv-tile small { font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--claro3); }
-.pv-tile b { font-family: var(--serif); font-size: 24px; font-variant-numeric: tabular-nums; }
-.pv-tile.destaque { border-color: rgba(214,154,58,.5); } .pv-tile.destaque b { color: var(--tocha-clara); }
-.pv-barras { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; height: 110px; align-items: end; padding-top: 6px; }
+.pv-tile { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 9px 11px; display: grid; gap: 2px; }
+.pv-tile small { font-size: 9.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.pv-tile b { font-size: 22px; font-variant-numeric: tabular-nums; letter-spacing: -.01em; color: var(--text-forte); }
+.pv-tile.destaque { border-color: var(--laranja-borda); } .pv-tile.destaque b { color: #B8771A; }
+.pv-tile.verde b { color: var(--verde-txt); }
+.pv-graf { background: var(--surface); border-color: var(--border); }
+.pv-graf-tit { font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 700; display: flex; gap: 8px; flex-wrap: wrap; }
+.pv-graf-tit span { text-transform: none; letter-spacing: 0; font-weight: 500; color: #B8771A; }
+.pv-barras { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; height: 100px; align-items: end; padding-top: 4px; }
 .pv-barras > div { --p: 0; display: grid; grid-template-rows: 1fr auto; height: 100%; gap: 4px; align-items: end; }
 .pv-barras > div i, .pv-barras > div em { display: block; border-radius: 4px 4px 0 0; grid-row: 1; align-self: end; }
-.pv-barras > div i { height: calc(var(--h) * 100% * var(--p)); background: #2E4A56; }
-.pv-barras > div em { height: calc(var(--h) * var(--n) * 100% * var(--p)); background: var(--tocha-viva); border-radius: 0; }
-.pv-barras > div small { grid-row: 2; text-align: center; color: var(--claro3); font-size: 10.5px; }
-.pv-legenda { font-size: 12px; color: var(--claro2); } .pv-legenda b { color: var(--tocha-clara); }
+.pv-barras > div i { height: calc(var(--h) * 100% * var(--p)); background: #2C5F7C; }
+.pv-barras > div em { height: calc(var(--h) * var(--n) * 100% * var(--p)); background: var(--laranja-borda); border-radius: 0; }
+.pv-barras > div small { grid-row: 2; text-align: center; color: var(--muted); font-size: 10px; }
+.pv-legenda { font-size: 11.5px; color: var(--muted); margin: 0; } .pv-legenda b { color: var(--text-forte); }
+
+/* celular: trilho vira barra de baixo, colunas empilham, cenas enxutas (igual ao painel real) */
 @container (max-width: 520px) {
-  .pv-cena { grid-template-columns: 1fr; min-height: 0; }
-  .pv-fila-cab { display: none; } .pv-fila { padding: 10px; } .pv-resumo { padding: 10px 12px; gap: 4px; }
-  .pv-texto { min-height: 0; font-size: 12px; margin-bottom: 6px; } .pv-dados > div:nth-child(n+3) { display: none; }
-  .pv-conv { min-height: 0; } .pv-msgs { padding: 8px 10px; }
-  .pv-fila, .pv-conv { border-right: 0; border-bottom: 1px solid #22303C; }
-  .pv-card.fraca { display: none; }
-  .pv-tiles { grid-template-columns: repeat(2, 1fr); }
-  .pv-abas b { padding: 5px 8px; }
+  .pv { grid-template-columns: 1fr; grid-template-rows: auto auto; }
+  .pv-trilho { order: 2; flex-direction: row; justify-content: space-around; padding: 6px 4px; width: 100%; }
+  .pv-toast { right: 8px; left: 8px; bottom: 60px; max-width: none; min-width: 0; }
+  .pv-marca-cli, .pv-pe, .pv-it:nth-child(4), .pv-it:nth-child(5) { display: none; }
+  .pv-it { width: auto; min-width: 56px; min-height: 40px; }
   .pv-quem { display: none; }
-  .pv-lado { display: none; }
-  .pv-msgs .pv-m.i { display: none; }
-  .pv-ghost { display: none; }
-  .pv-relogio { font-size: 11px; }
+  .pv-cena { grid-template-columns: 1fr; min-height: 0; }
+  .pv-fila, .pv-conv { border-right: 0; border-bottom: 1px solid var(--border); }
+  .pv-card.fraca, .pv-alerta { display: none; }
+  .pv-lado { padding: 10px 12px; gap: 6px; }
+  .pv-lado h4:nth-of-type(2), .pv-dados > div:nth-child(n+3), .pv-cena[data-cena="assumir"] .pv-lado { display: none; }
+  .pv-texto { min-height: 0; }
+  .pv-conv { min-height: 0; } .pv-msgs { padding: 8px 10px; } .pv-msgs .pv-m.i { display: none; }
+  .pv-ghost, .pv-clipe { display: none; }
+  .pv-conv-head .pv-chip { max-width: 120px; overflow: hidden; text-overflow: ellipsis; display: inline-block; }
+  .pv-compor { flex-wrap: wrap; }
+  .pv-campo { flex: 1 1 100%; }
+  .pv-btn { flex: 1 1 auto; justify-content: center; }
+  .pv-m.h { max-width: 90%; }
+  .pv-tiles { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* ===== Opção 1: Muralha em movimento ===== */
@@ -424,109 +489,153 @@ footer .legal { line-height: 1.7; }
     <div class="pv-passo" data-cena="fila">
       <p class="pv-hora">Sábado, 22h14</p>
       <h3>A IA atende e já escreve o resumo para o seu time</h3>
-      <p>Enquanto conversa com o cliente, ela anota peça, quantidade, cidade, e-mail e CNPJ. Quando termina, avisa a fila. Ninguém precisou acordar.</p>
+      <p>Enquanto conversa com o cliente, ela anota peça, quantidade, cidade, e-mail e CNPJ. Quando termina, a conversa sobe na fila com o resumo pronto. Ninguém precisou acordar.</p>
     </div>
     <div class="pv-passo" data-cena="assumir">
       <p class="pv-hora">Segunda, 8h02</p>
       <h3>Seu vendedor assume com um clique</h3>
-      <p>A conversa abre com o resumo pronto. Preço, prazo e negociação continuam sendo de gente. Tudo no mesmo número, sem o cliente perceber a troca.</p>
+      <p>A conversa abre com o resumo ao lado. Preço, prazo e negociação continuam sendo de gente. Tudo no mesmo número, sem o cliente perceber a troca.</p>
     </div>
     <div class="pv-passo" data-cena="numeros">
       <p class="pv-hora">Sexta, relatório da semana</p>
       <h3>Pela primeira vez, os números</h3>
-      <p>Quantos chamaram com o time em casa, quanto tempo levou a primeira resposta, quem atendeu o quê. Direto do registro. Nada estimado.</p>
+      <p>Quantos chamaram com o time em casa, quanto a IA resolveu sozinha, quanto tempo levou a primeira resposta. Direto do registro. Nada estimado.</p>
     </div>
   </div>
 
   <div class="pv-fixo">
     <div class="pv" id="pv" aria-hidden="true">
-      <div class="pv-barra">
-        <span class="pv-marca"><i></i>Sua Empresa · Atendimento</span>
-        <span class="pv-abas"><b data-aba="fila" class="on">Fila</b><b data-aba="assumir">Conversa</b><b data-aba="numeros">Números</b></span>
-        <span class="pv-relogio" id="pv-relogio">sáb · 22h14</span><span class="pv-quem"><i class="pv-dot"></i>Helena</span>
-      </div>
+      <svg width="0" height="0" style="position:absolute"><defs>
+        <symbol id="pvi-inbox" viewBox="0 0 24 24"><path d="M3 13l2-8h14l2 8v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M3 13h5l2 3h4l2-3h5"/></symbol>
+        <symbol id="pvi-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+        <symbol id="pvi-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></symbol>
+        <symbol id="pvi-hist" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+        <symbol id="pvi-chart" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></symbol>
+        <symbol id="pvi-check" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></symbol>
+        <symbol id="pvi-assumir" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M16 11l2 2 4-4"/></symbol>
+        <symbol id="pvi-card" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 10h10M7 14h6"/></symbol>
+        <symbol id="pvi-alert" viewBox="0 0 24 24"><path d="M12 3l10 18H2z"/><path d="M12 10v4M12 18h.01"/></symbol>
+        <symbol id="pvi-bell" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 21h4"/></symbol>
+        <symbol id="pvi-send" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></symbol>
+        <symbol id="pvi-clip" viewBox="0 0 24 24"><path d="M21 12l-8.5 8.5a5 5 0 0 1-7-7L14 5a3.5 3.5 0 0 1 5 5l-8.5 8.5a2 2 0 0 1-3-3L15 8"/></symbol>
+        <symbol id="pvi-flame" viewBox="0 0 24 24"><path d="M12 3c2 3 3.5 4.6 3.5 7a3.5 3.5 0 0 1-7 0c0-2.4 1.5-4 3.5-7z"/><path d="M8 14l-2 7h12l-2-7"/></symbol>
+      </defs></svg>
 
-      <!-- cena 1: fila + resumo da IA -->
-      <div class="pv-cena on" data-cena="fila">
-        <div class="pv-fila">
-          <div class="pv-fila-cab">Fila <span class="pv-n" id="pv-fila-n">0</span></div>
-          <div class="pv-card" id="pv-card1">
-            <div class="pv-av">M</div>
-            <div class="pv-card-t"><b>Marcos · Serra Preta Peças</b><small id="pv-card1-h">22h14</small>
-              <span class="pv-prev" id="pv-prev">Boa noite, vocês têm o PN 5096-104?</span>
-              <span class="pv-chip ia" id="pv-chip1">IA atendendo</span></div>
-          </div>
-          <div class="pv-card fraca">
-            <div class="pv-av">A</div>
-            <div class="pv-card-t"><b>Ana · Auto Center BH</b><small>21h50</small><span class="pv-prev">Prazo para Contagem?</span><span class="pv-chip ok">Resolvido pela IA</span></div>
-          </div>
-        </div>
-        <div class="pv-resumo">
-          <div class="pv-tit">Resumo do contato <em>feito pela IA</em> <span class="pv-chip alta" id="pv-prio">alta</span></div>
-          <p class="pv-texto"><span id="pv-digita"></span><i class="pv-cursor" id="pv-cursor-txt"></i></p>
-          <div class="pv-tit">Dados</div>
-          <dl class="pv-dados" id="pv-dados">
-            <div><dt>Peça</dt><dd>PN 5096-104 · 2 un.</dd></div>
-            <div><dt>Entrega</dt><dd>Betim</dd></div>
-            <div><dt>E-mail</dt><dd>compras@minhaempresa.com.br</dd></div>
-            <div><dt>CNPJ</dt><dd>00.000.000/0001-00</dd></div>
-          </dl>
-          <div class="pv-aviso" id="pv-aviso"><svg viewBox="0 0 24 24" class="ico" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Fila avisada · 22h16</div>
-        </div>
-      </div>
+      <!-- trilho (menu lateral do painel real) -->
+      <nav class="pv-trilho">
+        <span class="pv-marca-cli">SE</span>
+        <span class="pv-it on" data-aba="fila"><svg class="ic"><use href="#pvi-inbox"/></svg><span>Conversas</span><i class="pv-badge" id="pv-badge" hidden>1</i></span>
+        <span class="pv-it"><svg class="ic"><use href="#pvi-plus"/></svg><span>Nova</span></span>
+        <span class="pv-it"><svg class="ic"><use href="#pvi-cal"/></svg><span>Agenda</span></span>
+        <span class="pv-it"><svg class="ic"><use href="#pvi-hist"/></svg><span>Histórico</span></span>
+        <span class="pv-it" data-aba="numeros"><svg class="ic"><use href="#pvi-chart"/></svg><span>Números</span></span>
+        <span class="pv-pe"><span>por</span><b>Atalaia</b></span>
+      </nav>
 
-      <div class="pv-toast" id="pv-toast"><svg viewBox="0 0 24 24" class="ico" aria-hidden="true"><path d="M12 3c2 3 3.5 4.6 3.5 7a3.5 3.5 0 0 1-7 0c0-2.4 1.5-4 3.5-7z"/><path d="M8 14l-2 7h12l-2-7"/></svg><span><b>Cotação qualificada</b>Marcos · Serra Preta Peças · a fila foi avisada</span></div>
+      <div class="pv-conteudo">
+        <div class="pv-cab">
+          <b id="pv-titulo">Conversas</b>
+          <span class="pv-relogio" id="pv-relogio">sáb · 22h14</span>
+          <span class="pv-quem"><i class="pv-dot"></i>Helena Prado · Gestora</span>
+        </div>
 
-      <!-- cena 2: assumir -->
-      <div class="pv-cena" data-cena="assumir">
-        <div class="pv-conv">
-          <div class="pv-conv-cab"><b>Marcos · Serra Preta Peças</b><span class="pv-chip esp" id="pv-chip2">Aguardando atendente</span></div>
-          <div class="pv-msgs">
-            <div class="pv-m c">Boa noite, vocês têm o PN 5096-104? Preciso de dois.<small>Cliente · 22h14</small></div>
-            <div class="pv-m i">Temos sim. PN 5096-104 é o sensor de nível para tanque de diesel. Me passa a cidade de entrega, e-mail e CNPJ.<small>IA · 22h14</small></div>
-            <div class="pv-m c">Betim. compras@minhaempresa.com.br, CNPJ 00.000.000/0001-00<small>Cliente · 22h15</small></div>
-            <div class="pv-m h" id="pv-m-h"><span id="pv-digita2"></span><small>Helena · 8h03</small></div>
+        <!-- cena 1: fila + resumo da IA -->
+        <div class="pv-cena on" data-cena="fila">
+          <div class="pv-fila">
+            <div class="pv-tabs"><span class="on">Fila <i class="n" id="pv-fila-n">0</i></span><span>Meus <i class="n">0</i></span><span>Todos <i class="n">8</i></span></div>
+            <div class="pv-alerta" id="pv-alerta"><svg class="ic"><use href="#pvi-alert"/></svg><span>Conversa de Marcos · Serra Preta Peças espera há <b id="pv-espera">0 min</b> sem atendimento.</span></div>
+            <div class="pv-card" id="pv-card1">
+              <span class="pv-av" style="background:#2C5F7C">MS</span>
+              <div class="pv-card-corpo">
+                <div class="pv-nome"><span class="nm">Marcos · Serra Preta Peças</span><span class="hora" id="pv-card1-h">22h14</span></div>
+                <span class="pv-prev" id="pv-prev">Boa noite, vocês têm o PN 5096-104?</span>
+                <div class="pv-chips"><span class="pv-chip ia" id="pv-chip1"><svg class="ic"><use href="#pvi-flame"/></svg>IA atendendo</span><span class="pv-chip fim">Cliente de sempre</span></div>
+              </div>
+            </div>
+            <div class="pv-card fraca">
+              <span class="pv-av" style="background:#8E5A9E">AC</span>
+              <div class="pv-card-corpo">
+                <div class="pv-nome"><span class="nm">Ana · Auto Center BH</span><span class="hora">21h50</span></div>
+                <span class="pv-prev">IA: Prazo para Contagem é de 2 dias úteis.</span>
+                <div class="pv-chips"><span class="pv-chip fim">Resolvida pela IA</span></div>
+              </div>
+            </div>
           </div>
-          <div class="pv-compor">
-            <span class="pv-campo" id="pv-campo">Assuma a conversa para responder</span>
-            <button type="button" class="pv-btn" id="pv-assumir" tabindex="-1"><i class="pv-ripple" id="pv-ripple"></i><span id="pv-assumir-t">Assumir conversa</span></button>
+          <div class="pv-lado">
+            <h4>Resumo do contato · feito pela IA</h4>
+            <div class="pv-urg" id="pv-prio"><svg class="ic"><use href="#pvi-alert"/></svg>Prioridade alta: cotação de peça, cliente de sempre.</div>
+            <div class="pv-ficha"><p class="pv-texto"><span id="pv-digita"></span><i class="pv-cursor" id="pv-cursor-txt"></i></p></div>
+            <h4>Dados</h4>
+            <div class="pv-ficha pv-dados" id="pv-dados">
+              <div><span class="k">Peça</span><span class="v">PN 5096-104 · 2 un.</span></div>
+              <div><span class="k">Entrega</span><span class="v">Betim</span></div>
+              <div><span class="k">E-mail</span><span class="v">compras@minhaempresa.com.br</span></div>
+              <div><span class="k">CNPJ</span><span class="v">00.000.000/0001-00</span></div>
+            </div>
+            <div class="pv-aviso" id="pv-aviso"><svg class="ic"><use href="#pvi-check"/></svg>Fila avisada · 22h16</div>
           </div>
         </div>
-        <div class="pv-lado">
-          <div class="pv-tit">Resumo <em>feito pela IA</em></div>
-          <p class="pv-texto pequeno">Quer 2 un. do PN 5096-104, entrega em Betim. E-mail e CNPJ coletados. Aguarda cotação formal.</p>
-          <div class="pv-tit">Quem está com a conversa</div>
-          <div class="pv-pessoa" id="pv-pessoa"><span class="pv-av h">H</span><span><b>Helena Prado</b><small id="pv-pessoa-s">assumiu às 8h02</small></span></div>
-        </div>
-        <svg class="pv-ghost" id="pv-ghost" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l14 8-6 1.5L16 20l-3 1.5L9.5 14 5 18z"/></svg>
-      </div>
 
-      <!-- cena 3: números -->
-      <div class="pv-cena" data-cena="numeros">
-        <div class="pv-tiles">
-          <div class="pv-tile"><small>Conversas</small><b data-conta="128">0</b></div>
-          <div class="pv-tile destaque"><small>Fora do horário</small><b data-conta="41">0</b></div>
-          <div class="pv-tile"><small>1ª resposta</small><b><span data-conta="9">0</span> s</b></div>
-          <div class="pv-tile"><small>Em até 60 s</small><b><span data-conta="100">0</span>%</b></div>
-        </div>
-        <div class="pv-graf">
-          <div class="pv-tit">Conversas por dia <em>com o time em casa, em tocha</em></div>
-          <div class="pv-barras" id="pv-barras">
-            <div style="--h:.55;--n:.3"><i></i><em></em><small>seg</small></div>
-            <div style="--h:.7;--n:.25"><i></i><em></em><small>ter</small></div>
-            <div style="--h:.62;--n:.35"><i></i><em></em><small>qua</small></div>
-            <div style="--h:.8;--n:.3"><i></i><em></em><small>qui</small></div>
-            <div style="--h:.9;--n:.28"><i></i><em></em><small>sex</small></div>
-            <div style="--h:.45;--n:.7"><i></i><em></em><small>sáb</small></div>
-            <div style="--h:.3;--n:.85"><i></i><em></em><small>dom</small></div>
+        <div class="pv-toast" id="pv-toast"><svg class="ic"><use href="#pvi-bell"/></svg><span><b>Nova conversa na fila</b>Marcos · Serra Preta Peças · cotação qualificada</span></div>
+
+        <!-- cena 2: assumir -->
+        <div class="pv-cena" data-cena="assumir">
+          <div class="pv-conv">
+            <div class="pv-conv-head">
+              <span class="pv-av" style="background:#2C5F7C">MS</span>
+              <span class="quem"><b>Marcos · Serra Preta Peças</b><small>(31) 98811-0001 · via WhatsApp oficial</small></span>
+              <span class="pv-chip espera" id="pv-chip2">Aguardando atendente</span>
+            </div>
+            <div class="pv-msgs">
+              <div class="pv-m c"><span class="who">Cliente · 22h14</span>Boa noite, vocês têm o PN 5096-104? Preciso de dois.</div>
+              <div class="pv-m i"><span class="who">Assistente · 22h14</span>Temos sim. PN 5096-104 é o sensor de nível para tanque de diesel. Me passa a cidade de entrega, e-mail e CNPJ?</div>
+              <div class="pv-m c"><span class="who">Cliente · 22h15</span>Betim. compras@minhaempresa.com.br, CNPJ 00.000.000/0001-00</div>
+              <div class="pv-m sis" id="pv-m-sis"><svg class="ic"><use href="#pvi-assumir"/></svg>Helena assumiu a conversa · seg 8h02</div>
+              <div class="pv-m h" id="pv-m-h"><span class="who">Helena · 8h03</span><span id="pv-digita2"></span></div>
+            </div>
+            <div class="pv-compor">
+              <span class="pv-campo" id="pv-campo">Assuma a conversa para responder</span>
+              <span class="pv-clipe"><svg class="ic"><use href="#pvi-clip"/></svg></span>
+              <button type="button" class="pv-btn" id="pv-assumir" tabindex="-1"><i class="pv-ripple" id="pv-ripple"></i><svg class="ic"><use href="#pvi-assumir"/></svg><span id="pv-assumir-t">Assumir conversa</span></button>
+            </div>
           </div>
-          <p class="pv-legenda" id="pv-legenda"><b>41 contatos</b> chegaram com o time em casa. <b>Zero</b> ficaram sem resposta.</p>
+          <div class="pv-lado">
+            <h4>Resumo do contato · feito pela IA</h4>
+            <div class="pv-ficha"><p class="pv-texto pequeno">Cliente quer 2 un. do sensor de nível PN 5096-104 (tanque de diesel), entrega em Betim. E-mail e CNPJ coletados. Aguarda cotação formal.</p></div>
+            <h4>Quem está com a conversa</h4>
+            <div class="pv-pessoa" id="pv-pessoa"><span class="pv-av" style="background:#B97F24">HP</span><span><b>Helena Prado</b><small>assumiu às 8h02</small></span></div>
+          </div>
+          <svg class="pv-ghost" id="pv-ghost" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l14 8-6 1.5L16 20l-3 1.5L9.5 14 5 18z"/></svg>
+        </div>
+
+        <!-- cena 3: números -->
+        <div class="pv-cena" data-cena="numeros">
+          <div class="pv-num-cab"><b>Números do atendimento</b><span class="pv-periodos"><i class="on">7 dias</i><i>30 dias</i><i>90 dias</i></span></div>
+          <div class="pv-tiles">
+            <div class="pv-tile"><small>Atendimentos</small><b data-conta="128">0</b></div>
+            <div class="pv-tile destaque"><small>Fora do horário</small><b data-conta="41">0</b></div>
+            <div class="pv-tile verde"><small>Resolvidos pela IA</small><b><span data-conta="73">0</span>%</b></div>
+            <div class="pv-tile"><small>1ª resposta</small><b><span data-conta="9">0</span> s</b></div>
+          </div>
+          <div class="pv-ficha pv-graf">
+            <div class="pv-graf-tit">Atendimentos por dia <span>com o time em casa, em laranja</span></div>
+            <div class="pv-barras" id="pv-barras">
+              <div style="--h:.55;--n:.3"><i></i><em></em><small>seg</small></div>
+              <div style="--h:.7;--n:.25"><i></i><em></em><small>ter</small></div>
+              <div style="--h:.62;--n:.35"><i></i><em></em><small>qua</small></div>
+              <div style="--h:.8;--n:.3"><i></i><em></em><small>qui</small></div>
+              <div style="--h:.9;--n:.28"><i></i><em></em><small>sex</small></div>
+              <div style="--h:.45;--n:.7"><i></i><em></em><small>sáb</small></div>
+              <div style="--h:.3;--n:.85"><i></i><em></em><small>dom</small></div>
+            </div>
+            <p class="pv-legenda" id="pv-legenda"><b>41 contatos</b> chegaram com o time em casa. <b>Zero</b> ficaram sem resposta.</p>
+          </div>
         </div>
       </div>
     </div>
-    <p class="pv-nota so-desk">Painel recriado com dados de demonstração. Nenhum dado de cliente real.</p>
+    <p class="pv-nota so-desk">O painel do seu time, recriado com dados de demonstração. Nenhum dado de cliente real.</p>
   </div>
-  <p class="pv-nota so-mob">Painel recriado com dados de demonstração. Nenhum dado de cliente real.</p>
+  <p class="pv-nota so-mob">O painel do seu time, recriado com dados de demonstração. Nenhum dado de cliente real.</p>
 </div>
     <p class="prova rv"><b>Em produção hoje,</b> atendendo clientes reais: IA e atendentes no mesmo número, nenhum contato sem resposta.</p>
   </div>
@@ -640,6 +749,7 @@ window.montarPainel = function (opts) {
   var pv = document.getElementById("pv"), fmt = new Intl.NumberFormat("pt-BR");
   var TXT1 = "Cliente quer 2 un. do sensor de nível PN 5096-104 (tanque de diesel), entrega em Betim. E-mail e CNPJ coletados. Aguarda cotação formal.";
   var TXT2 = "Bom dia, Marcos! Segue a cotação dos 2 sensores PN 5096-104 com entrega em Betim. Qualquer dúvida estou por aqui.";
+  var TITULOS = { fila: "Conversas", assumir: "Conversas", numeros: "Números" };
   var tls = {}, tocadas = {};
 
   function digitar(alvo, texto, dur) {
@@ -647,38 +757,44 @@ window.montarPainel = function (opts) {
   }
   function mostrarCena(nome) {
     pv.querySelectorAll(".pv-cena").forEach(function (c) { c.classList.toggle("on", c.dataset.cena === nome); });
-    pv.querySelectorAll(".pv-abas b").forEach(function (b) { b.classList.toggle("on", b.dataset.aba === nome); });
+    pv.querySelectorAll(".pv-trilho .pv-it[data-aba]").forEach(function (b) { b.classList.toggle("on", b.dataset.aba === (nome === "assumir" ? "fila" : nome)); });
+    document.getElementById("pv-titulo").textContent = TITULOS[nome];
     raiz.querySelectorAll(".pv-passo").forEach(function (p) { p.classList.toggle("on", p.dataset.cena === nome); });
   }
 
-  /* cena 1 */
+  /* cena 1: a conversa entra na fila, o resumo se escreve, a fila é avisada */
   tls.fila = gsap.timeline({ paused: true });
-  tls.fila.set("#pv-digita", { textContent: "" }).set(["#pv-dados > div", "#pv-aviso", "#pv-prio"], { opacity: 0, y: 6 })
+  tls.fila.set("#pv-digita", { textContent: "" }).set(["#pv-dados > div", "#pv-aviso", "#pv-prio", "#pv-alerta"], { opacity: 0, y: 6 })
     .fromTo("#pv-card1", { x: -24, opacity: 0 }, { x: 0, opacity: 1, duration: 0.5, ease: "power3.out" })
-    .set("#pv-fila-n", { textContent: "1" }, "<")
     .to("#pv-prio", { opacity: 1, y: 0, duration: 0.3 }, 0.6)
     .add(digitar(document.getElementById("pv-digita"), TXT1, 2.6), 0.7)
     .to("#pv-dados > div", { opacity: 1, y: 0, duration: 0.35, stagger: 0.28, ease: "power2.out" }, 1.4)
     .set("#pv-cursor-txt", { display: "none" }, 3.4)
     .set("#pv-prev", { textContent: "IA: Perfeito. Passei tudo para o comercial com o resumo pronto." }, 3.2)
-    .set("#pv-chip1", { className: "pv-chip esp", textContent: "Aguardando atendente · há 0 min" }, 3.5)
+    .set("#pv-chip1", { className: "pv-chip espera", innerHTML: '<svg class="ic"><use href="#pvi-hist"/></svg>Aguardando atendente · há 0 min' }, 3.5)
+    .set("#pv-card1", { className: "pv-card urg" }, 3.5)
     .set("#pv-card1-h", { textContent: "22h16" }, 3.5)
-    .to("#pv-aviso", { opacity: 1, y: 0, duration: 0.4 }, 3.6)
+    .set("#pv-fila-n", { textContent: "1" }, 3.5)
+    .set("#pv-badge", { attr: { hidden: null } }, 3.5)
     .set("#pv-relogio", { textContent: "sáb · 22h16" }, 3.5)
+    .to("#pv-aviso", { opacity: 1, y: 0, duration: 0.4 }, 3.6)
     .fromTo("#pv-toast", { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "back.out(1.6)" }, 3.7)
-    .to("#pv-toast", { opacity: 0, y: 10, duration: 0.4 }, 6.2);
+    .to("#pv-alerta", { opacity: 1, y: 0, duration: 0.4 }, 4.0)
+    .set("#pv-espera", { textContent: "9 min" }, 4.0)
+    .to("#pv-toast", { opacity: 0, y: 10, duration: 0.4 }, 6.4);
 
-  /* cena 2: cursor fantasma assume */
+  /* cena 2: cursor fantasma assume (no celular só o toque) */
   var ghost = document.getElementById("pv-ghost"), btn = document.getElementById("pv-assumir");
   function alvoBtn() { var b = btn.getBoundingClientRect(), c = pv.getBoundingClientRect(); return { x: b.left - c.left + b.width * 0.5, y: b.top - c.top + b.height * 0.55 }; }
   tls.assumir = gsap.timeline({ paused: true });
-  tls.assumir.set(["#pv-m-h", "#pv-pessoa"], { opacity: 0 }).set("#pv-digita2", { textContent: "" }).set("#pv-relogio", { textContent: "seg · 8h02" }).set("#pv-ripple", { scale: 0, opacity: 0 })
+  tls.assumir.set(["#pv-m-h", "#pv-m-sis", "#pv-pessoa"], { opacity: 0 }).set("#pv-digita2", { textContent: "" }).set("#pv-relogio", { textContent: "seg · 8h02" }).set("#pv-ripple", { scale: 0, opacity: 0 })
     .set(ghost, { x: 40, y: 40, opacity: 0 })
     .to(ghost, { opacity: 1, duration: 0.3 })
     .to(ghost, { x: function () { return alvoBtn().x; }, y: function () { return alvoBtn().y; }, duration: 0.9, ease: "power2.inOut" })
     .to(btn, { scale: 0.9, duration: 0.1 }).fromTo("#pv-ripple", { scale: 0, opacity: 0.6 }, { scale: 3, opacity: 0, duration: 0.5, ease: "power2.out" }, "<").to(btn, { scale: 1, duration: 0.25, ease: "back.out(2.2)" })
     .set("#pv-assumir-t", { textContent: "Assumida por Helena" }).set(btn, { className: "pv-btn feita" })
-    .set("#pv-chip2", { className: "pv-chip ia", textContent: "Em atendimento · Helena" })
+    .set("#pv-chip2", { className: "pv-chip humano", textContent: "Em atendimento · Helena" })
+    .to("#pv-m-sis", { opacity: 1, duration: 0.3 })
     .to(ghost, { opacity: 0, x: "+=60", y: "+=30", duration: 0.5 }, "+=1.1")
     .to("#pv-pessoa", { opacity: 1, duration: 0.4 }, "<")
     .set("#pv-campo", { textContent: "" })
