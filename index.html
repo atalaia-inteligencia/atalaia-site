@@ -709,6 +709,7 @@ section { position: relative; padding-block: clamp(72px, 10vw, 148px); }
 .extra .ico { width: 28px; height: 28px; color: var(--queimado); margin-top: 3px; } .extra h3 { margin-bottom: 8px; } .extra p { color: var(--musgo); }
 .mesa-nota { margin-top: 18px; color: var(--musgo); font-size: var(--t-1); max-width: 62em; }
 
+[hidden] { display: none !important; }
 /* implantação */
 .impl { background: var(--palco); --bg: var(--palco); }
 .impl-cab { display: grid; gap: 18px; }
@@ -830,7 +831,7 @@ footer .legal { color: #949A93; font-size: var(--t-1); border-top: 1px solid rgb
       <a href="#implantacao">Implantação</a>
     </nav>
     <div class="acoes">
-      <a class="btn contorno" href="https://painel.atalaiainteligencia.com.br" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg><span class="rot">Área do cliente</span></a>
+      <a class="btn contorno" hidden href="https://painel.atalaiainteligencia.com.br" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg><span class="rot">Área do cliente</span></a>
       <a class="btn cheio" href="#diag"><span class="lg">Quero na minha empresa</span><span class="sm">Começar</span></a>
     </div>
   </div>
@@ -1351,7 +1352,7 @@ footer .legal { color: #949A93; font-size: var(--t-1); border-top: 1px solid rgb
         </div>
       </li>
     </ol>
-    <div class="portal rv">
+    <div class="portal rv" hidden>
       <div>
         <p class="olho">Já é cliente</p>
         <h3>O painel do seu time está aqui</h3>
@@ -1412,7 +1413,7 @@ footer .legal { color: #949A93; font-size: var(--t-1); border-top: 1px solid rgb
       <p class="assin">Ninguém fica sem resposta.</p>
     </div>
     <nav aria-label="Contato e acesso">
-      <a href="https://painel.atalaiainteligencia.com.br" rel="noopener">Área do cliente</a>
+      <a hidden href="https://painel.atalaiainteligencia.com.br" rel="noopener">Área do cliente</a>
       <a href="https://www.instagram.com/atalaiainteligencia" rel="noopener">@atalaiainteligencia</a>
       <a href="mailto:tulio@atalaiainteligencia.com.br">tulio@atalaiainteligencia.com.br</a>
     </nav>
