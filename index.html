@@ -5,8 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Atalaia Inteligência · A IA que aprende o seu catálogo e atende o seu WhatsApp</title>
 <meta name="description" content="Atendimento com inteligência artificial no WhatsApp de quem vende produtos: a IA aprende o seu catálogo, responde em segundos, 24 horas por dia, e entrega ao seu time a cotação já qualificada.">
-<meta name="theme-color" content="#101820">
-<link rel="icon" type="image/svg+xml" href="logo/atalaia-icone.svg">
+<meta name="theme-color" content="#1F2421">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preload" href="fontes/SchibstedGrotesk-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="canonical" href="https://atalaiainteligencia.com.br/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Atalaia Inteligência">
@@ -21,132 +25,267 @@
 <meta name="twitter:title" content="A IA que aprende o seu catálogo e atende o seu WhatsApp">
 <meta name="twitter:description" content="Atendimento com inteligência artificial no WhatsApp de quem vende produtos: a IA aprende o seu catálogo, responde em segundos, 24 horas por dia, e entrega ao seu time a cotação já qualificada.">
 <meta name="twitter:image" content="https://atalaiainteligencia.com.br/og.png">
-<style>[hidden]{display:none!important}</style>
 <style>
-/* Atalaia Inteligência — base comum das três opções. Identidade mantida: Georgia + system-ui, noite / tocha / petróleo / claro. */
+/* Atalaia · identidade Muralha (kit de marca v1.0). Pedra, carvão e brasa. Schibsted Grotesk + JetBrains Mono. */
+@font-face { font-family: "Schibsted Grotesk"; src: url("fontes/SchibstedGrotesk-var.woff2") format("woff2"); font-weight: 400 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Schibsted Grotesk"; src: url("fontes/SchibstedGrotesk-Italic-var.woff2") format("woff2"); font-weight: 400 900; font-style: italic; font-display: swap; }
+@font-face { font-family: "JetBrains Mono"; src: url("fontes/JetBrainsMono-var.woff2") format("woff2"); font-weight: 100 800; font-style: normal; font-display: swap; }
+
 :root {
-  --noite: #101820; --noite2: #182230; --noite3: #0B141A;
-  --pedra: #F5F3EE; --painel: #FFFFFF;
-  --tinta: #1C242E; --tinta2: #5D6672; --linha: #E3DFD5;
-  --tocha: #B97F24; --tocha-viva: #D69A3A; --tocha-clara: #E8B04B; --tocha-suave: #F6EBD8;
-  --petroleo: #2E4A56; --claro: #E8E4DA; --claro2: #97A0AC; --claro3: #6d7c88;
-  --zap: #005C4B; --zap-claro: #1E7A46; --deles: #202C33;
-  --serif: Georgia, "Times New Roman", serif;
-  --sans: "Segoe UI", system-ui, -apple-system, sans-serif;
-  /* escala de tipo: 8 degraus, nunca outro tamanho */
-  --t-1: 13px; --t0: 15px; --t1: 17px; --t2: 20px; --t3: 24px;
-  --t4: clamp(28px, 4vw, 36px); --t5: clamp(34px, 6vw, 56px); --t6: clamp(40px, 8vw, 84px);
-  --gutter: clamp(20px, 5vw, 48px); --miolo: 1080px;
-  color-scheme: dark;
+  --carvao: #1F2421; --carvao2: #2A302C; --carvao3: #171B18;
+  --pedra: #E6E4DC; --cal: #F6F5F0; --palco: #EFEDE6; --linha: #C9C6BB;
+  --musgo: #565D57; --nevoa: #A3A89F;
+  --ouro: #E8A11C; --ouro-claro: #F2BC52; --queimado: #C8551A; --acento-txt: #855600;
+  --sans: "Schibsted Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  /* nome que o painel vivo herdou do site antigo. Os apelidos de cor (--claro2, --claro3, --tocha-viva) NÃO moram aqui:
+     variável CSS resolve onde é declarada, e no :root ainda não existe --fg2 nem --acc. Eles ficam nos temas, logo abaixo. */
+  --serif: var(--mono);
+  --t-1: clamp(.78rem, .76rem + .1vw, .84rem);
+  --t0: clamp(.95rem, .92rem + .15vw, 1.04rem);
+  --t1: clamp(1.05rem, 1rem + .25vw, 1.2rem);
+  --t2: clamp(1.18rem, 1.08rem + .5vw, 1.5rem);
+  --t3: clamp(1.45rem, 1.2rem + 1.1vw, 2.1rem);
+  --t4: clamp(1.9rem, 1.4rem + 2.2vw, 3.2rem);
+  --t5: clamp(2.35rem, 1.5rem + 4vw, 5rem);
+  --gut: clamp(16px, 4vw, 56px);
+  --ease: cubic-bezier(.32,.72,0,1);
+  --topo-h: 64px;
 }
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
-body { background: var(--noite); color: var(--claro); font: var(--t1)/1.6 var(--sans); overflow-x: clip; }
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: calc(var(--topo-h) + 16px); }
+body { margin: 0; font-family: var(--sans); font-size: var(--t0); line-height: 1.55; background: var(--carvao); color: var(--pedra); -webkit-font-smoothing: antialiased; overflow-x: clip; }
+h1, h2, h3, h4, p, ul, ol, dl, dd, figure { margin: 0; padding: 0; }
+ul, ol { list-style: none; }
 img, svg { display: block; max-width: 100%; }
 a { color: inherit; }
 button { font: inherit; color: inherit; }
-:focus-visible { outline: 2px solid var(--tocha-viva); outline-offset: 3px; }
-.miolo { max-width: var(--miolo); margin-inline: auto; padding-inline: var(--gutter); }
-h1, h2, h3, .serif { font-family: var(--serif); font-weight: 700; line-height: 1.08; text-wrap: balance; }
-h1 { font-size: var(--t5); letter-spacing: -0.02em; }
-h2 { font-size: var(--t4); letter-spacing: -0.015em; }
-h3 { font-size: var(--t2); letter-spacing: 0; line-height: 1.25; }
-.olho { font-family: var(--sans); font-size: var(--t-1); letter-spacing: 0.14em; text-transform: uppercase; color: var(--tocha-viva); font-weight: 600; }
-.mudo { color: var(--claro2); }
-.tocha { color: var(--tocha-viva); }
-p.grande { font-size: var(--t2); line-height: 1.5; }
-.max { max-width: 34em; }
+h1, h2, h3 { font-weight: 700; letter-spacing: -0.03em; line-height: 1.04; text-wrap: balance; }
+h2 { font-size: var(--t4); }
+h3 { font-size: var(--t2); letter-spacing: -0.02em; line-height: 1.15; }
+p { text-wrap: pretty; }
+code { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+:focus-visible { outline: 2px solid var(--acc, var(--ouro)); outline-offset: 3px; border-radius: 6px; }
+.miolo { width: 100%; max-width: 1320px; margin-inline: auto; padding-inline: var(--gut); }
+.ico { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; flex: none; }
 
-/* marca: sem corte no celular */
-.marca { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; font-family: var(--serif); font-weight: 700;
-  letter-spacing: 0.18em; font-size: var(--t0); text-decoration: none; white-space: nowrap; }
-.marca img { width: 34px; height: 34px; border-radius: 8px; }
-.marca span { color: var(--tocha-viva); }
-@media (max-width: 420px) { .marca { letter-spacing: 0.1em; font-size: var(--t-1); } }
+/* temas de seção */
+.noite { --bg: var(--carvao); --fg: var(--pedra); --fg2: var(--nevoa); --fg3: #949A93; --acc: var(--ouro); --brasa: var(--ouro); --fio: rgba(230,228,220,.14); background: var(--bg); color: var(--fg); }
+.dia { --bg: var(--pedra); --fg: var(--carvao); --fg2: var(--musgo); --fg3: #5F665F; --acc: var(--acento-txt); --brasa: var(--queimado); --fio: var(--linha); background: var(--bg); color: var(--fg); }
+/* apelidos que o CSS do painel vivo usa, declarados onde --fg2, --fg3 e --acc já existem */
+.noite, .dia, .produto { --claro2: var(--fg2); --claro3: var(--fg3); --tocha-viva: var(--acc); }
+section { position: relative; padding-block: clamp(72px, 10vw, 148px); }
+.olho { font-family: var(--mono); font-size: var(--t-1); letter-spacing: .08em; text-transform: uppercase; color: var(--acc); display: inline-flex; align-items: center; gap: 10px; }
+.olho::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--brasa); animation: respira 3.6s ease-in-out infinite; }
+.sub { color: var(--fg2); font-size: var(--t1); max-width: 40em; margin-top: 16px; }
+@keyframes respira { 0%,100% { transform: scale(1); opacity: .92; } 30% { transform: scale(1.09); opacity: 1; } 60% { transform: scale(.96); opacity: .9; } 80% { transform: scale(1.05); opacity: 1; } }
+.atalaia-brasa { transform-box: fill-box; transform-origin: center; animation: respira 3.6s ease-in-out infinite; }
+/* seção fora da tela: pausa o que estiver em laço (ver IntersectionObserver no fim da página) */
+.dorme .olho::before, .dorme .atalaia-brasa, .dorme .vis .varre, .dorme .vis .noar i, .dorme .pv-cursor, .dorme .digitando i { animation-play-state: paused; }
 
-/* botões: 48px de altura, feedback no toque */
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px;
-  padding: 12px 24px; border-radius: 12px; font-weight: 700; font-size: var(--t1); text-decoration: none;
-  border: 0; cursor: pointer; background: var(--tocha); color: #14100a;
-  transition: transform 120ms ease-out, background 160ms; -webkit-tap-highlight-color: transparent; }
-.btn:hover { background: var(--tocha-viva); }
-.btn:active { transform: scale(0.97); }
-.btn.linha { background: transparent; color: var(--claro); border: 1px solid rgba(232,228,218,.28); font-weight: 600; }
-.btn.linha:hover { border-color: var(--tocha-viva); color: var(--tocha-viva); background: transparent; }
-.btn svg { width: 20px; height: 20px; flex: none; }
+/* botões */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 22px; border-radius: 999px; border: 1px solid transparent; font-weight: 650; font-size: var(--t0); text-decoration: none; cursor: pointer; white-space: normal; text-align: center; padding-block: 8px; transition: transform 220ms var(--ease), background 220ms, color 220ms, border-color 220ms; }
+.btn:active { transform: scale(.97); }
+.btn.cheio { background: var(--ouro); color: var(--carvao); }
+.btn.cheio:hover { background: var(--ouro-claro); }
+.dia .btn.cheio, .topo.claro .btn.cheio { background: var(--carvao); color: var(--pedra); }
+.dia .btn.cheio:hover, .topo.claro .btn.cheio:hover { background: #2F3632; }
+.btn.contorno { border-color: currentColor; background: transparent; color: inherit; }
+.btn.contorno:hover { background: color-mix(in srgb, currentColor 10%, transparent); }
+.btn .ico { width: 18px; height: 18px; }
 
-/* ícone SVG padrão (traço 1.75) */
-.ico { width: 28px; height: 28px; stroke: currentColor; fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+/* topo */
+.topo { position: fixed; inset: 0 0 auto 0; z-index: 50; height: var(--topo-h); color: var(--pedra); --brasa: var(--ouro); background: rgba(31,36,33,.82); -webkit-backdrop-filter: blur(14px) saturate(1.2); backdrop-filter: blur(14px) saturate(1.2); border-bottom: 1px solid rgba(230,228,220,.1); transition: background 280ms, color 280ms, border-color 280ms; }
+/* --acc também no tema claro: sem isso o anel de foco caía no ouro do fallback, 1,73:1 sobre pedra (WCAG pede 3:1) */
+.topo.claro { --acc: var(--acento-txt); color: var(--carvao); --brasa: var(--queimado); background: rgba(230,228,220,.86); border-bottom-color: rgba(31,36,33,.12); }
+.topo .miolo { height: 100%; display: flex; align-items: center; gap: clamp(10px, 2vw, 28px); }
+/* flex: none + largura explícita: sem isso, quando os botões do topo crescem (560 a 667 px) o flex espreme a logo até 0 px.
+   93 = 26 de altura x 608/170 do wordmark. A logo nunca é o item que cede. */
+.marca { display: inline-flex; align-items: center; min-height: 44px; line-height: 0; text-decoration: none; flex: none; }
+.marca svg { height: 26px; width: 93px; flex: none; }
+.topo nav { margin-left: auto; display: none; gap: 4px; }
+.topo nav a { white-space: nowrap; min-height: 44px; display: inline-flex; align-items: center; padding: 0 12px; border-radius: 999px; text-decoration: none; font-size: .95rem; opacity: .82; transition: opacity 200ms, background 200ms; }
+.topo nav a:hover { opacity: 1; background: color-mix(in srgb, currentColor 9%, transparent); }
+.topo .acoes { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+.topo .btn { min-height: 44px; padding: 0 16px; font-size: .92rem; white-space: nowrap; }
+/* Celular: o botão de VENDA fica sempre à vista (o site anterior tinha "Começar" no topo; tirar seria regressão).
+   Quem encolhe é o acesso do cliente, que vira ícone de 44 px com rótulo acessível. */
+.topo .btn .lg { display: none; }
+.topo .btn.contorno { width: 44px; padding: 0; }
+.topo .btn.contorno .rot { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (min-width: 600px) { .topo .btn .lg { display: inline; } .topo .btn .sm { display: none; } .topo .btn.contorno { width: auto; padding: 0 16px; } .topo .btn.contorno .rot { position: static; width: auto; height: auto; clip-path: none; } }
+@media (min-width: 1180px) { .topo nav { display: flex; } .topo .acoes { margin-left: 8px; } }
 
-/* topo translúcido */
-.topo { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
-  background: rgba(16,24,32,.94); border-bottom: 1px solid rgba(232,228,218,.08); }
-@media (min-width: 900px) { .topo { background: rgba(16,24,32,.72); backdrop-filter: blur(16px) saturate(160%); -webkit-backdrop-filter: blur(16px) saturate(160%); } }
-.topo .miolo { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 60px; }
-.topo .btn { min-height: 44px; padding: 10px 18px; font-size: var(--t0); white-space: nowrap; flex: none; }
-.topo .btn .sm { display: none; }
-@media (max-width: 599px) { .topo .btn .lg { display: none; } .topo .btn .sm { display: inline; } }
-@media (prefers-reduced-transparency: reduce) { .topo { background: var(--noite); backdrop-filter: none; } }
+/* herói */
+.hero { padding-top: calc(var(--topo-h) + clamp(36px, 6vw, 88px)); padding-bottom: 0; overflow: clip; }
+/* Duas camadas. A névoa musgo fica PARADA. A luz ouro é um elemento próprio com gradiente closest-side, que termina
+   dentro da própria caixa: pode andar o quanto for que não existe borda pra aparecer. Na rodada 2 eu movia a camada inteira
+   e o deslocamento (até 561 px) revelava a aresta reta do elemento com o mouse no canto do herói. */
+.hero .luz { position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+  background: radial-gradient(ellipse 50% 50% at 6% 90%, rgba(86,93,87,.34), transparent 66%); }
+.hero .brilho { position: absolute; left: 78%; top: 12%; width: min(1100px, 92vw); aspect-ratio: 1.2; margin: calc(min(1100px, 92vw) / -2.4) 0 0 calc(min(1100px, 92vw) / -2);
+  background: radial-gradient(closest-side, rgba(232,161,28,.17), transparent); }
+.hero .miolo { position: relative; }
+.hero-txt { display: grid; gap: clamp(20px, 3vw, 40px); }
+.hero h1 { font-size: var(--t5); max-width: 15em; }
+.hero h1 em { font-style: normal; color: var(--ouro); }
+.hero .grande { font-size: var(--t1); color: var(--fg2); max-width: 36em; }
+.hero-txt > * { min-width: 0; }
+.hero .cta { display: flex; flex-wrap: wrap; gap: 10px 22px; align-items: center; margin-top: 22px; }
+.hero .cta .texto { min-height: 44px; display: inline-flex; align-items: center; color: var(--fg2); text-underline-offset: 4px; }
+.hero .cta .texto:hover { color: var(--ouro); }
+@media (min-width: 1040px) and (min-aspect-ratio: 1/1) { .hero-txt { grid-template-columns: 1.25fr 1fr; align-items: end; } }
 
-/* conversa (demo) */
-.zap { background: var(--noite3); border: 1px solid #22303C; border-radius: 20px; padding: 14px; box-shadow: 0 30px 70px rgba(0,0,0,.5); }
-.zap .cabec { display: flex; align-items: center; gap: 10px; padding: 2px 4px 12px; border-bottom: 1px solid #22303C; margin-bottom: 12px; }
-.zap .bola { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--tocha), var(--petroleo)); display: grid; place-items: center; color: var(--claro); }
-.zap .bola svg { width: 18px; height: 18px; }
-.zap .cabec b { display: block; font-size: var(--t0); color: var(--claro); }
-.zap .cabec small { color: var(--claro3); font-size: var(--t-1); }
-.zap .tag { margin-left: auto; font-size: var(--t-1); color: var(--claro3); border: 1px solid #22303C; border-radius: 999px; padding: 4px 10px; white-space: nowrap; }
-.zap .conversa { max-height: 360px; overflow-y: auto; scroll-behavior: smooth; padding: 2px; overscroll-behavior: contain; }
-.balao { max-width: 88%; padding: 10px 13px; border-radius: 14px; font-size: var(--t0); line-height: 1.45; margin-bottom: 8px; color: #E7E3DB; }
-.balao.deles { background: var(--deles); margin-right: auto; border-bottom-left-radius: 4px; }
-.balao.nosso { background: var(--zap); margin-left: auto; border-bottom-right-radius: 4px; }
-.balao small { display: block; text-align: right; font-size: 11px; color: rgba(231,227,219,.55); margin-top: 3px; }
-.balao mark { background: rgba(214,154,58,.22); color: var(--tocha-clara); padding: 0 4px; border-radius: 4px; }
-.selo { display: flex; align-items: center; gap: 8px; justify-content: center; font-size: var(--t-1); color: var(--claro3); margin: 6px 0 10px; }
-.selo svg { width: 14px; height: 14px; stroke: var(--tocha-viva); }
-.chips { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 12px; border-top: 1px solid #22303C; margin-top: 10px; }
-.chip { min-height: 44px; background: none; border: 1px solid var(--tocha); color: var(--tocha-viva); border-radius: 999px; padding: 10px 16px;
-  font-size: var(--t0); cursor: pointer; line-height: 1.3; text-align: left; transition: transform 120ms; -webkit-tap-highlight-color: transparent; }
-.chip:hover { background: rgba(214,154,58,.12); }
-.chip:active { transform: scale(0.97); }
-.chip.link { text-decoration: none; display: inline-flex; align-items: center; background: var(--tocha); color: #14100a; font-weight: 700; }
-.digitando { display: inline-flex; gap: 4px; align-items: center; height: 16px; }
-.digitando i { width: 6px; height: 6px; border-radius: 50%; background: #8899a6; animation: pulsa 1s infinite; }
-.digitando i:nth-child(2) { animation-delay: .18s; } .digitando i:nth-child(3) { animation-delay: .36s; }
-@keyframes pulsa { 0%, 60%, 100% { opacity: .25 } 30% { opacity: 1 } }
-.caixa-falsa { margin-top: 10px; background: var(--deles); border-radius: 999px; padding: 11px 16px; font-size: var(--t-1); color: var(--claro3); }
+/* palco: chat e fila, um causando o outro */
+.palco-wrap { container-type: inline-size; margin-top: clamp(36px, 5vw, 72px); }
+/* minmax(0,1fr): sem isso a coluna única cresce até o conteúdo mínimo (296 px) e em 290 px úteis
+   (320 com barra de rolagem, ou 1280 com zoom de 400%) o chat e a fila eram cortados 22 px à direita */
+.palco { display: grid; gap: 0; grid-template-columns: minmax(0, 1fr); }
+.fila-cab { flex-wrap: wrap; }
+.cena-lbl { font-family: var(--mono); font-size: var(--t-1); letter-spacing: .06em; text-transform: uppercase; color: var(--fg2); display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.cena-lbl b { color: var(--fg); font-weight: 500; }
+@container (max-width: 779px) { .cena-lbl { display: block; } }
+.zap { background: var(--carvao3); border: 1px solid #2F3632; border-radius: 22px; overflow: hidden; display: grid; grid-template-rows: auto 1fr auto auto; box-shadow: 0 30px 80px -40px rgba(0,0,0,.7); }
+/* mesma causa do palco: grade de coluna única sem minmax(0,1fr) cresce até o conteúdo mínimo e estoura em 290 a 305 px úteis */
+.zap { grid-template-columns: minmax(0, 1fr); }
+.zap .cabec > div:not(.bola) { min-width: 0; }
+.zap .cabec { flex-wrap: wrap; row-gap: 6px; }
+.zap .cabec { display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: var(--carvao2); border-bottom: 1px solid #2F3632; }
+.zap .bola { width: 38px; height: 38px; border-radius: 50%; background: var(--carvao); display: grid; place-items: center; flex: none; }
+.zap .bola svg { width: 20px; height: 20px; }
+.zap .cabec b { display: block; font-size: .95rem; font-weight: 600; }
+.zap .cabec small { color: var(--nevoa); font-size: .78rem; }
+.zap .tag { margin-left: auto; font-family: var(--mono); font-size: .68rem; letter-spacing: .06em; text-transform: uppercase; color: var(--nevoa); border: 1px solid #3A423D; border-radius: 999px; padding: 3px 9px; }
+.conversa { height: clamp(300px, 44svh, 540px); overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 8px; scrollbar-width: thin; scrollbar-color: #3A423D transparent; overscroll-behavior: contain; }
+.balao { max-width: 86%; padding: 9px 12px 7px; border-radius: 14px; font-size: .93rem; line-height: 1.42; }
+/* texto de 10,6 px pede 4,5:1: névoa sobre o verde do balão do cliente dava 4,10. Piso de 11 px e cor mais clara nesse balão. */
+.balao small { display: block; text-align: right; font-family: var(--mono); font-size: .69rem; color: var(--nevoa); margin-top: 3px; }
+.balao.deles small { color: #BDC2B9; }
+.balao.nosso { align-self: flex-start; background: var(--carvao2); border-top-left-radius: 4px; }
+.balao.deles { align-self: flex-end; background: #38463D; border-top-right-radius: 4px; }
+.balao mark { background: rgba(232,161,28,.16); color: var(--ouro-claro); font-family: var(--mono); font-size: .9em; padding: 1px 5px; border-radius: 5px; }
+.digitando { display: inline-flex; gap: 4px; padding: 5px 2px; }
+.digitando i { width: 6px; height: 6px; border-radius: 50%; background: var(--nevoa); animation: pula 1s infinite; }
+.digitando i:nth-child(2) { animation-delay: .15s; } .digitando i:nth-child(3) { animation-delay: .3s; }
+@keyframes pula { 0%,60%,100% { transform: none; opacity: .5; } 30% { transform: translateY(-4px); opacity: 1; } }
+.selo { align-self: center; display: inline-flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: .7rem; color: var(--ouro-claro); border: 1px solid rgba(232,161,28,.35); border-radius: 999px; padding: 4px 11px; text-align: center; }
+.selo .ico { width: 13px; height: 13px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px 16px 6px; border-top: 1px solid #2F3632; }
+.chip { min-height: 44px; padding: 8px 14px; border-radius: 14px; border: 1px solid #454E48; background: transparent; color: var(--pedra); font-size: .9rem; text-align: left; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; transition: border-color 200ms, background 200ms, transform 200ms var(--ease); }
+.chip:hover { border-color: var(--ouro); background: rgba(232,161,28,.08); }
+.chip:active { transform: scale(.97); }
+.chip.link { background: var(--ouro); border-color: var(--ouro); color: var(--carvao); font-weight: 650; }
+.eco { display: none; margin: 0 16px; padding: 8px 12px; border-radius: 10px; border: 1px dashed rgba(232,161,28,.45); color: var(--ouro-claro); font-family: var(--mono); font-size: .72rem; overflow-wrap: anywhere; }
+@container (max-width: 779px) { .eco.tem { display: block; } .caixa-falsa { display: none; } .conversa { height: clamp(260px, 38svh, 420px); } .chips { padding-bottom: 14px; } }
+.caixa-falsa { margin: 6px 16px 14px; padding: 10px 14px; border-radius: 12px; background: var(--carvao2); color: var(--nevoa); font-size: .8rem; }
 
-/* diagnóstico guiado */
-#diag { background: var(--painel); color: var(--tinta); border-radius: 22px; padding: 26px 22px 22px; max-width: 560px; margin-inline: auto; box-shadow: 0 30px 70px rgba(0,0,0,.45); }
-.diag-barra { height: 4px; background: var(--linha); border-radius: 999px; overflow: hidden; margin-bottom: 18px; }
-.diag-barra i { display: block; height: 100%; background: var(--tocha); transform-origin: left; transform: scaleX(0); transition: transform 320ms cubic-bezier(.2,.7,.2,1); }
-.diag-passo { font-size: var(--t-1); letter-spacing: 0.12em; text-transform: uppercase; color: var(--tinta2); font-weight: 600; }
-.diag-titulo { font-family: var(--serif); font-size: var(--t3); line-height: 1.2; margin: 6px 0 18px; }
-.diag-opcoes { display: grid; gap: 10px; }
-.diag-op { min-height: 52px; text-align: left; padding: 12px 16px; border-radius: 12px; border: 1px solid var(--linha); background: var(--pedra);
-  cursor: pointer; font-size: var(--t1); transition: transform 120ms, border-color 160ms; -webkit-tap-highlight-color: transparent; }
-.diag-op:hover { border-color: var(--tocha); }
-.diag-op:active { transform: scale(0.98); }
-.diag-previa { white-space: pre-line; background: var(--tocha-suave); border-radius: 12px; padding: 14px 16px; font-size: var(--t0); line-height: 1.5; color: var(--tinta); }
-.diag-enviar { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; border-radius: 12px; background: var(--zap-claro); color: #fff;
-  font-weight: 700; text-decoration: none; font-size: var(--t1); }
-.diag-enviar:active { transform: scale(0.98); }
-.diag-voltar { margin-top: 14px; min-height: 44px; background: none; border: 0; color: var(--tinta2); cursor: pointer; text-decoration: underline; font-size: var(--t0); padding: 0 6px; }
+.fio { display: grid; place-items: center; height: 56px; color: var(--ouro); position: relative; }
+.fio::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; border-left: 1px dashed rgba(232,161,28,.45); }
+.fio span { position: relative; background: var(--carvao); border: 1px solid rgba(232,161,28,.45); border-radius: 999px; width: 34px; height: 34px; display: grid; place-items: center; }
+.fio .ico { width: 16px; height: 16px; transform: rotate(90deg); }
 
-/* rodapé */
-footer { background: var(--noite3); color: var(--claro2); font-size: var(--t-1); padding-block: 40px; }
-footer .miolo { display: grid; gap: 14px; }
-footer nav { display: flex; flex-wrap: wrap; gap: 6px 18px; }
-footer a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; }
-footer a:hover { color: var(--tocha-viva); }
-footer .legal { line-height: 1.7; }
-
-/* movimento reduzido: cruza por opacidade, sem deslocamento */
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+.fila { background: var(--cal); color: var(--carvao); border-radius: 22px; overflow: hidden; display: grid; grid-template-rows: auto 1fr auto; box-shadow: 0 30px 80px -40px rgba(0,0,0,.7); --acc: var(--acento-txt); }
+.fila-cab { display: flex; align-items: center; gap: 10px; padding: 14px 18px; border-bottom: 1px solid var(--linha); font-size: .9rem; }
+.fila-cab b { font-weight: 650; }
+.fila-cab .n { font-family: var(--mono); font-size: .72rem; background: var(--carvao); color: var(--pedra); border-radius: 999px; min-width: 22px; height: 22px; display: inline-grid; place-items: center; padding: 0 6px; transition: background 300ms; }
+/* pedra sobre #C8551A dava 3,46:1 e branco dava 4,40:1 (medido pelo juiz; 11,5 px bold NÃO é texto grande). Fundo #B94E17 com branco: 4,9:1 */
+.fila-cab .n.tem { background: #B94E17; color: #fff; font-weight: 700; }
+.fila-cab .etiq { font-family: var(--mono); font-size: .62rem; letter-spacing: .06em; text-transform: uppercase; color: var(--musgo); border: 1px solid var(--linha); border-radius: 999px; padding: 2px 8px; }
+.fila-cab .quem { margin-left: auto; color: var(--musgo); font-size: .8rem; display: inline-flex; align-items: center; gap: 6px; }
+.fila-cab .quem i { width: 7px; height: 7px; border-radius: 50%; background: #3C8C5A; }
+.fila-corpo { padding: 14px; display: grid; gap: 10px; align-content: start; }
+.cartao { background: #fff; border: 1px solid var(--linha); border-radius: 16px; padding: 16px; display: grid; gap: 12px; transition: border-color 280ms, box-shadow 280ms; }
+.cartao.pronto { border-color: var(--queimado); box-shadow: 0 0 0 4px rgba(200,85,26,.12); }
+.cartao-topo { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.av { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; font-size: .72rem; font-weight: 700; color: #fff; background: var(--musgo); flex: none; }
+.cartao-topo .nm { font-weight: 650; font-size: .93rem; line-height: 1.2; }
+.cartao-topo .nm small { display: block; font-weight: 400; color: var(--musgo); font-family: var(--mono); font-size: .7rem; }
+.estado { margin-left: auto; font-size: .72rem; font-weight: 650; border-radius: 999px; padding: 4px 10px; background: var(--palco); color: var(--musgo); display: inline-flex; align-items: center; gap: 6px; transition: background 300ms, color 300ms; }
+.estado::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.estado.ia { background: #F3E7CC; color: #6B4500; }
+.estado.ok { background: var(--carvao); color: var(--pedra); }
+.estado.ok::before { background: var(--ouro); }
+.campos { display: grid; grid-template-columns: auto 1fr; gap: 0 14px; font-size: .86rem; }
+.campos dt { color: var(--musgo); padding: 7px 0; border-top: 1px solid var(--palco); }
+.campos dd { padding: 7px 0; border-top: 1px solid var(--palco); font-family: var(--mono); font-size: .8rem; text-align: right; overflow-wrap: anywhere; min-width: 0; border-radius: 4px; }
+.campos dd.vazio { color: var(--musgo); font-family: var(--sans); font-style: italic; font-size: .8rem; }
+.campos dd.acende { animation: acende 1.2s ease-out; }
+@keyframes acende { 0% { background: rgba(232,161,28,.5); } 100% { background: transparent; } }
+.resumo { font-size: .86rem; color: var(--carvao); background: var(--palco); border-radius: 12px; padding: 11px 13px; min-height: 3.2em; }
+.resumo b { display: block; font-family: var(--mono); font-weight: 500; font-size: .66rem; letter-spacing: .07em; text-transform: uppercase; color: var(--musgo); margin-bottom: 4px; }
+.fila-pe { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; padding: 12px 18px; border-top: 1px solid var(--linha); font-size: .84rem; color: var(--musgo); }
+.fila-pe .falso { margin-left: auto; font-weight: 650; font-size: .84rem; border-radius: 999px; padding: 8px 16px; background: var(--palco); color: var(--musgo); transition: background 280ms, color 280ms; }
+.fila-pe.vivo .falso { background: var(--carvao); color: var(--pedra); }
+/* opacity derrubava o contraste de TODO o texto do cartão (medido 2,64:1). O recuo agora é de cor e fundo, que passam AA. */
+.cartao.fraco { padding: 12px 16px; background: var(--palco); border-style: dashed; }
+.cartao.fraco .nm, .cartao.fraco .estado { color: var(--musgo); }
+.cartao.fraco .av { opacity: .85; }
+.voa { position: absolute; z-index: 80; left: 0; top: 0; pointer-events: none; font-family: var(--mono); font-size: .76rem; background: var(--ouro); color: var(--carvao); padding: 4px 9px; border-radius: 999px; white-space: nowrap; max-width: 60vw; overflow: hidden; text-overflow: ellipsis; box-shadow: 0 8px 24px -8px rgba(232,161,28,.7); }
+@container (min-width: 780px) {
+  .palco { grid-template-columns: minmax(0,1fr) 72px minmax(0,1fr); align-items: stretch; }
+  .lado { display: grid; grid-template-rows: auto 1fr; }
+  .fio { height: auto; margin-top: 30px; }
+  .fio::before { left: 0; right: 0; top: 50%; bottom: auto; border-left: 0; border-top: 1px dashed rgba(232,161,28,.45); }
+  .fio .ico { transform: none; }
 }
+.muralha { position: relative; height: clamp(48px, 7vw, 96px); margin-top: clamp(40px, 6vw, 80px); }
+.muralha i { position: absolute; inset: auto 0 0 0; display: block; }
+.muralha .tras { height: 100%; background: var(--carvao2); --d: clamp(30px, 4vw, 54px); -webkit-mask: repeating-linear-gradient(90deg, #000 0 var(--d), transparent var(--d) calc(var(--d) * 1.6)) top / 100% 16px no-repeat, linear-gradient(#000, #000) bottom / 100% calc(100% - 16px) no-repeat; mask: repeating-linear-gradient(90deg, #000 0 var(--d), transparent var(--d) calc(var(--d) * 1.6)) top / 100% 16px no-repeat, linear-gradient(#000, #000) bottom / 100% calc(100% - 16px) no-repeat; }
+.muralha .frente { height: 62%; background: var(--carvao3); --d: clamp(40px, 5.4vw, 76px); -webkit-mask: repeating-linear-gradient(90deg, #000 0 var(--d), transparent var(--d) calc(var(--d) * 1.55)) top / 100% 20px no-repeat, linear-gradient(#000, #000) bottom / 100% calc(100% - 20px) no-repeat; mask: repeating-linear-gradient(90deg, #000 0 var(--d), transparent var(--d) calc(var(--d) * 1.55)) top / 100% 20px no-repeat, linear-gradient(#000, #000) bottom / 100% calc(100% - 20px) no-repeat; }
 
+/* sábado: com e sem */
+.sabado { --bg: var(--carvao3); background: var(--carvao3); }
+.sabado h2 { font-size: var(--t5); }
+/* tabular-nums só nos dígitos: o ponto final ficava com largura de dígito e abria um buraco ("22h14 .") */
+.sabado h2 .hora { color: var(--ouro); font-variant-numeric: tabular-nums; }
+.duas { display: grid; gap: clamp(28px, 4vw, 56px); margin-top: clamp(36px, 5vw, 64px); }
+@media (min-width: 900px) { .duas { grid-template-columns: 1.15fr .85fr; align-items: start; } }
+.trilho { border-left: 1px solid var(--fio); }
+.marco { position: relative; padding: 16px 0 16px 28px; }
+.marco::before { content: ""; position: absolute; left: -5px; top: 27px; width: 9px; height: 9px; border-radius: 50%; background: #5F665F; transition: background 280ms, box-shadow 280ms; }
+.marco.aceso::before { background: var(--ouro); box-shadow: 0 0 0 6px rgba(232,161,28,.18); }
+.marco time { font-family: var(--mono); font-size: var(--t1); color: var(--fg); display: block; }
+.marco p { color: var(--fg2); max-width: 36em; }
+.marco p b { color: var(--fg); font-weight: 600; }
+.sem { background: var(--carvao); border: 1px solid #2F3632; border-radius: 22px; padding: clamp(18px, 2.4vw, 28px); display: grid; gap: 10px; }
+.sem h3 { font-size: var(--t1); color: var(--fg2); font-weight: 500; letter-spacing: 0; margin-bottom: 6px; }
+.sem .balao { max-width: 92%; }
+.sem .visto { align-self: flex-end; font-family: var(--mono); font-size: .7rem; color: #7FA5C2; text-align: right; }
+.sem .pilha { display: flex; flex-direction: column; gap: 8px; }
+.sem .fim { color: var(--fg2); font-size: .92rem; border-top: 1px solid #2F3632; padding-top: 12px; margin-top: 6px; }
+
+/* como aprende */
+.aprende { border-top: 1px solid var(--fio); }
+.aprende .miolo { display: grid; gap: 40px; }
+@media (min-width: 900px) { .aprende .miolo { grid-template-columns: .9fr 1.1fr; gap: clamp(48px, 6vw, 96px); } .aprende .fixo { position: sticky; top: calc(var(--topo-h) + 32px); align-self: start; } }
+/* Sem ícone genérico (documento, balão, bonequinho): cada passo mostra a PROVA do que diz, com o material do próprio negócio. */
+.passo { display: grid; gap: 18px; padding: 30px 0; border-top: 1px solid var(--fio); }
+.passo:last-child { border-bottom: 1px solid var(--fio); }
+.passo h3 { margin-bottom: 8px; }
+.amostra { font-family: var(--mono); font-size: .8rem; display: grid; gap: 8px; max-width: 34rem; }
+.amostra .de-para { display: grid; grid-template-columns: minmax(0,auto) 18px minmax(0,1fr); align-items: center; gap: 10px; padding: 10px 12px; border-radius: 12px; background: var(--carvao2); }
+.amostra .de-para .de { color: var(--pedra); }
+.amostra .de-para .para { color: var(--ouro-claro); }
+.amostra .de-para svg { width: 18px; height: 18px; color: var(--ouro); }
+.amostra .tons { display: flex; flex-wrap: wrap; gap: 6px; }
+.amostra .tons span { border: 1px solid #454E48; border-radius: 999px; padding: 4px 10px; color: var(--nevoa); }
+.amostra .tons span.vez { border-color: var(--ouro); color: var(--ouro-claro); }
+.amostra .fala { font-family: var(--sans); font-size: .9rem; background: var(--carvao2); border-radius: 14px; border-top-left-radius: 4px; padding: 10px 13px; color: var(--pedra); width: fit-content; max-width: 100%; }
+.amostra .lista { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 6px; }
+.amostra .lista span { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border-radius: 10px; background: var(--carvao2); color: var(--pedra); }
+.amostra .lista span::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--ouro); flex: none; }
+.passo p { color: var(--fg2); }
+.passo code { font-size: .9em; color: var(--ouro-claro); background: rgba(232,161,28,.12); padding: 1px 6px; border-radius: 5px; }
+
+/* produto: a noite vira dia */
+.produto { --bg: var(--p-bg, var(--carvao)); --fg: var(--p-fg, var(--pedra)); --fg2: var(--p-fg2, var(--nevoa)); --fg3: var(--p-fg2, #949A93); --acc: var(--p-acc, var(--ouro)); --brasa: var(--p-brasa, var(--ouro)); --fio: color-mix(in srgb, var(--fg) 14%, transparent); background: var(--bg); color: var(--fg); overflow: clip; }
+/* brasa e texto de acento são coisas diferentes no kit: no claro a brasa é laranja queimado e o TEXTO é #855600.
+   Com uma variável só, a brasa desta seção ficava marrom ao amanhecer. */
+.produto .sol { position: absolute; left: 50%; bottom: -30vmin; width: 120vmin; height: 120vmin; translate: -50% 0; border-radius: 50%; background: radial-gradient(circle, rgba(232,161,28,.30), rgba(200,85,26,.10) 42%, transparent 66%); opacity: var(--sol, 0); pointer-events: none; }
+.produto .miolo { position: relative; }
+.prova { margin-top: clamp(32px, 4vw, 56px); padding-top: 22px; border-top: 1px solid var(--fio); color: var(--fg2); max-width: 46em; }
+.prova b { color: var(--fg); }
 /* ===== painel vivo (tour de produto) — tokens copiados do painel real (paginas.py, 17/09/2026) ===== */
 .pv-tour { display: grid; gap: 28px; }
 .pv-passos { display: grid; gap: 0; }
@@ -310,7 +449,7 @@ footer .legal { line-height: 1.7; }
   .pv { grid-template-columns: 1fr; grid-template-rows: auto auto; }
   .pv-trilho { order: 2; flex-direction: row; justify-content: space-around; padding: 6px 4px; width: 100%; }
   .pv-toast { right: 8px; left: 8px; bottom: 60px; max-width: none; min-width: 0; }
-  .pv-marca-cli, .pv-pe, .pv-it:nth-child(4), .pv-it:nth-child(5) { display: none; }
+  .pv-marca-cli, .pv-pe, .pv-it:not(.prim):not(.pv-mais) { display: none; } .pv-trilho .pv-it.pv-mais { display: grid; }
   .pv-it { width: auto; min-width: 56px; min-height: 40px; }
   .pv-quem { display: none; }
   .pv-cena { grid-template-columns: 1fr; min-height: 0; }
@@ -328,161 +467,502 @@ footer .legal { line-height: 1.7; }
   .pv-m.h { max-width: 90%; }
   .pv-tiles { grid-template-columns: repeat(2, 1fr); }
 }
+/* CELULAR: o painel mudava de altura a cada cena (522 -> 481 -> 498 px): o texto abaixo pulava e os gatilhos de rolagem
+   ficavam defasados (a pilha da implantação começava ~36 px adiantada). Altura mínima igual para as 3 cenas. */
+@container (max-width: 520px) { .pv-cena { min-height: 452px; } }
+/* "Mais" só existe na barra do celular; no desktop a aba Números aparece de verdade, então "Mais" nunca acende lá */
+.pv-it.pv-mais { display: none; }
+/* cartão recuado: o herdado usava opacity .6 e derrubava todo o texto (hora 2,34:1, prévia 2,51:1). Recuo por fundo, texto inteiro. */
+.pv-card.fraca { opacity: 1; background: var(--surface-2); }
+.pv-graf-tit span { color: #8A5A12; }
+/* etiqueta de demonstração no cabeçalho do painel recriado */
+.pv-demo { font-family: var(--mono, ui-monospace), monospace; font-size: 9.5px; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--muted); border: 1px solid var(--border); border-radius: 999px; padding: 2px 7px; margin-left: 8px; }
 
-/* ===== Opção 1: Muralha em movimento ===== */
-.hero { position: relative; overflow: hidden; padding-block: clamp(40px, 8vw, 96px) clamp(56px, 8vw, 96px); background: var(--noite); }
-.hero .luz { position: absolute; inset: -20% -10%; pointer-events: none;
-  background: radial-gradient(ellipse 60% 45% at 80% 10%, rgba(214,154,58,.20), transparent 62%),
-              radial-gradient(ellipse 50% 55% at 8% 95%, rgba(46,74,86,.45), transparent 65%); will-change: transform; }
-.hero .miolo { position: relative; display: grid; gap: 40px; }
-@media (min-width: 900px) { .hero .miolo { grid-template-columns: 1.05fr .95fr; gap: 64px; align-items: center; } }
-.hero .olho { margin-bottom: 18px; }
-.hero h1 { font-size: var(--t5); margin-bottom: 22px; }
-.hero h1 em { font-style: normal; color: var(--tocha-viva); }
-.hero p.grande { color: var(--claro2); margin-bottom: 30px; }
-.hero .acoes { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; }
-.hero .acoes a.texto { min-height: 44px; display: inline-flex; align-items: center; color: var(--claro2); text-decoration: underline; text-underline-offset: 4px; font-size: var(--t0); }
-.hero .acoes a.texto:hover { color: var(--tocha-viva); }
-.linha-mask { overflow: hidden; }
+/* botão verde de nova conversa (deploy de 18/09 19h12: saiu do trilho e virou ação no topo de Conversas) */
+.pv-nova { display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; min-height: 32px; margin-bottom: 8px;
+  border: 0; border-radius: 10px; background: var(--verde); color: var(--verde-btn-txt); font: inherit; font-size: 11.5px; font-weight: 700; cursor: default; }
+.pv-nova .ic { width: 14px; height: 14px; }
 
-/* sábado */
-.sabado { background: var(--noite3); padding-block: clamp(72px, 12vw, 140px); }
-.sabado h2 { font-size: var(--t6); line-height: 1; letter-spacing: -0.03em; margin-bottom: 8px; }
-.sabado h2 small { display: block; font-family: var(--sans); font-weight: 400; font-size: var(--t2); letter-spacing: 0; color: var(--claro2); margin-top: 14px; }
-.trilho { margin-top: 48px; display: grid; gap: 0; border-left: 1px solid rgba(232,228,218,.14); }
-.trilho .marco { position: relative; padding: 18px 0 18px 28px; }
-.trilho .marco::before { content: ""; position: absolute; left: -5px; top: 30px; width: 9px; height: 9px; border-radius: 50%; background: var(--claro3); transition: background 300ms, box-shadow 300ms; }
-.trilho .marco.aceso::before { background: var(--tocha-viva); box-shadow: 0 0 0 6px rgba(214,154,58,.18); }
-.trilho time { font-family: var(--serif); font-size: var(--t3); color: var(--claro); font-variant-numeric: tabular-nums; display: block; }
-.trilho p { color: var(--claro2); max-width: 34em; }
-.trilho p b { color: var(--claro); font-weight: 600; }
-@media (min-width: 900px) { .sabado .miolo { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; } .trilho { margin-top: 8px; } }
+.pv-tour { margin-top: clamp(28px, 4vw, 56px); }
+/* O código herdado esmaecia o passo inativo com opacity .45: medido 1,9:1 de dia. E sem GSAP (CDN bloqueada por firewall
+   de empresa) nenhum passo ganha .on, então os três ficavam ilegíveis pra sempre. Opacidade não consegue esmaecer e manter AA
+   no tema claro, então o texto fica inteiro e quem marca o passo ativo é a brasa ao lado do horário. */
+.pv-passo, .pv-passo.on { border-top-color: var(--fio); opacity: 1; }
+.pv-passo .pv-hora { display: flex; align-items: center; gap: 10px; }
+.pv-passo .pv-hora::before { content: ""; width: 9px; height: 9px; border-radius: 50%; flex: none; border: 1.5px solid var(--fg2); transition: background 240ms, border-color 240ms; }
+.pv-passo.on .pv-hora::before { background: var(--brasa); border-color: var(--brasa); }
+.pv-passo .pv-hora { font-size: var(--t1); letter-spacing: -0.02em; }
+.pv { box-shadow: 0 40px 90px -50px rgba(0,0,0,.65); }
+/* Monitor vertical: o painel empilha em cima do texto. Sem limite de largura ele virava uma faixa de 1208x362
+   (medido em 1440x2560), porque a fonte interna é fixa e só a caixa esticava. Limitar a largura devolve a proporção de tela. */
+@media (min-width: 900px) and (max-aspect-ratio: 1/1) {
+  .pv-tour { grid-template-columns: 1fr; justify-items: center; }
+  .pv-fixo { order: -1; z-index: 3; top: calc(var(--topo-h) + 12px); width: min(100%, 900px); }
+  .pv-passos { width: 100%; max-width: 900px; }
+  .pv-passo { min-height: 26svh; display: grid; align-content: center; }
+  .pv-passo h3 { font-size: var(--t3); } .pv-passo p:not(.pv-hora) { font-size: var(--t1); max-width: 38em; }
+  .pv-nota { width: min(100%, 900px); margin-inline: auto; }
+}
 
-/* como aprende */
-.aprende { background: var(--noite); padding-block: clamp(72px, 10vw, 120px); border-top: 1px solid rgba(232,228,218,.08); }
-.aprende .miolo { display: grid; gap: 40px; }
-@media (min-width: 900px) { .aprende .miolo { grid-template-columns: .9fr 1.1fr; gap: 72px; } .aprende .fixo { position: sticky; top: 92px; align-self: start; } }
-.aprende h2 { margin-bottom: 14px; }
-.aprende .fixo p { color: var(--claro2); }
-.passos { display: grid; }
-.passo { display: grid; grid-template-columns: 44px 1fr; gap: 18px; padding: 28px 0; border-top: 1px solid rgba(232,228,218,.12); }
-.passo:last-child { border-bottom: 1px solid rgba(232,228,218,.12); }
-.passo .ico { color: var(--tocha-viva); width: 32px; height: 32px; margin-top: 4px; }
-.passo h3 { margin-bottom: 8px; }
-.passo p { color: var(--claro2); font-size: var(--t0); }
-.passo p code { font-family: ui-monospace, Consolas, monospace; font-size: 0.92em; color: var(--tocha-clara); background: rgba(214,154,58,.12); padding: 1px 6px; border-radius: 5px; }
+/* telas do painel: REPRODUÇÕES em HTML do sistema como ele está no ramo `agenda` (deploy 18/09/2026 19h12).
+   Rótulos, ordem do menu, ícones e cores vêm de paginas.py. Todo dado é fictício. Escalam como imagem (fonte em cqw),
+   então ficam nítidas em qualquer tela e nunca carregam dado de cliente, que era o risco do print de verdade. */
+.telas .grade { display: grid; gap: clamp(20px, 3vw, 40px); margin-top: clamp(32px, 5vw, 64px); }
+/* as 3 telas uma embaixo da outra: lado a lado, as duas menores ficavam com fonte de 6,25 px em 1280 (medido pelo juiz) */
+.telas figcaption { margin-top: 12px; color: var(--fg2); font-size: .92rem; max-width: 44em; }
+.telas figcaption b { color: var(--fg); }
+.telas .selo-rep { display: inline-block; font-family: var(--mono); font-size: .66rem; letter-spacing: .06em; text-transform: uppercase; color: var(--musgo); border: 1px solid var(--linha); border-radius: 999px; padding: 2px 9px; margin-right: 8px; vertical-align: 1px; }
+.tl { container-type: inline-size; border-radius: 14px; overflow: hidden; border: 1px solid var(--linha); box-shadow: 0 40px 80px -48px rgba(31,36,33,.55); background: #E9EDEF; }
+.tl-in { --tb: #12283A; --tx: #1B2530; --mu: #5C6873; --bd: #D7DDE1; --vd: #35C26E; --az: #2C5F7C;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; font-size: clamp(11px, 1.12cqw, 13.5px); line-height: 1.35; color: var(--tx);
+  display: grid; grid-template-columns: 6.2em minmax(0, 1fr); aspect-ratio: 16 / 9.4; text-align: left; }
+.telas figure:not(.larga) .tl { max-width: 860px; }
+.telas figure:not(.larga) .tl-in { font-size: clamp(11px, 1.62cqw, 13.5px); aspect-ratio: 16 / 10.4; }
+/* Celular: miniatura de tela de desktop fica ilegível (a fonte batia no piso de 4,6 px e o conteúdo estourava a caixa).
+   Abaixo de 640 px de moldura a tela assume um tamanho fixo legível e rola de lado DENTRO da moldura; a página não rola. */
+/* limites diferentes: a tela larga tem 3 colunas e perde a leitura antes; as duas menores aguentam até 470 px
+   (no desktop elas têm ~584 px e NÃO podem cair no modo de rolagem, o que acontecia com um limite único de 640). */
+/* rodada 3: a tela larga tinha base de 7,2 px e mínimo de 5,06 px no iPad em pé. Agora NENHUMA tela desce de 9 px de base:
+   abaixo do limite ela assume largura fixa e rola de lado dentro da moldura. */
+@container (max-width: 980px) { .telas figure.larga .tl-in { width: 980px; font-size: 11px; } }
+@container (max-width: 680px) { .telas figure:not(.larga) .tl-in { width: 680px; font-size: 11px; } }
+.tl { overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: thin; }
+.tl svg { width: 1.7em; height: 1.7em; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+.tl-rail { background: var(--tb); color: #9FB2C0; display: flex; flex-direction: column; align-items: center; gap: .35em; padding: .9em 0; }
+.tl-rail .mk { width: 3.4em; height: 3.4em; border-radius: .9em; background: #fff; color: var(--tb); display: grid; place-items: center; font-weight: 800; font-size: .95em; margin-bottom: .6em; }
+.tl-rail span { display: grid; justify-items: center; gap: .2em; width: 5.2em; padding: .55em 0; border-radius: .9em; font-size: .78em; }
+.tl-rail span.on { background: rgba(255,255,255,.16); color: #fff; }
+.tl-rail .pe { margin-top: auto; font-size: .7em; letter-spacing: .06em; text-transform: uppercase; text-align: center; }
+.tl-rail .pe b { display: block; color: #F2F5F7; }
+.tl-main { display: grid; min-width: 0; min-height: 0; }
+.tl-cols { display: grid; grid-template-columns: 24em minmax(0, 1fr) 21em; min-height: 0; }
+/* era .duas: colidia com a regra .duas da seção sábado (margin-top, gap, align-items) e quebrava a tela Contatos em toda largura */
+.tl-cols.c2 { grid-template-columns: 27em minmax(0, 1fr); }
+.tl-col { background: #fff; border-right: 1px solid var(--bd); padding: 1em; display: flex; flex-direction: column; gap: .7em; min-width: 0; overflow: hidden; }
+.tl-col h5 { margin: 0; font-size: 1.25em; font-weight: 700; color: var(--tb); display: flex; align-items: baseline; gap: .6em; }
+.tl-col h5 i { font-style: normal; font-weight: 400; font-size: .72em; color: var(--mu); }
+.tl-btn { display: flex; align-items: center; justify-content: center; gap: .4em; background: var(--vd); color: #0F1720; font-weight: 700; border-radius: .8em; padding: .7em; }
+.tl-tabs { display: flex; gap: 1.4em; border-bottom: 1px solid var(--bd); font-size: .95em; color: var(--mu); }
+.tl-tabs b { color: var(--tx); border-bottom: .2em solid var(--vd); padding-bottom: .5em; }
+.tl-busca { display: flex; align-items: center; gap: .5em; border: 1px solid #C9D1D7; border-radius: .8em; padding: .6em .8em; color: var(--tx); background: #F6F8F9; }
+.tl-card { display: grid; grid-template-columns: auto minmax(0,1fr); gap: .7em; padding: .8em; border: 1px solid #E2E7EA; border-radius: .9em; }
+.tl-card.on { background: #FFF8EC; border-color: #E8CE9E; }
+.tl-card b { display: block; font-size: .98em; } .tl-card small { color: var(--mu); font-size: .82em; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tl-av { width: 2.6em; height: 2.6em; border-radius: 50%; display: grid; place-items: center; color: #fff; font-weight: 700; font-size: .8em; background: var(--az); }
+.tl-av.g { width: 4em; height: 4em; font-size: 1em; }
+.tl-chip { display: inline-block; font-size: .74em; font-weight: 650; border-radius: 99em; padding: .2em .7em; background: #ECEFF1; color: #4B5F6B; margin: .3em .3em 0 0; }
+.tl-chip.h { background: #E4F2EA; color: #1E7A46; } .tl-chip.i { background: #EDE7F6; color: #5E35B1; }
+.tl-conv { background: #EFEAE2; display: grid; grid-template-rows: auto minmax(0,1fr) auto; min-width: 0; min-height: 0; }
+.tl-conv header { background: #fff; border-bottom: 1px solid var(--bd); padding: .8em 1em; display: flex; align-items: center; gap: .7em; }
+.tl-conv header small { color: var(--mu); font-size: .8em; display: block; }
+.tl-msgs { padding: 1em; display: flex; flex-direction: column; gap: .55em; overflow: hidden; }
+.tl-m { max-width: 74%; background: #fff; border-radius: .9em; padding: .55em .8em; font-size: .92em; box-shadow: 0 1px 1px rgba(0,0,0,.06); }
+.tl-m i { display: block; font-style: normal; font-size: .78em; font-weight: 650; color: var(--mu); }
+.tl-m.ia { align-self: flex-end; background: #D9FDD3; } .tl-m.ia i { color: #1E7A46; }
+.tl-m.hu { align-self: flex-end; background: #D3E9FD; } .tl-m.hu i { color: var(--az); }
+.tl-m.si { align-self: center; background: #ECEFF1; color: #455A64; font-size: .78em; font-weight: 650; border-radius: 99em; box-shadow: none; }
+.tl-comp { background: #fff; border-top: 1px solid var(--bd); padding: .7em 1em; display: flex; gap: .6em; align-items: center; }
+.tl-comp div { flex: 1; border: 1px solid #C9D1D7; border-radius: .8em; padding: .6em .8em; color: var(--mu); background: #F6F8F9; }
+.tl-lado { background: #fff; border-left: 1px solid var(--bd); padding: 1em; display: flex; flex-direction: column; gap: .7em; min-width: 0; overflow: hidden; }
+.tl-lado h6, .tl-sec { margin: 0; font-size: .74em; letter-spacing: .07em; text-transform: uppercase; color: var(--mu); font-weight: 700; }
+.tl-ficha { border: 1px solid #E2E7EA; border-radius: .9em; padding: .8em; font-size: .9em; }
+.tl-kv { display: grid; grid-template-columns: auto 1fr; gap: .45em 1em; font-size: .88em; }
+.tl-kv span { color: var(--mu); } .tl-kv b { text-align: right; font-weight: 650; overflow-wrap: anywhere; }
+.tl-pg { padding: 1.4em 1.8em; display: flex; flex-direction: column; gap: 1em; min-width: 0; overflow: hidden; }
+.tl-pg h5 { margin: 0; font-size: 1.5em; color: var(--tb); display: flex; align-items: center; gap: .8em; flex-wrap: wrap; }
+.tl-per { display: inline-flex; border: 1px solid var(--bd); border-radius: .7em; overflow: hidden; font-size: .55em; font-weight: 600; background: #fff; }
+.tl-per i { font-style: normal; padding: .45em .9em; color: var(--mu); } .tl-per i.on { background: var(--tb); color: #fff; }
+.tl-tiles { display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: .7em; }
+.tl-tile { background: #fff; border: 1px solid var(--bd); border-radius: .9em; padding: .8em; min-width: 0; }
+.tl-tile small { display: block; font-size: .7em; letter-spacing: .04em; text-transform: uppercase; color: var(--mu); min-height: 2.6em; }
+.tl-tile b { font-size: 1.7em; line-height: 1.2; font-variant-numeric: tabular-nums; } .tl-tile em { display: block; font-style: normal; font-size: .72em; color: var(--mu); }
+.tl-duo { display: grid; grid-template-columns: 1.1fr .9fr; gap: .8em; min-height: 0; }
+.tl-cx { background: #fff; border: 1px solid var(--bd); border-radius: .9em; padding: 1em; min-width: 0; }
+.tl-cx h6 { margin: 0 0 .7em; font-size: 1em; color: var(--tx); }
+.tl-fun { display: grid; grid-template-columns: 11em minmax(0,1fr) 2.6em; gap: .45em .7em; align-items: center; font-size: .84em; }
+.tl-fun u { display: block; height: 1.15em; border-radius: .3em; background: var(--az); text-decoration: none; width: calc(var(--v) * 1%); }
+.tl-fun b { text-align: right; font-variant-numeric: tabular-nums; }
+.tl-tab { width: 100%; border-collapse: collapse; font-size: .84em; }
+.tl-tab th { text-align: right; font-size: .82em; color: var(--mu); font-weight: 650; padding: .3em .4em; } .tl-tab th:first-child, .tl-tab td:first-child { text-align: left; }
+.tl-tab td { text-align: right; padding: .45em .4em; border-top: 1px solid #EDF1F3; font-variant-numeric: tabular-nums; }
+.tl-nota { font-size: .76em; color: var(--mu); margin: 0; }
 
-/* produto */
-.produto { background: var(--noite2); padding-block: clamp(72px, 10vw, 120px); }
-.produto h2 { margin-bottom: 12px; max-width: 18em; }
-.produto .sub { color: var(--claro2); margin-bottom: 44px; max-width: 36em; }
-.produto .prova { margin-top: 44px; color: var(--claro2); font-size: var(--t0); border-top: 1px solid rgba(232,228,218,.12); padding-top: 22px; }
-.produto .prova b { color: var(--tocha-viva); }
+
+.telas figure { container-type: inline-size; }
+@container (max-width: 980px) { .telas figure.larga figcaption::after { content: " Arraste a tela para o lado para ver inteira."; color: var(--acento-txt); } }
+@container (max-width: 680px) { .telas figure:not(.larga) figcaption::after { content: " Arraste a tela para o lado para ver inteira."; color: var(--acento-txt); } }
+
+/* MESA DE NÚMEROS · o terceiro ato: sábado a IA atende, segunda o vendedor assume, sexta o dono enxerga.
+   Aqui é identidade Muralha (não é reprodução de tela): mesa em carvão sobre a pedra, dado aceso em ouro.
+   Regras de visualização: cor entra por FUNÇÃO. Ouro = o que importa (cliente chamando, loja fechada). Pedra neutra = contexto.
+   Sequencial de um tom só; texto sempre em tinta de texto, nunca na cor da série; marca fina; tabela alternativa; dica ao passar o mouse. */
+.mesa-cab { display: grid; gap: 18px; }
+@media (min-width: 900px) and (min-aspect-ratio: 1/1) { .mesa-cab { grid-template-columns: 1.1fr .9fr; align-items: end; } }
+.mesa-painel { --m-bg: var(--carvao); --m-sup: var(--carvao2); --m-fio: #343B36; --m-tx: var(--pedra); --m-tx2: var(--nevoa); --acc: var(--ouro);
+  position: relative; margin-top: clamp(32px, 5vw, 64px); background: var(--m-bg); color: var(--m-tx); border-radius: 28px; padding: clamp(16px, 2.6vw, 36px);
+  display: grid; gap: clamp(14px, 1.8vw, 24px); grid-template-columns: minmax(0, 1fr); box-shadow: 0 50px 100px -60px rgba(31,36,33,.7); }
+.mesa-barra { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; }
+.mesa-periodo { position: relative; display: inline-flex; background: var(--m-sup); border-radius: 999px; padding: 4px; }
+/* o marcador DESLIZA entre os períodos. Sem JS ele não tem largura, então o botão ativo se pinta sozinho (classe .js ausente). */
+.mesa-periodo .thumb { position: absolute; top: 4px; bottom: 4px; left: 0; width: var(--w, 0); transform: translateX(var(--x, 0)); background: var(--pedra); border-radius: 999px; transition: transform 460ms var(--ease), width 460ms var(--ease); }
+.mesa-periodo:not(.js) button.on { background: var(--pedra); }
+.mesa-periodo button { min-height: 44px; padding: 0 18px; border: 0; border-radius: 999px; background: transparent; color: var(--m-tx2); font-weight: 600; cursor: pointer; position: relative; z-index: 1; transition: color 300ms var(--ease); }
+.mesa-periodo button:focus-visible { outline: 2px solid var(--ouro); outline-offset: 2px; }
+.mesa-periodo button.on { color: var(--carvao); }
+.mesa-demo { font-family: var(--mono); font-size: .69rem; letter-spacing: .06em; text-transform: uppercase; color: var(--m-tx2); border: 1px solid var(--m-fio); border-radius: 999px; padding: 4px 10px; }
+.mesa-agora { margin-left: auto; font-size: var(--t-1); color: var(--m-tx2); }
+
+.mesa-tiles { display: grid; gap: 10px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 380px) { .mesa-tiles { grid-template-columns: minmax(0, 1fr); } }
+@media (min-width: 1100px) and (min-aspect-ratio: 1/1) { .mesa-tiles { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.mt { padding: 14px 20px; border-left: 1px solid var(--m-fio); display: grid; gap: 4px; align-content: start; min-width: 0; }
+.mt.destaque { border-left: 0; border-radius: 18px; padding: 18px 20px; cursor: default; } .mt.destaque:focus-visible { outline: 2px solid var(--pedra); outline-offset: 3px; }
+.mt small { font-size: var(--t-1); color: var(--m-tx2); }
+.mt b { font-size: clamp(2rem, 1.4rem + 2.2vw, 3.2rem); line-height: 1.05; font-weight: 700; letter-spacing: -0.03em; }
+.mt em { font-style: normal; font-size: var(--t-1); color: var(--m-tx2); display: flex; align-items: center; gap: 6px; min-height: 1.4em; }
+.mt em svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.mt.destaque { background: var(--ouro); color: var(--carvao); } .mt.destaque small, .mt.destaque em { color: #3B2C05; }
+
+.mesa-bloco { background: var(--m-sup); border-radius: 20px; padding: clamp(16px, 2vw, 26px); display: grid; gap: 16px; align-content: start; min-width: 0; grid-template-columns: minmax(0, 1fr); }
+.mesa-tit h3 { font-size: var(--t2); } .mesa-tit p { color: var(--m-tx2); font-size: var(--t-1); margin-top: 6px; max-width: 46em; }
+.mesa-duo { display: grid; gap: clamp(14px, 1.8vw, 24px); grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 980px) and (min-aspect-ratio: 1/1) { .mesa-duo { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.sw { display: inline-block; width: 10px; height: 10px; border-radius: 3px; vertical-align: -1px; margin-right: 6px; } .sw.ouro { background: var(--ouro); } .sw.pedra { background: #8C928B; }
+
+/* mapas de calor: 7 linhas (seg a dom) x 24 horas. Sequencial de UM tom: o apagado é a superfície, o aceso é o tom cheio. */
+.calor-duo { display: grid; gap: 22px; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 1100px) and (min-aspect-ratio: 1/1) { .calor-duo { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.calor-fig figcaption { font-size: .92rem; font-weight: 600; margin-bottom: 10px; }
+.calor { display: grid; grid-template-columns: 2.4em repeat(24, minmax(0, 1fr)); gap: 2px; font-family: var(--mono); font-size: .62rem; color: var(--m-tx2); align-items: center; position: relative; }
+@media (max-width: 480px) { .calor { gap: 1px; grid-template-columns: 2em repeat(24, minmax(0, 1fr)); font-size: .56rem; } }
+.calor .dsem { text-transform: lowercase; } .calor .hr { text-align: center; padding-top: 4px; }
+.calor .cel { aspect-ratio: 1; border-radius: 3px; background: color-mix(in srgb, var(--tom) calc(var(--v) * 100%), #2F3632); transition: outline-color 120ms, background-color 460ms var(--ease), opacity 300ms var(--ease); outline: 2px solid transparent; outline-offset: 0; }
+/* ouro tem UM trabalho na mesa: o que chegou com a loja fechada. No expediente o cliente aparece em pedra, igual ao time. */
+.calor[data-tom="ouro"] { --tom: #A9AEA6; } .calor[data-tom="ouro"] .cel.fechado { --tom: var(--ouro); } .calor[data-tom="pedra"] { --tom: #A9AEA6; }
+.calor .moldura { border: 1px solid rgba(230,228,220,.5); border-radius: 6px; margin: -3px; pointer-events: none; z-index: 2; align-self: stretch; }
+.calor.realca .cel:not(.fechado) { opacity: .22; }
+.calor .cel.foco { outline-color: var(--pedra); position: relative; z-index: 3; }
+.calor-leg { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: var(--t-1); color: var(--m-tx2); }
+.sw-moldura { display: inline-block; width: 14px; height: 10px; border: 1px solid rgba(230,228,220,.6); border-radius: 3px; vertical-align: -1px; margin-right: 6px; }
+.sw-rampa { display: inline-block; width: 44px; height: 8px; border-radius: 2px; vertical-align: 0; margin-inline: 4px; background: linear-gradient(90deg, #2F3632, #A9AEA6); }
+.calor-leitura { font-size: var(--t0); color: var(--m-tx); max-width: 56em; }
+.mesa-tabela summary { cursor: pointer; min-height: 44px; display: inline-flex; align-items: center; color: var(--m-tx2); font-size: var(--t-1); text-decoration: underline; text-underline-offset: 4px; }
+.mesa-tabela table { border-collapse: collapse; font-family: var(--mono); font-size: .66rem; } .mesa-tabela td, .mesa-tabela th { padding: 3px 5px; border: 1px solid var(--m-fio); text-align: right; font-weight: 400; color: var(--m-tx2); }
+.mesa-tabela div { overflow-x: auto; }
+
+/* funil: categorias ORDENADAS -> rampa ordinal de um tom (mais claro = etapa mais adiantada). Rótulo direto, texto em tinta. */
+.funil { display: grid; gap: 8px; }
+.funil .et { display: grid; grid-template-columns: minmax(0, 11.5em) minmax(0, 1fr) 3.4em; gap: 12px; align-items: center; font-size: .9rem; }
+.funil .et:focus-visible { outline: 2px solid var(--ouro); outline-offset: 3px; border-radius: 4px; }
+.funil .et span { color: var(--m-tx2); } .funil .et b { text-align: right; font-weight: 600; }
+.funil .barra { height: 14px; border-radius: 0 4px 4px 0; background: var(--cor); width: calc(var(--v) * 100%); min-width: 3px; transform-origin: 0 50%; transition: transform 700ms var(--ease), width 500ms var(--ease); }
+.funil.pre .barra { transform: scaleX(.04); }
+@media (max-width: 520px) { .funil .et { grid-template-columns: minmax(0, 1fr) 3.4em; } .funil .et .barra { grid-column: 1 / -1; order: 3; } }
+.desfechos { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 2px 22px; font-size: .86rem; border-top: 1px solid var(--m-fio); padding-top: 12px; }
+.desfechos div { display: flex; justify-content: space-between; gap: 12px; padding: 5px 0; } .desfechos dt { color: var(--m-tx2); } .desfechos dd { font-variant-numeric: tabular-nums; font-weight: 600; }
+
+.tabela-rolavel { overflow-x: auto; container-type: inline-size; }
+.atend { width: 100%; border-collapse: collapse; font-size: .92rem; }
+.atend th { text-align: right; font-weight: 500; font-size: var(--t-1); color: var(--m-tx2); padding: 0 8px 8px; } .atend th:first-child, .atend td:first-child { text-align: left; }
+.atend td { text-align: right; padding: 0 8px; border-top: 1px solid var(--m-fio); font-variant-numeric: tabular-nums; height: 48px; }
+.atend tbody tr { cursor: pointer; transition: background 160ms; } .atend tbody tr:hover, .atend tbody tr.on { background: rgba(230,228,220,.06); }
+.atend tbody tr.on td:first-child { box-shadow: inset 0 0 0 0 transparent; font-weight: 650; }
+.atend .mini { display: inline-block; height: 6px; border-radius: 3px; background: #8C928B; vertical-align: middle; margin-right: 8px; width: calc(var(--v) * 56px); }
+.atend tr.on .mini { background: var(--ouro); }
+.atend button { all: unset; cursor: pointer; display: flex; align-items: center; gap: 10px; min-height: 44px; width: 100%; } .atend button:focus-visible { outline: 2px solid var(--ouro); outline-offset: 2px; border-radius: 6px; }
+.atend .av2 { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font-size: .66rem; font-weight: 700; background: #454E48; color: var(--pedra); flex: none; }
+/* pela largura do BLOCO, não da janela: em 980 a 1040 a tabela fica em meia coluna e estourava igual ao celular */
+@container (max-width: 460px) { .atend .mini, .atend .av2 { display: none; } .atend { font-size: .84rem; } .atend th, .atend td { padding-inline: 4px; } }
+@container (max-width: 300px) { .atend { font-size: .78rem; } .atend th { font-size: .68rem; } .atend th, .atend td { padding-inline: 2px; } }
+@container (max-width: 215px) { .atend th:nth-child(3), .atend td:nth-child(3) { display: none; } }
+.atend td { white-space: nowrap; } .atend td:first-child { white-space: normal; }
+.atend-det { font-size: .9rem; color: var(--m-tx2); min-height: 3em; border-top: 1px solid var(--m-fio); padding-top: 12px; } .atend-det b { color: var(--m-tx); font-weight: 600; }
+
+/* barras: UMA série = UMA cor. Ponta arredondada só do lado do dado, ancorada na base. */
+.horas, .serie { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 2px; align-items: end; height: 170px; padding-bottom: 22px; position: relative; background: linear-gradient(var(--m-fio), var(--m-fio)) 0 calc(100% - 22px) / 100% 1px no-repeat; }
+.horas .col, .serie .col { position: relative; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 2px; min-width: 0; }
+.horas .col i, .serie .col i { display: block; border-radius: 4px 4px 0 0; background: #8C928B; width: 100%; max-width: 40px; height: calc(var(--v) * 100%); transform-origin: 50% 100%; transition: transform 700ms var(--ease), height 520ms var(--ease), background 160ms; }
+/* loja fechada na BASE: todo dia parte do mesmo chão, dá pra comparar o ouro entre dias */
+.serie .col i.fora { background: var(--ouro); border-radius: 0; } .serie .col.sofora i.fora { border-radius: 4px 4px 0 0; }
+.horas .col.pico i { background: var(--pedra); }
+.horas .col.vazia i { background: transparent; border-top: 1px dashed #6F766F; min-height: 0; height: 1px; }
+.horas .col:focus-visible, .serie .col:focus-visible { outline: 2px solid var(--ouro); outline-offset: 2px; border-radius: 4px; }
+.horas.pre .col i, .serie.pre .col i { transform: scaleY(.04); }
+.horas .col small, .serie .col small { position: absolute; bottom: -20px; left: 50%; translate: -50% 0; font-family: var(--mono); font-size: .6rem; color: var(--m-tx2); white-space: nowrap; }
+.horas .col:hover i, .serie .col:hover i.dentro { background: #B9BEB5; }
+.horas .rot { position: absolute; bottom: calc(var(--v) * 100% + 5px); font-family: var(--mono); font-size: .66rem; color: var(--m-tx); translate: -50% 0; left: 50%; white-space: nowrap; }
+@media print { .funil.pre .barra, .horas.pre .col i, .serie.pre .col i { transform: none; } }
+.so-leitor { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* quem resolveu: IA x time, uma barra só */
+.quem { display: grid; gap: 8px; border-top: 1px solid var(--m-fio); padding-top: 14px; } .quem-tit { font-size: var(--t-1); color: var(--m-tx2); }
+.quem-barra { display: flex; gap: 2px; height: 14px; } .quem-barra i { flex: 1 1 0; min-width: 3px; transition: flex-grow 520ms var(--ease); } .quem-barra .ia { background: var(--pedra); border-radius: 4px 0 0 4px; } .quem-barra .tm { background: #8C928B; border-radius: 0 4px 4px 0; }
+.quem-leg { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: .86rem; } .quem-leg span:last-child { color: var(--m-tx2); }
+@media (prefers-reduced-motion: reduce) { .mesa-painel *, .mesa-painel *::before { transition-duration: .01ms !important; } }
+.mesa-dica { position: absolute; z-index: 5; pointer-events: none; background: var(--pedra); color: var(--carvao); border-radius: 10px; padding: 8px 11px; font-size: .8rem; line-height: 1.35; max-width: 240px; box-shadow: 0 12px 30px -12px rgba(0,0,0,.6); }
+.mesa-dica b { display: block; font-family: var(--mono); font-weight: 500; font-size: .7rem; color: var(--musgo); }
+
+.mesa-extra { display: grid; gap: 14px; margin-top: 18px; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 820px) { .mesa-extra { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.extra { background: var(--cal); border: 1px solid var(--linha); border-radius: 22px; padding: clamp(18px, 2.4vw, 30px); display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 16px; align-items: start; }
+.extra .ico { width: 28px; height: 28px; color: var(--queimado); margin-top: 3px; } .extra h3 { margin-bottom: 8px; } .extra p { color: var(--musgo); }
+.mesa-nota { margin-top: 18px; color: var(--musgo); font-size: var(--t-1); max-width: 62em; }
+
+/* implantação */
+.impl { background: var(--palco); --bg: var(--palco); }
+.impl-cab { display: grid; gap: 18px; }
+@media (min-width: 900px) { .impl-cab { grid-template-columns: 1.1fr .9fr; align-items: end; } }
+/* Pilha: cada etapa gruda 18 px abaixo da anterior, deixando a borda de cima das de trás à vista.
+   Pra ETAPA 4 ENCAIXAR a lista precisa continuar depois dela; sem isso a lista acaba no instante em que a 4 chega
+   e ela passa por cima das outras e vai embora sem assentar. O respiro é um ITEM da grade (::after), não padding:
+   elemento sticky fica preso à área de CONTEÚDO da caixa-mãe, e padding fica fora dela (tentei padding; medido: não funciona). */
+/* 4 linhas de altura IGUAL + a linha do respiro: no celular a etapa 3 era mais alta que a 4 e aparecia por baixo dela (24 a 33 px do bloco escuro à mostra) */
+.impl-lista { margin-top: clamp(32px, 5vw, 64px); display: grid; gap: 18px; grid-template-rows: repeat(4, 1fr) auto; }
+.impl-lista::after { content: ""; height: clamp(140px, 34svh, 420px); }
+@media (orientation: landscape) and (max-height: 640px) { .impl-lista::after { display: none; } }
+.etapa { --i: 0; position: sticky; top: calc(var(--topo-h) + 20px + var(--i) * 18px); background: var(--cal); border: 1px solid var(--linha); border-radius: 24px; padding: clamp(20px, 3vw, 40px); display: grid; gap: clamp(18px, 3vw, 48px); transform-origin: 50% 0; box-shadow: 0 -1px 0 rgba(31,36,33,.04); }
+@media (min-width: 820px) { .etapa { grid-template-columns: 1.1fr .9fr; align-items: center; } }
+@media (orientation: landscape) and (max-height: 640px) { .etapa { position: static; } }
+.etapa .num { font-family: var(--mono); font-size: var(--t-1); letter-spacing: .08em; text-transform: uppercase; color: var(--acento-txt); margin-bottom: 12px; display: flex; gap: 12px; align-items: center; }
+.etapa .num::after { content: ""; flex: 1; border-top: 1px solid var(--linha); }
+.etapa h3 { font-size: var(--t3); margin-bottom: 10px; }
+.etapa p { color: var(--musgo); max-width: 34em; }
+.papeis { display: grid; gap: 8px; margin-top: 18px; font-size: .9rem; }
+.papeis div { display: grid; grid-template-columns: 84px 1fr; gap: 12px; align-items: baseline; }
+.papeis dt { font-family: var(--mono); font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; color: var(--musgo); }
+.papeis dd { color: var(--carvao); }
+.vis { background: var(--carvao); color: var(--pedra); border-radius: 18px; padding: 18px; min-height: 200px; display: grid; align-content: center; gap: 8px; font-family: var(--mono); font-size: .78rem; overflow: hidden; position: relative; }
+.vis .arq { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 10px; background: var(--carvao2); }
+.vis .arq .ico { width: 16px; height: 16px; color: var(--ouro); }
+.vis .arq span:last-child { margin-left: auto; color: var(--nevoa); }
+.vis .varre { position: absolute; left: 0; right: 0; height: 36px; top: 0; background: linear-gradient(rgba(232,161,28,0), rgba(232,161,28,.16), rgba(232,161,28,0)); animation: varre 3.6s ease-in-out infinite; }
+@keyframes varre { 0%,100% { transform: translateY(-10%); } 50% { transform: translateY(520%); } }
+.vis .balao { font-family: var(--sans); font-size: .84rem; }
+.vis .par { display: grid; gap: 6px; }
+.vis .riscado { color: var(--nevoa); text-decoration: line-through; text-decoration-color: var(--queimado); }
+.vis .noar { display: flex; align-items: center; gap: 12px; font-size: .9rem; }
+.vis .noar i { width: 12px; height: 12px; border-radius: 50%; background: var(--ouro); animation: respira 3.6s ease-in-out infinite; box-shadow: 0 0 0 8px rgba(232,161,28,.14); }
+.vis .linha-dado { display: flex; justify-content: space-between; gap: 12px; color: var(--nevoa); border-top: 1px solid #2F3632; padding-top: 8px; }
+.vis .linha-dado b { color: var(--pedra); font-weight: 500; }
+.portal { margin-top: 18px; background: var(--carvao); color: var(--pedra); --acc: var(--ouro); --brasa: var(--ouro); border-radius: 24px; padding: clamp(24px, 4vw, 56px); display: grid; gap: 22px; position: relative; overflow: hidden; }
+@media (min-width: 820px) { .portal { grid-template-columns: 1fr auto; align-items: center; } }
+.portal::before { content: ""; position: absolute; right: -10%; top: -60%; width: 60%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(232,161,28,.2), transparent 65%); pointer-events: none; }
+.portal h3 { font-size: var(--t3); margin: 10px 0 8px; }
+.portal p { color: var(--nevoa); max-width: 38em; }
+.portal .btn { position: relative; }
+.dia .portal .btn.cheio { background: var(--ouro); color: var(--carvao); }
+.dia .portal .btn.cheio:hover { background: var(--ouro-claro); }
+.portal .end { font-family: var(--mono); font-size: .72rem; color: var(--nevoa); margin-top: 10px; text-align: center; overflow-wrap: anywhere; }
+.portal > * { min-width: 0; }
 
 /* nuncas */
-.nuncas { background: var(--noite); padding-block: clamp(72px, 10vw, 120px); }
-.nuncas h2 { margin-bottom: 10px; }
-.nuncas .sub { color: var(--claro2); margin-bottom: 36px; }
-.nuncas ul { list-style: none; display: grid; gap: 0; max-width: 720px; }
-.nuncas li { padding: 20px 0; border-top: 1px solid rgba(232,228,218,.12); display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: baseline; }
-.nuncas li:last-child { border-bottom: 1px solid rgba(232,228,218,.12); }
-.nuncas li .n { font-family: var(--serif); font-weight: 700; color: var(--tocha-viva); font-size: var(--t2); }
-.nuncas li p { color: var(--claro2); }
-.nuncas li p b { color: var(--claro); font-weight: 600; }
+.nuncas { background: var(--cal); --bg: var(--cal); }
+.nuncas ul { margin-top: clamp(28px, 4vw, 56px); display: grid; gap: 0; }
+.nuncas li { display: grid; grid-template-columns: minmax(84px, 16%) 1fr; gap: clamp(14px, 3vw, 40px); padding: clamp(18px, 2.4vw, 30px) 0; border-top: 1px solid var(--linha); align-items: baseline; }
+.nuncas li:last-child { border-bottom: 1px solid var(--linha); }
+/* Texto de acento no claro é #855600 (regra do kit). SEM risco sobre a palavra: riscar "Nunca" cancela o "nunca"
+   e a frase passa a ler "inventa preço". Dois juízes apontaram, cada um por conta própria. */
+.nuncas .n { font-size: var(--t3); font-weight: 700; letter-spacing: -0.03em; color: var(--acento-txt); width: max-content; }
+.nuncas p { font-size: var(--t1); color: var(--musgo); max-width: 38em; }
+.nuncas p b { color: var(--carvao); }
 
-/* nome */
-.nome { background: var(--noite3); padding-block: clamp(72px, 10vw, 120px); text-align: center; }
-.nome .miolo { max-width: 760px; }
-.nome .tocha-ico { width: 56px; height: 56px; margin: 0 auto 22px; color: var(--tocha-viva); }
-.nome h2 { margin-bottom: 18px; }
-.nome p { color: var(--claro2); font-size: var(--t2); line-height: 1.5; }
-.nome p b { color: var(--claro); font-weight: 600; }
+/* o nome */
+.nome { --bg: var(--carvao3); background: var(--carvao3); overflow: clip; text-align: left; }
+.nome .gigante { position: absolute; left: 50%; bottom: -4%; translate: -50% 0; width: min(150vw, 2200px); max-width: none; color: rgba(230,228,220,.045); --brasa: rgba(232,161,28,.5); pointer-events: none; }
+.nome .miolo { position: relative; display: grid; gap: 22px; max-width: 980px; margin-inline: auto; }
+.nome p { font-size: var(--t2); line-height: 1.4; color: var(--fg2); }
+.nome p b { color: var(--fg); font-weight: 600; }
+.nome .assina { font-family: var(--mono); font-size: var(--t-1); letter-spacing: .08em; text-transform: uppercase; color: var(--ouro); }
 
-/* diagnóstico (seção clara) */
-.fecho { background: var(--pedra); color: var(--tinta); padding-block: clamp(72px, 10vw, 120px); }
-.fecho .miolo { display: grid; gap: 36px; }
-@media (min-width: 900px) { .fecho .miolo { grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; } }
-.fecho h2 { color: var(--tinta); margin-bottom: 14px; }
-.fecho p { color: var(--tinta2); font-size: var(--t2); line-height: 1.5; }
-.fecho .olho { color: var(--tocha); }
+/* fecho + diagnóstico */
+.fecho .miolo { display: grid; gap: clamp(28px, 4vw, 64px); }
+@media (min-width: 900px) and (min-aspect-ratio: 1/1) { .fecho .miolo { grid-template-columns: 1fr 1fr; align-items: center; } }
+.fecho h2 { margin: 16px 0 14px; }
+.fecho p { color: var(--fg2); font-size: var(--t1); max-width: 34em; }
+#diag { background: var(--cal); border: 1px solid var(--linha); border-radius: 24px; padding: clamp(20px, 3vw, 36px); display: grid; gap: 14px; box-shadow: 0 40px 80px -56px rgba(31,36,33,.5); }
+.diag-barra { height: 4px; border-radius: 4px; background: var(--palco); overflow: hidden; }
+.diag-barra i { display: block; height: 100%; background: var(--queimado); transform: scaleX(0); transform-origin: 0 50%; transition: transform 260ms var(--ease); }
+.diag-passo { font-family: var(--mono); font-size: var(--t-1); letter-spacing: .08em; text-transform: uppercase; color: var(--acento-txt); }
+.diag-titulo { font-size: var(--t3); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; text-wrap: balance; }
+.diag-opcoes { display: grid; gap: 10px; }
+@media (min-width: 520px) { #diag:not(.diag-fim) .diag-opcoes { grid-template-columns: 1fr 1fr; } }
+.diag-op { min-height: 56px; text-align: left; padding: 12px 16px; border-radius: 14px; border: 1px solid var(--linha); background: #fff; cursor: pointer; font-weight: 550; transition: border-color 200ms, transform 220ms var(--ease), background 200ms; }
+.diag-op:hover { border-color: var(--queimado); background: #FFFDF8; }
+.diag-op:active { transform: scale(.98); }
+.diag-previa { white-space: pre-wrap; font-family: var(--mono); font-size: .82rem; background: var(--palco); border-radius: 14px; padding: 14px 16px; color: var(--carvao); overflow-wrap: anywhere; }
+.diag-enviar { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; border-radius: 999px; background: var(--carvao); color: var(--pedra); font-weight: 650; text-decoration: none; padding: 0 24px; transition: background 200ms, transform 220ms var(--ease); }
+.diag-enviar:hover { background: #2F3632; } .diag-enviar:active { transform: scale(.98); }
+.diag-voltar { justify-self: start; min-height: 44px; padding: 0 6px; background: none; border: 0; color: var(--musgo); text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
+
+/* rodapé */
+footer { background: var(--carvao); color: var(--pedra); --brasa: var(--ouro); padding-block: clamp(48px, 6vw, 88px) calc(32px + env(safe-area-inset-bottom)); }
+footer .miolo { display: grid; gap: 26px; }
+footer .linha1 { display: flex; flex-wrap: wrap; gap: 18px 32px; align-items: center; justify-content: space-between; }
+footer .marca svg { height: 34px; width: 122px; }
+footer .assin { font-size: var(--t2); letter-spacing: -0.02em; }
+footer nav { display: flex; flex-wrap: wrap; gap: 4px 22px; }
+footer nav a { min-height: 44px; display: inline-flex; align-items: center; color: var(--nevoa); text-underline-offset: 4px; overflow-wrap: anywhere; }
+footer nav a:hover { color: var(--ouro); }
+footer .legal { color: #949A93; font-size: var(--t-1); border-top: 1px solid rgba(230,228,220,.12); padding-top: 20px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
+}
 </style>
 </head>
 <body>
 <div id="inicio"></div>
-<header class="topo">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="logo" viewBox="0 0 608 170"><path fill="currentColor" fill-rule="evenodd" d="M80 80A50 50 0 1 0 80 160V170H100V70H80ZM20 120a30 30 0 1 1 60 0a30 30 0 1 1 -60 0ZM132 0H152V70H184V90H152V170H132ZM276 80A50 50 0 1 0 276 160V170H296V70H276ZM216 120a30 30 0 1 1 60 0a30 30 0 1 1 -60 0ZM314 0h20v170h-20ZM432 80A50 50 0 1 0 432 160V170H452V70H432ZM372 120a30 30 0 1 1 60 0a30 30 0 1 1 -60 0ZM470 70h20v100h-20ZM588 80A50 50 0 1 0 588 160V170H608V70H588ZM528 120a30 30 0 1 1 60 0a30 30 0 1 1 -60 0Z"/></symbol>
+</defs></svg>
+
+<header class="topo" id="topo">
   <div class="miolo">
-    <a class="marca" href="#inicio" aria-label="Atalaia Inteligência, início"><img src="logo/atalaia-icone.svg" alt="" width="34" height="34">ATALAIA <span>INTELIGÊNCIA</span></a>
-    <a class="btn linha" href="#diag"><span class="lg">Quero na minha empresa</span><span class="sm">Começar</span></a>
+    <a class="marca" href="#inicio" aria-label="Atalaia, início">
+      <svg viewBox="0 0 608 170" aria-hidden="true" focusable="false"><use href="#logo"/><circle class="atalaia-brasa" cx="480" cy="16" r="16" fill="var(--brasa)"/></svg>
+    </a>
+    <nav aria-label="Seções">
+      <a href="#como">Como aprende</a>
+      <a href="#painel">O painel</a>
+<a href="#numeros">Os números</a>
+      <a href="#implantacao">Implantação</a>
+    </nav>
+    <div class="acoes">
+      <a class="btn contorno" href="https://painel.atalaiainteligencia.com.br" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg><span class="rot">Área do cliente</span></a>
+      <a class="btn cheio" href="#diag"><span class="lg">Quero na minha empresa</span><span class="sm">Começar</span></a>
+    </div>
   </div>
 </header>
 
-<section class="hero">
-  <div class="luz" aria-hidden="true"></div>
+<main>
+<section class="hero noite" data-tema="noite">
+  <div class="luz" aria-hidden="true"><i class="brilho"></i></div>
   <div class="miolo">
-    <div>
-      <p class="olho">Atendimento com IA no WhatsApp</p>
-      <h1 class="rv-linhas">A IA que aprende o <em>seu catálogo</em> e atende o seu WhatsApp como alguém do time.</h1>
-      <p class="grande max rv">Você entrega o catálogo. Ela aprende marcas, linhas e códigos, responde em segundos com o produto certo e passa para o seu vendedor a cotação já qualificada. Sábado à noite, inclusive.</p>
-      <div class="acoes rv">
-        <a class="btn" href="#diag">Ver se serve para a minha empresa</a>
-        <a class="texto" href="#demo">ou teste a conversa</a>
+    <div class="hero-txt">
+      <div>
+        <p class="olho">Atendimento com IA no WhatsApp</p>
+        <h1 class="rv-linhas" style="margin-top:18px">Sábado, 22h14. Um cliente pede uma peça. <em>Ela responde.</em></h1>
+      </div>
+      <div>
+        <p class="grande">Você entrega o catálogo. Ela aprende marcas, linhas e códigos, responde em segundos com o produto certo e passa para o seu vendedor a cotação já qualificada. Sábado à noite, inclusive.</p>
+        <div class="cta">
+          <a class="btn cheio" href="#diag">Ver se serve para a minha empresa</a>
+          <a class="texto" href="#demo">ou teste a conversa aqui embaixo</a>
+        </div>
       </div>
     </div>
-    <div id="demo" class="rv">
-      <div class="zap" aria-label="Demonstração guiada do atendente da Atalaia">
-  <div class="cabec">
-    <div class="bola" aria-hidden="true"><svg viewBox="0 0 24 24" class="ico"><path d="M12 3c2 3 3.5 4.6 3.5 7a3.5 3.5 0 0 1-7 0c0-2.4 1.5-4 3.5-7z"/><path d="M8 14l-2 7h12l-2-7"/></svg></div>
-    <div><b>Atendimento · sua empresa</b><small>online agora</small></div>
-    <span class="tag">demonstração</span>
-  </div>
-  <div class="conversa" id="demo-conversa" aria-live="polite"></div>
-  <div class="chips" id="demo-chips" aria-label="Perguntas da demonstração"></div>
-  <div class="caixa-falsa">Na versão real o cliente escreve livre. Aqui, escolha uma pergunta acima.</div>
-</div>
+
+    <div class="palco-wrap" id="demo">
+      <div class="palco">
+        <div class="lado">
+          <p class="cena-lbl"><b>WhatsApp da sua empresa</b> · o cliente pergunta</p>
+          <div class="zap" role="group" aria-label="Demonstração guiada do atendente da Atalaia">
+            <div class="cabec">
+              <div class="bola" aria-hidden="true"><svg viewBox="0 0 260 260"><g transform="translate(60 30.625) scale(1.25)"><path fill="#E6E4DC" fill-rule="evenodd" d="M74 76.1366A50 50 0 1 0 74 163.863V170H100V70H74ZM26 120a24 24 0 1 1 48 0a24 24 0 1 1 -48 0Z"/><circle class="atalaia-brasa" cx="87" cy="14" r="25" fill="#E8A11C"/></g></svg></div>
+              <div><b>Atendimento · sua empresa</b><small>online agora</small></div>
+              <span class="tag">demonstração</span>
+            </div>
+            <div class="conversa" id="demo-conversa" aria-live="polite"></div>
+            <p class="eco" id="demo-eco" aria-hidden="true"></p>
+            <div class="chips" id="demo-chips" role="group" aria-label="Perguntas da demonstração"></div>
+            <div class="caixa-falsa">Na versão real o cliente escreve livre. Aqui, escolha uma pergunta acima.</div>
+          </div>
+        </div>
+        <div class="fio" aria-hidden="true"><span><svg class="ico" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        <div class="lado">
+          <p class="cena-lbl"><b>Painel do seu time</b> · a cotação se monta sozinha</p>
+          <div class="fila" role="group" aria-label="Fila do vendedor, preenchida pela conversa ao lado">
+            <div class="fila-cab"><b>Fila</b><span class="n" id="f-n">0</span><span class="etiq">demonstração</span><span class="quem"><i></i>Helena Prado · Gestora</span></div>
+            <div class="fila-corpo">
+              <div class="cartao" id="f-cartao">
+                <div class="cartao-topo">
+                  <span class="av">MS</span>
+                  <span class="nm">Marcos · Serra Preta Peças<small>via WhatsApp oficial</small></span>
+                  <span class="estado" id="f-estado">Conversa começando</span>
+                </div>
+                <dl class="campos">
+                  <dt>Peça</dt><dd id="f-peca" class="vazio">aguardando</dd>
+                  <dt>Quantidade</dt><dd id="f-qtd" class="vazio">aguardando</dd>
+                  <dt>Entrega</dt><dd id="f-entrega" class="vazio">aguardando</dd>
+                  <dt>E-mail</dt><dd id="f-email" class="vazio">aguardando</dd>
+                  <dt>CNPJ</dt><dd id="f-cnpj" class="vazio">aguardando</dd>
+                </dl>
+                <p class="resumo"><b>Resumo feito pela IA</b><span id="f-resumo">Aparece aqui quando a conversa terminar.</span></p>
+              </div>
+              <div class="cartao fraco">
+                <div class="cartao-topo"><span class="av" style="background:#7A5A86">AC</span><span class="nm">Ana · Auto Center BH<small>21h50</small></span><span class="estado">Resolvida</span></div>
+              </div>
+            </div>
+            <div class="fila-pe" id="f-pe"><span id="f-pe-t">Segunda de manhã, alguém do time assume com um clique.</span><span class="falso" aria-hidden="true">Assumir conversa</span></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+  <div class="muralha" aria-hidden="true"><i class="tras"></i><i class="frente"></i></div>
 </section>
 
-<section class="sabado">
+<section class="sabado noite" data-tema="noite">
   <div class="miolo">
-    <div>
-      <h2 class="rv-linhas">Sábado, <span class="tocha">22h14.</span><small>Um cliente pergunta o preço de um sensor. O seu time está em casa.</small></h2>
-    </div>
-    <div class="trilho">
-      <div class="marco rv"><time>22h14</time><p><b>Cliente:</b> "Vocês têm o PN 5096-104? Preciso de dois."</p></div>
-      <div class="marco rv"><time>22h14</time><p><b>Atendente da Atalaia:</b> reconhece o código no seu catálogo, confirma o produto, pergunta cidade de entrega, e-mail e CNPJ.</p></div>
-      <div class="marco rv"><time>22h16</time><p><b>Seu vendedor:</b> recebe a cotação pronta na fila do painel. Segunda de manhã, é só mandar o preço.</p></div>
-      <div class="marco rv"><time>Sem a Atalaia</time><p>O cliente espera dez minutos e manda a mesma pergunta para o concorrente. Ninguém fica sabendo.</p></div>
+    <h2 class="rv-linhas">Sábado, <span class="hora">22h14</span>.</h2>
+    <p class="sub rv">Um cliente procura um sensor. O seu time está em casa.</p>
+    <div class="duas">
+      <div class="trilho">
+        <div class="marco rv"><time>22h14</time><p><b>Cliente:</b> "Vocês têm o PN 5096-104? Preciso de dois."</p></div>
+        <div class="marco rv"><time>22h14</time><p><b>Atendente da Atalaia:</b> reconhece o código no seu catálogo, confirma o produto, pergunta cidade de entrega, e-mail e CNPJ.</p></div>
+        <div class="marco rv"><time>22h16</time><p><b>Seu vendedor:</b> recebe a cotação pronta na fila do painel. Segunda de manhã, é só mandar o preço.</p></div>
+      </div>
+      <aside class="sem rv" aria-label="O mesmo sábado, sem a Atalaia">
+        <h3>O mesmo sábado, sem a Atalaia</h3>
+        <div class="pilha">
+          <div class="balao deles">Vocês têm o PN 5096-104? Preciso de dois.<small>22h14</small></div>
+          <div class="balao deles">Oi? Alguém aí?<small>22h24</small></div>
+          <span class="visto">entregue · sem resposta</span>
+        </div>
+        <p class="fim">O cliente espera dez minutos e manda a mesma pergunta para o concorrente. Ninguém fica sabendo.</p>
+      </aside>
     </div>
   </div>
 </section>
 
-<section class="aprende">
+<section class="aprende noite" id="como" data-tema="noite">
   <div class="miolo">
     <div class="fixo">
       <h2 class="rv-linhas">Como ela aprende o seu negócio</h2>
-      <p class="rv">Não é um robô de menu nem um chat genérico. É um atendente calibrado com o que a sua empresa vende e com o jeito que o seu time fala.</p>
+      <p class="sub rv">Não é um robô de menu nem um chat genérico. É um atendente calibrado com o que a sua empresa vende e com o jeito que o seu time fala.</p>
     </div>
     <div class="passos">
       <div class="passo rv">
-        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h11l5 5v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/><path d="M15 4v5h5"/><path d="M8 13h8M8 17h8"/></svg>
         <div><h3>Você entrega o catálogo</h3><p>PDF, planilha ou site. Marcas, linhas, códigos e descrições. Ela lê tudo e passa a reconhecer <code>PN 5096-104</code> ou "mangueira de 3/4" como o seu vendedor reconhece.</p></div>
+        <div class="amostra" aria-hidden="true">
+          <div class="de-para"><span class="de">PN 5096-104</span><svg class="ico" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span class="para">sensor de nível · Série 5</span></div>
+          <div class="de-para"><span class="de">"mangueira de 3/4"</span><svg class="ico" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span class="para">MH-34-R1 ou MH-34-R2?</span></div>
+        </div>
       </div>
       <div class="passo rv">
-        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c2 3 3.5 4.6 3.5 7a3.5 3.5 0 0 1-7 0c0-2.4 1.5-4 3.5-7z"/><path d="M8 14l-2 7h12l-2-7"/></svg>
         <div><h3>Ela responde no tom da sua empresa</h3><p>Calibrada com conversas reais do seu time. Cliente novo, cliente de sempre ou contato interno: cada um tratado do jeito certo, uma pergunta de cada vez.</p></div>
+        <div class="amostra" aria-hidden="true">
+          <div class="tons"><span>cliente novo</span><span class="vez">cliente de sempre</span><span>contato interno</span></div>
+          <div class="fala">Boa tarde, Marcos! Temos sim. Você tem o código da peça?</div>
+        </div>
       </div>
       <div class="passo rv">
-        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 11a4 4 0 1 0-8 0 4 4 0 0 0 8 0z"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
         <div><h3>Seu time recebe a cotação pronta</h3><p>Peça, quantidade, cidade, e-mail e CNPJ já coletados. A conversa cai numa fila com resumo, e qualquer pessoa assume com um clique. Preço, prazo e negociação continuam sendo de gente.</p></div>
+        <div class="amostra" aria-hidden="true">
+          <div class="lista"><span>peça</span><span>quantidade</span><span>cidade</span><span>e-mail</span><span>CNPJ</span></div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="produto">
+<section class="produto" id="painel" data-tema="produto">
+  <div class="sol" aria-hidden="true"></div>
   <div class="miolo">
-    <h2 class="rv-linhas">O seu time inteiro no mesmo número, com a IA junto</h2>
+    <p class="olho">Da noite de sábado à manhã de segunda</p>
+    <h2 class="rv-linhas" style="margin-top:16px">O seu time inteiro no mesmo número, com a IA junto</h2>
     <p class="sub rv">Isto é o painel do seu time, funcionando. Role e veja a noite de sábado virar a manhã de segunda.</p>
     <div class="pv-tour" id="pv-tour">
   <div class="pv-passos">
@@ -508,7 +988,11 @@ footer .legal { line-height: 1.7; }
       <svg width="0" height="0" style="position:absolute"><defs>
         <symbol id="pvi-inbox" viewBox="0 0 24 24"><path d="M3 13l2-8h14l2 8v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M3 13h5l2 3h4l2-3h5"/></symbol>
         <symbol id="pvi-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
-        <symbol id="pvi-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></symbol>
+        <symbol id="pvi-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1.5"/><rect x="14" y="4" width="6" height="6" rx="1.5"/><rect x="4" y="14" width="6" height="6" rx="1.5"/><rect x="14" y="14" width="6" height="6" rx="1.5"/></symbol>
+        <symbol id="pvi-contact" viewBox="0 0 24 24"><circle cx="12" cy="7.5" r="4"/><path d="M4.5 21c0-4.1 3.4-7.5 7.5-7.5s7.5 3.4 7.5 7.5"/></symbol>
+        <symbol id="pvi-tpl" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/></symbol>
+        <symbol id="pvi-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="8" r="3"/><path d="M21 20c0-2.5-1.6-4.6-4-5.4"/></symbol>
+        <symbol id="pvi-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></symbol>
         <symbol id="pvi-hist" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
         <symbol id="pvi-chart" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></symbol>
         <symbol id="pvi-check" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></symbol>
@@ -524,17 +1008,20 @@ footer .legal { line-height: 1.7; }
       <!-- trilho (menu lateral do painel real) -->
       <nav class="pv-trilho">
         <span class="pv-marca-cli">SE</span>
-        <span class="pv-it on" data-aba="fila"><svg class="ic"><use href="#pvi-inbox"/></svg><span>Conversas</span><i class="pv-badge" id="pv-badge" hidden>1</i></span>
-        <span class="pv-it"><svg class="ic"><use href="#pvi-plus"/></svg><span>Nova</span></span>
-        <span class="pv-it"><svg class="ic"><use href="#pvi-cal"/></svg><span>Agenda</span></span>
+        <span class="pv-it prim on" data-aba="fila"><svg class="ic"><use href="#pvi-inbox"/></svg><span>Conversas</span><i class="pv-badge" id="pv-badge" hidden>1</i></span>
+        <span class="pv-it prim"><svg class="ic"><use href="#pvi-contact"/></svg><span>Contatos</span></span>
         <span class="pv-it"><svg class="ic"><use href="#pvi-hist"/></svg><span>Histórico</span></span>
+        <span class="pv-it"><svg class="ic"><use href="#pvi-tpl"/></svg><span>Modelos</span></span>
+        <span class="pv-it"><svg class="ic"><use href="#pvi-users"/></svg><span>Internos</span></span>
+        <span class="pv-it"><svg class="ic"><use href="#pvi-phone"/></svg><span>Telefone</span></span>
         <span class="pv-it" data-aba="numeros"><svg class="ic"><use href="#pvi-chart"/></svg><span>Números</span></span>
+        <span class="pv-it pv-mais"><svg class="ic"><use href="#pvi-grid"/></svg><span>Mais</span></span>
         <span class="pv-pe"><span>por</span><b>Atalaia</b></span>
       </nav>
 
       <div class="pv-conteudo">
         <div class="pv-cab">
-          <b id="pv-titulo">Conversas</b>
+          <b id="pv-titulo">Conversas</b><span class="pv-demo">demonstração</span>
           <span class="pv-relogio" id="pv-relogio">sáb · 22h14</span>
           <span class="pv-quem"><i class="pv-dot"></i>Helena Prado · Gestora</span>
         </div>
@@ -542,6 +1029,7 @@ footer .legal { line-height: 1.7; }
         <!-- cena 1: fila + resumo da IA -->
         <div class="pv-cena on" data-cena="fila">
           <div class="pv-fila">
+            <button type="button" class="pv-nova" tabindex="-1"><svg class="ic"><use href="#pvi-plus"/></svg>Nova conversa</button>
             <div class="pv-tabs"><span class="on">Fila <i class="n" id="pv-fila-n">0</i></span><span>Meus <i class="n">0</i></span><span>Todos <i class="n">8</i></span></div>
             <div class="pv-alerta" id="pv-alerta"><svg class="ic"><use href="#pvi-alert"/></svg><span>Conversa de Marcos · Serra Preta Peças espera há <b id="pv-espera">0 min</b> sem atendimento.</span></div>
             <div class="pv-card" id="pv-card1">
@@ -556,8 +1044,8 @@ footer .legal { line-height: 1.7; }
               <span class="pv-av" style="background:#8E5A9E">AC</span>
               <div class="pv-card-corpo">
                 <div class="pv-nome"><span class="nm">Ana · Auto Center BH</span><span class="hora">21h50</span></div>
-                <span class="pv-prev">IA: Prazo para Contagem é de 2 dias úteis.</span>
-                <div class="pv-chips"><span class="pv-chip fim">Resolvida pela IA</span></div>
+                <span class="pv-prev">IA: Atendemos de segunda a sexta, das 8h às 18h.</span>
+                <div class="pv-chips"><span class="pv-chip fim">Resolvida</span></div>
               </div>
             </div>
           </div>
@@ -583,7 +1071,7 @@ footer .legal { line-height: 1.7; }
           <div class="pv-conv">
             <div class="pv-conv-head">
               <span class="pv-av" style="background:#2C5F7C">MS</span>
-              <span class="quem"><b>Marcos · Serra Preta Peças</b><small>(31) 98811-0001 · via WhatsApp oficial</small></span>
+              <span class="quem"><b>Marcos · Serra Preta Peças</b><small>(31) 90000-0001 · via WhatsApp oficial</small></span>
               <span class="pv-chip espera" id="pv-chip2">Aguardando atendente</span>
             </div>
             <div class="pv-msgs">
@@ -603,18 +1091,18 @@ footer .legal { line-height: 1.7; }
             <h4>Resumo do contato · feito pela IA</h4>
             <div class="pv-ficha"><p class="pv-texto pequeno">Cliente quer 2 un. do sensor de nível PN 5096-104 (tanque de diesel), entrega em Betim. E-mail e CNPJ coletados. Aguarda cotação formal.</p></div>
             <h4>Quem está com a conversa</h4>
-            <div class="pv-pessoa" id="pv-pessoa"><span class="pv-av" style="background:#B97F24">HP</span><span><b>Helena Prado</b><small>assumiu às 8h02</small></span></div>
+            <div class="pv-pessoa" id="pv-pessoa"><span class="pv-av" style="background:#855600">HP</span><span><b>Helena Prado</b><small>assumiu às 8h02</small></span></div>
           </div>
           <svg class="pv-ghost" id="pv-ghost" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l14 8-6 1.5L16 20l-3 1.5L9.5 14 5 18z"/></svg>
         </div>
 
         <!-- cena 3: números -->
         <div class="pv-cena" data-cena="numeros">
-          <div class="pv-num-cab"><b>Números do atendimento</b><span class="pv-periodos"><i class="on">7 dias</i><i>30 dias</i><i>90 dias</i></span></div>
+          <div class="pv-num-cab"><b>Números do atendimento</b><span class="pv-periodos"><i>7 dias</i><i class="on">30 dias</i><i>90 dias</i></span></div>
           <div class="pv-tiles">
-            <div class="pv-tile"><small>Atendimentos</small><b data-conta="128">0</b></div>
-            <div class="pv-tile destaque"><small>Fora do horário</small><b data-conta="41">0</b></div>
-            <div class="pv-tile verde"><small>Resolvidos pela IA</small><b><span data-conta="73">0</span>%</b></div>
+            <div class="pv-tile"><small>Atendimentos</small><b data-conta="587">0</b></div>
+            <div class="pv-tile destaque"><small>Fora do horário</small><b data-conta="169">0</b></div>
+            <div class="pv-tile verde"><small>Resolvidos pela IA</small><b><span data-conta="61">0</span>%</b></div>
             <div class="pv-tile"><small>1ª resposta</small><b><span data-conta="9">0</span> s</b></div>
           </div>
           <div class="pv-ficha pv-graf">
@@ -628,7 +1116,7 @@ footer .legal { line-height: 1.7; }
               <div style="--h:.45;--n:.7"><i></i><em></em><small>sáb</small></div>
               <div style="--h:.3;--n:.85"><i></i><em></em><small>dom</small></div>
             </div>
-            <p class="pv-legenda" id="pv-legenda"><b>41 contatos</b> chegaram com o time em casa. <b>Zero</b> ficaram sem resposta.</p>
+            <p class="pv-legenda" id="pv-legenda"><b>169 contatos</b> chegaram com o time em casa, em 30 dias.</p>
           </div>
         </div>
       </div>
@@ -641,51 +1129,290 @@ footer .legal { line-height: 1.7; }
   </div>
 </section>
 
-<section class="nuncas">
+<section class="mesa dia" id="numeros" data-tema="dia">
+  <div class="miolo">
+    <div class="mesa-cab">
+      <div>
+        <p class="olho">Sexta, 17h. Você abre os números</p>
+        <h2 class="rv-linhas" style="margin-top:16px">Você passa a saber o que acontece no seu WhatsApp</h2>
+      </div>
+      <p class="sub rv">Hoje ninguém sabe quantos clientes chamaram com a loja fechada, quanto tempo esperaram nem quem do time resolveu o quê. Cada conversa vira registro, e o registro vira resposta para pergunta de dono.</p>
+    </div>
+
+    <div class="mesa-painel" id="mesa" role="group" aria-label="Mesa de números, com dados de demonstração">
+      <div class="mesa-barra">
+        <div class="mesa-periodo" role="group" aria-label="Período"><span class="thumb" aria-hidden="true"></span>
+          <button type="button" data-dias="7">7 dias</button>
+          <button type="button" data-dias="30" class="on" aria-pressed="true">30 dias</button>
+          <button type="button" data-dias="90">90 dias</button>
+        </div>
+        <span class="mesa-demo">demonstração · dados fictícios</span>
+        <span class="mesa-agora mono">sex 18/09 · 17h00</span>
+      </div>
+
+      <div class="mesa-tiles" id="mesa-tiles">
+        <div class="mt"><small>Atendimentos</small><b data-k="atendimentos">587</b><em data-d="atendimentos"></em></div>
+        <div class="mt destaque"><small>Chegaram com a loja fechada</small><b data-k="fora">169</b><em data-d="fora"></em></div>
+        <div class="mt"><small>Resolvidos só pela IA</small><b><span data-k="taxa">61</span>%</b><em id="mt-taxa-sub">de quem passou pela IA</em></div>
+        <div class="mt"><small>1ª resposta (mediana)</small><b><span data-k="primeira">9</span> s</b><em id="mt-ate60"></em></div>
+      </div>
+
+      <div class="mesa-bloco">
+        <div class="mesa-tit">
+          <h3>Quando o seu cliente chama, e quando o seu time responde</h3>
+          <p>Cada quadradinho é uma hora da semana. Quanto mais aceso, mais mensagens. Em ouro, o que chegou com a loja fechada. Passe o mouse ou toque: os dois mapas acendem a mesma hora.</p>
+        </div>
+        <div class="calor-duo">
+          <figure class="calor-fig">
+            <figcaption>Seus clientes chamam</figcaption>
+            <div class="calor" id="calor-cli" data-tom="ouro"></div>
+          </figure>
+          <figure class="calor-fig">
+            <figcaption>Seu time responde</figcaption>
+            <div class="calor" id="calor-hum" data-tom="pedra"></div>
+          </figure>
+        </div>
+        <p class="calor-leitura" id="calor-leitura" aria-live="polite">Tudo que está em ouro, fora da moldura, é cliente chamando com o time em casa. No mapa do time essa área fica apagada: é aí que a IA segura o atendimento.</p>
+        <p class="calor-leg"><span><i class="sw ouro"></i>chegou com a loja fechada</span><span><i class="sw pedra"></i>chegou no expediente</span><span><i class="sw-moldura"></i>moldura: expediente, segunda a sexta, 8h às 18h</span><span>menos <i class="sw-rampa"></i> mais, cada mapa na própria escala</span></p>
+        <details class="mesa-tabela"><summary>Ver como tabela</summary><div id="calor-tabela"></div></details>
+      </div>
+
+      <div class="mesa-duo">
+        <div class="mesa-bloco">
+          <div class="mesa-tit"><h3>Para onde foi cada atendimento</h3><p>Do primeiro "oi" até alguém resolver.</p></div>
+          <div class="funil" id="funil"></div>
+          <dl class="desfechos" id="desfechos"></dl>
+        </div>
+        <div class="mesa-bloco">
+          <div class="mesa-tit"><h3>Quem do time fez o quê</h3><p>Toque numa pessoa para ver o detalhe.</p></div>
+          <div class="tabela-rolavel"><table class="atend" id="atend"><thead><tr><th>Atendente</th><th>Assumiu</th><th>Respostas</th><th>Resolveu</th></tr></thead><tbody></tbody></table></div>
+          <p class="atend-det" id="atend-det" aria-live="polite"></p>
+          <div class="quem" id="quem"></div>
+        </div>
+      </div>
+
+      <div class="mesa-duo">
+        <div class="mesa-bloco">
+          <div class="mesa-tit"><h3>Quanto o cliente espera, hora a hora</h3><p>Espera mediana até alguém assumir, para quem entrou na fila durante o expediente, pela hora de entrada. Aqui conta só o tempo de expediente; no painel você escolhe, e ele mostra as 24 horas.</p></div>
+          <div class="horas" id="horas"></div>
+        </div>
+        <div class="mesa-bloco">
+          <div class="mesa-tit"><h3>Atendimentos por dia<span id="serie-sub" style="font-weight:400;color:var(--m-tx2);font-size:var(--t-1)"></span></h3><p><i class="sw ouro"></i>com a loja fechada <i class="sw pedra" style="margin-left:10px"></i>no expediente</p></div>
+          <div class="serie" id="serie"></div>
+        </div>
+      </div>
+
+      <div class="mesa-dica" id="mesa-dica" role="tooltip" hidden></div>
+    </div>
+
+    <div class="mesa-extra">
+      <div class="extra rv">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+        <div><h3>A semana numa página só</h3><p>O relatório semanal fecha a semana para quem não quer abrir gráfico: conversas, contatos fora do horário, tempo de primeira resposta, quem atendeu o quê. Só a gestora abre.</p></div>
+      </div>
+      <div class="extra rv">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v12M6 10l6 6 6-6M4 20h16"/></svg>
+        <div><h3>Seu, em planilha</h3><p>Exporta em CSV, por atendente ou por conversa. O dado é da sua empresa e sai do painel quando você quiser.</p></div>
+      </div>
+    </div>
+    <p class="mesa-nota">Mesa recriada com dados fictícios, montados pelas regras de desfecho do painel: "resolvido pela IA" é a conversa em que a IA respondeu, ninguém precisou assumir e o cliente ficou 48 h sem voltar. Por isso, em 7 dias a taxa aparece menor: as conversas mais novas ainda estão em aberto. "Sem resposta da IA" é falha de verdade, e o painel mostra em vez de esconder. "Em aberto agora" é o estado de hoje e não muda com o período.</p>
+  </div>
+</section>
+
+<section class="telas dia" data-tema="dia">
+  <div class="miolo">
+    <p class="olho">Área do cliente</p>
+    <h2 class="rv-linhas" style="margin-top:16px">O que o seu time abre na segunda de manhã</h2>
+    <p class="sub rv">Reproduções resumidas do painel atual, com dados fictícios. Nenhuma conversa de cliente real aparece neste site.</p>
+    <div class="grade">
+
+      <figure class="larga">
+        <div class="tl" tabindex="0" role="group" aria-label="Reprodução da tela de Conversas."><div class="tl-in" aria-hidden="true">
+          <div class="tl-rail"><div class="mk">SE</div><span class="on"><svg viewBox="0 0 24 24"><path d="M3 13l2-8h14l2 8v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M3 13h5l2 3h4l2-3h5"/></svg>Conversas</span><span class=""><svg viewBox="0 0 24 24"><circle cx="12" cy="7.5" r="4"/><path d="M4.5 21c0-4.1 3.4-7.5 7.5-7.5s7.5 3.4 7.5 7.5"/></svg>Contatos</span><span class=""><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Histórico</span><span class=""><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg>Modelos</span><span class=""><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="8" r="3"/><path d="M21 20c0-2.5-1.6-4.6-4-5.4"/></svg>Internos</span><span class=""><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Telefone</span><span class=""><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Números</span><div class="pe">por<b>Atalaia</b></div></div>
+          <div class="tl-main"><div class="tl-cols">
+            <div class="tl-col">
+              <div class="tl-btn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Nova conversa</div>
+              <div class="tl-busca"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span style="color:#5C6873">Buscar por nome ou número</span></div>
+              <div class="tl-tabs"><span>Fila 0</span><b>Meus 1</b><span>Todos 8</span></div>
+              <div class="tl-card on"><span class="tl-av">MS</span><div><b>Marcos · Serra Preta Peças</b><small>Helena: Bom dia, Marcos! Segue a cotação dos 2 sensores...</small><span class="tl-chip h">Em atendimento</span><span class="tl-chip i">Cliente de sempre</span></div></div>
+              <div class="tl-card"><span class="tl-av" style="background:#8E5A9E">AC</span><div><b>Ana · Auto Center BH</b><small>IA: Atendemos de segunda a sexta, das 8h às 18h.</small><span class="tl-chip">Resolvida</span></div></div>
+              <div class="tl-card"><span class="tl-av" style="background:#3D7A5C">RL</span><div><b>Rogério · Lima Hidráulica</b><small>IA: Então é a MH-34-R2. Me passa a metragem?</small><span class="tl-chip" style="background:#E3EDF3;color:#2C5F7C">IA atendendo</span></div></div>
+            </div>
+            <div class="tl-conv">
+              <header><span class="tl-av">MS</span><div><b>Marcos · Serra Preta Peças</b><small>(31) 90000-0001 · via WhatsApp oficial</small></div><span class="tl-chip h" style="margin:0 0 0 auto">Em atendimento</span></header>
+              <div class="tl-msgs">
+                <div class="tl-m"><i>Marcos · 12/09 22:14</i>Boa noite, vocês têm o PN 5096-104? Preciso de dois.</div>
+                <div class="tl-m ia"><i>Assistente · 12/09 22:14</i>Temos sim. PN 5096-104 é o sensor de nível para tanque de diesel. Me passa a cidade de entrega, e-mail e CNPJ?</div>
+                <div class="tl-m"><i>Marcos · 12/09 22:15</i>Betim. compras@minhaempresa.com.br, CNPJ 00.000.000/0001-00</div>
+                <div class="tl-m hu"><i>Helena · 08:03</i>Bom dia, Marcos! Segue a cotação dos 2 sensores PN 5096-104 com entrega em Betim.</div>
+              </div>
+              <div class="tl-comp"><div>Escreva a resposta…</div><svg viewBox="0 0 24 24" style="color:#5C6873"><path d="M21 12l-8.5 8.5a5 5 0 0 1-7-7L14 5a3.5 3.5 0 0 1 5 5l-8.5 8.5a2 2 0 0 1-3-3L15 8"/></svg><svg viewBox="0 0 24 24" style="color:#5C6873"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg><span class="tl-btn" style="padding:.6em 1em">Enviar</span></div>
+            </div>
+            <div class="tl-lado">
+              <h6>Resumo do contato · feito pela IA</h6>
+              <div class="tl-ficha">Cliente quer 2 un. do sensor de nível PN 5096-104 (tanque de diesel), entrega em Betim. E-mail e CNPJ coletados. Aguarda cotação formal.</div>
+              <h6>Dados</h6>
+              <div class="tl-ficha tl-kv"><span>Telefone</span><b>(31) 90000-0001</b><span>Público</span><b>Cliente de sempre</b><span>Assunto</span><b>Cotação de peça</b><span>Em atendimento</span><b>Helena Prado</b><span>Mensagens</span><b>4</b></div>
+            </div>
+          </div></div>
+        </div></div>
+        <figcaption><span class="selo-rep">reprodução</span><b>Conversas.</b> A fila à esquerda, a conversa no meio e o resumo que a IA escreveu à direita. Quem assume não precisa ler tudo de novo.</figcaption>
+      </figure>
+
+      <figure>
+        <div class="tl" tabindex="0" role="group" aria-label="Reprodução da tela de Contatos."><div class="tl-in" aria-hidden="true">
+          <div class="tl-rail"><div class="mk">SE</div><span class=""><svg viewBox="0 0 24 24"><path d="M3 13l2-8h14l2 8v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M3 13h5l2 3h4l2-3h5"/></svg>Conversas</span><span class="on"><svg viewBox="0 0 24 24"><circle cx="12" cy="7.5" r="4"/><path d="M4.5 21c0-4.1 3.4-7.5 7.5-7.5s7.5 3.4 7.5 7.5"/></svg>Contatos</span><span class=""><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Histórico</span><span class=""><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg>Modelos</span><span class=""><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="8" r="3"/><path d="M21 20c0-2.5-1.6-4.6-4-5.4"/></svg>Internos</span><span class=""><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Telefone</span><span class=""><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Números</span><div class="pe">por<b>Atalaia</b></div></div>
+          <div class="tl-main"><div class="tl-cols c2">
+            <div class="tl-col">
+              <h5>Contatos<i>412 no total</i></h5>
+              <div class="tl-busca"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>serra</div>
+              <div class="tl-card on"><span class="tl-av">MS</span><div><b>Marcos</b><small>Serra Preta Peças · (31) 90000-0001</small></div></div>
+              <div class="tl-card"><span class="tl-av" style="background:#B0702E">JS</span><div><b>Joana Serrano</b><small>Oficina Dois Irmãos · (31) 90000-0002</small></div></div>
+              <div class="tl-card"><span class="tl-av" style="background:#3D7A5C">PS</span><div><b>Paulo Serrat</b><small>Serrat Agro · (31) 90000-0003</small></div></div>
+            </div>
+            <div class="tl-col" style="border:0;background:#F6F8F9;gap:.9em">
+              <div class="tl-card" style="border:0;padding:0"><span class="tl-av g">MS</span><div><b style="font-size:1.3em">Marcos</b><small>Serra Preta Peças · (31) 90000-0001</small><span class="tl-chip h">Em atendimento</span><span class="tl-chip i">Cliente de sempre</span></div></div>
+              <div class="tl-btn"><svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg>Abrir conversa</div>
+              <p class="tl-sec">Conversa pelo painel</p>
+              <div class="tl-ficha">desde 12/09/2026 · com Helena<br><span style="color:#5C6873">4 mensagens · última há 2 min</span></div>
+              <div class="tl-ficha tl-kv"><span>Importado em</span><b>02/09/2026</b><span>Origem</span><b>agenda do celular</b><span>Público</span><b>Cliente de sempre</b></div>
+            </div>
+          </div></div>
+        </div></div>
+        <figcaption><span class="selo-rep">reprodução</span><b>Contatos.</b> A busca responde a cada letra, por nome, empresa ou número, e abre a ficha ao lado.</figcaption>
+      </figure>
+
+
+    </div>
+  </div>
+</section>
+
+<section class="impl dia" id="implantacao" data-tema="dia">
+  <div class="miolo">
+    <div class="impl-cab">
+      <div>
+        <p class="olho">Implantação</p>
+        <h2 class="rv-linhas" style="margin-top:16px">Do seu catálogo ao primeiro atendimento</h2>
+      </div>
+      <p class="sub rv">Quatro etapas, e em cada uma fica claro o que é com você e o que é com a gente.</p>
+    </div>
+    <ol class="impl-lista">
+      <li class="etapa" style="--i:0">
+        <div>
+          <p class="num">Etapa 1 de 4</p>
+          <h3>Você manda o catálogo</h3>
+          <p>Do jeito que ele existe hoje: PDF, planilha ou o próprio site. Não precisa arrumar nada antes.</p>
+          <dl class="papeis"><div><dt>Você</dt><dd>Envia os arquivos e conta como o time atende.</dd></div><div><dt>Atalaia</dt><dd>Lê marcas, linhas, códigos e descrições.</dd></div></dl>
+        </div>
+        <div class="vis" aria-hidden="true">
+          <i class="varre"></i>
+          <div class="arq"><svg class="ico" viewBox="0 0 24 24"><path d="M4 4h11l5 5v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/><path d="M15 4v5h5"/></svg><span>catalogo-2026.pdf</span><span>lido</span></div>
+          <div class="arq"><svg class="ico" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M3 15h18M9 4v16"/></svg><span>tabela-de-codigos.xlsx</span><span>lido</span></div>
+          <div class="arq"><svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg><span>suaempresa.com.br</span><span>lendo</span></div>
+        </div>
+      </li>
+      <li class="etapa" style="--i:1">
+        <div>
+          <p class="num">Etapa 2 de 4</p>
+          <h3>A gente calibra o tom</h3>
+          <p>Ela aprende com conversas reais do seu time: como cumprimenta, o que pergunta primeiro, quando chama alguém.</p>
+          <dl class="papeis"><div><dt>Você</dt><dd>Diz o que é só de gente: preço, prazo, negociação.</dd></div><div><dt>Atalaia</dt><dd>Ajusta as respostas até soar como a sua empresa.</dd></div></dl>
+        </div>
+        <div class="vis" aria-hidden="true">
+          <div class="par"><span class="riscado">Prezado cliente, digite 1 para vendas.</span>
+          <div class="balao nosso" style="max-width:100%">Boa tarde, Marcos! Temos sim. Você tem o código da peça ou uma foto dela?</div></div>
+        </div>
+      </li>
+      <li class="etapa" style="--i:2">
+        <div>
+          <p class="num">Etapa 3 de 4</p>
+          <h3>Seu time testa antes do cliente</h3>
+          <p>Vocês conversam com ela como se fossem o cliente, com os códigos mais difíceis do catálogo, e apontam o que corrigir.</p>
+          <dl class="papeis"><div><dt>Você</dt><dd>Testa e aprova.</dd></div><div><dt>Atalaia</dt><dd>Corrige o que aparecer no teste.</dd></div></dl>
+        </div>
+        <div class="vis" aria-hidden="true">
+          <div class="linha-dado" style="border:0;padding:0"><span>pergunta de teste</span><b>resultado</b></div>
+          <div class="linha-dado"><span>PN 5096-104</span><b>reconheceu</b></div>
+          <div class="linha-dado"><span>mangueira de 3/4</span><b>perguntou a pressão</b></div>
+          <div class="linha-dado"><span>qual o preço?</span><b>passou para o time</b></div>
+        </div>
+      </li>
+      <li class="etapa" style="--i:3">
+        <div>
+          <p class="num">Etapa 4 de 4</p>
+          <h3>Entra no ar, no seu número</h3>
+          <p>IA e atendentes no mesmo WhatsApp oficial da empresa. O time acompanha tudo pelo painel e assume quando quiser.</p>
+          <dl class="papeis"><div><dt>Você</dt><dd>Recebe cotação pronta na fila.</dd></div><div><dt>Atalaia</dt><dd>Fica no posto à noite e no fim de semana.</dd></div></dl>
+        </div>
+        <div class="vis" aria-hidden="true">
+          <div class="noar"><i></i><span>no ar · respondendo</span></div>
+          <div class="linha-dado"><span>sáb · 22h14</span><b>respondido em segundos</b></div>
+          <div class="linha-dado"><span>seg · 8h02</span><b>cotação na fila</b></div>
+        </div>
+      </li>
+    </ol>
+    <div class="portal rv">
+      <div>
+        <p class="olho">Já é cliente</p>
+        <h3>O painel do seu time está aqui</h3>
+        <p>Conversas, contatos, histórico e números. Entre com o seu usuário.</p>
+      </div>
+      <div>
+        <a class="btn cheio" href="https://painel.atalaiainteligencia.com.br" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>Entrar na área do cliente</a>
+        <p class="end">painel.atalaiainteligencia.com.br</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="nuncas dia" data-tema="dia">
   <div class="miolo">
     <h2 class="rv-linhas">O que ela nunca vai fazer</h2>
     <p class="sub rv">Confiança se constrói dizendo também o que fica de fora.</p>
     <ul>
-      <li class="rv"><span class="n">Nunca</span><p><b>inventa preço, prazo ou estoque.</b> O que é do seu time continua do seu time: ela prepara, o humano fecha.</p></li>
-      <li class="rv"><span class="n">Nunca</span><p><b>finge ser gente.</b> Se perguntarem, diz com naturalidade que é o assistente e chama alguém do time na hora.</p></li>
-      <li class="rv"><span class="n">Nunca</span><p><b>aplica menu de "digite 1, 2 ou 3".</b> Conversa de verdade, uma pergunta de cada vez.</p></li>
-      <li class="rv"><span class="n">Nunca</span><p><b>deixa conversa sumir.</b> Se ninguém assumir no prazo, reavisa o time e depois avisa a gestão.</p></li>
+      <li><span class="n">Nunca</span><p><b>inventa preço, prazo ou estoque.</b> O que é do seu time continua do seu time: ela prepara, o humano fecha.</p></li>
+      <li><span class="n">Nunca</span><p><b>finge ser gente.</b> Se perguntarem, diz com naturalidade que é o assistente e chama alguém do time na hora.</p></li>
+      <li><span class="n">Nunca</span><p><b>aplica menu de "digite 1, 2 ou 3".</b> Conversa de verdade, uma pergunta de cada vez.</p></li>
+      <li><span class="n">Nunca</span><p><b>deixa conversa sumir.</b> Se ninguém assumir no prazo, reavisa o time e depois avisa a gestão.</p></li>
     </ul>
   </div>
 </section>
 
-<section class="nome">
+<section class="nome noite" data-tema="noite">
+  <svg class="gigante" viewBox="0 0 608 170" aria-hidden="true" focusable="false"><use href="#logo"/><circle class="atalaia-brasa" cx="480" cy="16" r="16" fill="var(--brasa)"/></svg>
   <div class="miolo">
-    <svg class="ico tocha-ico rv" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c2 3 3.5 4.6 3.5 7a3.5 3.5 0 0 1-7 0c0-2.4 1.5-4 3.5-7z"/><path d="M8 14l-2 7h12l-2-7"/></svg>
-    <h2 class="rv-linhas">Por que "Atalaia"</h2>
-    <p class="rv">Nas cidades antigas, o atalaia era quem ficava na muralha enquanto todos dormiam: o primeiro a ver quem chegava. <b>É isso que fazemos pelo seu atendimento:</b> alguém no posto a noite inteira e o fim de semana inteiro, para nenhum cliente seu passar em branco.</p>
+    <p class="assina">Por que "Atalaia"</p>
+    <h2 class="rv-linhas">Quem ficava na muralha enquanto todos dormiam.</h2>
+    <p class="rv">Nas cidades antigas, o atalaia era o primeiro a ver quem chegava. <b>É isso que fazemos pelo seu atendimento:</b> alguém no posto a noite inteira e o fim de semana inteiro, para nenhum cliente seu passar em branco.</p>
   </div>
 </section>
 
-<section class="fecho">
+<section class="fecho dia" data-tema="dia">
   <div class="miolo">
     <div>
       <p class="olho">Quatro perguntas, um minuto</p>
       <h2 class="rv-linhas">Vamos ver se faz sentido para a sua empresa</h2>
       <p class="rv">Responda e eu monto a mensagem para você mandar no WhatsApp. Chega do meu lado com o contexto pronto, e a conversa já começa com proposta em vez de "me conta mais".</p>
     </div>
-    <div class="rv">
-      <div id="diag" aria-label="Diagnóstico guiado">
-  <div class="diag-barra" aria-hidden="true"><i></i></div>
-  <div class="diag-passo">Pergunta 1 de 4</div>
-  <div class="diag-titulo">O que a sua empresa vende?</div>
-  <div class="diag-opcoes"></div>
-  <button type="button" class="diag-voltar" hidden>Voltar</button>
-</div>
+    <div id="diag" role="group" aria-label="Diagnóstico guiado">
+      <div class="diag-barra" aria-hidden="true"><i></i></div>
+      <div class="diag-passo">Pergunta 1 de 4</div>
+      <div class="diag-titulo" aria-live="polite">O que a sua empresa vende?</div>
+      <div class="diag-opcoes"></div>
+      <button type="button" class="diag-voltar" hidden>Voltar</button>
     </div>
   </div>
 </section>
+</main>
 
 <footer>
   <div class="miolo">
-    <span class="marca"><img src="logo/atalaia-icone.svg" alt="" width="34" height="34">ATALAIA <span>INTELIGÊNCIA</span></span>
-    <p>Ninguém fica sem resposta.</p>
-    <nav aria-label="Contato">
+    <div class="linha1">
+      <a class="marca" href="#inicio" aria-label="Atalaia, início"><svg viewBox="0 0 608 170" aria-hidden="true" focusable="false"><use href="#logo"/><circle class="atalaia-brasa" cx="480" cy="16" r="16" fill="var(--brasa)"/></svg></a>
+      <p class="assin">Ninguém fica sem resposta.</p>
+    </div>
+    <nav aria-label="Contato e acesso">
+      <a href="https://painel.atalaiainteligencia.com.br" rel="noopener">Área do cliente</a>
       <a href="https://www.instagram.com/atalaiainteligencia" rel="noopener">@atalaiainteligencia</a>
       <a href="mailto:tulio@atalaiainteligencia.com.br">tulio@atalaiainteligencia.com.br</a>
     </nav>
@@ -693,32 +1420,58 @@ footer .legal { line-height: 1.7; }
   </div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/SplitText.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js" integrity="sha384-XmJ9SoHtVOHoQUcKvFAzVXwdkKo1Ie3bhmSoIAkcdsHGaIrVJIkmozyq0FJeb/Ly" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js" integrity="sha384-wl5TeDVvOWt30Pbf8aSo2ZrzsOjddu3avOBvHe+p+OhJt9gP6w9YXmDkN5DK2/dF" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/SplitText.min.js" integrity="sha384-SWJ0lLVRoipvHh59xj0pL7uC7Ih51F+5smaFtrG+2nr+TlDZU5SYJHmxfolbeNTr" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
+/* Demonstração: a conversa da esquerda preenche a fila da direita. Roteiro fixo, sem serviço externo. */
 (function () {
   var conversa = document.getElementById("demo-conversa"), chipsEl = document.getElementById("demo-chips");
   if (!conversa || !chipsEl) return;
+  var calmo = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var INICIO = ["codigo", "semcodigo", "robo"];
   var NOS = {
     codigo: { pergunta: "Vocês têm o PN 5096-104?",
-      resposta: ["Temos sim. <mark>PN 5096-104</mark> é o sensor de nível para tanque de diesel, linha Série 5. Quantas unidades você precisa?"], proximas: ["qtd"] },
+      resposta: "Temos sim. <mark>PN 5096-104</mark> é o sensor de nível para tanque de diesel, linha Série 5. Quantas unidades você precisa?",
+      campos: { peca: "PN 5096-104 · sensor de nível" }, proximas: ["qtd"] },
     qtd: { pergunta: "Duas unidades, entrega em Betim",
-      resposta: ["Anotado: 2 × PN 5096-104, entrega em Betim. Me passa seu e-mail e CNPJ? A cotação formal sai por e-mail, e preço e prazo quem confirma é o nosso time."], proximas: ["email"] },
+      resposta: "Anotado: 2 × PN 5096-104, entrega em Betim. Me passa seu e-mail e CNPJ? A cotação formal sai por e-mail, e preço e prazo quem confirma é o nosso time.",
+      campos: { qtd: "2 un.", entrega: "Betim" }, proximas: ["email"] },
     semcodigo: { pergunta: "Preciso de uma mangueira hidráulica de 3/4, mas não sei o código",
-      resposta: ["Sem problema. No nosso catálogo a mangueira hidráulica de 3/4\" aparece nas linhas <mark>MH-34-R1</mark> (1 trama) e <mark>MH-34-R2</mark> (2 tramas). É para pressão alta ou média?"], proximas: ["alta"] },
+      resposta: "Sem problema. No nosso catálogo a mangueira hidráulica de 3/4\" aparece nas linhas <mark>MH-34-R1</mark> (1 trama) e <mark>MH-34-R2</mark> (2 tramas). É para pressão alta ou média?",
+      campos: { peca: "Mangueira hidr. 3/4\" · a definir" }, proximas: ["alta"] },
     alta: { pergunta: "Pressão alta",
-      resposta: ["Então é a MH-34-R2. Me passa a metragem, seu e-mail e o CNPJ que eu deixo a cotação encaminhada para o time."], proximas: ["email"] },
+      resposta: "Então é a MH-34-R2. Me passa a metragem, seu e-mail e o CNPJ que eu deixo a cotação encaminhada para o time.",
+      campos: { peca: "MH-34-R2 · 2 tramas" }, proximas: ["email"] },
     email: { pergunta: "compras@minhaempresa.com.br · CNPJ 00.000.000/0001-00",
-      resposta: ["Perfeito. Passei tudo para o comercial com o resumo pronto. A cotação chega no seu e-mail, e qualquer coisa é só chamar por aqui."],
-      selo: "cotação qualificada · time avisado · tudo registrado no painel", fim: true },
+      resposta: "Perfeito. Passei tudo para o comercial com o resumo pronto. A cotação chega no seu e-mail, e qualquer coisa é só chamar por aqui.",
+      campos: { email: "compras@minhaempresa.com.br", cnpj: "00.000.000/0001-00" },
+      selo: "cotação qualificada · time avisado · tudo registrado no painel", fim: "cotacao" },
     robo: { pergunta: "Você é um robô?",
-      resposta: ["Sou o assistente da empresa. Atendo na hora, a qualquer hora, e o que precisa de gente eu passo para o time com a conversa resumida. Quer que eu chame alguém agora?"], proximas: ["chama", "curioso"] },
-    chama: { pergunta: "Pode chamar alguém", resposta: ["Feito. Avisei o time com o resumo da nossa conversa, e alguém assume por aqui em instantes."], selo: "o time é avisado na hora, com o resumo pronto", fim: true },
-    curioso: { pergunta: "Não precisa, era curiosidade", resposta: ["Fico por aqui então. Qualquer pergunta sobre produtos, prazos ou pedidos, é só mandar."], fim: true }
+      resposta: "Sou o assistente da empresa. Atendo na hora, a qualquer hora, e o que precisa de gente eu passo para o time com a conversa resumida. Quer que eu chame alguém agora?", proximas: ["chama", "curioso"] },
+    chama: { pergunta: "Pode chamar alguém", resposta: "Feito. Avisei o time com o resumo da nossa conversa, e alguém assume por aqui em instantes.",
+      selo: "o time é avisado na hora, com o resumo pronto", fim: "gente" },
+    curioso: { pergunta: "Não precisa, era curiosidade", resposta: "Fico por aqui então. Qualquer pergunta sobre produtos, prazos ou pedidos, é só mandar.", fim: "nada" }
   };
-  function hora() { var d = new Date(); return ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2); }
+  var F = { peca: "f-peca", qtd: "f-qtd", entrega: "f-entrega", email: "f-email", cnpj: "f-cnpj" };
+  var estado = document.getElementById("f-estado"), cartao = document.getElementById("f-cartao"), fN = document.getElementById("f-n"), resumo = document.getElementById("f-resumo");
+  var valores = {}, pe = document.getElementById("f-pe"), eco = document.getElementById("demo-eco"), filaEl = document.querySelector(".fila");
+  var ROT = { peca: "Peça", qtd: "Quantidade", entrega: "Entrega", email: "E-mail", cnpj: "CNPJ" };
+  function naTela(el) { var r = el.getBoundingClientRect(); return r.top > 60 && r.bottom < window.innerHeight; }
+
+  /* Dono único de tudo que a demo agenda. Cada "Recomeçar" abre uma rodada nova; o que foi agendado na rodada
+     anterior (resposta, voo, fecho do cartão, rolagem) confere a rodada antes de agir e morre calado se ela mudou.
+     Sem isso, os temporizadores da conversa velha escreviam na conversa nova e puxavam a página sozinha. */
+  var rodada = 0, timers = [];
+  function depois(fn, ms) { var r = rodada; timers.push(setTimeout(function () { if (r === rodada) fn(); }, ms)); }
+  function limpar() {
+    rodada++; timers.forEach(clearTimeout); timers = [];
+    if (window.gsap) gsap.killTweensOf(".voa");
+    document.querySelectorAll(".voa").forEach(function (v) { v.remove(); });
+  }
+  /* A cena é sábado à noite: o balão carimba a hora da história, não a do relógio de quem visita. */
+  var minuto = 14;
+  function hora() { return "22h" + ("0" + minuto).slice(-2); }
   function desce() { conversa.scrollTop = conversa.scrollHeight; }
   function balao(classe, html) { var b = document.createElement("div"); b.className = "balao " + classe; b.innerHTML = html; var s = document.createElement("small"); s.textContent = hora(); b.appendChild(s); conversa.appendChild(b); desce(); return b; }
   function selo(texto) { var s = document.createElement("div"); s.className = "selo"; s.innerHTML = '<svg viewBox="0 0 24 24" class="ico" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>' + texto; conversa.appendChild(s); desce(); }
@@ -727,19 +1480,100 @@ footer .legal { line-height: 1.7; }
   function mostrarChips(ids, fim) {
     chipsEl.innerHTML = "";
     ids.forEach(function (id) { chip(NOS[id].pergunta, function () { escolher(id); }); });
-    if (fim) { var a = document.createElement("a"); a.className = "chip link"; a.href = "#diag"; a.textContent = "Quero na minha empresa"; chipsEl.appendChild(a); chip("Recomeçar", comecar); }
+    if (fim) {
+      var a = document.createElement("a"); a.className = "chip link"; a.href = "#diag"; a.textContent = "Quero na minha empresa";
+      a.addEventListener("click", function () { podeRolar = false; });   /* quem está saindo pro diagnóstico não é puxado de volta */
+      chipsEl.appendChild(a); chip("Recomeçar", comecar);
+    }
+    /* trocar os chips destrói o botão que tinha o foco: devolve pro primeiro novo, sem rolar a página */
+    if (document.activeElement === document.body || document.activeElement === null) {
+      var primeiro = chipsEl.querySelector(".chip"); if (primeiro && focoNaDemo) primeiro.focus({ preventScroll: true });
+    }
+  }
+  /* A página só rola sozinha se o visitante não tiver tomado o volante. Qualquer gesto dele cancela. */
+  var podeRolar = false, focoNaDemo = false, zapEl = document.querySelector(".zap");
+  function aindaNoChat() { var r = zapEl.getBoundingClientRect(); return r.bottom > 80 && r.top < window.innerHeight; }
+  ["wheel", "touchmove", "keydown", "pointerdown"].forEach(function (ev) { window.addEventListener(ev, function (e) {
+    /* o próprio clique no chip chega aqui como pointerdown: ele não conta como "tomar o volante" */
+    if (ev === "pointerdown" && e.target && e.target.closest && e.target.closest("#demo-chips .chip:not(.link)")) return;
+    podeRolar = false;
+  }, { passive: true }); });
+  chipsEl.addEventListener("focusin", function () { focoNaDemo = true; });
+  function marcaEstado(txt, cls) { estado.textContent = txt; estado.className = "estado" + (cls ? " " + cls : ""); }
+  function preencher(chave, valor) {
+    var dd = document.getElementById(F[chave]); valores[chave] = valor;
+    eco.textContent = "no painel do time · " + ROT[chave] + ": " + valor; eco.classList.add("tem");
+    dd.textContent = valor; dd.classList.remove("vazio", "acende"); void dd.offsetWidth; dd.classList.add("acende");
+  }
+  /* o dado sai do balão do cliente e pousa no campo da fila */
+  function voar(origem, chave, valor, atraso, voa) {
+    var dd = document.getElementById(F[chave]);
+    if (calmo || !window.gsap || !voa) { depois(function () { preencher(chave, valor); }, atraso * 1000); return; }
+    var a = origem.getBoundingClientRect(), r = rodada;
+    var t = document.createElement("span"); t.className = "voa"; t.textContent = valor; document.body.appendChild(t);
+    var w = t.offsetWidth;
+    /* o destino é medido na hora de voar, não antes: se o visitante rolar no meio, o dado ainda pousa no campo.
+       O campo é preenchido quando o dado chega, não depois que ele some (antes havia 0,16 s de buraco). */
+    gsap.fromTo(t, { x: a.right - w - 10 + window.scrollX, y: a.top + 6 + window.scrollY, opacity: 0, scale: .8 },
+      { keyframes: [ { opacity: 1, scale: 1, duration: .22 },
+                     { x: function () { return dd.getBoundingClientRect().right - w + window.scrollX; }, y: function () { return dd.getBoundingClientRect().top + 4 + window.scrollY; }, duration: .78, ease: "power3.inOut" },
+                     { opacity: 0, scale: .9, duration: .16, onStart: function () { if (r === rodada) preencher(chave, valor); } } ],
+        delay: atraso, onComplete: function () { t.remove(); } });
+  }
+  function encerrar(tipo) {
+    /* No celular a fila fica abaixo do chat: leva o visitante até ela, MAS só se ele não tiver tomado o volante
+       (rolou, tocou, teclou ou clicou no CTA). O salto de garantia existe porque rolagem suave pode não acontecer;
+       ele obedece à mesma regra e à mesma rodada. */
+    /* CAUSA, não sintoma: a rolagem só vale se o visitante AINDA ESTÁ NO CHAT. Na rodada 2 eu cancelava por tipo de gesto
+       (roda, arrasto, tecla, clique no chip) e o botão do topo continuava sendo sequestrado, porque toque em link não é
+       nenhum desses. Perguntar "onde ele está?" cobre todo caminho de saída, inclusive os que eu não imaginei. */
+    if (podeRolar && aindaNoChat() && !naTela(cartao) && tipo !== "nada") depois(function () {
+      if (!podeRolar || !aindaNoChat()) return;
+      cartao.scrollIntoView({ behavior: calmo ? "auto" : "smooth", block: "center" });
+      var yPartida = window.scrollY;
+      depois(function () {
+        /* o salto de garantia só entra se a rolagem suave NÃO aconteceu (página parada no mesmo lugar) */
+        if (podeRolar && Math.abs(window.scrollY - yPartida) < 4 && aindaNoChat() && !naTela(cartao)) cartao.scrollIntoView({ behavior: "auto", block: "center" });
+        podeRolar = false;
+      }, 1200);
+    }, 700);
+    pe.classList.toggle("vivo", tipo !== "nada");
+    if (tipo === "cotacao") {
+      marcaEstado("Cotação qualificada", "ok"); cartao.classList.add("pronto"); fN.textContent = "1"; fN.classList.add("tem");
+      var p = (valores.peca || "peça informada").split(" · ")[0];
+      resumo.textContent = "Cliente quer " + (valores.qtd ? valores.qtd + " de " : "") + p + (valores.entrega ? ", entrega em " + valores.entrega : "") + ". E-mail e CNPJ coletados. Aguarda cotação formal.";
+    } else if (tipo === "gente") {
+      marcaEstado("Pediu uma pessoa", "ok"); cartao.classList.add("pronto"); fN.textContent = "1"; fN.classList.add("tem");
+      resumo.textContent = "Cliente perguntou se falava com robô e pediu atendimento humano. Time avisado na hora.";
+    } else { marcaEstado("Resolvida", ""); resumo.textContent = "Cliente só tirou uma dúvida. Nada pendente para o time."; }
   }
   function escolher(id) {
     var no = NOS[id]; chipsEl.innerHTML = "";
-    balao("deles", no.pergunta);
+    if (passos++ > 0) minuto++;                      /* 22h14, 22h15, 22h16: a conversa anda um minuto por troca */
+    var dele = balao("deles", no.pergunta);
+    marcaEstado("IA atendendo", "ia");
     var t = digitando();
-    setTimeout(function () {
-      t.remove(); balao("nosso", no.resposta[0]);
-      if (no.selo) selo(no.selo);
+    depois(function () {
+      t.remove(); balao("nosso", no.resposta);
+      if (no.selo) selo(no.selo);                    /* antes do voo: o selo empurra a conversa e mudaria a origem medida */
+      /* decide UMA vez por resposta: ou voam todos os campos, ou nenhum. Campo a campo, num notebook comum só "Peça" voava
+         e e-mail e CNPJ apareciam secos: a cena principal ficava pela metade dentro da mesma resposta. */
+      var chaves = Object.keys(no.campos || {});
+      var todosVisiveis = chaves.length > 0 && chaves.every(function (k) { return naTela(document.getElementById(F[k])); }) && naTela(dele);
+      var i = 0; chaves.forEach(function (k) { voar(dele, k, no.campos[k], i * .18, todosVisiveis); i++; });
+      if (no.fim) { podeRolar = true; depois(function () { encerrar(no.fim); }, calmo ? 0 : 900 + i * 180); }
       mostrarChips(no.proximas || [], !!no.fim);
     }, 900);
   }
-  function comecar() { conversa.innerHTML = ""; balao("nosso", "Olá! Faz de conta que você é cliente de uma distribuidora de peças. O catálogo dela eu já li. Me pergunta:"); mostrarChips(INICIO, false); }
+  var passos = 0;
+  function comecar() {
+    limpar(); podeRolar = false; passos = 0; minuto = 14;
+    conversa.innerHTML = ""; valores = {};
+    Object.keys(F).forEach(function (k) { var dd = document.getElementById(F[k]); dd.textContent = "aguardando"; dd.className = "vazio"; });
+    marcaEstado("Conversa começando", ""); pe.classList.remove("vivo"); cartao.classList.remove("pronto"); fN.textContent = "0"; fN.classList.remove("tem");
+    resumo.textContent = "Aparece aqui quando a conversa terminar."; eco.classList.remove("tem");
+    balao("nosso", "Olá! Faz de conta que você é cliente de uma distribuidora de peças. O catálogo dela eu já li. Me pergunta:"); mostrarChips(INICIO, false);
+  }
   comecar();
 })();
 </script>
@@ -758,6 +1592,7 @@ window.montarPainel = function (opts) {
   function mostrarCena(nome) {
     pv.querySelectorAll(".pv-cena").forEach(function (c) { c.classList.toggle("on", c.dataset.cena === nome); });
     pv.querySelectorAll(".pv-trilho .pv-it[data-aba]").forEach(function (b) { b.classList.toggle("on", b.dataset.aba === (nome === "assumir" ? "fila" : nome)); });
+    var mais = pv.querySelector(".pv-mais"); if (mais) mais.classList.toggle("on", nome === "numeros");
     document.getElementById("pv-titulo").textContent = TITULOS[nome];
     raiz.querySelectorAll(".pv-passo").forEach(function (p) { p.classList.toggle("on", p.dataset.cena === nome); });
   }
@@ -848,6 +1683,7 @@ window.montarPainel = function (opts) {
       volta = raiz.querySelector(".diag-voltar");
 
   function render() {
+    var eraMeu = raiz.contains(document.activeElement);
     var q = PERGUNTAS[passo];
     cab.textContent = "Pergunta " + (passo + 1) + " de " + PERGUNTAS.length;
     tit.textContent = q.titulo;
@@ -861,6 +1697,7 @@ window.montarPainel = function (opts) {
     });
     volta.hidden = passo === 0;
     raiz.classList.toggle("diag-fim", false);
+    if (eraMeu) { var p = ops.querySelector(".diag-op"); if (p) p.focus({ preventScroll: true }); }
   }
   function escolher(o) {
     respostas[passo] = o;
@@ -879,6 +1716,7 @@ window.montarPainel = function (opts) {
     var a = document.createElement("a"); a.className = "diag-enviar"; a.target = "_blank"; a.rel = "noopener";
     a.href = ZAP + encodeURIComponent(texto); a.textContent = "Enviar no WhatsApp";
     ops.appendChild(previa); ops.appendChild(a);
+    if (raiz.contains(document.activeElement) || document.activeElement === document.body) a.focus({ preventScroll: true });
     raiz.classList.add("diag-fim");
     volta.hidden = false;
   }
@@ -888,34 +1726,418 @@ window.montarPainel = function (opts) {
 
 </script>
 <script>
+/* MESA DE NÚMEROS. Não depende do GSAP: se a CDN cair, a mesa continua inteira e interativa.
+   Os dados vêm de numeros.json (simula_numeros.py), calculados com as regras do painel real. Rótulos do funil e dos
+   desfechos são os da tela de Números do sistema. "Tudo nasce visível": o HTML já traz os 30 dias escritos; aqui só se
+   desenha o que é gráfico, e a animação de entrada mexe apenas em transform de barra, nunca em texto. */
 (function () {
-  if (!window.gsap || !window.ScrollTrigger) return;
+  var mesa = document.getElementById("mesa");
+  if (!mesa) return;
+  var D = {"agora":"sex 18/09 · 17h00","p":{"7":{"r":{"atendimentos":132,"passaram_ia":132,"na_fila_total":37,"assumidos":37,"res_humano":35,"res_ia":63,"encaminhadas":0,"em_atendimento":2,"na_fila":0,"com_ia":26,"ia_nao_resolveu":5,"sem_resposta":1,"fora":31,"primeira":9.726,"ate60":0.992,"espera":339.141,"espera_p90":1062.529,"no_prazo":0.784},"d":{"atendimentos":11,"fora":-16,"res_ia":-11,"res_humano":-12},"taxa_ia":0.477,"por":[{"nome":"Helena Prado","assumiu":14,"respostas":64,"resolveu":14,"primeira":147,"aberto":0},{"nome":"Rafael Nunes","assumiu":17,"respostas":69,"resolveu":16,"primeira":153,"aberto":1},{"nome":"Camila Duarte","assumiu":6,"respostas":25,"resolveu":5,"primeira":203,"aberto":1}],"cli":[[0,0,0,0,0,0,2,0,5,17,10,10,4,4,0,4,7,6,4,0,8,3,0,0],[0,0,0,0,0,0,0,7,3,4,18,4,5,7,10,9,10,8,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,5,4,12,3,8,4,5,3,8,7,2,0,2,4,4,0],[0,0,0,0,0,0,0,0,11,6,9,0,0,6,9,0,15,0,12,0,0,0,3,0],[0,0,0,0,0,0,0,6,0,5,9,0,11,5,6,11,3,0,0,0,0,0,0,0],[0,0,3,0,0,0,2,0,0,4,3,0,6,0,0,0,3,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,2,0,2,2,0,0,0,0,2,4,0,0,2,0]],"hum":[[0,0,0,0,0,0,0,0,11,4,0,0,2,0,0,0,0,2,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,3,7,5,3,1,0,1,1,0,1,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,7,3,8,3,1,3,1,3,3,5,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,12,7,10,2,0,0,1,2,4,5,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,9,5,5,5,2,0,3,2,3,3,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],"por_hora":[258,1030,378,null,null,null,324,null,156,115],"serie":[["12/09",5,7,7],["13/09",6,6,6],["14/09",0,27,6],["15/09",1,28,2],["16/09",2,23,4],["17/09",3,22,4],["18/09",4,19,2]]},"30":{"r":{"atendimentos":587,"passaram_ia":581,"na_fila_total":176,"assumidos":176,"res_humano":168,"res_ia":353,"encaminhadas":6,"em_atendimento":2,"na_fila":0,"com_ia":26,"ia_nao_resolveu":26,"sem_resposta":6,"fora":169,"primeira":9.272,"ate60":0.981,"espera":377.652,"espera_p90":1034.429,"no_prazo":0.761},"d":{"atendimentos":-1,"fora":-6,"res_ia":-9,"res_humano":4},"taxa_ia":0.608,"por":[{"nome":"Helena Prado","assumiu":70,"respostas":313,"resolveu":67,"primeira":174,"aberto":0},{"nome":"Rafael Nunes","assumiu":69,"respostas":265,"resolveu":66,"primeira":153,"aberto":1},{"nome":"Camila Duarte","assumiu":37,"respostas":161,"resolveu":35,"primeira":126,"aberto":1}],"cli":[[0,0,0,0,0,0,8,9,22,22,36,36,9,17,25,25,16,15,10,6,8,14,0,2],[0,0,0,0,0,6,3,11,21,13,49,37,13,21,26,40,41,7,13,10,4,6,14,2],[0,0,0,0,0,4,4,0,14,8,39,26,22,22,23,24,12,30,11,0,7,16,10,0],[0,0,0,0,2,0,3,15,37,32,27,21,23,19,21,33,25,26,22,15,2,8,8,0],[0,0,0,0,0,0,0,16,16,23,47,25,19,32,36,36,26,18,14,17,0,12,13,0],[0,0,4,0,0,0,2,8,0,12,16,8,6,9,2,5,4,7,10,0,7,0,7,0],[0,0,0,0,0,0,0,0,4,5,21,10,5,7,6,0,4,0,5,4,0,4,8,0]],"hum":[[0,0,0,0,0,0,0,0,54,36,7,11,10,7,10,10,5,2,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,28,15,17,21,10,7,5,4,6,12,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,34,17,15,12,10,5,3,13,22,16,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,33,34,19,7,8,7,3,8,20,6,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,34,18,15,21,18,11,17,13,16,7,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],"por_hora":[407,315,330,473,671,549,324,427,444,275],"serie":[["20/08",3,24,7],["21/08",4,21,3],["22/08",5,10,10],["23/08",6,8,8],["24/08",0,27,4],["25/08",1,26,4],["26/08",2,21,2],["27/08",3,22,5],["28/08",4,26,5],["29/08",5,9,9],["30/08",6,7,7],["31/08",0,23,6],["01/09",1,32,9],["02/09",2,22,4],["03/09",3,25,5],["04/09",4,25,6],["05/09",5,8,8],["06/09",6,7,7],["07/09",0,21,4],["08/09",1,26,7],["09/09",2,24,7],["10/09",3,21,4],["11/09",4,20,7],["12/09",5,7,7],["13/09",6,6,6],["14/09",0,27,6],["15/09",1,28,2],["16/09",2,23,4],["17/09",3,22,4],["18/09",4,19,2]]},"90":{"r":{"atendimentos":1718,"passaram_ia":1704,"na_fila_total":512,"assumidos":512,"res_humano":476,"res_ia":1093,"encaminhadas":34,"em_atendimento":2,"na_fila":0,"com_ia":26,"ia_nao_resolveu":70,"sem_resposta":17,"fora":514,"primeira":9.272,"ate60":0.982,"espera":365.564,"espera_p90":1030.782,"no_prazo":0.74},"d":{"atendimentos":16,"fora":16,"res_ia":11,"res_humano":17},"taxa_ia":0.641,"por":[{"nome":"Helena Prado","assumiu":210,"respostas":845,"resolveu":191,"primeira":146,"aberto":0},{"nome":"Rafael Nunes","assumiu":189,"respostas":752,"resolveu":181,"primeira":150,"aberto":1},{"nome":"Camila Duarte","assumiu":113,"respostas":467,"resolveu":104,"primeira":137,"aberto":1}],"cli":[[0,2,0,0,4,3,24,35,63,85,79,113,44,55,91,72,63,42,50,33,27,29,7,3],[4,0,0,0,0,10,11,22,54,83,97,82,32,77,84,99,88,34,35,22,20,22,29,10],[0,0,2,0,2,6,6,9,73,40,116,69,55,94,85,59,56,89,27,17,48,37,9,7],[0,0,3,0,2,10,3,45,78,102,89,53,58,63,71,71,58,69,46,32,21,16,15,3],[0,0,4,0,0,0,6,35,44,70,135,52,52,87,97,69,67,71,48,32,14,29,13,12],[0,0,4,3,0,0,4,18,13,25,41,34,17,29,18,21,15,16,24,4,28,3,12,3],[0,0,0,0,0,0,4,4,9,25,37,23,15,14,21,3,18,14,8,13,6,14,16,12]],"hum":[[0,0,0,0,0,0,0,0,206,90,46,30,29,11,27,29,32,15,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,58,40,40,52,47,16,20,26,30,27,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,83,68,52,31,27,15,37,31,27,35,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,122,86,40,16,22,19,15,34,28,27,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,85,45,37,27,26,26,40,25,34,33,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],"por_hora":[338,306,330,409,430,538,326,378,329,290],"serie":[["20/08",3,24,7],["21/08",4,21,3],["22/08",5,10,10],["23/08",6,8,8],["24/08",0,27,4],["25/08",1,26,4],["26/08",2,21,2],["27/08",3,22,5],["28/08",4,26,5],["29/08",5,9,9],["30/08",6,7,7],["31/08",0,23,6],["01/09",1,32,9],["02/09",2,22,4],["03/09",3,25,5],["04/09",4,25,6],["05/09",5,8,8],["06/09",6,7,7],["07/09",0,21,4],["08/09",1,26,7],["09/09",2,24,7],["10/09",3,21,4],["11/09",4,20,7],["12/09",5,7,7],["13/09",6,6,6],["14/09",0,27,6],["15/09",1,28,2],["16/09",2,23,4],["17/09",3,22,4],["18/09",4,19,2]]}}};
+  if (!D) return;
+  var calmo = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var DIAS = ["seg", "ter", "qua", "qui", "sex", "sáb", "dom"];
+  var DIAS_LONGO = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado", "Domingo"];
+  var periodo = "30", escolhido = null;
+  var $ = function (id) { return document.getElementById(id); };
+  var num = function (n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, "."); };
+  var pct = function (x) { return Math.round(x * 100) + "%"; };
+  var dur = function (s) { s = Math.round(s); if (s < 60) return s + " s"; var m = Math.floor(s / 60), r = s % 60; return m + " min" + (r ? " " + r + " s" : ""); };
+  var fechado = function (d, h) { return d >= 5 || h < 8 || h >= 18; };
+  var el = function (tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; };
+
+  /* contadores: do valor que está na tela até o novo. Sem movimento reduzido vira troca seca. */
+  function conta(alvo, para) {
+    var de = parseInt(alvo.textContent.replace(/\D/g, ""), 10) || 0;
+    if (calmo || de === para) { alvo.textContent = num(para); return; }
+    var t0 = performance.now(), T = 520, meu = (alvo._r = (alvo._r || 0) + 1);
+    (function passo(t) {
+      if (alvo._r !== meu) return;
+      var p = Math.min(1, (t - t0) / T), e = 1 - Math.pow(1 - p, 3);
+      alvo.textContent = num(de + (para - de) * e);
+      if (p < 1) requestAnimationFrame(passo);
+    })(t0);
+    setTimeout(function () { if (alvo._r === meu) alvo.textContent = num(para); }, T + 80);   // aba de fundo não entrega quadro
+  }
+
+  var SETA = { sobe: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg>', desce: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>' };
+  function tiles(b) {
+    var v = { atendimentos: b.r.atendimentos, fora: b.r.fora, taxa: Math.round(b.taxa_ia * 100), primeira: Math.round(b.r.primeira) };
+    mesa.querySelectorAll("[data-k]").forEach(function (e) { conta(e, v[e.getAttribute("data-k")]); });
+    mesa.querySelectorAll("[data-d]").forEach(function (e) {
+      var k = e.getAttribute("data-d"), d = b.d[k];
+      if (k === "fora") { e.textContent = pct(b.r.fora / b.r.atendimentos) + " de tudo que chegou"; return; }
+      if (d == null) { e.textContent = ""; return; }
+      e.innerHTML = (d === 0 ? "" : SETA[d > 0 ? "sobe" : "desce"]) + "<span>" + (d === 0 ? "igual ao" : Math.abs(d) + "% " + (d > 0 ? "acima do" : "abaixo do")) + " período anterior</span>";
+    });
+    $("mt-taxa-sub").textContent = num(b.r.res_ia) + " de " + num(b.r.passaram_ia) + " que passaram pela IA";
+    $("mt-ate60").textContent = pct(b.r.ate60) + " em até 60 s";
+  }
+
+  /* ---- mapas de calor ligados ---- */
+  var celulas = { cli: [], hum: [] };
+  function montaCalor(id, chave) {
+    var g = $(id); g.textContent = ""; celulas[chave] = [];
+    g.setAttribute("role", "img");
+    var poe = function (e, lin, col) { e.style.gridRow = lin; e.style.gridColumn = col; g.appendChild(e); return e; };   // posição explícita: a moldura pode sobrepor sem empurrar ninguém
+    for (var d = 0; d < 7; d++) {
+      poe(el("span", "dsem", DIAS[d]), d + 1, 1);
+      for (var h = 0; h < 24; h++) {
+        var c = poe(el("span", "cel" + (fechado(d, h) ? " fechado" : "")), d + 1, h + 2);
+        c.dataset.d = d; c.dataset.h = h; celulas[chave].push(c);
+      }
+    }
+    for (var k = 0; k < 24; k++) poe(el("span", "hr", k % 6 === 0 ? k + "h" : ""), 8, k + 2);
+    poe(el("span", "moldura"), "1 / 6", "10 / 20");   // expediente: seg a sex, 8h às 18h
+  }
+  function pintaCalor(b) {
+    ["cli", "hum"].forEach(function (chave) {
+      var m = b[chave], max = 1;
+      m.forEach(function (l) { l.forEach(function (x) { if (x > max) max = x; }); });
+      celulas[chave].forEach(function (c) {
+        var x = m[c.dataset.d][c.dataset.h];
+        c.style.setProperty("--v", x ? (0.12 + 0.88 * Math.sqrt(x / max)).toFixed(3) : 0);   // raiz: a cauda da noite não some perto do pico
+      });
+    });
+    $("calor-cli").setAttribute("aria-label", "Mapa de calor das mensagens de clientes por dia da semana e hora. A tabela logo abaixo traz os mesmos números.");
+    $("calor-hum").setAttribute("aria-label", "Mapa de calor das respostas do time por dia da semana e hora. A tabela logo abaixo traz os mesmos números.");
+    var t = '<table><caption class="so-leitor">Mensagens de clientes e respostas do time, por dia e hora</caption><tr><th>dia</th>';
+    for (var h = 0; h < 24; h++) t += "<th>" + h + "h</th>";
+    t += "</tr>";
+    for (var d = 0; d < 7; d++) {
+      t += "<tr><th>" + DIAS[d] + "</th>";
+      for (h = 0; h < 24; h++) t += "<td>" + b.cli[d][h] + " · " + b.hum[d][h] + "</td>";
+      t += "</tr>";
+    }
+    $("calor-tabela").innerHTML = t + "</table>";
+  }
+  var LEITURA_PADRAO = $("calor-leitura").textContent, focoAtual = null;
+  function foca(d, h) {
+    if (focoAtual) focoAtual.forEach(function (c) { c.classList.remove("foco"); });
+    focoAtual = null;
+    if (d == null) { $("calor-leitura").textContent = LEITURA_PADRAO; return; }
+    var i = d * 24 + h, b = D.p[periodo];
+    focoAtual = [celulas.cli[i], celulas.hum[i]];
+    focoAtual.forEach(function (c) { c.classList.add("foco"); });
+    var nc = b.cli[d][h], nh = b.hum[d][h];
+    $("calor-leitura").textContent = DIAS_LONGO[d] + ", " + h + "h: " + num(nc) + (nc === 1 ? " mensagem" : " mensagens") + " de clientes e " + num(nh) + (nh === 1 ? " resposta" : " respostas") + " do time nos últimos " + periodo + " dias." +
+      (fechado(d, h) ? (nc ? " Loja fechada: quem responde na hora é a IA." : " Loja fechada.") : "");
+  }
+  ["calor-cli", "calor-hum"].forEach(function (id) {
+    var g = $(id);
+    g.addEventListener("pointerover", function (e) { var c = e.target.closest(".cel"); if (c) foca(+c.dataset.d, +c.dataset.h); });
+    g.addEventListener("click", function (e) { var c = e.target.closest(".cel"); if (c) foca(+c.dataset.d, +c.dataset.h); });
+    g.addEventListener("pointerleave", function (e) { if (e.pointerType === "mouse") foca(null); });
+  });
+
+  /* ---- funil e desfechos (rótulos da tela real) ---- */
+  function funil(b) {
+    var r = b.r, etapas = [["Atendimentos", r.atendimentos], ["Passaram pela IA", r.passaram_ia], ["Entraram na fila", r.na_fila_total], ["Assumidos por humano", r.assumidos], ["Resolvidos por humano", r.res_humano]];
+    var RAMPA = [80, 70, 61, 52, 44]   /* rampa ordinal em PEDRA (o ouro é só da loja fechada); piso 44% ainda dá 3:1 contra a superfície */, f = $("funil");
+    if (!f.children.length) etapas.forEach(function (e, i) {
+      var l = el("div", "et"); l.tabIndex = 0; l.appendChild(el("span", null, e[0]));
+      var ba = el("i", "barra"); ba.style.setProperty("--cor", "color-mix(in srgb, #E6E4DC " + RAMPA[i] + "%, #2F3632)"); l.appendChild(ba);
+      l.appendChild(el("b")); f.appendChild(l);
+    });
+    etapas.forEach(function (e, i) {
+      var l = f.children[i];
+      l.querySelector(".barra").style.setProperty("--v", (e[1] / r.atendimentos).toFixed(4));
+      conta(l.querySelector("b"), e[1]);
+      l.dataset.dica = e[0] + "|" + num(e[1]) + " (" + pct(e[1] / r.atendimentos) + " dos atendimentos)";
+    });
+    var resto = [["Resolvidos pela IA (sem humano, 48 h de silêncio)", r.res_ia], ["Ainda com a IA (menos de 48 h)", r.com_ia], ["Ainda em atendimento", r.em_atendimento],
+      ["Ainda na fila", r.na_fila], ["Encaminhados para outra área", r.encaminhadas], ["Voltaram antes de 48 h (IA não resolveu)", r.ia_nao_resolveu], ["Sem resposta da IA", r.sem_resposta]];
+    var dl = $("desfechos"); dl.textContent = "";
+    resto.forEach(function (x) { var d = el("div"); d.appendChild(el("dt", null, x[0])); d.appendChild(el("dd", null, num(x[1]))); dl.appendChild(d); });
+  }
+
+  /* ---- atendentes ---- */
+  function atendentes(b) {
+    var tb = $("atend").tBodies[0]; tb.textContent = "";
+    var max = Math.max.apply(null, b.por.map(function (p) { return p.assumiu; })) || 1;
+    b.por.forEach(function (p) {
+      var tr = el("tr"); if (p.nome === escolhido) tr.className = "on";
+      var td = el("td"), bt = el("button"); bt.type = "button"; bt.setAttribute("aria-pressed", p.nome === escolhido ? "true" : "false");
+      bt.appendChild(el("span", "av2", p.nome.split(" ").map(function (s) { return s[0]; }).join("")));
+      bt.appendChild(el("span", null, p.nome)); td.appendChild(bt); tr.appendChild(td);
+      var a = el("td"); var mini = el("i", "mini"); mini.style.setProperty("--v", (p.assumiu / max).toFixed(3)); a.appendChild(mini); a.appendChild(document.createTextNode(num(p.assumiu))); tr.appendChild(a);
+      tr.appendChild(el("td", null, num(p.respostas))); tr.appendChild(el("td", null, num(p.resolveu)));
+      tr.addEventListener("click", function () { escolhido = escolhido === p.nome ? null : p.nome; atendentes(D.p[periodo]); var n = $("atend").querySelector('tr.on button') || $("atend").querySelector("button"); if (document.activeElement === document.body && n) n.focus({ preventScroll: true }); });
+      tb.appendChild(tr);
+    });
+    var det = $("atend-det"), p = b.por.filter(function (x) { return x.nome === escolhido; })[0];
+    det.textContent = "";
+    if (!p) { det.textContent = "No painel, cada pessoa ainda tem tempo de 1ª resposta, tempo até resolver, cobranças recebidas, transferências e o que está em aberto."; return; }
+    var prim = p.nome.split(" ")[0];
+    [[prim + " resolveu ", null], [pct(p.assumiu ? p.resolveu / p.assumiu : 0), 1], [" do que assumiu. 1ª resposta em ", null], [dur(p.primeira), 1], [" (mediana). Em aberto agora: ", null], [num(p.aberto), 1], [".", null]]
+      .forEach(function (x) { det.appendChild(x[1] ? el("b", null, x[0]) : document.createTextNode(x[0])); });
+  }
+
+  /* ---- espera por hora (uma série, pico mais claro). As colunas são criadas UMA vez: na troca de período a altura anima no lugar. ---- */
+  function horas(b) {
+    var g = $("horas"), i;
+    if (g.children.length !== b.por_hora.length) {
+      g.textContent = "";
+      for (i = 0; i < b.por_hora.length; i++) { var n = el("div", "col"); n.tabIndex = 0; n.appendChild(el("span", "rot")); n.appendChild(el("i")); n.appendChild(el("small", null, (8 + i) + "h")); g.appendChild(n); }
+    }
+    var max = Math.max.apply(null, b.por_hora.map(function (s) { return s || 0; })) || 1, ipico = b.por_hora.indexOf(max);
+    b.por_hora.forEach(function (s, i) {
+      var c = g.children[i];
+      c.className = "col" + (i === ipico ? " pico" : "") + (s == null ? " vazia" : "");
+      c.style.setProperty("--v", ((s || 0) / (max * 1.22)).toFixed(3));
+      c.querySelector(".rot").textContent = i === ipico ? dur(s) : "";
+      c.dataset.dica = (8 + i) + "h às " + (9 + i) + "h|" + (s == null ? "poucas conversas nesta hora para calcular" : "espera mediana de " + dur(s) + (i === ipico ? ", a hora mais apertada" : ""));
+    });
+    g.setAttribute("role", "group");
+    g.setAttribute("aria-label", "Espera mediana na fila por hora. " + b.por_hora.map(function (s, i) { return (8 + i) + "h: " + (s == null ? "sem amostra" : dur(s)); }).join("; ") + ".");
+  }
+
+  /* ---- série diária empilhada: loja fechada (ouro) na base + expediente (pedra) em cima ---- */
+  function serie(b) {
+    var g = $("serie"), i;
+    if (g.children.length !== b.serie.length) {
+      g.textContent = "";
+      for (i = 0; i < b.serie.length; i++) { var n = el("div", "col"); n.tabIndex = 0; n.appendChild(el("i", "dentro")); n.appendChild(el("i", "fora")); n.appendChild(el("small")); g.appendChild(n); }
+    }
+    var max = Math.max.apply(null, b.serie.map(function (x) { return x[2]; })) || 1, poucos = b.serie.length <= 10;
+    b.serie.forEach(function (x, i) {
+      var c = g.children[i];
+      c.className = "col" + (x[2] - x[3] ? "" : " sofora");
+      c.querySelector(".fora").style.setProperty("--v", (x[3] / max).toFixed(3));
+      c.querySelector(".dentro").style.setProperty("--v", ((x[2] - x[3]) / max).toFixed(3));
+      c.querySelector("small").textContent = poucos ? DIAS[x[1]] : (x[1] === 0 ? x[0] : "");
+      c.dataset.dica = x[0] + " · " + DIAS[x[1]] + "|" + num(x[2]) + " atendimentos, " + num(x[3]) + " com a loja fechada";
+    });
+    g.setAttribute("role", "group");
+    g.setAttribute("aria-label", "Atendimentos por dia" + (periodo === "90" ? ", últimos 30 dias" : "") + ". " + num(b.r.fora) + " de " + num(b.r.atendimentos) + " chegaram com a loja fechada no período.");
+    $("serie-sub").textContent = periodo === "90" ? " · últimos 30 dias" : "";
+  }
+
+  /* ---- quem resolveu: IA sozinha x time ---- */
+  function quem(b) {
+    var q = $("quem"), r = b.r, t = (r.res_ia + r.res_humano) || 1;
+    if (!q.children.length) {
+      q.appendChild(el("p", "quem-tit", "Quem resolveu no período"));
+      var ba = el("div", "quem-barra"); ba.appendChild(el("i", "ia")); ba.appendChild(el("i", "tm")); q.appendChild(ba);
+      var l = el("div", "quem-leg"); l.appendChild(el("span")); l.appendChild(el("span")); q.appendChild(l);
+    }
+    q.querySelector(".ia").style.flexGrow = r.res_ia; q.querySelector(".tm").style.flexGrow = r.res_humano;
+    var s = q.querySelectorAll(".quem-leg span");
+    s[0].textContent = "IA, sozinha: " + num(r.res_ia) + " (" + pct(r.res_ia / t) + ")";
+    s[1].textContent = "Time: " + num(r.res_humano) + " (" + pct(r.res_humano / t) + ")";
+  }
+
+  /* ---- dica flutuante (barras e funil) ---- */
+  var dica = $("mesa-dica");
+  function mostra(alvo) {
+    var p = alvo.dataset.dica.split("|"); dica.textContent = "";
+    dica.appendChild(el("b", null, p[0])); dica.appendChild(document.createTextNode(p[1])); dica.hidden = false;
+    var r = alvo.getBoundingClientRect(), m = mesa.getBoundingClientRect(), w = dica.offsetWidth;
+    var x = r.left - m.left + r.width / 2 - w / 2; x = Math.max(8, Math.min(x, m.width - w - 8));
+    dica.style.left = x + "px"; dica.style.top = Math.max(8, r.top - m.top - dica.offsetHeight - 8) + "px";
+  }
+  mesa.addEventListener("pointerover", function (e) { var a = e.target.closest("[data-dica]"); if (a) mostra(a); else dica.hidden = true; });
+  mesa.addEventListener("click", function (e) { var a = e.target.closest("[data-dica]"); if (a) mostra(a); else dica.hidden = true; });
+  mesa.addEventListener("pointerleave", function () { dica.hidden = true; });
+  /* teclado: as barras recebem foco e a mesma dica abre (o auditor achou a dica só no ponteiro) */
+  mesa.addEventListener("focusin", function (e) { var a = e.target.closest("[data-dica]"); if (a) mostra(a); else dica.hidden = true; });
+  mesa.addEventListener("focusout", function () { dica.hidden = true; });
+
+  /* ---- período ---- */
+  function pinta() {
+    var b = D.p[periodo];
+    tiles(b); pintaCalor(b); funil(b); atendentes(b); quem(b); horas(b); serie(b);
+    if (focoAtual) foca(+focoAtual[0].dataset.d, +focoAtual[0].dataset.h);
+  }
+  mesa.querySelectorAll(".mesa-periodo button").forEach(function (bt) {
+    bt.setAttribute("aria-pressed", bt.classList.contains("on") ? "true" : "false");
+    bt.addEventListener("click", function () {
+      periodo = bt.getAttribute("data-dias");
+      mesa.querySelectorAll(".mesa-periodo button").forEach(function (o) { o.classList.toggle("on", o === bt); o.setAttribute("aria-pressed", o === bt ? "true" : "false"); });
+      dica.hidden = true; pinta(); poeThumb();
+    });
+  });
+
+  /* marcador deslizante do período */
+  var caixa = mesa.querySelector(".mesa-periodo"), thumb = caixa.querySelector(".thumb");
+  function poeThumb() { var on = caixa.querySelector("button.on"); if (!on || !thumb) return; thumb.style.setProperty("--x", on.offsetLeft + "px"); thumb.style.setProperty("--w", on.offsetWidth + "px"); caixa.classList.add("js"); }
+  window.addEventListener("resize", poeThumb);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(poeThumb);
+
+  /* o indicador da loja fechada aponta pro mapa: apaga o expediente e sobra só o ouro */
+  var tf = mesa.querySelector(".mt.destaque");
+  if (tf) { tf.tabIndex = 0; tf.setAttribute("aria-describedby", "calor-leitura");
+    ["pointerenter", "focus"].forEach(function (ev) { tf.addEventListener(ev, function () { $("calor-cli").classList.add("realca"); }); });
+    ["pointerleave", "blur"].forEach(function (ev) { tf.addEventListener(ev, function () { $("calor-cli").classList.remove("realca"); }); }); }
+
+  montaCalor("calor-cli", "cli"); montaCalor("calor-hum", "hum");
+  pinta(); poeThumb();
+
+  /* entrada: as barras crescem quando o bloco entra na tela. Só transform, só em gráfico, e só se o bloco nasceu FORA da tela. */
+  if (!calmo && "IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (es) { es.forEach(function (x) { if (x.isIntersecting) { x.target.classList.remove("pre"); io.unobserve(x.target); } }); }, { threshold: .25 });
+    ["funil", "horas", "serie"].forEach(function (id) {
+      var g = $(id), r = g.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) return;
+      g.classList.add("pre"); io.observe(g);
+    });
+  }
+})();
+</script>
+<script>
+/* Movimento. Tudo nasce visível: se o GSAP não carregar, a página continua inteira. */
+(function () {
+  var topo = document.getElementById("topo"), produto = document.querySelector(".produto");
+  if (!window.gsap || !window.ScrollTrigger) {
+    /* Sem a biblioteca (CDN bloqueada): a página fica parada, mas INTEIRA. O painel mostra o estado final da cena 1
+       em vez de contadores zerados e resumo vazio. Testado bloqueando a CDN de verdade, não só desligando animação. */
+    /* a seção fica de NOITE: o painel parado mostra a cena de sábado 22h14, e amanhecer com a cena de sábado seria incoerente */
+    document.querySelectorAll("[data-conta]").forEach(function (el) { el.textContent = el.dataset.conta; });
+    var dg = document.getElementById("pv-digita"), cur = document.getElementById("pv-cursor-txt");
+    if (dg) dg.textContent = "Cliente quer 2 un. do sensor de nível PN 5096-104 (tanque de diesel), entrega em Betim. E-mail e CNPJ coletados. Aguarda cotação formal.";
+    if (cur) cur.style.display = "none";
+    var p1 = document.querySelector('.pv-passo[data-cena="fila"]'); if (p1) p1.classList.add("on");
+    document.querySelectorAll(".marco").forEach(function (m) { m.classList.add("aceso"); });
+    return;
+  }
   gsap.registerPlugin(ScrollTrigger, SplitText);
-  ScrollTrigger.config({ ignoreMobileResize: true, limitCallbacks: true });
+  ScrollTrigger.config({ ignoreMobileResize: true });
+  var mix = gsap.utils.interpolate;
+  var NOITE = { bg: "#1F2421", fg: "#E6E4DC", fg2: "#A3A89F", acc: "#E8A11C" }, DIA = { bg: "#E6E4DC", fg: "#1F2421", fg2: "#565D57", acc: "#855600" };
+  /* Só o fundo faz degradê. O texto troca de cor de uma vez: se texto e fundo caminhassem um pro outro,
+     cruzariam no mesmo cinza (medido: 1,00:1 no meio) e a seção sumiria. */
+  function pinta(p) {
+    var t = p < .5 ? NOITE : DIA;
+    produto.style.setProperty("--p-bg", mix(NOITE.bg, DIA.bg, p)); produto.style.setProperty("--p-fg", t.fg);
+    produto.style.setProperty("--p-fg2", t.fg2); produto.style.setProperty("--p-acc", t.acc); produto.style.setProperty("--p-brasa", p < .5 ? "#E8A11C" : "#C8551A");
+    produto.style.setProperty("--sol", String(Math.sin(p * Math.PI) * .9 + p * .35));
+    produto.dataset.claro = p > .5 ? "1" : "";
+  }
+
+  /* o topo acompanha o tema da seção que está embaixo dele */
+  function temaTopo() {
+    var y = topo.offsetHeight / 2, claro = false;
+    document.querySelectorAll("[data-tema]").forEach(function (s) {
+      var r = s.getBoundingClientRect();
+      if (r.top <= y && r.bottom > y) claro = s.dataset.tema === "dia" || (s.dataset.tema === "produto" && s.dataset.claro === "1");
+    });
+    topo.classList.toggle("claro", claro);
+  }
+
+  /* O relógio do topo foi removido (Paulo, 18/09): sozinho no cabeçalho, "seg · 8h02" parecia hora real quebrada.
+     A hora agora aparece só onde tem contexto: no título "Sábado, 22h14." e no horário de cada passo do painel. */
+  var alvoHora = document.querySelector('.pv-passo[data-cena="assumir"]');
+
+  var revelado = new WeakSet();
   var mm = gsap.matchMedia();
-  mm.add({ isDesktop: "(min-width: 900px)", isMobile: "(max-width: 899px)", reduceMotion: "(prefers-reduced-motion: reduce)" }, function (ctx) {
+  /* `baixa` entra nas condições porque girar o celular muda a ALTURA, não a largura: sem isso o contexto não reexecutava
+     e o scrub da pilha continuava rodando depois que os cartões deixavam de ser sticky. */
+  mm.add({ isDesktop: "(min-width: 900px)", isMobile: "(max-width: 899px)", baixa: "(orientation: landscape) and (max-height: 640px)", reduceMotion: "(prefers-reduced-motion: reduce)" }, function (ctx) {
     var c = ctx.conditions;
-    window.montarPainel({ isMobile: !!c.isMobile, reduceMotion: !!c.reduceMotion });
-    if (c.reduceMotion) { document.querySelectorAll(".marco").forEach(function (m) { m.classList.add("aceso"); }); return; }
+    if (window.montarPainel) window.montarPainel({ isMobile: !!c.isMobile, reduceMotion: !!c.reduceMotion });
 
-    /* títulos: linha a linha por máscara, uma vez */
-    SplitText.create(".rv-linhas", { type: "lines", mask: "lines", autoSplit: true, onSplit: function (self) {
-      return gsap.from(self.lines, { yPercent: 110, duration: 0.9, ease: "power3.out", stagger: 0.07,
-        scrollTrigger: { trigger: self.elements[0], start: "top 88%", once: true } });
-    } });
+    ScrollTrigger.create({ start: 0, end: "max", onUpdate: temaTopo, onRefresh: temaTopo });
 
-    /* blocos: cruza suave, uma vez, poucos elementos por tela */
+    if (c.reduceMotion) {
+      document.querySelectorAll(".marco").forEach(function (m) { m.classList.add("aceso"); });
+      if (alvoHora) ScrollTrigger.create({ trigger: alvoHora, start: "top 60%", onEnter: function () { pinta(1); temaTopo(); }, onLeaveBack: function () { pinta(0); temaTopo(); } });
+      return;
+    }
+
+    /* a noite vira dia enquanto o painel passa de sábado para segunda */
+    /* Amanhecer cronometrado, não amarrado à rolagem: ninguém consegue parar no meio do cinza.
+       Os únicos estados de repouso são noite (0) e dia (1), os dois com contraste AA. */
+    var ceu = { p: 0 }, amanhece = null;
+    function vaiPara(alvo) {
+      if (amanhece) amanhece.kill();
+      amanhece = gsap.to(ceu, { p: alvo, duration: .9, ease: "power2.inOut", onUpdate: function () { pinta(ceu.p); temaTopo(); } });
+    }
+    if (alvoHora) ScrollTrigger.create({ trigger: alvoHora, start: c.isMobile ? "top 88%" : "top 68%",
+      onEnter: function () { vaiPara(1); }, onLeaveBack: function () { vaiPara(0); },
+      onRefresh: function (s) { ceu.p = s.isActive || s.progress === 1 ? 1 : 0; pinta(ceu.p); } });
+
+    /* Títulos sobem linha a linha SÓ quando chegam pela rolagem. O que já está na tela no carregamento (o H1) não é
+       partido nem mascarado: linha estacionada atrás de máscara é título invisível se o navegador não entregar quadros. */
+    /* ctx.add: o que nasce dentro de uma promessa fica FORA do contexto do matchMedia e não é revertido.
+       Sem isso, cruzar 900 px (girar o tablet) criava outra leva de gatilhos e de SplitText sobre os mesmos títulos:
+       máscara dentro de máscara e texto piscando. `revelado` garante que cada título só é partido uma vez na vida da página. */
+    document.fonts.ready.then(function () {
+      ctx.add(function () {
+        gsap.utils.toArray(".rv-linhas").forEach(function (el) {
+          if (ScrollTrigger.isInViewport(el) || revelado.has(el)) return;
+          ScrollTrigger.create({ trigger: el, start: "top 96%", once: true, onEnter: function () {
+            if (ScrollTrigger.isInViewport(el, .9) || revelado.has(el)) return;
+            revelado.add(el);
+            SplitText.create(el, { type: "lines", mask: "lines", autoSplit: true, onSplit: function (self) {
+              return gsap.from(self.lines, { yPercent: 108, duration: .9, ease: "power3.out", stagger: .07 }); } });
+          } });
+        });
+      });
+      ScrollTrigger.refresh();
+    });
+    /* Blocos: só deslocamento, NUNCA opacity. O refresh do load dispara onEnter sem depender de quadro; com opacity:0
+       todo bloco que já passou do gatilho (tela muito alta, rolagem restaurada, aba de fundo) ficava invisível esperando quadros.
+       O que já está na tela no carregamento não anima: só acende. */
     gsap.utils.toArray(".rv").forEach(function (el) {
-      gsap.from(el, { opacity: 0, y: 14, duration: 0.7, ease: "power2.out",
-        scrollTrigger: { trigger: el, start: "top 90%", once: true,
-          onEnter: function () { if (el.classList.contains("marco")) el.classList.add("aceso"); } } });
+      if (ScrollTrigger.isInViewport(el)) { if (el.classList.contains("marco")) el.classList.add("aceso"); return; }
+      ScrollTrigger.create({ trigger: el, start: "top 97%", once: true, onEnter: function () {
+        if (el.classList.contains("marco")) el.classList.add("aceso");
+        if (ScrollTrigger.isInViewport(el, .9)) return;
+        gsap.from(el, { y: 18, duration: .7, ease: "power2.out", clearProps: "transform" });
+      } });
     });
 
-    /* luz da tocha no herói acompanha o scroll */
-    gsap.to(".hero .luz", { yPercent: 18, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: 0.8 } });
+    /* herói: a luz segue o ponteiro e a muralha anda em duas velocidades */
+    var luz = document.querySelector(".hero .brilho"), hero = document.querySelector(".hero");
+    if (c.isDesktop && window.matchMedia("(pointer: fine)").matches) {
+      /* x/y de um elemento (GPU) em vez de --lx/--ly dentro do gradiente, que repintava a camada inteira a cada quadro.
+         O rect do herói fica em cache e só é remedido no refresh. O listener é devolvido no fim do contexto, senão
+         duplica a cada troca de breakpoint e o antigo segue chamando tween já revertido. */
+      var lx = gsap.quickTo(luz, "x", { duration: 1.2, ease: "power3.out" }), ly = gsap.quickTo(luz, "y", { duration: 1.2, ease: "power3.out" });
+      var mede = function () { var r = hero.getBoundingClientRect(); return { esq: r.left + window.scrollX, topo: r.top + window.scrollY, w: r.width, h: r.height }; };
+      var cx = mede();   /* coordenadas de DOCUMENTO: não mudam com a rolagem */
+      /* passeio contido: a brasa acompanha o ponteiro, não corre atrás dele */
+      var segue = function (e) { lx((e.pageX - cx.esq - cx.w * .78) * .28); ly((e.pageY - cx.topo - cx.h * .12) * .28); };
+      var remede = function () { cx = mede(); };
+      hero.addEventListener("pointermove", segue);
+      ScrollTrigger.addEventListener("refresh", remede);
+      ctx.add(function () { return function () { hero.removeEventListener("pointermove", segue); ScrollTrigger.removeEventListener("refresh", remede); }; });
+    }
+    gsap.to(".muralha .tras", { yPercent: 28, ease: "none", scrollTrigger: { trigger: ".muralha", start: "top bottom", end: "bottom top", scrub: true } });
+    /* Entrada do herói só com deslocamento, NUNCA com opacity: gsap.from(opacity:0) esconde o elemento já no carregamento
+       e só mostra quando o navegador entrega quadros. Em aba de fundo, miniatura, prévia de link ou robô de busca,
+       o chat e a fila ficariam invisíveis. Assim, no pior caso, eles aparecem 28 px mais baixos, mas aparecem. */
+    gsap.from(".palco .lado", { y: 28, duration: 1, ease: "power3.out", stagger: .15, delay: .15, clearProps: "transform" });
+    gsap.from(".fio span", { scale: .6, duration: .6, delay: .9, ease: "back.out(2)", clearProps: "transform" });
 
+    /* implantação: a etapa de trás encolhe um pouco quando a próxima cobre */
+    var etapas = gsap.utils.toArray(".etapa");
+    if (!c.baixa) etapas.forEach(function (e, i) {
+      if (i === etapas.length - 1) return;
+      /* só escala, sem filter: brightness() em elemento sticky com raio piscava preto e cinza durante a rolagem (relato do Paulo)
+         e custava repintura a cada quadro. A profundidade da pilha vem da escala e da borda de cima à vista. */
+      /* o encolhimento começa quando a próxima ENCOSTA na base desta (já presa) e termina quando ela assenta.
+         Antes começava em "top 85%": 70% do encolhimento acontecia enquanto o cartão ainda estava sendo lido. */
+      var presoEm = function (k) { return topo.offsetHeight + 20 + k * 18; };
+      gsap.to(e, { scale: .955 + i * .015, ease: "none", scrollTrigger: { trigger: etapas[i + 1], scrub: true,
+        start: function () { return "top " + (presoEm(i) + e.offsetHeight) + "px"; }, end: function () { return "top " + presoEm(i + 1) + "px"; } } });
+    });
+
+
+    /* o nome gigante desliza atrás do texto */
+    gsap.fromTo(".nome .gigante", { xPercent: 6 }, { xPercent: -6, ease: "none", scrollTrigger: { trigger: ".nome", start: "top bottom", end: "bottom top", scrub: true } });
   });
   window.addEventListener("load", function () { ScrollTrigger.refresh(); });
+
+  /* Loop fora da tela é trabalho jogado fora: são 14 brasas respirando, mais a varredura e os cursores.
+     Brasa é <circle> dentro de SVG, que não vai pro compositor: cada quadro custa recálculo na thread principal.
+     O padrão continua "animando"; a pausa só acontece quando a seção sai de vista. */
+  if ("IntersectionObserver" in window) {
+    var vigia = new IntersectionObserver(function (entradas) {
+      entradas.forEach(function (e) { e.target.classList.toggle("dorme", !e.isIntersecting); });
+    }, { rootMargin: "120px" });
+    document.querySelectorAll("section, footer").forEach(function (s) { vigia.observe(s); });
+  }
 })();
 </script>
 </body>
