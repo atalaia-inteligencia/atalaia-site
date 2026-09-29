@@ -11,7 +11,16 @@ O repositório mora em `atalaia-inteligencia/atalaia-site` desde 18/09/2026.
 | 17/09/2026 | `5b6d93b` | painel vivo com a cara do painel real (o que estava no ar antes da identidade Muralha) |
 | 19/09/2026 | `27c025b` | identidade Muralha com a mesa de números; área do cliente escondida até a tela de login sair do nome do cliente |
 | 21/09/2026 | `7192903` | só texto: o orçamento sai com o preço que a empresa definiu, pela IA ou pelo time (5 frases; antes dizia que preço, prazo e negociação ficavam com gente) |
-| 28/09/2026 | (este commit) | site novo: garantia de resposta, "Como funciona" com a cena Dois lados (anda com a rolagem), painel do time em HTML sem print, comparativo, preços, perguntas e o "em breve" dos ERPs |
+| 28/09/2026 | `88347ee` | site novo: garantia de resposta, "Como funciona" com a cena Dois lados (anda com a rolagem), painel do time em HTML sem print, comparativo, preços, perguntas e o "em breve" dos ERPs |
+| 29/09/2026 | (este commit) | só texto: ajustes na IA inclusos na assinatura, em até 2 dias úteis (lista do que toda faixa inclui e uma pergunta do FAQ) |
+
+## Voltar para a versão de 28/09 (`88347ee`)
+
+Só o `index.html` mudou (duas frases sobre os ajustes na IA). Para desfazer:
+
+    git checkout 88347ee -- index.html
+    git commit -m "Rollback: volta o site de 28/09"
+    git push
 
 ## Voltar para a versão de 21/09 (`7192903`)
 
