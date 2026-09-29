@@ -13,7 +13,16 @@ O repositório mora em `atalaia-inteligencia/atalaia-site` desde 18/09/2026.
 | 21/09/2026 | `7192903` | só texto: o orçamento sai com o preço que a empresa definiu, pela IA ou pelo time (5 frases; antes dizia que preço, prazo e negociação ficavam com gente) |
 | 28/09/2026 | `88347ee` | site novo: garantia de resposta, "Como funciona" com a cena Dois lados (anda com a rolagem), painel do time em HTML sem print, comparativo, preços, perguntas e o "em breve" dos ERPs |
 | 29/09/2026 | `e1ece4e` | só texto: ajustes na IA inclusos na assinatura, em até 2 dias úteis (lista do que toda faixa inclui e uma pergunta do FAQ) |
-| 29/09/2026 | (este commit) | conserto: girar o tablet ou mudar a largura da janela não joga mais a página para o topo (só script, sem mudança visual) |
+| 29/09/2026 | `27355bb` | conserto: girar o tablet ou mudar a largura da janela não joga mais a página para o topo (só script, sem mudança visual) |
+| 29/09/2026 | (este commit) | conserto: a brasa da logo cresce redonda, sem o topo cortado reto (uma regra de CSS e um atributo nas 3 logos com brasa; nada muda de lugar) |
+
+## Voltar para a versão de 29/09, antes do conserto da brasa (`27355bb`)
+
+Só o `index.html` mudou (a regra `svg:has(.atalaia-brasa)` e o `overflow="visible"` nas 3 logos). Para desfazer:
+
+    git checkout 27355bb -- index.html
+    git commit -m "Rollback: volta o site de antes do conserto da brasa"
+    git push
 
 ## Voltar para a versão de 29/09, antes do conserto da rolagem (`e1ece4e`)
 
