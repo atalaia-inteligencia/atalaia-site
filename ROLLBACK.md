@@ -12,7 +12,16 @@ O repositório mora em `atalaia-inteligencia/atalaia-site` desde 18/09/2026.
 | 19/09/2026 | `27c025b` | identidade Muralha com a mesa de números; área do cliente escondida até a tela de login sair do nome do cliente |
 | 21/09/2026 | `7192903` | só texto: o orçamento sai com o preço que a empresa definiu, pela IA ou pelo time (5 frases; antes dizia que preço, prazo e negociação ficavam com gente) |
 | 28/09/2026 | `88347ee` | site novo: garantia de resposta, "Como funciona" com a cena Dois lados (anda com a rolagem), painel do time em HTML sem print, comparativo, preços, perguntas e o "em breve" dos ERPs |
-| 29/09/2026 | (este commit) | só texto: ajustes na IA inclusos na assinatura, em até 2 dias úteis (lista do que toda faixa inclui e uma pergunta do FAQ) |
+| 29/09/2026 | `e1ece4e` | só texto: ajustes na IA inclusos na assinatura, em até 2 dias úteis (lista do que toda faixa inclui e uma pergunta do FAQ) |
+| 29/09/2026 | (este commit) | conserto: girar o tablet ou mudar a largura da janela não joga mais a página para o topo (só script, sem mudança visual) |
+
+## Voltar para a versão de 29/09, antes do conserto da rolagem (`e1ece4e`)
+
+Só o `index.html` mudou (um trecho de script). Para desfazer:
+
+    git checkout e1ece4e -- index.html
+    git commit -m "Rollback: volta o site de antes do conserto da rolagem"
+    git push
 
 ## Voltar para a versão de 28/09 (`88347ee`)
 
