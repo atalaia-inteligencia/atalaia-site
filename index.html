@@ -2997,6 +2997,46 @@ footer .legal { color: #949A93; font-size: var(--t-1); border-top: 1px solid rgb
   var alvoHora = document.querySelector('.pv-passo[data-cena="assumir"]');
 
   var revelado = new WeakSet();
+  /* Rolagem na troca de condição (cruzar 900 px, girar o tablet, e também 1024/768/760 do painel e da cena): o ScrollTrigger
+     anota a rolagem antes de desmontar (matchMediaInit) e a devolve no refresh geral logo depois. Só que cada gatilho criado
+     ao remontar um contexto faz o próprio refresh na hora e zera essa anotação (rec = 0, ScrollTrigger 3.15); o refresh geral
+     rola até 0 para medir e não tinha o que devolver: a página caía no topo (medido: 950→850 em #precos, y 16173 → 0).
+     1) Guardo a anotação logo que ela é feita (antes de qualquer kill: com movimento reduzido, matar o último gatilho também
+        a zera) e, se algo a zerou, devolvo no início do refresh geral.
+     2) Mas o mesmo y em outra largura é outro trecho (850 px deixa a página ~1000 px mais alta: #faq saía da tela). Então a
+        âncora é a SEÇÃO que estava a 100 px do topo, com o deslocamento dela, lida no último estado assentado (a cada
+        quadro de rolagem e no fim de cada refresh; no resize a página já refluiu). O alvo é calculado no render(-1) do refreshInit:
+        depois que os gatilhos remediram (pins de volta) e antes de o ScrollTrigger devolver a rolagem, então os gatilhos
+        já nascem na posição final. Uma vez por troca. Dentro do trecho preso da cena "Dois lados", a cena manda (ela
+        devolve o próprio progresso no refresh). Vale para todos os gsap.matchMedia da página; sem `rec`, vira no-op. */
+  var rolagemAnotada = 0, ancora = null, trocando = false;
+  function secaoNoTopo() {
+    var secoes = document.querySelectorAll("section, footer");
+    for (var i = 0; i < secoes.length; i++) {
+      var r = secoes[i].getBoundingClientRect();
+      if (r.top <= 100 && r.bottom > 100) return { el: secoes[i], desloc: r.top };
+    }
+    return null;
+  }
+  function anota() { if (!trocando) ancora = secaoNoTopo(); }
+  gsap.addEventListener("matchMediaInit", function () { rolagemAnotada = ScrollTrigger.getScrollFunc(window).rec || 0; trocando = true; });
+  ScrollTrigger.addEventListener("refreshInit", function () {
+    var rolagem = ScrollTrigger.getScrollFunc(window);
+    if (rolagemAnotada && !rolagem.rec) rolagem.rec = rolagemAnotada;
+    rolagemAnotada = 0;
+    if (!trocando) return;
+    trocando = false;
+    var a = ancora;
+    if (!a || !a.el.isConnected || a.el.closest(".pin-spacer") || a.el.querySelector(".pin-spacer")) return;
+    return { render: function () {
+      var r = a.el.getBoundingClientRect(), desloc = Math.max(a.desloc, 101 - r.height);
+      var alvo = Math.round(window.scrollY + r.top - desloc);
+      if (alvo > 0) rolagem.rec = Math.min(alvo, ScrollTrigger.maxScroll(window));
+    } };
+  });
+  ScrollTrigger.addEventListener("refresh", anota);
+  var anotaNoQuadro = 0;   /* uma leitura por quadro durante a rolagem, como o temaTopo */
+  window.addEventListener("scroll", function () { anotaNoQuadro || (anotaNoQuadro = requestAnimationFrame(function () { anotaNoQuadro = 0; anota(); })); }, { passive: true });
   var mm = gsap.matchMedia();
   /* `baixa` entra nas condições porque girar o celular muda a ALTURA, não a largura: sem isso o contexto não reexecutava
      e o scrub da pilha continuava rodando depois que os cartões deixavam de ser sticky. */
