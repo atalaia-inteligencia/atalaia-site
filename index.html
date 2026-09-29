@@ -82,6 +82,8 @@ section { position: relative; padding-block: clamp(72px, 10vw, 148px); }
 .sub { color: var(--fg2); font-size: var(--t1); max-width: 40em; margin-top: 16px; }
 @keyframes respira { 0%,100% { transform: scale(1); opacity: .92; } 30% { transform: scale(1.09); opacity: 1; } 60% { transform: scale(.96); opacity: .9; } 80% { transform: scale(1.05); opacity: 1; } }
 .atalaia-brasa { transform-box: fill-box; transform-origin: center; animation: respira 3.6s ease-in-out infinite; }
+/* a brasa encosta no topo do desenho (cy 16, r 16): ao crescer 9% ela sai do quadro; sem isto o topo sai cortado reto */
+svg:has(.atalaia-brasa) { overflow: visible; }
 /* seção fora da tela: pausa o que estiver em laço (ver IntersectionObserver no fim da página) */
 .dorme .olho::before, .dorme .atalaia-brasa, .dorme .vis .varre, .dorme .vis .noar i, .dorme .pv-cursor, .dorme .digitando i { animation-play-state: paused; }
 
@@ -1277,7 +1279,7 @@ footer .legal { color: #949A93; font-size: var(--t-1); border-top: 1px solid rgb
 <header class="topo" id="topo">
   <div class="miolo">
     <a class="marca" href="#inicio" aria-label="Atalaia, início">
-      <svg viewBox="0 0 608 170" aria-hidden="true" focusable="false"><use href="#logo"/><circle class="atalaia-brasa" cx="480" cy="16" r="16" fill="var(--brasa)"/></svg>
+      <svg viewBox="0 0 608 170" overflow="visible" aria-hidden="true" focusable="false"><use href="#logo"/><circle class="atalaia-brasa" cx="480" cy="16" r="16" fill="var(--brasa)"/></svg>
     </a>
     <nav aria-label="Seções">
       <a href="#como">Como funciona</a>
@@ -2051,7 +2053,7 @@ footer .legal { color: #949A93; font-size: var(--t-1); border-top: 1px solid rgb
 </section>
 
 <section class="nome noite" data-tema="noite">
-  <svg class="gigante" viewBox="0 0 608 170" aria-hidden="true" focusable="false"><use href="#logo"/><circle class="atalaia-brasa" cx="480" cy="16" r="16" fill="var(--brasa)"/></svg>
+  <svg class="gigante" viewBox="0 0 608 170" overflow="visible" aria-hidden="true" focusable="false"><use href="#logo"/><circle class="atalaia-brasa" cx="480" cy="16" r="16" fill="var(--brasa)"/></svg>
   <div class="miolo">
     <p class="assina">Por que "Atalaia"</p>
     <h2 class="rv-linhas">Quem vigia para que ninguém fique esperando.</h2>
@@ -2080,7 +2082,7 @@ footer .legal { color: #949A93; font-size: var(--t-1); border-top: 1px solid rgb
 <footer>
   <div class="miolo">
     <div class="linha1">
-      <a class="marca" href="#inicio" aria-label="Atalaia, início"><svg viewBox="0 0 608 170" aria-hidden="true" focusable="false"><use href="#logo"/><circle class="atalaia-brasa" cx="480" cy="16" r="16" fill="var(--brasa)"/></svg></a>
+      <a class="marca" href="#inicio" aria-label="Atalaia, início"><svg viewBox="0 0 608 170" overflow="visible" aria-hidden="true" focusable="false"><use href="#logo"/><circle class="atalaia-brasa" cx="480" cy="16" r="16" fill="var(--brasa)"/></svg></a>
       <p class="assin">Ninguém fica sem resposta.</p>
     </div>
     <nav aria-label="Contato e acesso">
