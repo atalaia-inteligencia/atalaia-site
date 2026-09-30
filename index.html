@@ -2822,7 +2822,8 @@ footer .legal { color: #949A93; font-size: var(--t-1); border-top: 1px solid rgb
 
   function mascara(e) {
     var d = e.target.value.replace(/\D/g, "");
-    if (d.length > 11 && d.slice(0, 2) === "55") d = d.slice(2);   /* +55 do autopreenchimento: o país sai, o número fica */
+    /* +55 do autopreenchimento: o país sai. Só com "+" ou com 13 dígitos, para não comer o DDD 55 (RS) */
+    if (d.slice(0, 2) === "55" && (d.length === 13 || (/^\s*\+/.test(e.target.value) && d.length > 11))) d = d.slice(2);
     d = d.slice(0, 11); var s = d;
     if (d.length > 2) s = "(" + d.slice(0, 2) + ") " + d.slice(2);
     if (d.length > 7) s = "(" + d.slice(0, 2) + ") " + d.slice(2, d.length - 4) + "-" + d.slice(-4);
