@@ -2821,7 +2821,9 @@ footer .legal { color: #949A93; font-size: var(--t-1); border-top: 1px solid rgb
                email: "Confira o e-mail.", aceite: "Para enviar, marque que concorda com o uso dos dados." };
 
   function mascara(e) {
-    var d = e.target.value.replace(/\D/g, "").slice(0, 11), s = d;
+    var d = e.target.value.replace(/\D/g, "");
+    if (d.length > 11 && d.slice(0, 2) === "55") d = d.slice(2);   /* +55 do autopreenchimento: o país sai, o número fica */
+    d = d.slice(0, 11); var s = d;
     if (d.length > 2) s = "(" + d.slice(0, 2) + ") " + d.slice(2);
     if (d.length > 7) s = "(" + d.slice(0, 2) + ") " + d.slice(2, d.length - 4) + "-" + d.slice(-4);
     e.target.value = s;
@@ -2838,6 +2840,9 @@ footer .legal { color: #949A93; font-size: var(--t-1); border-top: 1px solid rgb
     tit.textContent = "Para onde a gente manda a proposta?";
     ops.innerHTML = "";
     var f = el("form", "diag-form-campos"); f.noValidate = true;
+    /* um código por formulário: repetir o envio (resposta perdida) não vira contato em dobro no serviço */
+    f.dataset.envio = (window.crypto && crypto.randomUUID) ? crypto.randomUUID()
+      : Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 12);
     CAMPOS.forEach(function (c) {
       var w = el("label", "diag-campo"); w.appendChild(el("span", null, c.rotulo));
       var i = document.createElement("input");
@@ -2883,18 +2888,21 @@ footer .legal { color: #949A93; font-size: var(--t-1); border-top: 1px solid rgb
     dados.tempo_ms = Date.now() - (inicio || Date.now());
     dados.respostas = itens;
     dados.achados = achados;
+    dados.envio_id = f.dataset.envio;
     bt.disabled = true; bt.textContent = "Enviando"; erro.textContent = "";
+    volta.disabled = true;   /* sem voltar no meio do envio: a resposta não pode apagar uma edição nova */
+    function liberar(msg) {
+      volta.disabled = false;
+      if (!f.isConnected) return;
+      erro.textContent = msg; bt.disabled = false; bt.textContent = "Enviar para a Atalaia";
+    }
     fetch(LEAD_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(dados) })
       .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { r: r, j: j }; }); })
       .then(function (x) {
-        if (x.r.ok && x.j.ok) { obrigado(dados, itens); return; }
-        erro.textContent = x.j.erro || "Não consegui enviar agora. Tente de novo ou chame no WhatsApp.";
-        bt.disabled = false; bt.textContent = "Enviar para a Atalaia";
+        if (x.r.ok && x.j.ok) { volta.disabled = false; if (f.isConnected) obrigado(dados, itens); return; }
+        liberar(x.j.erro || "Não consegui enviar agora. Tente de novo ou chame no WhatsApp.");
       })
-      .catch(function () {
-        erro.textContent = "Não consegui enviar agora. Tente de novo ou chame no WhatsApp.";
-        bt.disabled = false; bt.textContent = "Enviar para a Atalaia";
-      });
+      .catch(function () { liberar("Não consegui enviar agora. Tente de novo ou chame no WhatsApp."); });
   }
 
   function obrigado(dados, itens) {
@@ -2903,7 +2911,7 @@ footer .legal { color: #949A93; font-size: var(--t-1); border-top: 1px solid rgb
     cab.textContent = "Recebido";
     tit.textContent = "Obrigado, " + dados.nome.split(" ")[0] + "! A gente responde em até " + PRAZO + ".";
     ops.innerHTML = "";
-    ops.appendChild(el("p", "diag-ok", "O resumo das suas respostas já chegou para o nosso time. Vamos falar com você pelo WhatsApp " + dados.zap + "."));
+    ops.appendChild(el("p", "diag-ok", "Recebemos o seu contato e as suas respostas. Vamos falar com você pelo WhatsApp " + dados.zap + "."));
     ops.appendChild(linkZap(itens, "Quer adiantar? Fale agora no WhatsApp"));
   }
 
