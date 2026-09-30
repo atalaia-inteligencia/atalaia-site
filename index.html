@@ -511,6 +511,10 @@ svg:has(.atalaia-brasa) { overflow: visible; }
 .diag-previa { white-space: pre-wrap; font-family: var(--mono); font-size: .82rem; background: var(--palco); border-radius: 14px; padding: 14px 16px; color: var(--carvao); overflow-wrap: anywhere; }
 .diag-enviar { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; border-radius: 999px; background: var(--carvao); color: var(--pedra); font-weight: 650; text-decoration: none; padding: 0 24px; transition: background 200ms, transform 220ms var(--ease); }
 .diag-enviar:hover { background: #2F3632; } .diag-enviar:active { transform: scale(.98); }
+.diag-op[aria-pressed="true"] { border-color: var(--queimado); background: #FFFDF8; }
+.diag-achados { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.diag-achados li { position: relative; padding: 12px 14px 12px 36px; border-radius: 14px; background: #fff; border: 1px solid var(--linha); line-height: 1.45; color: var(--carvao); }
+.diag-achados li::before { content: ""; position: absolute; left: 14px; top: 1.05em; width: 10px; height: 10px; border-radius: 50%; background: var(--brasa); }
 .diag-voltar { justify-self: start; min-height: 44px; padding: 0 6px; background: none; border: 0; color: var(--musgo); text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
 
 /* r24 · site novo (28/09): problema, painel com prints, sistema, comparativo, preços, perguntas */
@@ -2064,14 +2068,14 @@ footer .legal { color: #949A93; font-size: var(--t-1); border-top: 1px solid rgb
 <section class="fecho dia" data-tema="dia">
   <div class="miolo">
     <div>
-      <p class="olho">Quatro perguntas, um minuto</p>
+      <p class="olho">Um minuto, só cliques</p>
       <h2 class="rv-linhas">Vamos ver se faz sentido para a sua empresa</h2>
-      <p class="rv">Responda e eu monto a mensagem para você mandar no WhatsApp. Chega do meu lado com o contexto pronto, e a conversa já começa com proposta em vez de "me conta mais".</p>
+      <p class="rv">Responda e eu já mostro o que a Atalaia resolve no seu caso. No fim, monto a mensagem para você mandar no WhatsApp: chega do meu lado com o contexto pronto, e a conversa já começa com proposta em vez de "me conta mais".</p>
     </div>
     <div id="diag" role="group" aria-label="Diagnóstico guiado">
       <div class="diag-barra" aria-hidden="true"><i></i></div>
-      <div class="diag-passo">Pergunta 1 de 4</div>
-      <div class="diag-titulo" aria-live="polite">O que a sua empresa vende?</div>
+      <div class="diag-passo">Pergunta 1 de 8</div>
+      <div class="diag-titulo" aria-live="polite">O que a sua empresa faz?</div>
       <div class="diag-opcoes"></div>
       <button type="button" class="diag-voltar" hidden>Voltar</button>
     </div>
@@ -2632,56 +2636,118 @@ footer .legal { color: #949A93; font-size: var(--t-1); border-top: 1px solid rgb
 })();
 </script>
 <script>
-/* Diagnóstico guiado: 4 perguntas por clique, termina num wa.me com a mensagem montada. Sem serviço externo. */
+/* Diagnóstico guiado (30/09, pedido do Túlio): até 8 perguntas por clique, com pulo condicional, e um mini
+   diagnóstico na tela antes do contato. Sem serviço externo e sem guardar nada: as respostas só existem nesta aba.
+
+   Divisão com o fechamento: tudo converge em fim(), que monta `itens` ({pergunta, resposta}) e `achados` (frases do
+   mini diagnóstico) e chama fechar(itens, achados). Hoje fechar() termina num wa.me; o formulário para o contato@
+   troca só o miolo de fechar(), e o WhatsApp continua como segunda porta.
+
+   Regra dos achados: só fato do produto ou conta à vista. Nenhum número inventado (taxa de conversa fora do horário,
+   venda recuperada, valor em real). As 118 horas saem da mesma régua da tela de Números: fora do horário é
+   sábado, domingo, antes das 8h ou a partir das 18h (50 h úteis de 168 na semana). */
 (function () {
   var raiz = document.getElementById("diag");
   if (!raiz) return;
   var ZAP = "https://wa.me/5531992949134?text=";
+  var HORAS_FORA = 168 - 5 * 10;
   var PERGUNTAS = [
-    { id: "vende", titulo: "O que a sua empresa vende?",
-      opcoes: ["Peças e equipamentos", "Roupas, calçados ou acessórios", "Alimentos ou bebidas", "Outros produtos"] },
-    { id: "volume", titulo: "Quantas mensagens chegam no WhatsApp por dia?",
-      opcoes: ["Até 20", "De 20 a 100", "Mais de 100", "Não sei medir"] },
-    { id: "quem", titulo: "Quem responde hoje?",
+    { id: "ramo", titulo: "O que a sua empresa faz?", curto: "Ramo",
+      opcoes: ["Indústria", "Distribuidor ou atacado", "Varejo ou loja", "Revenda por representantes", "Serviços", "Outro"] },
+    { id: "volume", titulo: "Quantas mensagens chegam no WhatsApp por dia?", curto: "Mensagens por dia",
+      opcoes: ["Até 20", "De 20 a 100", "De 100 a 300", "Mais de 300", "Não sei medir"] },
+    { id: "quem", titulo: "Quem responde hoje?", curto: "Quem responde",
       opcoes: ["Eu mesmo", "Um vendedor", "Um time de atendimento", "Ninguém fixo"] },
-    { id: "fora", titulo: "E fora do horário comercial?",
-      opcoes: ["Fica sem resposta", "Respondo do meu celular", "Robô de menu", "Não sei quantos chamam"] }
+    { id: "time", titulo: "Quantas pessoas atendem o WhatsApp?", curto: "Pessoas no atendimento",
+      opcoes: ["2 ou 3", "De 4 a 10", "Mais de 10"],
+      depende: "quem", so: function (r) { return r.quem === "Um time de atendimento"; } },
+    { id: "fora", titulo: "E fora do horário comercial?", curto: "Fora do horário",
+      opcoes: ["Fica sem resposta", "Respondo do meu celular", "Robô de menu", "Não sei quantos chamam"] },
+    { id: "erp", titulo: "Qual sistema de gestão vocês usam?", curto: "Sistema de gestão",
+      opcoes: ["Bling", "Omie", "Tiny", "SAP Business One", "Sankhya", "TOTVS", "Outro", "Nenhum"] },
+    { id: "dor", titulo: "O que mais pesa hoje no WhatsApp?", curto: "O que mais pesa",
+      opcoes: ["Demora para responder", "Venda perdida fora do horário", "Repasse esquecido pelo time", "Não sei o que acontece lá"] },
+    { id: "quando", titulo: "Para quando você quer isso?", curto: "Para quando",
+      opcoes: ["Este mês", "Nos próximos 3 meses", "Só estou pesquisando"] }
   ];
-  var respostas = [], passo = 0;
+  var r = {}, trilha = [], passo = 0;
   var cab = raiz.querySelector(".diag-passo"), tit = raiz.querySelector(".diag-titulo"),
       ops = raiz.querySelector(".diag-opcoes"), barra = raiz.querySelector(".diag-barra i"),
       volta = raiz.querySelector(".diag-voltar");
 
+  /* as perguntas que valem com as respostas de agora (a do time só aparece para quem tem time). Enquanto a
+     resposta de que ela depende não veio, conta como valendo: o contador começa em 8 e só cai, nunca sobe. */
+  function valendo() {
+    return PERGUNTAS.filter(function (q) { return !q.so || !(q.depende in r) || q.so(r); });
+  }
+
   function render() {
     var eraMeu = raiz.contains(document.activeElement);
-    var q = PERGUNTAS[passo];
-    cab.textContent = "Pergunta " + (passo + 1) + " de " + PERGUNTAS.length;
+    var lista = valendo(), q = lista[passo];
+    cab.textContent = "Pergunta " + (passo + 1) + " de " + lista.length;
     tit.textContent = q.titulo;
-    barra.style.transform = "scaleX(" + (passo / PERGUNTAS.length) + ")";
+    barra.style.transform = "scaleX(" + (passo / lista.length) + ")";
     ops.innerHTML = "";
     q.opcoes.forEach(function (o) {
       var b = document.createElement("button");
       b.type = "button"; b.className = "diag-op"; b.textContent = o;
-      b.addEventListener("click", function () { escolher(o); });
+      if (r[q.id] === o) b.setAttribute("aria-pressed", "true");
+      b.addEventListener("click", function () { escolher(q, o); });
       ops.appendChild(b);
     });
     volta.hidden = passo === 0;
     raiz.classList.toggle("diag-fim", false);
     if (eraMeu) { var p = ops.querySelector(".diag-op"); if (p) p.focus({ preventScroll: true }); }
   }
-  function escolher(o) {
-    respostas[passo] = o;
-    if (passo < PERGUNTAS.length - 1) { passo++; render(); return; }
+
+  function escolher(q, o) {
+    r[q.id] = o;
+    if (q.id === "quem" && o !== "Um time de atendimento") delete r.time;   /* voltou e mudou: a do time sai */
+    var lista = valendo();
+    if (passo < lista.length - 1) { passo++; render(); return; }
     fim();
   }
+
+  function achadosDe(r) {
+    var a = [];
+    var fora = {
+      "Fica sem resposta": "Fora do horário comercial são " + HORAS_FORA + " das 168 horas da semana. Hoje, quem chama nesse tempo espera até o próximo dia útil. A IA responde na hora e deixa a cotação pronta na fila do seu time.",
+      "Respondo do meu celular": "São " + HORAS_FORA + " horas por semana em que o atendimento depende do seu celular. A IA cobre esse tempo e só chama gente quando precisa.",
+      "Robô de menu": "Robô de menu faz o cliente escolher opção. A IA entende a mensagem do jeito que ele escreve, com foto e áudio, e já pede o que falta para a cotação.",
+      "Não sei quantos chamam": "O painel conta, toda semana, quantos clientes chamaram fora do horário e quanto tempo esperaram. Em " + HORAS_FORA + " das 168 horas da semana o seu time não está lá."
+    }[r.fora];
+    if (fora) a.push(fora);
+    var dor = {
+      "Demora para responder": "O painel mede o tempo até a primeira resposta e avisa quando um cliente espera demais, antes de ele desistir.",
+      "Venda perdida fora do horário": "Quem chama de noite ou no fim de semana recebe resposta na hora, e a conversa amanhece na fila com o resumo pronto.",
+      "Repasse esquecido pelo time": "Todo repasse sai com o resumo da conversa, e o painel cobra quem assumiu e não respondeu.",
+      "Não sei o que acontece lá": "A tela de Números mostra, por semana, as conversas, quem atendeu o quê e quanto o cliente esperou."
+    }[r.dor];
+    if (dor && !(r.dor === "Venda perdida fora do horário" && r.fora === "Fica sem resposta")) a.push(dor);
+    var time = { "2 ou 3": "2 ou 3 pessoas", "De 4 a 10": "4 a 10 pessoas", "Mais de 10": "mais de 10 pessoas" }[r.time];
+    if (time) a.push("Com " + time + " no WhatsApp, cada uma vê a fila, pega a conversa e ninguém responde o mesmo cliente duas vezes. O time é ilimitado: não se paga por atendente.");
+    if (r.erp && r.erp !== "Nenhum") a.push("A IA consulta o catálogo de vocês para reconhecer código e descrição dos produtos. A integração com o " + (r.erp === "Outro" ? "seu sistema de gestão" : r.erp) + " é orçada à parte, depois da conversa.");
+    return a;
+  }
+
   function fim() {
+    var itens = valendo().map(function (q) { return { pergunta: q.curto, resposta: r[q.id] }; });
+    fechar(itens, achadosDe(r));
+  }
+
+  /* O fechamento. Hoje: mini diagnóstico + mensagem pronta para o WhatsApp. */
+  function fechar(itens, achados) {
     barra.style.transform = "scaleX(1)";
-    cab.textContent = "Pronto";
-    tit.textContent = "Já montei a sua mensagem. É só enviar.";
-    var texto = "Olá, Túlio! Vi o site da Atalaia e quero o atendente com IA na minha empresa.\n" +
-      "• Vendo: " + respostas[0] + "\n• Mensagens por dia: " + respostas[1] + "\n" +
-      "• Quem responde hoje: " + respostas[2] + "\n• Fora do horário: " + respostas[3];
+    cab.textContent = "O que já dá para ver";
+    tit.textContent = achados.length ? "No seu caso, a Atalaia resolve isto:" : "Já montei a sua mensagem. É só enviar.";
     ops.innerHTML = "";
+    if (achados.length) {
+      var ul = document.createElement("ul"); ul.className = "diag-achados";
+      achados.forEach(function (t) { var li = document.createElement("li"); li.textContent = t; ul.appendChild(li); });
+      ops.appendChild(ul);
+    }
+    var texto = "Olá, Túlio! Vi o site da Atalaia e quero o atendente com IA na minha empresa.\n" +
+      itens.map(function (i) { return "• " + i.pergunta + ": " + i.resposta; }).join("\n");
     var previa = document.createElement("div"); previa.className = "diag-previa"; previa.textContent = texto;
     var a = document.createElement("a"); a.className = "diag-enviar"; a.target = "_blank"; a.rel = "noopener";
     a.href = ZAP + encodeURIComponent(texto); a.textContent = "Enviar no WhatsApp";
@@ -2690,10 +2756,13 @@ footer .legal { color: #949A93; font-size: var(--t-1); border-top: 1px solid rgb
     raiz.classList.add("diag-fim");
     volta.hidden = false;
   }
-  volta.addEventListener("click", function () { if (raiz.classList.contains("diag-fim")) { passo = PERGUNTAS.length - 1; } else if (passo > 0) passo--; render(); });
+
+  volta.addEventListener("click", function () {
+    if (raiz.classList.contains("diag-fim")) { passo = valendo().length - 1; } else if (passo > 0) passo--;
+    render();
+  });
   render();
 })();
-
 </script>
 <script>
 /* MESA DE NÚMEROS. Não depende do GSAP: se a CDN cair, a mesa continua inteira e interativa.
