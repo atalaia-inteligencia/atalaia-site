@@ -2821,7 +2821,7 @@ footer .legal { color: #949A93; font-size: var(--t-1); border-top: 1px solid rgb
                email: "Confira o e-mail.", aceite: "Para enviar, marque que concorda com o uso dos dados." };
 
   function mascara(e) {
-    var d = e.target.value.replace(/\D/g, "");
+    var d = e.target.value.replace(/\D/g, "").replace(/^0+/, "");   /* 0 de longa distância sai */
     /* +55 do autopreenchimento: o país sai. Só com "+" ou com 13 dígitos, para não comer o DDD 55 (RS) */
     if (d.slice(0, 2) === "55" && (d.length === 13 || (/^\s*\+/.test(e.target.value) && d.length > 11))) d = d.slice(2);
     d = d.slice(0, 11); var s = d;
@@ -2836,6 +2836,7 @@ footer .legal { color: #949A93; font-size: var(--t-1); border-top: 1px solid rgb
   }
 
   function formulario(itens, achados) {
+    if (!inicio) inicio = Date.now();
     raiz.classList.add("diag-fim", "diag-form");
     cab.textContent = "Seu contato";
     tit.textContent = "Para onde a gente manda a proposta?";
@@ -2897,13 +2898,17 @@ footer .legal { color: #949A93; font-size: var(--t-1); border-top: 1px solid rgb
       if (!f.isConnected) return;
       erro.textContent = msg; bt.disabled = false; bt.textContent = "Enviar para a Atalaia";
     }
-    fetch(LEAD_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(dados) })
+    var corte = window.AbortController ? new AbortController() : null;
+    var relogio = corte ? setTimeout(function () { corte.abort(); }, 20000) : 0;   /* API travada não prende o botão */
+    fetch(LEAD_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(dados),
+                      signal: corte ? corte.signal : undefined })
       .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { r: r, j: j }; }); })
       .then(function (x) {
+        clearTimeout(relogio);
         if (x.r.ok && x.j.ok) { volta.disabled = false; if (f.isConnected) obrigado(dados, itens); return; }
-        liberar(x.j.erro || "Não consegui enviar agora. Tente de novo ou chame no WhatsApp.");
+        liberar((x.r.status === 400 || x.r.status === 429) && x.j.erro ? x.j.erro : "Não consegui enviar agora. Tente de novo ou chame no WhatsApp.");
       })
-      .catch(function () { liberar("Não consegui enviar agora. Tente de novo ou chame no WhatsApp."); });
+      .catch(function () { clearTimeout(relogio); liberar("Não consegui enviar agora. Tente de novo ou chame no WhatsApp."); });
   }
 
   function obrigado(dados, itens) {
