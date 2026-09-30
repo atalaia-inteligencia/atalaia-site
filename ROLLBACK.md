@@ -14,7 +14,19 @@ O repositório mora em `atalaia-inteligencia/atalaia-site` desde 18/09/2026.
 | 28/09/2026 | `88347ee` | site novo: garantia de resposta, "Como funciona" com a cena Dois lados (anda com a rolagem), painel do time em HTML sem print, comparativo, preços, perguntas e o "em breve" dos ERPs |
 | 29/09/2026 | `e1ece4e` | só texto: ajustes na IA inclusos na assinatura, em até 2 dias úteis (lista do que toda faixa inclui e uma pergunta do FAQ) |
 | 29/09/2026 | `27355bb` | conserto: girar o tablet ou mudar a largura da janela não joga mais a página para o topo (só script, sem mudança visual) |
-| 29/09/2026 | (este commit) | conserto: a brasa da logo cresce redonda, sem o topo cortado reto (uma regra de CSS e um atributo nas 3 logos com brasa; nada muda de lugar) |
+| 29/09/2026 | `ccaabbf` | conserto: a brasa da logo cresce redonda, sem o topo cortado reto (uma regra de CSS e um atributo nas 3 logos com brasa; nada muda de lugar) |
+| 29/09/2026 | (este commit) | a área do cliente volta: botão "Área do cliente" no topo, bloco "Já é cliente" e link no rodapé, os três para `painel.atalaiainteligencia.com.br`, que passou a abrir o login da Atalaia (sem nome de cliente) |
+
+## Voltar para a versão de 29/09, antes da área do cliente (`ccaabbf`)
+
+Só o `index.html` mudou (os 3 pontos perderam o `hidden` e saiu uma regra de CSS repetida). Para esconder de novo:
+
+    git checkout ccaabbf -- index.html
+    git commit -m "Rollback: esconde de novo a área do cliente"
+    git push
+
+Na fonte do site (`atalaia-site-fonte`, na máquina do Paulo) o mesmo efeito sai com `PORTAL = False` no
+`build.py` e o build rodado de novo.
 
 ## Voltar para a versão de 29/09, antes do conserto da brasa (`27355bb`)
 
