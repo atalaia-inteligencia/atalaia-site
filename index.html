@@ -2848,7 +2848,7 @@ footer .legal { color: #949A93; font-size: var(--t-1); border-top: 1px solid rgb
       var w = el("label", "diag-campo"); w.appendChild(el("span", null, c.rotulo));
       var i = document.createElement("input");
       i.type = c.tipo; i.name = c.id; i.autocomplete = c.auto; i.required = c.req; i.maxLength = c.id === "empresa" || c.id === "email" ? 120 : 80;
-      if (c.tipo === "tel") { i.inputMode = "tel"; i.maxLength = 16; i.addEventListener("input", mascara); }
+      if (c.tipo === "tel") { i.inputMode = "tel"; i.maxLength = 24; i.addEventListener("input", mascara); }
       w.appendChild(i); f.appendChild(w);
     });
     var isca = document.createElement("input");
