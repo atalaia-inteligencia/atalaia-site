@@ -515,6 +515,30 @@ svg:has(.atalaia-brasa) { overflow: visible; }
 .diag-achados { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
 .diag-achados li { position: relative; padding: 12px 14px 12px 36px; border-radius: 14px; background: #fff; border: 1px solid var(--linha); line-height: 1.45; color: var(--carvao); }
 .diag-achados li::before { content: ""; position: absolute; left: 14px; top: 1.05em; width: 10px; height: 10px; border-radius: 50%; background: var(--brasa); }
+#diag .diag-seguir { margin: 6px 0 0; font-weight: 700; color: var(--carvao); }
+.diag-portas { display: grid; gap: 10px; }
+@media (min-width: 520px) { .diag-portas { grid-template-columns: 1fr 1fr; } }
+.diag-porta { display: grid; gap: 6px; align-content: start; text-align: left; padding: 18px; border-radius: 16px; border: 1px solid var(--linha); background: #fff; cursor: pointer; color: var(--carvao); text-decoration: none; font: inherit; transition: border-color 200ms, transform 220ms var(--ease), background 200ms; }
+.diag-porta b { font-size: 1.05rem; }
+.diag-porta span { font-size: var(--t-1); color: var(--musgo); line-height: 1.4; }
+.diag-porta:first-child { background: var(--carvao); border-color: var(--carvao); color: var(--pedra); }
+.diag-porta:first-child span { color: rgba(230,228,220,.75); }
+.diag-porta:hover { border-color: var(--queimado); } .diag-porta:active { transform: scale(.98); }
+.diag-form-campos { display: grid; gap: 12px; }
+@media (min-width: 520px) { .diag-form-campos { grid-template-columns: 1fr 1fr; } .diag-form-campos > :not(.diag-campo) { grid-column: 1 / -1; } }
+.diag-campo { display: grid; gap: 6px; font-size: var(--t-1); font-weight: 600; color: var(--carvao); }
+.diag-campo input { min-height: 52px; padding: 0 16px; border-radius: 14px; border: 1px solid var(--linha); background: #fff; font: inherit; font-weight: 500; font-size: 1rem; color: var(--carvao); transition: border-color 200ms, box-shadow 200ms; }
+.diag-campo input:focus { outline: none; border-color: var(--queimado); box-shadow: 0 0 0 4px rgba(200,85,26,.14); }
+.diag-campo input[aria-invalid="true"] { border-color: #B3261E; }
+.diag-isca { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.diag-aceite { display: grid; grid-template-columns: 22px 1fr; gap: 10px; align-items: start; font-size: .82rem; line-height: 1.45; color: var(--musgo); cursor: pointer; }
+.diag-aceite input { width: 20px; height: 20px; margin: 1px 0 0; accent-color: var(--queimado); }
+#diag .diag-erro { color: #B3261E; font-size: var(--t-1); font-weight: 600; line-height: 1.4; margin: 0; }
+#diag .diag-erro:empty { display: none; }
+.diag-zap { justify-self: center; color: var(--carvao); font-weight: 600; text-decoration: underline; text-underline-offset: 4px; min-height: 44px; display: inline-flex; align-items: center; }
+#diag .diag-ok { margin: 0; line-height: 1.5; }
+button.diag-enviar { border: 0; cursor: pointer; font: inherit; font-weight: 650; }
+.diag-enviar[disabled] { opacity: .6; cursor: progress; }
 .diag-voltar { justify-self: start; min-height: 44px; padding: 0 6px; background: none; border: 0; color: var(--musgo); text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
 
 /* r24 · site novo (28/09): problema, painel com prints, sistema, comparativo, preços, perguntas */
@@ -2070,7 +2094,7 @@ footer .legal { color: #949A93; font-size: var(--t-1); border-top: 1px solid rgb
     <div>
       <p class="olho">Um minuto, só cliques</p>
       <h2 class="rv-linhas">Vamos ver se faz sentido para a sua empresa</h2>
-      <p class="rv">Responda e eu já mostro o que a Atalaia resolve no seu caso. No fim, monto a mensagem para você mandar no WhatsApp: chega do meu lado com o contexto pronto, e a conversa já começa com proposta em vez de "me conta mais".</p>
+      <p class="rv">Responda e eu já mostro o que a Atalaia resolve no seu caso. No fim, você escolhe: deixa o contato e a gente te procura com a proposta em até 1 dia útil, ou segue direto no WhatsApp, com as suas respostas na mensagem.</p>
     </div>
     <div id="diag" role="group" aria-label="Diagnóstico guiado">
       <div class="diag-barra" aria-hidden="true"><i></i></div>
@@ -2671,6 +2695,7 @@ footer .legal { color: #949A93; font-size: var(--t-1); border-top: 1px solid rgb
       opcoes: ["Este mês", "Nos próximos 3 meses", "Só estou pesquisando"] }
   ];
   var r = {}, trilha = [], passo = 0;
+  var inicio = 0;   /* primeiro clique: o serviço de contatos confere o tempo de preenchimento */
   var cab = raiz.querySelector(".diag-passo"), tit = raiz.querySelector(".diag-titulo"),
       ops = raiz.querySelector(".diag-opcoes"), barra = raiz.querySelector(".diag-barra i"),
       volta = raiz.querySelector(".diag-voltar");
@@ -2701,6 +2726,7 @@ footer .legal { color: #949A93; font-size: var(--t-1); border-top: 1px solid rgb
   }
 
   function escolher(q, o) {
+    if (!inicio) inicio = Date.now();
     r[q.id] = o;
     if (q.id === "quem" && o !== "Um time de atendimento") delete r.time;   /* voltou e mudou: a do time sai */
     var lista = valendo();
@@ -2735,29 +2761,168 @@ footer .legal { color: #949A93; font-size: var(--t-1); border-top: 1px solid rgb
     fechar(itens, achadosDe(r));
   }
 
-  /* O fechamento. Hoje: mini diagnóstico + mensagem pronta para o WhatsApp. */
+  /* O fechamento (30/09, versão B "Duas portas", escolhida pelo Paulo): mini diagnóstico e duas portas.
+     "A gente te procura" abre o formulário, que vai para o serviço de contatos (lead.py, fora do painel) e dali para o
+     contato@. "Falar agora no WhatsApp" segue com a mensagem montada, como antes. Tudo que vem do visitante entra na
+     tela por textContent. */
+  var LEAD_URL = "https://api.atalaiainteligencia.com.br/lead";
+  var PRAZO = "1 dia útil";
+  var ultimoFim = null;
+
+  function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
+
+  function mensagemZap(itens) {
+    return "Olá, Túlio! Vi o site da Atalaia e quero o atendente com IA na minha empresa.\n" +
+      itens.map(function (i) { return "• " + i.pergunta + ": " + i.resposta; }).join("\n");
+  }
+  function linkZap(itens, rotulo, cls) {
+    var a = el("a", cls || "diag-zap", rotulo); a.target = "_blank"; a.rel = "noopener";
+    a.href = ZAP + encodeURIComponent(mensagemZap(itens));
+    return a;
+  }
+
   function fechar(itens, achados) {
+    ultimoFim = { itens: itens, achados: achados };
     barra.style.transform = "scaleX(1)";
+    raiz.classList.remove("diag-form");
     cab.textContent = "O que já dá para ver";
-    tit.textContent = achados.length ? "No seu caso, a Atalaia resolve isto:" : "Já montei a sua mensagem. É só enviar.";
+    tit.textContent = achados.length ? "No seu caso, a Atalaia resolve isto:" : "Como você prefere seguir?";
     ops.innerHTML = "";
     if (achados.length) {
-      var ul = document.createElement("ul"); ul.className = "diag-achados";
-      achados.forEach(function (t) { var li = document.createElement("li"); li.textContent = t; ul.appendChild(li); });
+      var ul = el("ul", "diag-achados");
+      achados.forEach(function (t) { ul.appendChild(el("li", null, t)); });
       ops.appendChild(ul);
+      ops.appendChild(el("p", "diag-seguir", "Como você prefere seguir?"));
     }
-    var texto = "Olá, Túlio! Vi o site da Atalaia e quero o atendente com IA na minha empresa.\n" +
-      itens.map(function (i) { return "• " + i.pergunta + ": " + i.resposta; }).join("\n");
-    var previa = document.createElement("div"); previa.className = "diag-previa"; previa.textContent = texto;
-    var a = document.createElement("a"); a.className = "diag-enviar"; a.target = "_blank"; a.rel = "noopener";
-    a.href = ZAP + encodeURIComponent(texto); a.textContent = "Enviar no WhatsApp";
-    ops.appendChild(previa); ops.appendChild(a);
-    if (raiz.contains(document.activeElement) || document.activeElement === document.body) a.focus({ preventScroll: true });
+    var portas = el("div", "diag-portas");
+    var p1 = el("button", "diag-porta"); p1.type = "button";
+    p1.appendChild(el("b", null, "A gente te procura"));
+    p1.appendChild(el("span", null, "Deixe o contato e receba a proposta em até " + PRAZO + "."));
+    p1.addEventListener("click", function () { formulario(itens, achados); });
+    var p2 = linkZap(itens, "", "diag-porta");
+    p2.appendChild(el("b", null, "Falar agora no WhatsApp"));
+    p2.appendChild(el("span", null, "A mensagem já vai montada com as suas respostas."));
+    portas.appendChild(p1); portas.appendChild(p2);
+    ops.appendChild(portas);
     raiz.classList.add("diag-fim");
     volta.hidden = false;
+    if (raiz.contains(document.activeElement) || document.activeElement === document.body) p1.focus({ preventScroll: true });
+  }
+
+  var CAMPOS = [
+    { id: "nome", rotulo: "Seu nome", auto: "name", tipo: "text", req: true },
+    { id: "empresa", rotulo: "Empresa", auto: "organization", tipo: "text", req: true },
+    { id: "cargo", rotulo: "Cargo (opcional)", auto: "organization-title", tipo: "text", req: false },
+    { id: "cidade", rotulo: "Cidade (opcional)", auto: "address-level2", tipo: "text", req: false },
+    { id: "zap", rotulo: "WhatsApp", auto: "tel", tipo: "tel", req: true },
+    { id: "email", rotulo: "E-mail (opcional)", auto: "email", tipo: "email", req: false }
+  ];
+  var ERRO = { nome: "Coloque o seu nome.", empresa: "Coloque o nome da empresa.", zap: "Confira o WhatsApp, com DDD.",
+               email: "Confira o e-mail.", aceite: "Para enviar, marque que concorda com o uso dos dados." };
+
+  function mascara(e) {
+    var d = e.target.value.replace(/\D/g, "").replace(/^0+/, "");   /* 0 de longa distância sai */
+    /* +55 do autopreenchimento: o país sai. Só com "+" ou com 13 dígitos, para não comer o DDD 55 (RS) */
+    if (d.slice(0, 2) === "55" && (d.length === 13 || (/^\s*\+/.test(e.target.value) && d.length > 11))) d = d.slice(2);
+    d = d.slice(0, 11); var s = d;
+    if (d.length > 2) s = "(" + d.slice(0, 2) + ") " + d.slice(2);
+    if (d.length > 7) s = "(" + d.slice(0, 2) + ") " + d.slice(2, d.length - 4) + "-" + d.slice(-4);
+    e.target.value = s;
+  }
+  function confere(id, v) {
+    if (id === "zap") { var n = v.replace(/\D/g, "").length; return n >= 10 && n <= 13; }
+    if (id === "email") return !v || /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v);
+    return v.length >= 2;
+  }
+
+  function formulario(itens, achados) {
+    if (!inicio) inicio = Date.now();
+    raiz.classList.add("diag-fim", "diag-form");
+    cab.textContent = "Seu contato";
+    tit.textContent = "Para onde a gente manda a proposta?";
+    ops.innerHTML = "";
+    var f = el("form", "diag-form-campos"); f.noValidate = true;
+    /* um código por formulário: repetir o envio (resposta perdida) não vira contato em dobro no serviço */
+    f.dataset.envio = (window.crypto && crypto.randomUUID) ? crypto.randomUUID()
+      : Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 12);
+    CAMPOS.forEach(function (c) {
+      var w = el("label", "diag-campo"); w.appendChild(el("span", null, c.rotulo));
+      var i = document.createElement("input");
+      i.type = c.tipo; i.name = c.id; i.autocomplete = c.auto; i.required = c.req; i.maxLength = c.id === "empresa" || c.id === "email" ? 120 : 80;
+      if (c.tipo === "tel") { i.inputMode = "tel"; i.maxLength = 24; i.addEventListener("input", mascara); }
+      w.appendChild(i); f.appendChild(w);
+    });
+    var isca = document.createElement("input");
+    isca.type = "text"; isca.name = "site"; isca.tabIndex = -1; isca.autocomplete = "off"; isca.className = "diag-isca";
+    isca.setAttribute("aria-hidden", "true");
+    f.appendChild(isca);
+    var aceite = el("label", "diag-aceite");
+    var caixa = document.createElement("input"); caixa.type = "checkbox"; caixa.name = "aceite";
+    aceite.appendChild(caixa);
+    aceite.appendChild(el("span", null, "Concordo com o uso destes dados só para a Atalaia responder a este contato. Guardamos por até 12 meses; para apagar antes, é só pedir em contato@atalaiainteligencia.com.br."));
+    f.appendChild(aceite);
+    var erro = el("p", "diag-erro"); erro.setAttribute("role", "alert"); f.appendChild(erro);
+    var bt = el("button", "diag-enviar", "Enviar para a Atalaia"); bt.type = "submit"; f.appendChild(bt);
+    f.appendChild(linkZap(itens, "Prefiro seguir no WhatsApp"));
+    f.addEventListener("submit", function (e) { e.preventDefault(); enviar(f, erro, bt, itens, achados); });
+    ops.appendChild(f);
+    f.querySelector("input[name='nome']").focus({ preventScroll: true });
+  }
+
+  function enviar(f, erro, bt, itens, achados) {
+    var dados = {}, falhou = null;
+    CAMPOS.forEach(function (c) {
+      var i = f.querySelector("input[name='" + c.id + "']"), v = i.value.trim();
+      var ok = (!c.req && !v) || confere(c.id, v);
+      i.setAttribute("aria-invalid", ok ? "false" : "true");
+      if (!ok && !falhou) falhou = c.id;
+      dados[c.id] = v;
+    });
+    var aceito = f.querySelector("input[name='aceite']").checked;
+    if (!falhou && !aceito) falhou = "aceite";
+    if (falhou) {
+      erro.textContent = ERRO[falhou];
+      f.querySelector("input[name='" + falhou + "']").focus();
+      return;
+    }
+    dados.aceite = true;
+    dados.site = f.querySelector("input[name='site']").value;
+    dados.tempo_ms = Date.now() - (inicio || Date.now());
+    dados.respostas = itens;
+    dados.achados = achados;
+    dados.envio_id = f.dataset.envio;
+    bt.disabled = true; bt.textContent = "Enviando"; erro.textContent = "";
+    volta.disabled = true;   /* sem voltar no meio do envio: a resposta não pode apagar uma edição nova */
+    function liberar(msg) {
+      volta.disabled = false;
+      if (!f.isConnected) return;
+      erro.textContent = msg; bt.disabled = false; bt.textContent = "Enviar para a Atalaia";
+    }
+    var corte = window.AbortController ? new AbortController() : null;
+    var relogio = corte ? setTimeout(function () { corte.abort(); }, 20000) : 0;   /* API travada não prende o botão */
+    fetch(LEAD_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(dados),
+                      signal: corte ? corte.signal : undefined })
+      .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { r: r, j: j }; }); })
+      .then(function (x) {
+        clearTimeout(relogio);
+        if (x.r.ok && x.j.ok) { volta.disabled = false; if (f.isConnected) obrigado(dados, itens); return; }
+        liberar((x.r.status === 400 || x.r.status === 429) && x.j.erro ? x.j.erro : "Não consegui enviar agora. Tente de novo ou chame no WhatsApp.");
+      })
+      .catch(function () { clearTimeout(relogio); liberar("Não consegui enviar agora. Tente de novo ou chame no WhatsApp."); });
+  }
+
+  function obrigado(dados, itens) {
+    raiz.classList.remove("diag-form");
+    volta.hidden = true;
+    cab.textContent = "Recebido";
+    tit.textContent = "Obrigado, " + dados.nome.split(" ")[0] + "! A gente responde em até " + PRAZO + ".";
+    ops.innerHTML = "";
+    ops.appendChild(el("p", "diag-ok", "Recebemos o seu contato e as suas respostas. Vamos falar com você pelo WhatsApp " + dados.zap + "."));
+    ops.appendChild(linkZap(itens, "Quer adiantar? Fale agora no WhatsApp"));
   }
 
   volta.addEventListener("click", function () {
+    if (raiz.classList.contains("diag-form") && ultimoFim) { fechar(ultimoFim.itens, ultimoFim.achados); return; }
     if (raiz.classList.contains("diag-fim")) { passo = valendo().length - 1; } else if (passo > 0) passo--;
     render();
   });
