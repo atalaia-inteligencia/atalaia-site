@@ -16,18 +16,30 @@ O repositório mora em `atalaia-inteligencia/atalaia-site` desde 18/09/2026.
 | 29/09/2026 | `27355bb` | conserto: girar o tablet ou mudar a largura da janela não joga mais a página para o topo (só script, sem mudança visual) |
 | 29/09/2026 | `ccaabbf` | conserto: a brasa da logo cresce redonda, sem o topo cortado reto (uma regra de CSS e um atributo nas 3 logos com brasa; nada muda de lugar) |
 | 30/09/2026 | `110b24c` | tabela de preços nova: Entrada R$ 2.900, Crescimento R$ 5.500, Escala sob consulta, excedente R$ 3 (antes 1.500 / 2.500 / 4.500 / R$ 2) |
+| 30/09/2026 | `4cf811f` | diagnóstico novo: até 8 perguntas com pulo e mini diagnóstico na tela; fim no WhatsApp |
+| 30/09/2026 | `b42f7f0` | fechamento em duas portas: "A gente te procura" (formulário para o contato@, pelo serviço de contatos em api.atalaiainteligencia.com.br) ou WhatsApp |
 | 30/09/2026 | (este commit) | a área do cliente volta: botão "Área do cliente" no topo, bloco "Já é cliente" e link no rodapé, os três para `painel.atalaiainteligencia.com.br`, que passou a abrir o login da Atalaia (sem nome de cliente) |
 
-## Voltar para antes da área do cliente (`110b24c`, preços novos)
+## Voltar para antes da área do cliente (`b42f7f0`)
 
 Só o `index.html` mudou (os 3 pontos perderam o `hidden` e saiu uma regra de CSS repetida). Para esconder de novo:
 
-    git checkout 110b24c -- index.html
+    git checkout b42f7f0 -- index.html
     git commit -m "Rollback: esconde de novo a área do cliente"
     git push
 
 Na fonte do site (`atalaia-site-fonte`, na máquina do Paulo) o mesmo efeito sai com `PORTAL = False` no
 `build.py` e o build rodado de novo.
+
+## Voltar para o fechamento só no WhatsApp (`4cf811f`)
+
+Só o `index.html` mudou (o fim do diagnóstico e o texto de abertura da seção). Para desfazer:
+
+    git checkout 4cf811f -- index.html
+    git commit -m "Rollback: fim do diagnóstico volta a ser só WhatsApp"
+    git push
+
+Se o serviço de contatos cair, o formulário avisa "Não consegui enviar agora" e oferece o WhatsApp: não precisa de rollback só por isso.
 
 ## Voltar para os preços antigos (`ccaabbf`)
 
