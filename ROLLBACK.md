@@ -15,7 +15,19 @@ O repositório mora em `atalaia-inteligencia/atalaia-site` desde 18/09/2026.
 | 29/09/2026 | `e1ece4e` | só texto: ajustes na IA inclusos na assinatura, em até 2 dias úteis (lista do que toda faixa inclui e uma pergunta do FAQ) |
 | 29/09/2026 | `27355bb` | conserto: girar o tablet ou mudar a largura da janela não joga mais a página para o topo (só script, sem mudança visual) |
 | 29/09/2026 | `ccaabbf` | conserto: a brasa da logo cresce redonda, sem o topo cortado reto (uma regra de CSS e um atributo nas 3 logos com brasa; nada muda de lugar) |
-| 30/09/2026 | (este commit) | tabela de preços nova: Entrada R$ 2.900, Crescimento R$ 5.500, Escala sob consulta, excedente R$ 3 (antes 1.500 / 2.500 / 4.500 / R$ 2) |
+| 30/09/2026 | `110b24c` | tabela de preços nova: Entrada R$ 2.900, Crescimento R$ 5.500, Escala sob consulta, excedente R$ 3 (antes 1.500 / 2.500 / 4.500 / R$ 2) |
+| 30/09/2026 | `4cf811f` | diagnóstico novo: até 8 perguntas com pulo e mini diagnóstico na tela; fim no WhatsApp |
+| 30/09/2026 | (este commit) | fechamento em duas portas: "A gente te procura" (formulário para o contato@, pelo serviço de contatos em api.atalaiainteligencia.com.br) ou WhatsApp |
+
+## Voltar para o fechamento só no WhatsApp (`4cf811f`)
+
+Só o `index.html` mudou (o fim do diagnóstico e o texto de abertura da seção). Para desfazer:
+
+    git checkout 4cf811f -- index.html
+    git commit -m "Rollback: fim do diagnóstico volta a ser só WhatsApp"
+    git push
+
+Se o serviço de contatos cair, o formulário avisa "Não consegui enviar agora" e oferece o WhatsApp: não precisa de rollback só por isso.
 
 ## Voltar para os preços antigos (`ccaabbf`)
 
