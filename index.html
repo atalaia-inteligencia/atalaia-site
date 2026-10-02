@@ -2673,7 +2673,7 @@ footer .legal { color: #949A93; font-size: var(--t-1); border-top: 1px solid rgb
 (function () {
   var raiz = document.getElementById("diag");
   if (!raiz) return;
-  var ZAP = "https://wa.me/5531992949134?text=";
+  var ZAP = "https://wa.me/5531983314312?text=";
   var HORAS_FORA = 168 - 5 * 10;
   var PERGUNTAS = [
     { id: "ramo", titulo: "O que a sua empresa faz?", curto: "Ramo",
@@ -2772,7 +2772,7 @@ footer .legal { color: #949A93; font-size: var(--t-1); border-top: 1px solid rgb
   function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
 
   function mensagemZap(itens) {
-    return "Olá, Túlio! Vi o site da Atalaia e quero o atendente com IA na minha empresa.\n" +
+    return "Olá, quero saber como a Atalaia funciona na minha empresa. Fiz o diagnóstico no site:\n" +
       itens.map(function (i) { return "• " + i.pergunta + ": " + i.resposta; }).join("\n");
   }
   function linkZap(itens, rotulo, cls) {
