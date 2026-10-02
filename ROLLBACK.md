@@ -18,13 +18,14 @@ O repositório mora em `atalaia-inteligencia/atalaia-site` desde 18/09/2026.
 | 30/09/2026 | `110b24c` | tabela de preços nova: Entrada R$ 2.900, Crescimento R$ 5.500, Escala sob consulta, excedente R$ 3 (antes 1.500 / 2.500 / 4.500 / R$ 2) |
 | 30/09/2026 | `4cf811f` | diagnóstico novo: até 8 perguntas com pulo e mini diagnóstico na tela; fim no WhatsApp |
 | 30/09/2026 | `b42f7f0` | fechamento em duas portas: "A gente te procura" (formulário para o contato@, pelo serviço de contatos em api.atalaiainteligencia.com.br) ou WhatsApp |
+| 02/10/2026 | `1be2483` | só texto: Crescimento até 2.500 conversas (antes 1.500), Escala "acima de 2.500 ou várias unidades" (antes "4.000, várias unidades") e a regra do excedente em 2.500; nenhum valor em reais mudou |
 | 30/09/2026 | (este commit) | a área do cliente volta: botão "Área do cliente" no topo, bloco "Já é cliente" e link no rodapé, os três para `painel.atalaiainteligencia.com.br`, que passou a abrir o login da Atalaia (sem nome de cliente) |
 
-## Voltar para antes da área do cliente (`b42f7f0`)
+## Voltar para antes da área do cliente (`171aa70`)
 
 Só o `index.html` mudou (os 3 pontos perderam o `hidden` e saiu uma regra de CSS repetida). Para esconder de novo:
 
-    git checkout b42f7f0 -- index.html
+    git checkout 171aa70 -- index.html
     git commit -m "Rollback: esconde de novo a área do cliente"
     git push
 
