@@ -19,13 +19,14 @@ O repositório mora em `atalaia-inteligencia/atalaia-site` desde 18/09/2026.
 | 30/09/2026 | `4cf811f` | diagnóstico novo: até 8 perguntas com pulo e mini diagnóstico na tela; fim no WhatsApp |
 | 30/09/2026 | `b42f7f0` | fechamento em duas portas: "A gente te procura" (formulário para o contato@, pelo serviço de contatos em api.atalaiainteligencia.com.br) ou WhatsApp |
 | 02/10/2026 | `1be2483` | só texto: Crescimento até 2.500 conversas (antes 1.500), Escala "acima de 2.500 ou várias unidades" (antes "4.000, várias unidades") e a regra do excedente em 2.500; nenhum valor em reais mudou |
+| 02/10/2026 | `bc42fde` | WhatsApp do site vai para o número comercial com IA de vendas (31) 9831-4312; frase "Nenhum cliente sem resposta. E a prova, em número."; linha "Para empresas que vendem pelo WhatsApp e têm um time atendendo."; "Do primeiro atendente ao time inteiro" no painel. Preço segue só na seção de preços. Voltar: `git revert` deste commit e dos 3 anteriores do PR #12 |
 | 30/09/2026 | (este commit) | a área do cliente volta: botão "Área do cliente" no topo, bloco "Já é cliente" e link no rodapé, os três para `painel.atalaiainteligencia.com.br`, que passou a abrir o login da Atalaia (sem nome de cliente) |
 
-## Voltar para antes da área do cliente (`171aa70`)
+## Voltar para antes da área do cliente (`cb42337`)
 
 Só o `index.html` mudou (os 3 pontos perderam o `hidden` e saiu uma regra de CSS repetida). Para esconder de novo:
 
-    git checkout 171aa70 -- index.html
+    git checkout cb42337 -- index.html
     git commit -m "Rollback: esconde de novo a área do cliente"
     git push
 
