@@ -2655,7 +2655,7 @@ footer .legal { color: #949A93; font-size: var(--t-1); border-top: 1px solid rgb
     Object.keys(F).forEach(function (k) { var dd = document.getElementById(F[k]); dd.textContent = "aguardando"; dd.className = "vazio"; });
     marcaEstado("Conversa começando", ""); pe.classList.remove("vivo"); cartao.classList.remove("pronto"); fN.textContent = "0"; fN.classList.remove("tem");
     resumo.textContent = "Aparece aqui quando a conversa terminar."; eco.classList.remove("tem");
-    balao("nosso", "Olá! Faz de conta que você é cliente de uma distribuidora de peças. O catálogo dela eu já li. Me pergunta:"); mostrarChips(INICIO, false);
+    balao("nosso", "Olá! Faz de conta que você é cliente de uma empresa que vende peças. O catálogo dela eu já li. Me pergunta:"); mostrarChips(INICIO, false);
   }
   comecar();
 })();
@@ -2674,7 +2674,7 @@ footer .legal { color: #949A93; font-size: var(--t-1); border-top: 1px solid rgb
 (function () {
   var raiz = document.getElementById("diag");
   if (!raiz) return;
-  var ZAP = "https://wa.me/5531983314312?text=";
+  var ZAP = "https://wa.me/553198314312?text=";
   var HORAS_FORA = 168 - 5 * 10;
   var PERGUNTAS = [
     { id: "ramo", titulo: "O que a sua empresa faz?", curto: "Ramo",
