@@ -463,7 +463,7 @@ svg:has(.atalaia-brasa) { overflow: visible; }
 .vis .noar i { width: 12px; height: 12px; border-radius: 50%; background: var(--ouro); animation: respira 3.6s ease-in-out infinite; box-shadow: 0 0 0 8px rgba(232,161,28,.14); }
 .vis .linha-dado { display: flex; justify-content: space-between; gap: 12px; color: var(--nevoa); border-top: 1px solid #2F3632; padding-top: 8px; }
 .vis .linha-dado b { color: var(--pedra); font-weight: 500; }
-.portal { margin-top: 18px; background: var(--carvao); color: var(--pedra); --acc: var(--ouro); --brasa: var(--ouro); border-radius: 24px; padding: clamp(24px, 4vw, 56px); display: grid; gap: 22px; position: relative; overflow: hidden; }
+.portal { margin-top: 18px; background: var(--carvao); color: var(--pedra); --acc: var(--ouro); --brasa: var(--ouro); border-radius: 24px; padding: clamp(24px, 4vw, 56px); display: grid; gap: 22px; position: relative; overflow: clip; }
 @media (min-width: 820px) { .portal { grid-template-columns: 1fr auto; align-items: center; } }
 .portal::before { content: ""; position: absolute; right: -10%; top: -60%; width: 60%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(232,161,28,.2), transparent 65%); pointer-events: none; }
 .portal h3 { font-size: var(--t3); margin: 10px 0 8px; }
