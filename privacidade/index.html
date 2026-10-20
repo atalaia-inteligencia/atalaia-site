@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Política de Privacidade · Atalaia Inteligência</title>
+<meta name="description" content="Quais dados pessoais a Atalaia Inteligência trata, para quê, com quem compartilha e como pedir acesso, correção ou exclusão, conforme a LGPD.">
+<meta name="theme-color" content="#1F2421">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preload" href="/fontes/SchibstedGrotesk-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="canonical" href="https://atalaiainteligencia.com.br/privacidade">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Atalaia Inteligência">
+<meta property="og:title" content="Política de Privacidade · Atalaia Inteligência">
+<meta property="og:url" content="https://atalaiainteligencia.com.br/privacidade">
+<meta property="og:image" content="https://atalaiainteligencia.com.br/og.png">
+<meta property="og:locale" content="pt_BR">
+<style>
+/* Base da identidade Muralha, extraída do src.html pelo build (privacidade.py). Não editar aqui. */
+@font-face { font-family: "Schibsted Grotesk"; src: url("/fontes/SchibstedGrotesk-var.woff2") format("woff2"); font-weight: 400 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Schibsted Grotesk"; src: url("/fontes/SchibstedGrotesk-Italic-var.woff2") format("woff2"); font-weight: 400 900; font-style: italic; font-display: swap; }
+@font-face { font-family: "JetBrains Mono"; src: url("/fontes/JetBrainsMono-var.woff2") format("woff2"); font-weight: 100 800; font-style: normal; font-display: swap; }
+
+:root {
+  --carvao: #1F2421; --carvao2: #2A302C; --carvao3: #171B18;
+  --pedra: #E6E4DC; --cal: #F6F5F0; --palco: #EFEDE6; --linha: #C9C6BB;
+  --musgo: #565D57; --nevoa: #A3A89F;
+  --ouro: #E8A11C; --ouro-claro: #F2BC52; --queimado: #C8551A; --acento-txt: #855600;
+  --sans: "Schibsted Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  /* nome que o painel vivo herdou do site antigo. Os apelidos de cor (--claro2, --claro3, --tocha-viva) NÃO moram aqui:
+     variável CSS resolve onde é declarada, e no :root ainda não existe --fg2 nem --acc. Eles ficam nos temas, logo abaixo. */
+  --serif: var(--mono);
+  --t-1: clamp(.78rem, .76rem + .1vw, .84rem);
+  --t0: clamp(.95rem, .92rem + .15vw, 1.04rem);
+  --t1: clamp(1.05rem, 1rem + .25vw, 1.2rem);
+  --t2: clamp(1.18rem, 1.08rem + .5vw, 1.5rem);
+  --t3: clamp(1.45rem, 1.2rem + 1.1vw, 2.1rem);
+  --t4: clamp(1.9rem, 1.4rem + 2.2vw, 3.2rem);
+  --t5: clamp(2.35rem, 1.5rem + 4vw, 5rem);
+  --gut: clamp(16px, 4vw, 56px);
+  --ease: cubic-bezier(.32,.72,0,1);
+  --topo-h: 64px;
+}
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: calc(var(--topo-h) + 16px); }
+body { margin: 0; font-family: var(--sans); font-size: var(--t0); line-height: 1.55; background: var(--carvao); color: var(--pedra); -webkit-font-smoothing: antialiased; overflow-x: clip; }
+h1, h2, h3, h4, p, ul, ol, dl, dd, figure { margin: 0; padding: 0; }
+ul, ol { list-style: none; }
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+h1, h2, h3 { font-weight: 700; letter-spacing: -0.03em; line-height: 1.04; text-wrap: balance; }
+h2 { font-size: var(--t4); }
+h3 { font-size: var(--t2); letter-spacing: -0.02em; line-height: 1.15; }
+p { text-wrap: pretty; }
+code { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+:focus-visible { outline: 2px solid var(--acc, var(--ouro)); outline-offset: 3px; border-radius: 6px; }
+.miolo { width: 100%; max-width: 1320px; margin-inline: auto; padding-inline: var(--gut); }
+.ico { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+
+/* botões */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 22px; border-radius: 999px; border: 1px solid transparent; font-weight: 650; font-size: var(--t0); text-decoration: none; cursor: pointer; white-space: normal; text-align: center; padding-block: 8px; transition: transform 220ms var(--ease), background 220ms, color 220ms, border-color 220ms; }
+.btn:active { transform: scale(.97); }
+.btn.cheio { background: var(--ouro); color: var(--carvao); }
+.btn.cheio:hover { background: var(--ouro-claro); }
+.dia .btn.cheio, .topo.claro .btn.cheio { background: var(--carvao); color: var(--pedra); }
+.dia .btn.cheio:hover, .topo.claro .btn.cheio:hover { background: #2F3632; }
+.btn.contorno { border-color: currentColor; background: transparent; color: inherit; }
+.btn.contorno:hover { background: color-mix(in srgb, currentColor 10%, transparent); }
+.btn .ico { width: 18px; height: 18px; }
+
+/* topo */
+.topo { position: fixed; inset: 0 0 auto 0; z-index: 50; height: var(--topo-h); color: var(--pedra); --brasa: var(--ouro); background: rgba(31,36,33,.82); -webkit-backdrop-filter: blur(14px) saturate(1.2); backdrop-filter: blur(14px) saturate(1.2); border-bottom: 1px solid rgba(230,228,220,.1); transition: background 280ms, color 280ms, border-color 280ms; }
+/* --acc também no tema claro: sem isso o anel de foco caía no ouro do fallback, 1,73:1 sobre pedra (WCAG pede 3:1) */
+.topo.claro { --acc: var(--acento-txt); color: var(--carvao); --brasa: var(--queimado); background: rgba(230,228,220,.86); border-bottom-color: rgba(31,36,33,.12); }
+.topo .miolo { height: 100%; display: flex; align-items: center; gap: clamp(10px, 2vw, 28px); }
+/* flex: none + largura explícita: sem isso, quando os botões do topo crescem (560 a 667 px) o flex espreme a logo até 0 px.
+   93 = 26 de altura x 608/170 do wordmark. A logo nunca é o item que cede. */
+.marca { display: inline-flex; align-items: center; min-height: 44px; line-height: 0; text-decoration: none; flex: none; }
+.marca svg { height: 26px; width: 93px; flex: none; }
+.topo nav { margin-left: auto; display: none; gap: 4px; }
+.topo nav a { white-space: nowrap; min-height: 44px; display: inline-flex; align-items: center; padding: 0 12px; border-radius: 999px; text-decoration: none; font-size: .95rem; opacity: .82; transition: opacity 200ms, background 200ms; }
+.topo nav a:hover { opacity: 1; background: color-mix(in srgb, currentColor 9%, transparent); }
+.topo .acoes { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+.topo .btn { min-height: 44px; padding: 0 16px; font-size: .92rem; white-space: nowrap; }
+/* Celular: o botão de VENDA fica sempre à vista (o site anterior tinha "Começar" no topo; tirar seria regressão).
+   Quem encolhe é o acesso do cliente, que vira ícone de 44 px com rótulo acessível. */
+.topo .btn .lg { display: none; }
+.topo .btn.contorno { width: 44px; padding: 0; }
+.topo .btn.contorno .rot { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (min-width: 600px) { .topo .btn .lg { display: inline; } .topo .btn .sm { display: none; } .topo .btn.contorno { width: auto; padding: 0 16px; } .topo .btn.contorno .rot { position: static; width: auto; height: auto; clip-path: none; } }
+@media (min-width: 1180px) { .topo nav { display: flex; } .topo .acoes { margin-left: 8px; } }
+
+footer { background: var(--carvao); color: var(--pedra); --brasa: var(--ouro); padding-block: clamp(48px, 6vw, 88px) calc(32px + env(safe-area-inset-bottom)); }
+footer .miolo { display: grid; gap: 26px; }
+footer .linha1 { display: flex; flex-wrap: wrap; gap: 18px 32px; align-items: center; justify-content: space-between; }
+footer .marca svg { height: 34px; width: 122px; }
+footer .assin { font-size: var(--t2); letter-spacing: -0.02em; }
+footer nav { display: flex; flex-wrap: wrap; gap: 4px 22px; }
+footer nav a { min-height: 44px; display: inline-flex; align-items: center; color: var(--nevoa); text-underline-offset: 4px; overflow-wrap: anywhere; }
+footer nav a:hover { color: var(--ouro); }
+footer .legal { color: #949A93; font-size: var(--t-1); border-top: 1px solid rgba(230,228,220,.12); padding-top: 20px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
+}
+
+
+/* ===== página de leitura: Política de Privacidade ===== */
+.cabeca { --acc: var(--ouro); --brasa: var(--ouro); background: var(--carvao); color: var(--pedra);
+  padding: calc(var(--topo-h) + clamp(40px, 7vw, 96px)) 0 clamp(40px, 6vw, 72px); position: relative; overflow: clip; }
+.cabeca::after { content: ""; position: absolute; right: -12%; top: -30%; width: min(760px, 90vw); aspect-ratio: 1;
+  background: radial-gradient(closest-side, rgba(232,161,28,.12), transparent); pointer-events: none; }
+.cabeca .miolo { position: relative; z-index: 1; display: grid; gap: 18px; }
+.olho { font-family: var(--mono); font-size: var(--t-1); letter-spacing: .08em; text-transform: uppercase; color: var(--acc); display: inline-flex; align-items: center; gap: 10px; }
+.olho::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--brasa); }
+.cabeca h1 { font-size: var(--t4); max-width: 16em; }
+.cabeca .data { font-family: var(--mono); font-size: var(--t-1); color: var(--nevoa); letter-spacing: .02em; }
+.cabeca .data b { color: var(--pedra); font-weight: 500; }
+
+.leitura { --acc: var(--acento-txt); --brasa: var(--queimado); --fg2: var(--musgo); --fio: var(--linha);
+  background: var(--cal); color: var(--carvao); padding-block: clamp(36px, 6vw, 88px) clamp(64px, 9vw, 128px); }
+.leitura .miolo { display: grid; gap: clamp(32px, 5vw, 56px); }
+.leitura a { color: var(--acento-txt); text-decoration-thickness: 1px; text-underline-offset: 3px; overflow-wrap: anywhere; }
+.leitura a:hover { text-decoration-thickness: 2px; }
+.texto { max-width: 68ch; min-width: 0; }
+.abertura p { font-size: var(--t1); line-height: 1.6; }
+
+/* sumário */
+.sumario { min-width: 0; }
+.sumario h2 { font-family: var(--mono); font-size: var(--t-1); font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--musgo); margin-bottom: 12px; }
+.sumario ol { display: grid; gap: 2px; border-top: 1px solid var(--linha); padding-top: 8px; }
+.sumario a { display: flex; gap: 12px; align-items: baseline; min-height: 40px; padding: 8px 10px; margin-inline: -10px; border-radius: 10px;
+  color: var(--carvao); text-decoration: none; line-height: 1.3; transition: background 180ms; }
+.sumario a:hover { background: var(--palco); }
+.sumario .num, .secao h2 .num { font-family: var(--mono); font-size: var(--t-1); font-weight: 500; color: var(--acento-txt); font-variant-numeric: tabular-nums; flex: none; }
+.sumario .num { min-width: 3ch; }
+@media (min-width: 720px) { .sumario ol { grid-template-columns: 1fr 1fr; column-gap: 28px; } }
+@media (min-width: 1100px) {
+  .leitura .miolo { grid-template-columns: minmax(0, 290px) minmax(0, 68ch); justify-content: space-between; align-items: start; column-gap: 64px; }
+  .sumario { position: sticky; top: calc(var(--topo-h) + 28px); max-height: calc(100vh - var(--topo-h) - 56px); overflow-y: auto; }
+  .sumario ol { grid-template-columns: 1fr; }
+  .sumario a { font-size: .93rem; min-height: 36px; padding-block: 6px; }
+}
+
+/* seções */
+.secao { padding-top: clamp(28px, 4vw, 44px); margin-top: clamp(28px, 4vw, 44px); border-top: 1px solid var(--linha); }
+.secao h2 { font-size: var(--t2); letter-spacing: -0.02em; line-height: 1.2; display: grid; gap: 8px; margin-bottom: 16px; }
+.secao p + p, .secao p + ul, .secao ul + p, .secao .tabela + p, .secao p + .tabela, .secao ul + .tabela { margin-top: 14px; }
+.secao ul { display: grid; gap: 10px; }
+.secao li { position: relative; padding-left: 22px; }
+.secao li::before { content: ""; position: absolute; left: 2px; top: .68em; width: 7px; height: 7px; border-radius: 50%; background: var(--queimado); }
+.leitura strong { font-weight: 650; }
+/* seção 10: endereço que vai no cadastro do app na Meta (/privacidade#exclusao) */
+#exclusao { border-top: 0; margin-top: clamp(36px, 5vw, 56px); padding: clamp(22px, 3.4vw, 34px); border-radius: 18px;
+  background: var(--pedra); box-shadow: inset 4px 0 0 var(--ouro); }
+#exclusao h2 { margin-bottom: 14px; }
+
+/* tabelas: rolagem lateral só dentro da caixa, nunca da página */
+.tabela { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--linha); border-radius: 14px; overscroll-behavior-x: contain;
+  background: linear-gradient(90deg, var(--cal) 30%, transparent) left / 28px 100% no-repeat local,
+              linear-gradient(270deg, var(--cal) 30%, transparent) right / 28px 100% no-repeat local,
+              radial-gradient(farthest-side at 0 50%, rgba(31,36,33,.16), transparent) left / 10px 100% no-repeat scroll,
+              radial-gradient(farthest-side at 100% 50%, rgba(31,36,33,.16), transparent) right / 10px 100% no-repeat scroll, var(--cal); }
+.tabela table { width: 100%; border-collapse: collapse; font-size: .94em; line-height: 1.45; }
+.tabela.c3 table { min-width: 560px; }
+.tabela th, .tabela td { text-align: left; vertical-align: top; padding: 12px 16px; }
+.tabela thead th { font-family: var(--mono); font-size: var(--t-1); font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--musgo);
+  background: var(--palco); border-bottom: 1px solid var(--linha); white-space: nowrap; }
+.tabela tbody tr + tr td { border-top: 1px solid var(--linha); }
+.tabela td:first-child { font-weight: 600; }
+.tabela.c3 td:last-child { white-space: nowrap; color: var(--musgo); }
+.tabela:focus-visible { outline: 2px solid var(--acento-txt); outline-offset: 3px; }
+/* celular: cada linha vira um cartão com o nome da coluna em cima de cada valor (sem rolagem lateral) */
+@media (max-width: 640px) {
+  .tabela { background: var(--cal); }
+  .tabela table, .tabela.c3 table { min-width: 0; }
+  .tabela thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .tabela table, .tabela tbody, .tabela tr, .tabela td { display: block; }
+  .tabela tbody tr { padding: 14px 16px; }
+  .tabela tbody tr + tr { border-top: 1px solid var(--linha); }
+  .tabela tbody tr + tr td { border-top: 0; }
+  .tabela td { padding: 0; }
+  .tabela td + td { margin-top: 10px; }
+  .tabela td::before { content: attr(data-rot); display: block; margin-bottom: 2px; font-family: var(--mono); font-size: var(--t-1); font-weight: 500;
+    letter-spacing: .06em; text-transform: uppercase; color: var(--musgo); }
+  .tabela.c3 td:last-child { white-space: normal; }
+}
+
+.voltar { margin-top: clamp(40px, 6vw, 64px); padding-top: 24px; border-top: 1px solid var(--linha); display: flex; flex-wrap: wrap; gap: 8px 24px; }
+.voltar a { min-height: 44px; display: inline-flex; align-items: center; }
+footer nav a[aria-current="page"] { color: var(--pedra); }
+@media print {
+  .topo, .sumario, footer, .voltar, .cabeca::after { display: none !important; }
+  .cabeca, .leitura { background: #fff; color: #000; padding: 0; }
+  .cabeca h1, .cabeca .data b { color: #000; }
+  #exclusao { box-shadow: none; background: none; padding: 0; }
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="logo" viewBox="0 0 608 170"><path fill="currentColor" fill-rule="evenodd" d="M80 80A50 50 0 1 0 80 160V170H100V70H80ZM20 120a30 30 0 1 1 60 0a30 30 0 1 1 -60 0ZM132 0H152V70H184V90H152V170H132ZM276 80A50 50 0 1 0 276 160V170H296V70H276ZM216 120a30 30 0 1 1 60 0a30 30 0 1 1 -60 0ZM314 0h20v170h-20ZM432 80A50 50 0 1 0 432 160V170H452V70H432ZM372 120a30 30 0 1 1 60 0a30 30 0 1 1 -60 0ZM470 70h20v100h-20ZM588 80A50 50 0 1 0 588 160V170H608V70H588ZM528 120a30 30 0 1 1 60 0a30 30 0 1 1 -60 0Z"/></symbol>
+</defs></svg>
+
+<header class="topo" id="topo">
+  <div class="miolo">
+    <a class="marca" href="/" aria-label="Atalaia, página inicial">
+      <svg viewBox="0 0 608 170" overflow="visible" aria-hidden="true" focusable="false"><use href="#logo"/><circle class="atalaia-brasa" cx="480" cy="16" r="16" fill="var(--brasa)"/></svg>
+    </a>
+    <nav aria-label="Seções do site">
+      <a href="/#como">Como funciona</a>
+      <a href="/#numeros">Os números</a>
+      <a href="/#painel">O painel</a>
+      <a href="/#precos">Preços</a>
+    </nav>
+    <div class="acoes">
+      <a class="btn contorno" href="https://painel.atalaiainteligencia.com.br" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg><span class="rot">Área do cliente</span></a>
+      <a class="btn cheio" href="/#diag"><span class="lg">Quero na minha empresa</span><span class="sm">Começar</span></a>
+    </div>
+  </div>
+</header>
+
+<main>
+<div class="cabeca">
+  <div class="miolo">
+    <p class="olho">Privacidade · LGPD</p>
+    <h1>Política de Privacidade da Atalaia Inteligência</h1>
+    <p class="data">Última atualização: <b>20 de outubro de 2026</b></p>
+  </div>
+</div>
+
+<div class="leitura">
+  <div class="miolo">
+    <nav class="sumario" aria-labelledby="sumario-t">
+      <h2 id="sumario-t">Nesta página</h2>
+      <ol><li><a href="#aplicacao"><span class="num">1.</span> A quem esta política se aplica</a></li><li><a href="#papel"><span class="num">2.</span> Nosso papel em cada caso</a></li><li><a href="#dados"><span class="num">3.</span> Quais dados tratamos</a></li><li><a href="#finalidades"><span class="num">4.</span> Para que usamos e com qual base legal</a></li><li><a href="#whatsapp"><span class="num">5.</span> WhatsApp e Meta</a></li><li><a href="#fornecedores"><span class="num">6.</span> Com quem compartilhamos (fornecedores)</a></li><li><a href="#fora-do-brasil"><span class="num">7.</span> Dados fora do Brasil</a></li><li><a href="#retencao"><span class="num">8.</span> Por quanto tempo guardamos</a></li><li><a href="#seguranca"><span class="num">9.</span> Segurança</a></li><li><a href="#exclusao"><span class="num">10.</span> Seus direitos e como pedir a exclusão dos dados</a></li><li><a href="#criancas"><span class="num">11.</span> Crianças e adolescentes</a></li><li><a href="#cookies"><span class="num">12.</span> Cookies</a></li><li><a href="#encarregado"><span class="num">13.</span> Encarregado e contato</a></li><li><a href="#mudancas"><span class="num">14.</span> Mudanças nesta política</a></li></ol>
+    </nav>
+    <article class="texto">
+      <div class="abertura"><p>A <strong>Atalaia Inteligência</strong> (Tulio Parreira Camargos Guimaraes Consultoria em Tecnologia da Informação Ltda, CNPJ 68.396.487/0001-07, Belo Horizonte, MG) oferece atendimento com inteligência artificial no WhatsApp para empresas. Esta política explica quais dados pessoais tratamos, para quê, com quem compartilhamos e como você exerce os seus direitos, conforme a Lei Geral de Proteção de Dados (Lei nº 13.709/2018, a LGPD).</p></div>
+      <section class="secao" id="aplicacao" aria-labelledby="aplicacao-t"><h2 id="aplicacao-t"><span class="num">1.</span> A quem esta política se aplica</h2><ul><li><strong>Empresas clientes e pessoas da equipe delas</strong> que usam o painel da Atalaia.</li><li><strong>Quem fala com a Atalaia</strong> pelo nosso WhatsApp comercial, pelo site ou por e-mail.</li><li><strong>Clientes finais das nossas empresas clientes</strong>, isto é, as pessoas que escrevem para o WhatsApp de uma empresa atendida pela Atalaia.</li></ul></section><section class="secao" id="papel" aria-labelledby="papel-t"><h2 id="papel-t"><span class="num">2.</span> Nosso papel em cada caso</h2><ul><li><strong>Dados dos clientes finais das empresas que atendemos:</strong> a empresa é a <strong>controladora</strong> e a Atalaia é a <strong>operadora</strong>. Tratamos esses dados só para prestar o serviço contratado e conforme as instruções da empresa. O número de WhatsApp, as conversas e os contatos pertencem à empresa. Se você escreveu para uma empresa atendida pela Atalaia, os seus pedidos sobre esses dados devem ser feitos à própria empresa; nós ajudamos a empresa a responder.</li><li><strong>Dados de quem fala diretamente com a Atalaia</strong> (contato comercial, visitantes do site, usuários do painel): a Atalaia é a <strong>controladora</strong>.</li></ul></section><section class="secao" id="dados" aria-labelledby="dados-t"><h2 id="dados-t"><span class="num">3.</span> Quais dados tratamos</h2><ul><li><strong>Mensagens de WhatsApp</strong> trocadas com o número da empresa cliente: texto, áudio, imagem, documento e vídeo, com o nome de perfil e o número de telefone de quem escreve.</li><li><strong>Dados da conta de WhatsApp Business da empresa cliente</strong>, acessados com autorização dela pela plataforma da Meta: identificação da conta e do número, modelos de mensagem, limites de envio e indicadores de qualidade.</li><li><strong>Material enviado pela empresa cliente</strong> para montar a IA: catálogo, regras de atendimento e perguntas frequentes.</li><li><strong>Dados de quem usa o painel:</strong> nome, e-mail, login e registros de uso (quem assumiu ou respondeu cada conversa e quando).</li><li><strong>Dados de contato comercial:</strong> nome, telefone, e-mail e empresa de quem procura a Atalaia.</li><li><strong>Registros de acesso</strong> aos nossos sistemas (endereço IP, data e hora e a página acessada, sem o conteúdo das conversas), guardados conforme o Marco Civil da Internet.</li></ul></section><section class="secao" id="finalidades" aria-labelledby="finalidades-t"><h2 id="finalidades-t"><span class="num">4.</span> Para que usamos e com qual base legal</h2><div class="tabela c2" role="region" aria-label="Tabela: Finalidade" tabindex="0"><table><thead><tr><th scope="col">Finalidade</th><th scope="col">Base legal</th></tr></thead><tbody><tr><td data-rot="Finalidade">Receber e responder as mensagens dos clientes da empresa, pela IA ou pela equipe dela, encaminhar e medir o atendimento no painel</td><td data-rot="Base legal">Execução do contrato com a empresa cliente; a base legal perante os clientes finais é da empresa, que é a controladora</td></tr><tr><td data-rot="Finalidade">Montar e calibrar a IA de cada empresa com o material dela</td><td data-rot="Base legal">Execução do contrato</td></tr><tr><td data-rot="Finalidade">Responder quem procura a Atalaia e fazer propostas</td><td data-rot="Base legal">Procedimentos preliminares de contrato, a pedido do interessado (art. 7º, V)</td></tr><tr><td data-rot="Finalidade">Segurança, prevenção de fraude e registro de acesso</td><td data-rot="Base legal">Cumprimento de obrigação legal e legítimo interesse</td></tr><tr><td data-rot="Finalidade">Emitir cobrança e nota fiscal para a empresa cliente</td><td data-rot="Base legal">Execução do contrato e obrigação legal</td></tr></tbody></table></div><p><strong>O que não fazemos:</strong> não vendemos dados, não usamos as conversas de uma empresa para atender outra e não usamos os dados para treinar modelos de inteligência artificial de terceiros.</p></section><section class="secao" id="whatsapp" aria-labelledby="whatsapp-t"><h2 id="whatsapp-t"><span class="num">5.</span> WhatsApp e Meta</h2><p>A Atalaia usa a WhatsApp Business Platform da Meta. A empresa cliente conecta o próprio número de WhatsApp à Atalaia e autoriza o nosso aplicativo a acessar a conta de WhatsApp Business dela, só para:</p><ul><li>receber as mensagens enviadas ao número e responder em nome da empresa;</li><li>registrar o número e manter a conexão;</li><li>enviar modelos de mensagem aprovados pela Meta, quando a empresa precisar falar com o cliente fora da janela de atendimento;</li><li>quando a empresa ativar esses recursos: criar e consultar modelos de mensagem, consultar limites de envio e qualidade do número e, se ela continuar usando o aplicativo WhatsApp Business no celular, sincronizar os contatos e o histórico que escolher compartilhar.</li></ul><p>A empresa pode desconectar o número da Atalaia a qualquer momento, pelo painel da Meta ou pedindo à Atalaia. O uso do WhatsApp também segue a política de privacidade da Meta.</p></section><section class="secao" id="fornecedores" aria-labelledby="fornecedores-t"><h2 id="fornecedores-t"><span class="num">6.</span> Com quem compartilhamos (fornecedores)</h2><p>Cada fornecedor recebe só o necessário para a sua função.</p><div class="tabela c3" role="region" aria-label="Tabela: Fornecedor" tabindex="0"><table><thead><tr><th scope="col">Fornecedor</th><th scope="col">Para quê</th><th scope="col">Onde processa</th></tr></thead><tbody><tr><td data-rot="Fornecedor">Meta (WhatsApp Business Platform)</td><td data-rot="Para quê">Entrega das mensagens; a conta é da empresa cliente</td><td data-rot="Onde processa">Fora do Brasil</td></tr><tr><td data-rot="Fornecedor">Anthropic (Claude, API comercial)</td><td data-rot="Para quê">IA que lê a mensagem e escreve a resposta</td><td data-rot="Onde processa">Estados Unidos</td></tr><tr><td data-rot="Fornecedor">OpenAI (API comercial)</td><td data-rot="Para quê">Transcrição de áudio em texto, quando há áudio</td><td data-rot="Onde processa">Estados Unidos</td></tr><tr><td data-rot="Fornecedor">Vultr</td><td data-rot="Para quê">Servidor onde ficam o sistema e o banco de dados</td><td data-rot="Onde processa">Brasil (São Paulo)</td></tr><tr><td data-rot="Fornecedor">Cloudflare</td><td data-rot="Para quê">Proteção e conexão criptografada até o painel e o site</td><td data-rot="Onde processa">Rede global</td></tr><tr><td data-rot="Fornecedor">Zoho</td><td data-rot="Para quê">E-mail da Atalaia</td><td data-rot="Onde processa">Fora do Brasil</td></tr><tr><td data-rot="Fornecedor">Asaas</td><td data-rot="Para quê">Cobrança e nota fiscal das empresas clientes</td><td data-rot="Onde processa">Brasil</td></tr><tr><td data-rot="Fornecedor">Telegram</td><td data-rot="Para quê">Avisos internos à equipe da Atalaia. Para as empresas clientes, só alertas técnicos, sem o conteúdo das conversas. No WhatsApp comercial da própria Atalaia, o assunto e um resumo do atendimento, sem o telefone</td><td data-rot="Onde processa">Fora do Brasil</td></tr></tbody></table></div><p>Anthropic e OpenAI são contratadas por API comercial, cujos termos não permitem usar os dados enviados para treinar os modelos; esses fornecedores podem guardar os dados por período limitado, para segurança e prevenção de abuso, conforme os termos de cada um.</p><p>Também podemos compartilhar dados por ordem judicial ou exigência de autoridade competente.</p></section><section class="secao" id="fora-do-brasil" aria-labelledby="fora-do-brasil-t"><h2 id="fora-do-brasil-t"><span class="num">7.</span> Dados fora do Brasil</h2><p>Parte do processamento acontece fora do Brasil (veja a tabela acima). Contratamos esses fornecedores por termos comerciais que exigem medidas de segurança e proíbem o uso dos dados para treinar modelos, e acompanhamos a adequação deles às regras de transferência internacional da LGPD (art. 33) e da ANPD.</p></section><section class="secao" id="retencao" aria-labelledby="retencao-t"><h2 id="retencao-t"><span class="num">8.</span> Por quanto tempo guardamos</h2><ul><li><strong>Conversas e dados das empresas clientes:</strong> enquanto durar o contrato. No fim do contrato, devolvemos os dados em formato aberto, se a empresa pedir, e os apagamos em até 15 dias, inclusive das cópias de segurança.</li><li><strong>Cópias de segurança:</strong> ficam no nosso servidor e são apagadas junto com os dados no fim do contrato.</li><li><strong>Contatos comerciais:</strong> até 12 meses depois do último contato.</li><li><strong>Registros de acesso:</strong> 6 meses, como exige o Marco Civil da Internet (Lei nº 12.965/2014, art. 15).</li><li>Dados fiscais e de cobrança: pelo prazo que a lei exige.</li></ul></section><section class="secao" id="seguranca" aria-labelledby="seguranca-t"><h2 id="seguranca-t"><span class="num">9.</span> Segurança</h2><p>Cada empresa cliente roda num ambiente próprio, separado das demais. O acesso ao painel é feito por login individual, por conexão criptografada, com registro de quem fez o quê. O acesso administrativo aos servidores é restrito à equipe técnica, por chave criptográfica. Nenhum sistema é totalmente imune a falhas; se houver um incidente que possa afetar os seus dados, comunicamos a empresa cliente em até 48 horas e, quando a Atalaia for a controladora, a ANPD e as pessoas afetadas, nos prazos da regulamentação.</p></section><section class="secao" id="exclusao" aria-labelledby="exclusao-t"><h2 id="exclusao-t"><span class="num">10.</span> Seus direitos e como pedir a exclusão dos dados</h2><p>Você pode pedir confirmação de que tratamos seus dados, acesso, correção, anonimização, portabilidade, exclusão, informação sobre compartilhamento e revisão de decisões automatizadas, além de revogar consentimento, quando ele for a base legal.</p><p><strong>Como pedir:</strong> escreva para <strong><a href="mailto:contato@atalaiainteligencia.com.br">contato@atalaiainteligencia.com.br</a></strong> com o assunto "Dados pessoais", informando o seu nome e o número de telefone ou e-mail usado. Respondemos em até 15 dias.</p><ul><li>Se os dados forem de uma conversa com uma empresa atendida pela Atalaia, encaminhamos o pedido à empresa, que é a controladora, e ajudamos a atendê-lo.</li><li><strong>Empresas clientes</strong> podem pedir a exclusão de todos os seus dados e a desconexão do número a qualquer momento pelo mesmo e-mail.</li></ul></section><section class="secao" id="criancas" aria-labelledby="criancas-t"><h2 id="criancas-t"><span class="num">11.</span> Crianças e adolescentes</h2><p>Os serviços da Atalaia são destinados a empresas. Não coletamos intencionalmente dados de crianças e adolescentes. Se percebermos esses dados no material recebido, nós os retiramos.</p></section><section class="secao" id="cookies" aria-labelledby="cookies-t"><h2 id="cookies-t"><span class="num">12.</span> Cookies</h2><p>O site não usa cookies nem ferramentas de análise ou de anúncio. O painel usa só um cookie de sessão, necessário para manter o login, que vence em 12 horas.</p></section><section class="secao" id="encarregado" aria-labelledby="encarregado-t"><h2 id="encarregado-t"><span class="num">13.</span> Encarregado e contato</h2><p>Encarregado pelo tratamento de dados: <strong>Túlio Parreira Camargos Guimarães</strong>, <a href="mailto:contato@atalaiainteligencia.com.br">contato@atalaiainteligencia.com.br</a>.</p></section><section class="secao" id="mudancas" aria-labelledby="mudancas-t"><h2 id="mudancas-t"><span class="num">14.</span> Mudanças nesta política</h2><p>Podemos atualizar esta política. A data da última atualização fica no topo da página, e mudanças relevantes são avisadas às empresas clientes.</p></section>
+      <p class="voltar"><a href="#topo">Voltar ao início da política</a><a href="/">Ir para o site da Atalaia</a></p>
+    </article>
+  </div>
+</div>
+</main>
+
+<footer>
+  <div class="miolo">
+    <div class="linha1">
+      <a class="marca" href="/" aria-label="Atalaia, página inicial"><svg viewBox="0 0 608 170" overflow="visible" aria-hidden="true" focusable="false"><use href="#logo"/><circle class="atalaia-brasa" cx="480" cy="16" r="16" fill="var(--brasa)"/></svg></a>
+      <p class="assin">Nenhum cliente sem resposta.</p>
+    </div>
+    <nav aria-label="Contato e acesso">
+      <a href="https://painel.atalaiainteligencia.com.br" rel="noopener">Área do cliente</a>
+      <a href="https://www.instagram.com/atalaiainteligencia" rel="noopener">@atalaiainteligencia</a>
+      <a href="mailto:contato@atalaiainteligencia.com.br">contato@atalaiainteligencia.com.br</a>
+      <a href="/privacidade" aria-current="page">Privacidade</a>
+    </nav>
+    <p class="legal">Tulio Parreira Camargos Guimaraes Consultoria em Tecnologia da Informação Ltda · CNPJ 68.396.487/0001-07</p>
+  </div>
+</footer>
+</body>
+</html>
