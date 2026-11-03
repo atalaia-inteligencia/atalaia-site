@@ -13,6 +13,14 @@
 <link rel="manifest" href="site.webmanifest">
 <link rel="preload" href="fontes/SchibstedGrotesk-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="canonical" href="https://atalaiainteligencia.com.br/">
+<link rel="alternate" hreflang="pt-BR" href="https://atalaiainteligencia.com.br/">
+<link rel="alternate" hreflang="en" href="https://atalaiainteligencia.com.br/en/">
+<link rel="alternate" hreflang="es" href="https://atalaiainteligencia.com.br/es/">
+<link rel="alternate" hreflang="fr" href="https://atalaiainteligencia.com.br/fr/">
+<link rel="alternate" hreflang="de" href="https://atalaiainteligencia.com.br/de/">
+<link rel="alternate" hreflang="it" href="https://atalaiainteligencia.com.br/it/">
+<link rel="alternate" hreflang="nl" href="https://atalaiainteligencia.com.br/nl/">
+<link rel="alternate" hreflang="x-default" href="https://atalaiainteligencia.com.br/en/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Atalaia Inteligência">
 <meta property="og:title" content="Atalaia Inteligência · Nenhum cliente sem resposta">
@@ -1296,6 +1304,39 @@ footer .legal { color: #949A93; font-size: var(--t-1); border-top: 1px solid rgb
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
 }
+
+/* seletor de idioma · 7 idiomas (PT · EN · ES · FR · DE · IT · NL). A partir de 700 px ele mora no cabeçalho, como um menu de um item só
+   (<details>: mostra o idioma da página e abre a lista); em tela menor mora no rodapé, como a lista inteira. Só um dos dois aparece
+   por vez, então só um landmark <nav> fica exposto. A lista com 7 idiomas não cabe em linha no cabeçalho (quebra em duas linhas em 1280 px). */
+.idioma ul { display: flex; flex-wrap: wrap; align-items: center; }
+.idioma li { display: flex; align-items: center; }
+.idioma a, .idioma summary { font-family: var(--mono); font-size: .76rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
+.idioma a { display: inline-flex; align-items: center; justify-content: center; min-width: 40px; min-height: 44px; padding: 0 10px; border-radius: 999px; text-decoration: none; opacity: .72; transition: opacity 200ms, background 200ms; }
+.idioma a:hover { opacity: 1; background: color-mix(in srgb, currentColor 9%, transparent); }
+.idioma a[aria-current="true"] { opacity: 1; font-weight: 700; text-decoration: underline; text-decoration-color: var(--brasa); text-decoration-thickness: 2px; text-underline-offset: 7px; }
+.idioma-rodape { display: flex; }
+.idioma-rodape li + li::before { content: ""; width: 1px; height: 12px; background: currentColor; opacity: .3; }
+.idioma-rodape a { min-width: 0; padding: 0 12px; }
+.idioma-rodape li:first-child a { padding-left: 0; }
+footer .idioma a { opacity: 1; color: var(--nevoa); }
+footer .idioma a:hover { color: var(--ouro); background: none; }
+footer .idioma a[aria-current="true"] { color: var(--pedra); }
+.topo .idioma-topo { display: none; margin-left: 0; }
+.idioma-menu { position: relative; }
+.idioma-menu summary { list-style: none; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 12px; border-radius: 999px; cursor: pointer; opacity: .82; user-select: none; -webkit-user-select: none; transition: opacity 200ms, background 200ms; }
+.idioma-menu summary::-webkit-details-marker { display: none; }
+.idioma-menu summary::after { content: ""; width: 5px; height: 5px; margin-top: -3px; border: solid currentColor; border-width: 0 1.5px 1.5px 0; transform: rotate(45deg); transition: transform 200ms, margin 200ms; }
+.idioma-menu[open] summary::after { margin-top: 3px; transform: rotate(-135deg); }
+.idioma-menu summary:hover, .idioma-menu[open] summary { opacity: 1; background: color-mix(in srgb, currentColor 9%, transparent); }
+.idioma-menu ul { position: absolute; top: calc(100% + 10px); right: 0; z-index: 2; flex-direction: column; flex-wrap: nowrap; align-items: stretch; min-width: 210px; padding: 6px; border-radius: 16px; background: var(--carvao2); color: var(--pedra); border: 1px solid rgba(230,228,220,.14); box-shadow: 0 18px 40px -12px rgba(0,0,0,.5); }
+.topo.claro .idioma-menu ul { background: var(--cal); color: var(--carvao); border-color: var(--linha); box-shadow: 0 18px 40px -14px rgba(31,36,33,.3); }
+.idioma-menu li { display: block; }
+.topo .idioma-menu a { display: flex; justify-content: flex-start; gap: 14px; width: 100%; padding: 0 12px; border-radius: 10px; font-size: .76rem; opacity: .86; }
+.topo .idioma-menu a::after { content: attr(title); font-family: var(--sans); font-size: .95rem; font-weight: 400; letter-spacing: 0; text-transform: none; }
+.topo .idioma-menu a:hover { opacity: 1; background: color-mix(in srgb, currentColor 9%, transparent); }
+.topo .idioma-menu a[aria-current="true"] { opacity: 1; text-decoration: none; background: color-mix(in srgb, currentColor 10%, transparent); }
+.topo .idioma-menu a[aria-current="true"]::after { font-weight: 600; }
+@media (min-width: 700px) { .topo .idioma-topo { display: block; } .idioma-rodape { display: none; } }
 </style>
 </head>
 <body>
@@ -1316,6 +1357,24 @@ footer .legal { color: #949A93; font-size: var(--t-1); border-top: 1px solid rgb
       <a href="#precos">Preços</a>
     </nav>
     <div class="acoes">
+      <nav class="idioma idioma-topo" aria-label="Idioma">
+        <details class="idioma-menu">
+          <summary aria-label="Idioma: Português (PT)">PT</summary>
+          <ul>
+            <li><a href="/" hreflang="pt-BR" lang="pt-BR" title="Português" aria-current="true">PT</a></li>
+            <li><a href="/en/" hreflang="en" lang="en" title="English">EN</a></li>
+            <li><a href="/es/" hreflang="es" lang="es" title="Español">ES</a></li>
+            <li><a href="/fr/" hreflang="fr" lang="fr" title="Français">FR</a></li>
+            <li><a href="/de/" hreflang="de" lang="de" title="Deutsch">DE</a></li>
+            <li><a href="/it/" hreflang="it" lang="it" title="Italiano">IT</a></li>
+            <li><a href="/nl/" hreflang="nl" lang="nl" title="Nederlands">NL</a></li>
+            <!-- Idiomas novos entram aqui: um <li> por língua, sempre na ordem PT · EN · ES · FR · DE · IT · NL.
+               Modelo: <li><a href="/es/" hreflang="es" lang="es" title="Español">ES</a></li>
+               Inclua também o <li> no seletor do rodapé (<nav class="idioma idioma-rodape">) e a linha <link rel="alternate" hreflang="es"> no <head>.
+               O nome do idioma que aparece no menu vem do atributo title. -->
+          </ul>
+        </details>
+      </nav>
       <a class="btn contorno" href="https://painel.atalaiainteligencia.com.br" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg><span class="rot">Área do cliente</span></a>
       <a class="btn cheio" href="#diag"><span class="lg">Quero na minha empresa</span><span class="sm">Começar</span></a>
     </div>
@@ -2119,6 +2178,17 @@ footer .legal { color: #949A93; font-size: var(--t-1); border-top: 1px solid rgb
       <a href="https://www.instagram.com/atalaiainteligencia" rel="noopener">@atalaiainteligencia</a>
       <a href="mailto:contato@atalaiainteligencia.com.br">contato@atalaiainteligencia.com.br</a>
       <a href="/privacidade">Privacidade</a>
+    </nav>
+    <nav class="idioma idioma-rodape" aria-label="Idioma">
+      <ul>
+        <li><a href="/" hreflang="pt-BR" lang="pt-BR" title="Português" aria-current="true">PT</a></li>
+        <li><a href="/en/" hreflang="en" lang="en" title="English">EN</a></li>
+        <li><a href="/es/" hreflang="es" lang="es" title="Español">ES</a></li>
+        <li><a href="/fr/" hreflang="fr" lang="fr" title="Français">FR</a></li>
+        <li><a href="/de/" hreflang="de" lang="de" title="Deutsch">DE</a></li>
+        <li><a href="/it/" hreflang="it" lang="it" title="Italiano">IT</a></li>
+        <li><a href="/nl/" hreflang="nl" lang="nl" title="Nederlands">NL</a></li>
+      </ul>
     </nav>
     <p class="legal">Tulio Parreira Camargos Guimaraes Consultoria em Tecnologia da Informação Ltda · CNPJ 68.396.487/0001-07<br>Telas do produto mostradas com dados de demonstração.</p>
   </div>
@@ -3780,6 +3850,18 @@ footer .legal { color: #949A93; font-size: var(--t-1); border-top: 1px solid rgb
   }
 })();
 
+</script>
+<script>
+/* seletor de idioma do cabeçalho: fecha ao clicar fora, com Esc e quando o foco sai do menu */
+(function () {
+  var d = document.querySelector('.idioma-menu');
+  if (!d) return;
+  document.addEventListener('click', function (e) { if (d.open && !d.contains(e.target)) d.open = false; });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && d.open) { d.open = false; d.querySelector('summary').focus(); }
+  });
+  d.addEventListener('focusout', function (e) { if (d.open && e.relatedTarget && !d.contains(e.relatedTarget)) d.open = false; });
+})();
 </script>
 </body>
 </html>
